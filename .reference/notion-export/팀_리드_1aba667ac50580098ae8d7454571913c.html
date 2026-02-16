@@ -1,0 +1,714 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>팀 리드</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-8009-8ae8-d7454571913c" class="page sans"><header><h1 class="page-title" dir="auto">팀 리드</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>기여도</th><td>100%</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>시기</th><td><span class="selected-value select-value-color-gray">LLM이후</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>역할</th><td><span class="selected-value select-value-color-yellow">조직리드</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>연도</th><td><span class="selected-value select-value-color-red">2024</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>직무성격</th><td><span class="selected-value select-value-color-purple">Lead</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>협업부서</th><td></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>회사명</th><td><span class="selected-value select-value-color-yellow">버즈니</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8047-824b-e4fb5e3f1b43" class="image"><a href="image.png"><img style="width:711.3565063476562px" src="image.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-801d-a8d3-c6551f489f05"><div style="font-size:1.5em"><span class="icon">🚧</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8009-a29c-fb4b046e7bce" class="">문제: 조직체계가 정비되지 않아 효율적인 협업이 불가능한 상황</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8093-a73a-df70d06f531e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8024-898a-c1a7eaa3e9ed" class="">솔루션: <br/>1) 제품 라인업을 데이터 연동 시 필요한 규격을 기준으로 세분화<br/>2) 각 제품군 별 스쿼드(팀) 조직<br/>3) 협업을 위한 공통 프로젝트 관리보드 제작<br/>4) 비즈니스-개발 정보 sync를 위한 CRM 관리보드 제작<br/>5) 각 스쿼드 별 리드 선정 후, 리드급 initiative 협의체 마련을 통해 전사 sync 도모</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8010-aa57-d195bd0f1c99"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-808d-a113-fa45dbfc011a" class="">성과: 최소한의 리소스(개발 인력 16명, 기획인력 3명, 영업인력 1명)로 최대한의 제품라인업(총 11개) 운영하며 1년만에 매출 10배 성장.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-805d-b892-c2fafcdd507d" class="image"><a href="image%201.png"><img style="width:711.3635864257812px" src="image%201.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-803e-a066-e8325fba1da2" class="image"><a href="image%202.png"><img style="width:2570px" src="image%202.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80f1-b5a2-dfc6b764ae8a" class="image"><a href="88674e5e-8b61-48c7-84dd-3296c1fdecf0.png"><img style="width:312.03619909502265px" src="88674e5e-8b61-48c7-84dd-3296c1fdecf0.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8084-96d1-c9b6f43a85a4"><div style="font-size:1.5em"><span class="icon">🚧</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b5-89ce-f023f07b36ea" class="">문제: 각 영역별 전문가가 부족한 상황에서 빠르게 양질의 인적자원을 충원해야 함.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8068-a849-dc553f80a6dc"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8048-b55c-c7e62f43bd38" class="">솔루션: <br/>LLM 활용을 중심에 두고 최소한의 배경정보만 제공되었을 때, LLM과 Co-work을 통해 지원자가 문제를 어떻게 구조화하고, 최대한의 성과를 낼 수 있는지에 초점을 맞춘 과제를 설계해 채용 프로세스 정량화.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">과제 설계 예시</summary><div class="indented"><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80c3-9d2c-d767718fe3a1" class="">최종 과제 안내</h1></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a3-88b8-c2cf9a28bc38" class="">이번 과제는 <strong>2개의 결과물</strong>을 제출하는 형태로 구성됩니다. 지원자의 논리적 사고능력과 구조화 능력을 확인하기 위해 다소 제한적인 정보를 제공하는 점 양해부탁드립니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8098-8517-fc438d2eb191" class="">과제를 진행하는 과정에서 현재 시장에 공개된 모든 LLM과 상용 AI도구들을 적극적으로 활용하실 수 있으며, 이러한 도구의 활용은 과제의 전제조건입니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c0-b79f-e30759c27a6d" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8063-aff1-e37368f07926" class="numbered-list" start="1"><li><strong>(과제 A) 홈앤쇼핑 모바일앱 검색 솔루션 도입 제안서</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8025-9ddf-ee8408181c98" class="bulleted-list"><li style="list-style-type:disc">API Docs, EP가이드, Company 1pager를 활용해 홈앤쇼핑 앱에 검색 솔루션을 연동하고 가치를 극대화하는 제안서 작성</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-808d-b1c4-fb6aca4eee64" class="bulleted-list"><li style="list-style-type:disc">발표(10분) 대상 문서</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80bb-82ab-e6106cc68475" class="numbered-list" start="2"><li><strong>(과제 B) 문제 정의 및 LLM 활용 절차 문서</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8094-aa54-c32bd34c042c" class="bulleted-list"><li style="list-style-type:disc">과제 A를 수행하는 과정에서 지원자가 문제를 어떻게 정의하고, LLM을 비롯한 AI 도구를 어떤 방식으로 활용했는지를 단계별로 정리한 문서</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803b-ba59-e02a068adb19" class="bulleted-list"><li style="list-style-type:disc">Word, Notion, 혹은 Markdown 문서 형태 제출 (발표 대상 아님, 면접 시 검토 자료로 활용)</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-8008-9d67-ea661de1e6cf"/></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80d4-867f-c6d71a04c7fa" class="">(과제 A) 홈앤쇼핑 모바일앱 검색 솔루션 도입 제안서</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8049-933d-eb2bdaeaffa6" class=""><strong>목적:</strong></p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c3-9d09-f18290a35864" class="">지원자는 홈앤쇼핑(<a href="https://www.hnsmall.com/">https://www.hnsmall.com/</a>) 모바일앱에 회사(버즈니)의 AI 솔루션(검색AI)을 도입하기 위한 제안서(도입 가이드)를 작성하고, 이를 10분 내 발표하는 과제를 수행합니다. 이 과정을 통해 지원자의 <strong>도메인 이해력</strong>, <strong>문서 구성 능력</strong>, <strong>데이터/API 해석 능력</strong>, <strong>문제 해결 역량</strong>, <strong>LLM 등 AI 툴 활용 역량</strong>을 종합적으로 평가합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80d0-8321-e6a742377217" class=""><strong>배경 상황:</strong></p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8036-90eb-e0346cb56be1" class="">홈앤쇼핑은 한국의 대표적인 홈쇼핑사 중 하나입니다. 해당 기업에서 모바일앱 검색엔진 최적화를 위해 버즈니 검색AI의 도입을 고려하고 있습니다. 지원자는 버즈니 에이플러스의 검색 AI 솔루션을 홈앤쇼핑 앱에 연동하여 검색 품질을 개선하는 제안서(절차 및 기대효과)를 작성하고, 짧은 발표를 통해 이 제안 내용을 실무진에게 전달해야 합니다. 홈앤쇼핑은 최근 타사 대비 낮은 검색 매출 효율을 주요 Pain point라고 밝힌 바 있습니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808d-ae9d-fd2b3f4193cf" class=""><strong>제공 자료:</strong></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801b-9413-d52d3967408a" class="bulleted-list"><li style="list-style-type:disc"><strong>API Docs:</strong> 검색엔진 API 사양</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8080-90be-cfdf7bc6f8f2" class="bulleted-list"><li style="list-style-type:disc"><strong>EP가이드:</strong> 홈앤쇼핑 상품 데이터 연동 가이드</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801a-b7cf-ec4a3665515b" class="bulleted-list"><li style="list-style-type:disc"><strong>Company 1pager:</strong> 솔루션 USP와 성과 지표</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d4-a6cb-f906016bc75a" class="bulleted-list"><li style="list-style-type:disc"><strong>대상 플랫폼:</strong> 홈앤쇼핑 모바일앱</li></ul></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808e-9360-c6f61897c52a" class=""><strong>결과물 요구사항:</strong></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e3-b29c-f359b31820bd" class="bulleted-list"><li style="list-style-type:disc"><strong>형식:</strong> PDF 또는 프레젠테이션 링크(Google Slides, Gamma, Notion 등)</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80f9-aa2d-d226c4377ed0" class="bulleted-list"><li style="list-style-type:disc"><strong>분량:</strong> 10~15페이지 내외</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d4-95d2-c335704ec957" class="bulleted-list"><li style="list-style-type:disc"><strong>발표 시간:</strong> 10분 이내 (1차 실무진 면접 시 발표)</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8026-bce5-c6b2033ee36a" class="bulleted-list"><li style="list-style-type:disc"><strong>필수 섹션 예시:</strong><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-801b-9d3a-cddaf3ee3127" class="numbered-list" start="1"><li>개요(Introduction)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8095-8c71-dbe1a48f0f0a" class="numbered-list" start="2"><li>솔루션 개요(Solution Overview)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80bd-a9bd-ef77be2b033d" class="numbered-list" start="3"><li>연동 절차(Integration Steps)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80cf-bbc5-ed73b9e989fd" class="numbered-list" start="4"><li>사전준비물(Prerequisites)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8019-b115-c64ede86ff17" class="numbered-list" start="5"><li>기대효과(Impact)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80b4-a48a-c4375191cc59" class="numbered-list" start="6"><li>향후 개선방안(Next Steps)</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80af-9cef-d889e289d6af" class=""><strong>평가 기준:</strong></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8010-a0b6-f5ebd04bf871" class="bulleted-list"><li style="list-style-type:disc">도메인 이해를 위한 노력</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8022-8581-df07597589a8" class="bulleted-list"><li style="list-style-type:disc">문서 구성력 및 명확성</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8072-b6b0-c548c2fea6e0" class="bulleted-list"><li style="list-style-type:disc">데이터/API 해석 능력</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8069-8416-e1c0fa414024" class="bulleted-list"><li style="list-style-type:disc">추론을 통한 가치 제안 능력</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a5-931e-e840352221a6" class="bulleted-list"><li style="list-style-type:disc">LLM 활용 역량</li></ul></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-803a-b4a5-ef21922ae5bf"/></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80e1-a0c3-ec49e5c8c868" class="">(과제 B) 문제 정의 및 LLM 활용 절차 문서</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80fb-8ff6-eb164192f24a" class=""><strong>목적:</strong></p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b9-89d9-d24023e2777b" class="">과제 A를 준비하는 과정에서 지원자가 문제를 어떻게 정의하고 접근했는지, 그리고 LLM 및 기타 AI 도구를 어떤 식으로 활용했는지 논리적이고 체계적으로 기록한 문서 제출해야 합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8051-ba38-e284e061d296" class=""><strong>형식:</strong></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803b-8fca-effde1832e66" class="bulleted-list"><li style="list-style-type:disc">Word, Notion, 혹은 Markdown 문서 형태</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b7-927e-c86224555501" class="bulleted-list"><li style="list-style-type:disc">분량 제한 없음 (다만 간결하고 논리적으로 정리)</li></ul></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808d-b83d-ce72118f1eeb" class=""><strong>문서 내용 예시:</strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80d7-87fb-f906c8f2fd2a" class="numbered-list" start="1"><li><strong>문제 정의 과정</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8071-8408-ce5cec37fe2a" class="bulleted-list"><li style="list-style-type:disc">이커머스 도메인 지식이 없는 상태에서 어떻게 홈앤쇼핑 앱의 검색 개선 니즈를 파악했는지</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803b-b902-fb5ee4ead27c" class="bulleted-list"><li style="list-style-type:disc">API Docs, EP가이드를 이해하기 위한 초기 전략</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-808c-bdfb-e2a24e891978" class="numbered-list" start="2"><li><strong>LLM 활용 전략 및 절차</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80bf-a062-cb1250239bbf" class="bulleted-list"><li style="list-style-type:disc">초기 정보수집 단계에서 LLM을 통해 도메인 지식 확보 방법</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a8-8269-f751f82b9d6e" class="bulleted-list"><li style="list-style-type:disc">API Docs/EP가이드 이해를 돕기 위한 요약, 질의응답, 재해석 요청 사례</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8057-8196-c0d79f335c2e" class="bulleted-list"><li style="list-style-type:disc">제안서 아웃라인 및 슬라이드 구성, 문서 표현 개선을 위해 LLM을 어떻게 활용했는지</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8069-8f64-d31977b5005b" class="numbered-list" start="3"><li><strong>문제 해결 프로세스 정리</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807f-a9dc-dc36182a0096" class="bulleted-list"><li style="list-style-type:disc">단계별 진행 절차</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c5-87ca-df8dc522a975" class="bulleted-list"><li style="list-style-type:disc">각 단계에서 LLM이 기여한 부분과 지원자가 독자적으로 판단·수정한 부분</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e6-a785-f5f105f78e4d" class="bulleted-list"><li style="list-style-type:disc">복수의 LLM 모델(예: GPT-4, Claude)이나 도구(Gamma, Notion AI) 사용 시 모델/도구별 역할과 선택 이유</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8030-83ce-e9694827bacc" class="numbered-list" start="4"><li><strong>한계와 개선점</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803b-b3a9-cff6805ddbda" class="bulleted-list"><li style="list-style-type:disc">LLM 활용 과정에서 발생한 혼란, 잘못된 정보, 비논리적 제안 등을 어떻게 식별·개선했는지</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801b-93c8-fbd0067140eb" class="bulleted-list"><li style="list-style-type:disc">향후 유사 과제 수행 시 더 효율적인 LLM 활용 전략 아이디어</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8065-9481-e6a2a6c2e832" class=""><strong>평가 기준:</strong></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8049-a29c-dc717644f5bd" class="bulleted-list"><li style="list-style-type:disc">문제정의 능력</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807f-a4fe-f5873c9fcd7f" class="bulleted-list"><li style="list-style-type:disc">LLM 활용 로직</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804d-997a-ceb4196fe371" class="bulleted-list"><li style="list-style-type:disc">자기 반성적 접근</li></ul></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-803c-aa93-f9a2901ecaf5"/></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8031-af0a-fe85e17a9718" class="">제출 및 면접 안내</h2></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807d-a1db-e8da3b1415fb" class="bulleted-list"><li style="list-style-type:disc">과제 A(제안서): 서류 합격 후 5일 이내 제출, 1차 면접 시 10분 내 발표</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-800d-a676-d987e42e336b" class="bulleted-list"><li style="list-style-type:disc">과제 B(LLM 활용 절차 문서): 제안서와 함께 제출하되, 발표는 하지 않음. 면접 시 면접관이 이 문서를 참조하며 LLM 활용 과정에 대해 질의응답 진행.</li></ul></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-8086-ab1a-c54817a1f54d"/></div></div></details></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

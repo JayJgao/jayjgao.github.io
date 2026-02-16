@@ -1,0 +1,790 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>시나리오</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-8096-aa68-f30d325f6d04" class="page sans"><header><h1 class="page-title" dir="auto">시나리오</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80b3-b523-ed6e31c191ac"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ef-96c8-e17f9b581f55" class="">관계 형성에 초점을 맞추어보려고 함.</p></div></div></figure></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-802c-a25f-da42da8d1c60" class="">시나리오</h1></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-8003-a7ab-e8e4b2625112" class="">1. 유저 및 여성 Persona 설정</h3></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a2-b8b9-ca07c1c3a571" class="bulleted-list"><li style="list-style-type:disc"><strong>유저 Persona (남자 주인공)</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8062-91fc-d9a0f8a94a0f" class="bulleted-list"><li style="list-style-type:circle">선택지: 남자 A, 남자 B, 남자 C, 남자 D</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8065-9e2e-cfb111381024" class="bulleted-list"><li style="list-style-type:circle">(후속 스토리 진행 시, 유저의 Persona에 따라 몰입감 및 선택지가 미세하게 달라짐)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8080-a6e3-e7fd17c56d33" class="bulleted-list"><li style="list-style-type:disc"><strong>여성 Persona Pool</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80f2-a434-f1994b511e86" class="bulleted-list"><li style="list-style-type:circle">유저의 Persona 설정에 따라 분기됨 (각 유저 Persona마다 여성 캐릭터 4명씩 배정)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-807c-a70d-e63acd40c3f0"/></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-80ae-bda3-c289dcf78f42" class="">2. 관계의 시작 (러닝동호회 첫날)</h3></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80e5-868f-e19e5cbfe98e" class="numbered-list" start="1"><li><strong>배경 및 상황 설명</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80cb-adfd-cb2eadbe239d" class="bulleted-list"><li style="list-style-type:disc">유저는 사람도 사귀고 운동도 하려는 목적으로 러닝동호회에 첫 참석</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8036-97d2-c6f9a59d1378" class="bulleted-list"><li style="list-style-type:disc">준비운동 후, 레벨에 따라 여러 팩으로 나뉘며, 각 팩에는 한 명의 여성 캐릭터가 배정됨<em>(이때 여성의 직업 및 성격은 공개되지 않음)</em></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804f-87a5-f777820911c1" class="bulleted-list"><li style="list-style-type:disc">배경이미지 (midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-802b-af39-dec25d877adb" class="image"><a href="u2163724459_About_eight_runners_gathered_at_Hangang_Park._--a_20b66786-c64a-4a67-ab59-8c7dbe731d7f_1.png"><img style="width:654.0234375px" src="u2163724459_About_eight_runners_gathered_at_Hangang_Park._--a_20b66786-c64a-4a67-ab59-8c7dbe731d7f_1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80fc-b6ef-e1465d099217"><div class="source"><a href="Weekend_Pulse.mp3">Weekend Pulse.mp3</a></div></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80bb-a7dc-ecfa265887f5" class="numbered-list" start="2"><li><strong>시나리오 진행</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8081-807e-d1e26c894a2f" class="bulleted-list"><li style="list-style-type:disc"><strong>준비운동 &amp; 팩 결정:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806a-bf76-d044fe7268aa" class="bulleted-list"><li style="list-style-type:circle">어느 팩에 속할지 결정 → 이는 이후 상호작용할 여성 캐릭터를 정하는 분기점</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-809c-8e69-e37c8c905051" class="bulleted-list"><li style="list-style-type:disc"><strong>달리기 중 인사:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807a-9443-c66563b05b83" class="bulleted-list"><li style="list-style-type:circle">달리기를 하면서 자연스럽게 인사를 나눔</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8035-a52e-cdbc5c1e647a" class="bulleted-list"><li style="list-style-type:circle"><strong>분기점:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8093-bdea-e1a43ec67263" class="bulleted-list"><li style="list-style-type:square">만약 상대와 감정적 교류(호감 상승)가 발생하면 다음 단계로 진행</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8054-ac6d-cd2d1843214d" class="bulleted-list"><li style="list-style-type:square">반대로 교감이 없으면 호감도가 깎임</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8091-bc0d-cbc5598c6c99" class="bulleted-list"><li style="list-style-type:disc"><strong>러닝크루 뒷풀이 (후일담 파티):</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8089-8c27-e8f04e2284aa" class="bulleted-list"><li style="list-style-type:circle"><strong>좌석 선택:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807d-9b01-da28b9b94e0d" class="bulleted-list"><li style="list-style-type:square">5번에서 호감도가 상승한 경우, 해당 캐릭터 옆자리를 선택할 수 있도록 유도</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80ee-8456-f8cd86fd630a" class="bulleted-list"><li style="list-style-type:square">그렇지 않은 경우 다른 옵션 제공</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8044-aa07-fb6a1d5ee24e" class="bulleted-list"><li style="list-style-type:circle"><strong>뒷풀이 토크:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8026-b48b-dd776bf1b645" class="bulleted-list"><li style="list-style-type:square">4명의 여성 캐릭터가 한 명씩 자기소개 진행</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807f-9c3e-e0d67b4fe2ad" class="bulleted-list"><li style="list-style-type:square">유저는 어디에 앉을지 선택하며 추가 상호작용을 진행</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807a-a20d-f66964e138a9" class="bulleted-list"><li style="list-style-type:circle"><strong>전화번호 요청:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d5-9499-c444b2b79dd9" class="bulleted-list"><li style="list-style-type:square">여기서 호감도가 쌓이면, 유저가 용기를 내어 전화번호를 물어봄</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8079-9ff2-e14a12643e79" class="bulleted-list"><li style="list-style-type:square"><strong>결과:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8048-9a60-ee80743148d7" class="bulleted-list"><li style="list-style-type:disc">전화번호를 물어보면 관계의 시작 단계 완료 → 다음 단계로 진행</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8080-afe1-ccdeceed1d09" class="bulleted-list"><li style="list-style-type:disc">전화번호를 못 물어보면 게임오버</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80da-bf9e-d7feecab56b9" class="bulleted-list"><li style="list-style-type:circle">배경(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8096-8a8d-d499349fbe14" class="image"><a href="u2163724459_A_korean_pub_in_seoul_--ar_169_--profile_3vn2d3i__713b29cd-45d8-47b0-8dc5-d593b2da9311_3.png"><img style="width:626.03515625px" src="u2163724459_A_korean_pub_in_seoul_--ar_169_--profile_3vn2d3i__713b29cd-45d8-47b0-8dc5-d593b2da9311_3.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80a6-a125-f80ce8c79394"><div class="source"><a href="audio.mp3">audio.mp3</a></div></figure></div></li></ul></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-8039-a340-dea23c9cb59e"/></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-8093-baf0-cbbbc2f3bb64" class="">3. 관계의 발전 단계</h3></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-808d-a9be-dea37a28bbbf" class="numbered-list" start="1"><li><strong>관계의 발전</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8094-8886-ddd29c59ba9a" class="bulleted-list"><li style="list-style-type:disc"><strong>배경:</strong> Cafe (잘되면 레스토랑으로 이동)</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8034-a544-e3f59395937d" class="bulleted-list"><li style="list-style-type:disc"><strong>조건:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804d-bb9e-f6030567a4e8" class="bulleted-list"><li style="list-style-type:circle">진행 중 호감도가 0이 되면 게임오버</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c6-b958-e1be36e21c8d" class="bulleted-list"><li style="list-style-type:disc">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80ae-880d-f74cefe8c03f" class="image"><a href="u2163724459_A_bright_and_sophisticated_caf_in_Seoul._--ar_169_cc8d264d-2f7e-40fc-bca8-42aebb93b1b2_1.png"><img style="width:654.0234375px" src="u2163724459_A_bright_and_sophisticated_caf_in_Seoul._--ar_169_cc8d264d-2f7e-40fc-bca8-42aebb93b1b2_1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8096-8622-e8a87b69d113"><div class="source"><a href="Le_Bistro_Murmurs.mp3">Le Bistro Murmurs.mp3</a></div></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8067-8b82-d7b23b9185b3" class="numbered-list" start="2"><li><strong>관계의 성숙</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803d-bce0-cfe4477493cc" class="bulleted-list"><li style="list-style-type:disc"><strong>배경:</strong> 미술관 (성공 시 술 먹으러 이동)</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d2-92b3-f418c587955c" class="bulleted-list"><li style="list-style-type:disc"><strong>조건:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a9-a15c-e32d00b68b97" class="bulleted-list"><li style="list-style-type:circle">호감도가 0이 되면 게임오버</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8026-b1f1-f3880e7e1802" class="bulleted-list"><li style="list-style-type:disc">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8054-a773-d7ac20b5cbd8" class="image"><a href="u2163724459_seoul_museum_of_comtemporary_art_inside_the_galle_25373329-380a-4ef4-8e89-ebd2110b4c13_3.png"><img style="width:654.0234375px" src="u2163724459_seoul_museum_of_comtemporary_art_inside_the_galle_25373329-380a-4ef4-8e89-ebd2110b4c13_3.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80dc-a227-d7ed749fd94e"><div class="source"><a href="audio_(1).mp3">audio (1).mp3</a></div></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-806e-b7bf-d13b89ca4000" class="numbered-list" start="3"><li><strong>관계 전환의 계기</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806d-913b-dd69c1f45005" class="bulleted-list"><li style="list-style-type:disc"><strong>배경:</strong> 집에서의 전화통화</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8048-a618-f1147bcef77a" class="bulleted-list"><li style="list-style-type:disc"><strong>진행:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a9-8d11-e854c2e8ff16" class="bulleted-list"><li style="list-style-type:circle">성공 시, 급만남을 위해 근처 공원에서 만남 후 드라이브로 진행</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b0-92fa-d586110a853b" class="bulleted-list"><li style="list-style-type:disc"><strong>조건:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80f1-a4eb-c1b10c4a8e30" class="bulleted-list"><li style="list-style-type:circle">호감도가 0이 되면 게임오버</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8041-8930-c1b7c24649bd" class="bulleted-list"><li style="list-style-type:circle">만약 시스템에서 정한 최소 호감도에 미치지 못한 상태에서 고백을 시도하면 게임오버</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80db-9489-ebb6947e2785" class="bulleted-list"><li style="list-style-type:disc">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8069-a5c7-c55daf0fff5d" class="image"><a href="u2163724459_seoul_typical_apartment_inside_image_--ar_169_--p_ef8968f5-9578-41f9-89ac-21677a3c728b_0.png"><img style="width:654.0056762695312px" src="u2163724459_seoul_typical_apartment_inside_image_--ar_169_--p_ef8968f5-9578-41f9-89ac-21677a3c728b_0.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8052-bca0-fbeb7abc21de"><div class="source"><a href="Weekend_Pulse_(1).mp3">Weekend Pulse (1).mp3</a></div></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-809d-8dc0-e5f5fa2e5ff6" class="numbered-list" start="4"><li><strong>관계의 Made (커플이 되는 단계)</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8006-83f0-ed636d2c0b99" class="bulleted-list"><li style="list-style-type:disc"><strong>배경:</strong> 퇴근 후 이자카야</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8090-98c1-e30999943701" class="bulleted-list"><li style="list-style-type:disc"><strong>조건:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d5-90f0-e0425e1b7b52" class="bulleted-list"><li style="list-style-type:circle">호감도가 70 이상일 경우에 한해 고백이 성공 → 성공 시 호감도가 80까지 상승</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806e-9f1e-c8e0ba03ce7b" class="bulleted-list"><li style="list-style-type:circle">호감도가 미달이면 고백이 실패(대체 시나리오 진행 또는 게임오버)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d6-9474-c373f81784a2" class="bulleted-list"><li style="list-style-type:disc">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80ea-bc8c-eb928f1bee3c" class="image"><a href="u2163724459_izakaya_inside_view_--ar_169_--profile_3vn2d3i_--_a01a7ec1-d65f-4f40-82e1-8f01d9f89d4b_2.png"><img style="width:654.0056762695312px" src="u2163724459_izakaya_inside_view_--ar_169_--profile_3vn2d3i_--_a01a7ec1-d65f-4f40-82e1-8f01d9f89d4b_2.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800d-aab5-f5bd79d70226"><div class="source"><a href="audio_(2).mp3">audio (2).mp3</a></div></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-803d-a0f1-efcce96a87d8"/></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-805b-a472-c47216c26c11" class="">4. 관계의 지속, 갈등, 결말</h3></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8005-ba93-c248d7111818" class="numbered-list" start="1"><li><strong>관계의 지속</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8029-ac91-e569d5d71e6f" class="bulleted-list"><li style="list-style-type:disc"><strong>배경 1:</strong> 뮤지컬 공연장<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8096-88ba-f2335abb00f6" class="bulleted-list"><li style="list-style-type:circle">상대의 말에 따른 반응으로 호감도가 크게 요동침</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e4-abb5-ebf9b12ff5f5" class="bulleted-list"><li style="list-style-type:circle">호감도가 70 이하로 떨어지면 게임오버</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801d-9789-c16d7ef34dd8" class="bulleted-list"><li style="list-style-type:circle">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-807b-81b0-fdcb32d4cd2a" class="image"><a href="u2163724459_musical_theater_in_seoul_--ar_169_--profile_3vn2d_be8d2b30-9f41-4763-b8ec-b8aaf494ee41_2.png"><img style="width:626.015625px" src="u2163724459_musical_theater_in_seoul_--ar_169_--profile_3vn2d_be8d2b30-9f41-4763-b8ec-b8aaf494ee41_2.png"/></a></figure></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8032-9f4b-dfbe18150c5f" class="bulleted-list"><li style="list-style-type:disc"><strong>배경 2:</strong> 백화점<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a9-9e6d-ed1201c17541" class="bulleted-list"><li style="list-style-type:circle">마찬가지로 호감도가 70 이하가 되면 게임오버</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b9-a345-c30fd2ed7af2" class="bulleted-list"><li style="list-style-type:circle">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8040-b05b-d07237d62eb5" class="image"><a href="u2163724459_inside_view_of_department_store_in_seoul_korea_--_8d6598f1-b4d9-4561-9ef6-24b71f96f1e6_1.png"><img style="width:626.03515625px" src="u2163724459_inside_view_of_department_store_in_seoul_korea_--_8d6598f1-b4d9-4561-9ef6-24b71f96f1e6_1.png"/></a></figure></div></li></ul></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80cc-892b-ff9dc561a9b8" class="numbered-list" start="2"><li><strong>관계의 갈등</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c0-9735-c11a3b0fc5d5" class="bulleted-list"><li style="list-style-type:disc"><strong>배경 1:</strong> 카페<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8021-ba4e-fb73ef6645eb" class="bulleted-list"><li style="list-style-type:circle">상대가 회사에서 겪은 불만을 토로 → 반응에 따라 호감도 변동</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8064-b1e6-f2b7b2960fc6" class="bulleted-list"><li style="list-style-type:circle">호감도가 60 이하로 떨어지면 게임오버</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803d-938c-fa1fc0051ceb" class="bulleted-list"><li style="list-style-type:circle">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8074-b520-efcc1c801c06" class="image"><a href="u2163724459_A_bright_and_sophisticated_caf_in_Seoul._--ar_169_cc8d264d-2f7e-40fc-bca8-42aebb93b1b2_0.png"><img style="width:626.03515625px" src="u2163724459_A_bright_and_sophisticated_caf_in_Seoul._--ar_169_cc8d264d-2f7e-40fc-bca8-42aebb93b1b2_0.png"/></a></figure></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a6-b747-f6e8c7beee85" class="bulleted-list"><li style="list-style-type:disc"><strong>배경 2:</strong> 결혼식장<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80be-88f7-d3c587591163" class="bulleted-list"><li style="list-style-type:circle">지인의 결혼식 참석 후 결혼 관련 대화</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8029-9dc8-c3ded6536d34" class="bulleted-list"><li style="list-style-type:circle">반응에 따라 호감도가 크게 요동침 → 호감도가 50 이하로 떨어지면 게임오버</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80ca-9e3a-c65fce58fb9a" class="bulleted-list"><li style="list-style-type:circle">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8055-ad76-e9f927f4b799" class="image"><a href="u2163724459_inside_the_wedding_hall_in_seoul_korea_--ar_169_-_26cabcb5-b377-4a45-a22e-8b3a40520afe_0.png"><img style="width:626.03515625px" src="u2163724459_inside_the_wedding_hall_in_seoul_korea_--ar_169_-_26cabcb5-b377-4a45-a22e-8b3a40520afe_0.png"/></a></figure></div></li></ul></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-804a-a624-c86b1e23b211" class="numbered-list" start="3"><li><strong>관계의 결말</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8054-b3ec-c7bde68a212a" class="bulleted-list"><li style="list-style-type:disc"><strong>배경:</strong> 공원</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e3-a6ee-e63f9ff40700" class="bulleted-list"><li style="list-style-type:disc"><strong>최종 결과:</strong><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8013-9f92-f3051308c6e1" class="bulleted-list"><li style="list-style-type:circle">누적 호감도가 90 이상이면 진지한 관계로 발전</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803c-98b2-d8f02079cc3a" class="bulleted-list"><li style="list-style-type:circle">누적 호감도가 60 이하이면 헤어짐</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c3-8f72-fbb3ffc02ea6" class="bulleted-list"><li style="list-style-type:disc">배경이미지(midjourney)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-804c-a335-e39c24499130" class="image"><a href="u2163724459_community_park_at_seoul_korea_with_bench_and_slid_ef940369-8d89-4a07-8a70-33a14fa65fe6_2.png"><img style="width:654.0056762695312px" src="u2163724459_community_park_at_seoul_korea_with_bench_and_slid_ef940369-8d89-4a07-8a70-33a14fa65fe6_2.png"/></a></figure></div></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80d3-a4dd-d3cb42b7bf28" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-8047-a9bb-c7443f4a06c9" class="">차트</h1></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8094-9f6d-e83fc1c61612" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">flowchart TD
+    %% 1) 유저와 여성 캐릭터 설정
+    A[&quot;유저 Persona 선택:&lt;br/&gt;남자 A / B / C / D&quot;]
+    A --&gt; B[&quot;여성 Persona Pool 분기&lt;br/&gt;각 4명의 후보&quot;]
+
+    %% 2) 관계의 시작 – 러닝동호회 첫날
+    B --&gt; C[&quot;첫날 도착&lt;br/&gt;준비운동 후 팩 결정&quot;]
+    C --&gt; D[&quot;달리기 중 인사&lt;br/&gt;당신의 첫 만남&quot;]
+    D --&gt; E{&quot;교감 발생?&quot;}
+    E -- &quot;Yes&quot; --&gt; F[&quot;감정적 연결 형성&lt;br/&gt;(호감도 상승)&quot;]
+    E -- &quot;No&quot; --&gt; G[&quot;교감 부재&lt;br/&gt;(호감도 하락)&quot;]
+
+    F --&gt; H[&quot;뒷풀이 시작&lt;br/&gt;좌석 선택 - 옆자리&quot;]
+    G --&gt; I[&quot;뒷풀이 시작&lt;br/&gt;좌석 선택 - 다른 자리&quot;]
+    H &amp; I --&gt; J[&quot;토크 시작&lt;br/&gt;자기소개 &amp; 선택&quot;]
+
+    J --&gt; K{&quot;전화번호 요청?&quot;}
+    K -- &quot;Yes&quot; --&gt; L[&quot;관계의 시작 완성&quot;]
+    K -- &quot;No&quot; --&gt; M[&quot;게임 오버&quot;]
+
+    %% 3) 관계의 발전
+    L --&gt; N[&quot;관계의 발전&lt;br/&gt;배경: 카페&quot;]
+    N --&gt; O{&quot;호감도 유지?&quot;}
+    O -- &quot;Yes&quot; --&gt; P[&quot;레스토랑으로 확장&quot;]
+    O -- &quot;No&quot; --&gt; M
+
+    %% 4) 관계의 성숙
+    P --&gt; Q[&quot;관계의 성숙&lt;br/&gt;배경: 미술관&quot;]
+    Q --&gt; R{&quot;호감도 유지?&quot;}
+    R -- &quot;Yes&quot; --&gt; S[&quot;술 먹으러 이동&quot;]
+    R -- &quot;No&quot; --&gt; M
+
+    %% 5) 관계 전환의 계기
+    S --&gt; T[&quot;관계 전환의 계기&lt;br/&gt;집에서 전화통화&quot;]
+    T --&gt; U{&quot;호감도 및 타이밍 충족?&quot;}
+    U -- &quot;Yes&quot; --&gt; V[&quot;급만남 &amp; 드라이브&quot;]
+    U -- &quot;No&quot; --&gt; M
+
+    %% 6) 관계의 Made
+    V --&gt; W[&quot;관계의 Made&lt;br/&gt;퇴근 후 이자카야 고백&quot;]
+    W --&gt; X{&quot;호감도 ≥ 70?&quot;}
+    X -- &quot;Yes&quot; --&gt; Y[&quot;고백 성공&lt;br/&gt;(호감도 80으로 상승)&quot;]
+    X -- &quot;No&quot; --&gt; M
+
+    %% 7) 관계의 지속
+    Y --&gt; Z[&quot;관계의 지속&quot;]
+    Z --&gt; ZA{&quot;배경 선택?&quot;}
+    ZA -- &quot;뮤지컬 공연장&quot; --&gt; ZB[&quot;뮤지컬 공연장에서 감정 변화&quot;]
+    ZA -- &quot;백화점&quot; --&gt; ZC[&quot;백화점에서 감정 변화&quot;]
+
+    ZB --&gt; ZD{&quot;호감도 ≥ 70?&quot;}
+    ZC --&gt; ZE{&quot;호감도 ≥ 70?&quot;}
+    ZD -- &quot;Yes&quot; --&gt; ZF[&quot;관계 유지&quot;]
+    ZD -- &quot;No&quot; --&gt; M
+    ZE -- &quot;Yes&quot; --&gt; ZF
+    ZE -- &quot;No&quot; --&gt; M
+
+    %% 8) 관계의 갈등
+    ZF --&gt; ZG[&quot;관계의 갈등&quot;]
+    ZG --&gt; ZH{&quot;갈등 장소 선택?&quot;}
+    ZH -- &quot;카페&quot; --&gt; ZI[&quot;카페: 회사 불만 토로&quot;]
+    ZH -- &quot;결혼식장&quot; --&gt; ZJ[&quot;결혼식장: 결혼 대화&quot;]
+
+    ZI --&gt; ZK{&quot;호감도 &gt; 60?&quot;}
+    ZJ --&gt; ZL{&quot;호감도 &gt; 50?&quot;}
+    ZK -- &quot;Yes&quot; --&gt; ZM[&quot;갈등 극복&quot;]
+    ZK -- &quot;No&quot; --&gt; M
+    ZL -- &quot;Yes&quot; --&gt; ZM
+    ZL -- &quot;No&quot; --&gt; M
+
+    %% 9) 관계의 결말
+    ZM --&gt; ZN[&quot;관계의 결말&lt;br/&gt;배경: 공원에서 최종 평가&quot;]
+    ZN --&gt; ZO{&quot;최종 호감도?&quot;}
+    ZO -- &quot;≥ 90&quot; --&gt; ZP[&quot;진지한 관계 발전&quot;]
+    ZO -- &quot;≤ 60&quot; --&gt; M
+    ZO -- &quot;기타&quot; --&gt; ZQ[&quot;일단 유지&lt;br/&gt;(중간 결말)&quot;]
+</code></pre></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

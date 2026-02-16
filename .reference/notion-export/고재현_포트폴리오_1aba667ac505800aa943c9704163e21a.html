@@ -1,0 +1,745 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>고재현 포트폴리오</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-800a-a943-c9704163e21a" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="jko_slack_(1).png"/></div><h1 class="page-title" dir="auto">고재현 포트폴리오</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8033-a9f1-dfaf99af5a73"><div style="font-size:1.5em"><span class="icon">🗣</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8094-b9f5-f493c2afeb4c" class="">6년차 AI 전문 Product Manager 고재현입니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-806c-9bb0-db3ce7d28c5c" class="">단순한 Product Manager가 아닌 제품을 중심에 둔 <code>End-to-end Problem Manager</code>를 지향합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-809d-a498-e2928c1a5589" class="">포트폴리오는 <code>Before LLM</code>, <code>After LLM</code> 두 섹션으로 나누어 기재되었습니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-8007-aaa1-fb5545ecfd68" class="">About Me</h1></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-805c-909a-ef8a093c3ed8" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d4-8f64-e8100b0727dc" style="width:150%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80d6-8512-ccc81d1d1f84"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ef-a67f-c4f7f7ed9d48" class="">제품이 성공하기 위해 필요한 모든 업무를 기꺼이 수행합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808b-a22e-fe1ebf1b368a" class="">제품의 성공이 내포하는 다양한 층위(매출신장, 지표신장, 조직 건정성, 브랜딩)를 폭넓게 리딩해본 경험을 보유하고 있습니다. </p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80e7-a292-c644f5060c19" class="">아래의 마인드맵은 저의 업무 스펙트럼을 표현합니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8000-8027-f20ee6a404bb" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d7-b763-f91d33c073dd" style="width:49.99999999999999%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-805c-bb16-f75ec2fcdf9b" class="image"><a href="a836068b-0f40-44d7-a27a-79a3e6d68af0.png"><img style="width:449.4797687861271px" src="a836068b-0f40-44d7-a27a-79a3e6d68af0.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8064-988d-e24cfd98c528" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">mindmap
+  root((고재현))
+    subnode1(&quot;Traditional PM&quot;)
+      subnode1_1(&quot;API 스키마 정의&quot;)
+      subnode1_2(&quot;서비스 정책 수립&quot;)
+      subnode1_3(&quot;기획안 및 PRD&quot;)
+      subnode1_4(&quot;서비스 지표(CTR, CR 등) 기반 제품 개선&quot;)
+      subnode1_5(&quot;각종 Documentation&quot;)
+    subnode2(&quot;AI PM&quot;)
+      subnode2_1(&quot;데이터 Annotation 정책 수립&quot;)
+      subnode2_2(&quot;평가시스템 기획&quot;)
+      subnode2_3(&quot;라이브러리 리서치&quot;)
+      subnode2_4(&quot;프롬프트 엔지니어링&quot;)
+      subnode2_5(&quot;AI 기능 기획&quot;)
+      subnode2_6(&quot;AI 유관 특허문서 작성&quot;)
+    subnode3(&quot;Account Executive&quot;)
+      subnode3_1(&quot;아웃바운드 세일즈&quot;)
+      subnode3_2(&quot;계약 관련 Documentation&quot;)
+      subnode3_3(&quot;정산 관리&quot;)
+      subnode3_4(&quot;CRM&quot;)
+      subnode3_5(&quot;IR Pitch&quot;)
+    subnode4(&quot;PR,Marketing&quot;)
+      subnode4_1(&quot;행사 기획 및 부스 운영&quot;)
+      subnode4_2(&quot;보도자료 작성 및 인터뷰&quot;)
+      subnode4_3(&quot;공식 컨텐츠 기획 및 작성&quot;)
+      subnode4_4(&quot;외부 강연 연사&quot;)
+    subnode5(&quot;Team Lead&quot;)
+      subnode5_1(&quot;역할과 책임 명확화&quot;)
+      subnode5_2(&quot;협업 툴 템플릿 작업&quot;)
+      subnode5_3(&quot;채용 리딩 및 과제 기획&quot;)
+      subnode5_4(&quot;OKR 기반 Management&quot;)
+</code></pre></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80f4-b497-f96b89ad6579" class="">After LLM (2023~Present)</h1></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80bc-99e7-ec0136887c48"><div style="font-size:1.5em"><span class="icon">❓</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ab-857e-f186eff722a1" class="">LLM 보급 이전과 이후의 PM업무 스펙트럼에는 굉장히 큰 차이가 있다고 생각합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a6-979e-f2051efa03dc" class="">포트폴리오를 정리하며, 생각보다 그 차이가 선명하여, 별도의 섹션 구분을 통해 기재합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80bb-bda6-eb90adb2c260" class="">항목별로 기재된 퍼센티지는 <span style="border-bottom:0.05em solid">개인 기여도</span>를 의미합니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80f2-9746-c4c5c05cc464" class="">각 항목을 클릭해주시면 상세한 내용이 담긴 페이지가 열립니다.</p></div></div></figure></div><div style="display:contents" dir="ltr"><div id="1aba667a-c505-802b-80c1-ed56fe71fee7" class="collection-content"><h4 class="collection-title">고재현 포트폴리오</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>이름</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>기여도</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>시기</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>역할</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>연도</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>직무성격</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>협업부서</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>회사명</th></tr></thead><tbody><tr id="1aba667a-c505-8045-89c3-c97427e43132"><td class="cell-title"><a href="%EC%88%8F%ED%8F%BC%20%EC%A0%9C%EC%9E%91%20AIaaS%201aba667ac505804589c3c97427e43132.html">숏폼 제작 AIaaS </a></td><td class="cell-c[vl">60%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-green">스키마정의</span><span class="selected-value select-value-color-purple">스토리보드</span><span class="selected-value select-value-color-orange">프롬프트엔지니어링</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-red">2024</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-gray">Data Engineering</span><span class="selected-value select-value-color-purple">FE</span><span class="selected-value select-value-color-green">Product Design</span><span class="selected-value select-value-color-red">QA</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-80cb-a7a5-e295e25aba66"><td class="cell-title"><a href="%EC%9D%B4%EC%BB%A4%EB%A8%B8%EC%8A%A4%20%EB%A6%AC%EB%B7%B0%EB%B6%84%EC%84%9D%20AIaaS%201aba667ac50580cba7a5e295e25aba66.html">이커머스 리뷰분석 AIaaS</a></td><td class="cell-c[vl">50%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-orange">프롬프트엔지니어링</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-brown">2025</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-gray">Data Engineering</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-80a7-93cf-c05611971468"><td class="cell-title"><a href="%EC%9D%B4%EC%BB%A4%EB%A8%B8%EC%8A%A4%20%EC%87%BC%ED%95%91%20%EC%96%B4%EC%8B%9C%EC%8A%A4%ED%84%B4%ED%8A%B8%20%EC%B1%97%EB%B4%87%20AIaaS%201aba667ac50580a793cfc05611971468.html">이커머스 쇼핑 어시스턴트 챗봇 AIaaS</a></td><td class="cell-c[vl">30%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-purple">스토리보드</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-purple">2023</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-purple">FE</span><span class="selected-value select-value-color-green">Product Design</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-806e-a845-c9be7fecace9"><td class="cell-title"><a href="%EC%9D%B4%EC%BB%A4%EB%A8%B8%EC%8A%A4%20%EA%B2%80%EC%83%89%20AIaaS%201aba667ac505806ea845c9be7fecace9.html">이커머스 검색 AIaaS</a></td><td class="cell-c[vl">30%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-green">스키마정의</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-purple">2023</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-gray">Data Engineering</span><span class="selected-value select-value-color-green">Product Design</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-8083-9a11-c34cfb99283e"><td class="cell-title"><a href="%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%20%EB%AA%A8%EC%9D%8C%201aba667ac50580839a11c34cfb99283e.html">프롬프트 모음</a></td><td class="cell-c[vl">100%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-orange">프롬프트엔지니어링</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-red">2024</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-808a-aebc-d92753f75241"><td class="cell-title"><a href="%EC%A0%9C%ED%92%88%20%EB%B8%8C%EB%9E%9C%EB%94%A9&amp;%EB%A7%88%EC%BC%80%ED%8C%85%201aba667ac505808aaebcd92753f75241.html">제품 브랜딩&amp;마케팅</a></td><td class="cell-c[vl">100%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-blue">문서화</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-red">2024</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-blue">PR</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-pink">PR&amp;Marketing</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr><tr id="1aba667a-c505-8009-8ae8-d7454571913c"><td class="cell-title"><a href="%ED%8C%80%20%EB%A6%AC%EB%93%9C%201aba667ac50580098ae8d7454571913c.html">팀 리드</a></td><td class="cell-c[vl">100%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-gray">LLM이후</span></td><td class="cell-npwC"><span class="selected-value select-value-color-yellow">조직리드</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-red">2024</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-purple">Lead</span></td><td class="cell-h&gt;@Q"></td><td class="cell-|lJ:"><span class="selected-value select-value-color-yellow">버즈니</span></td></tr></tbody></table><br/><br/></div></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80c8-9646-f20485c889e5" class="">Before LLM (2018~2022)</h1></div><div style="display:contents" dir="ltr"><div id="1aba667a-c505-80b2-a88e-c1744ed58f94" class="collection-content"><h4 class="collection-title">고재현 포트폴리오</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>이름</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>기여도</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>시기</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>역할</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>연도</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>직무성격</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>협업부서</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>회사명</th></tr></thead><tbody><tr id="1aba667a-c505-80e9-82d9-e26c6be90b60"><td class="cell-title"><a href="MLaaS%20Product%20Management%201aba667ac50580e982d9e26c6be90b60.html">MLaaS Product Management</a></td><td class="cell-c[vl">70%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-purple">스토리보드</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-orange">2021</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-purple">FE</span><span class="selected-value select-value-color-green">Product Design</span><span class="selected-value select-value-color-red">QA</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-purple">솔리드웨어</span></td></tr><tr id="1aba667a-c505-80fd-9687-deae5d4d0d37"><td class="cell-title"><a href="AutoML%20%EC%86%94%EB%A3%A8%EC%85%98%20%EC%8B%A0%EA%B7%9C%20Feature%EA%B0%9C%EB%B0%9C%201aba667ac50580fd9687deae5d4d0d37.html">AutoML 솔루션 신규 Feature개발</a></td><td class="cell-c[vl">30%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-purple">스토리보드</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-yellow">2020</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-purple">FE</span><span class="selected-value select-value-color-green">Product Design</span><span class="selected-value select-value-color-red">QA</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-purple">솔리드웨어</span></td></tr><tr id="1aba667a-c505-80dc-88b8-e9ae9a4c0357"><td class="cell-title"><a href="%EC%A0%95%EB%B6%80%EC%A7%80%EC%9B%90%EA%B3%BC%EC%A0%9C%20%EC%B4%9D%EA%B4%84%201aba667ac50580dc88b8e9ae9a4c0357.html">정부지원과제 총괄</a></td><td class="cell-c[vl">80%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-blue">문서화</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-yellow">2020</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-pink">AE</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-orange">Biz</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-purple">솔리드웨어</span></td></tr><tr id="1aba667a-c505-8021-bc29-e5ba255c002d"><td class="cell-title"><a href="%ED%95%98%EB%82%98%EC%9D%80%ED%96%89%20On-site%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%201aba667ac5058021bc29e5ba255c002d.html">하나은행 On-site 프로젝트</a></td><td class="cell-c[vl">30%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-blue">문서화</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-pink">2019</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-purple">솔리드웨어</span></td></tr><tr id="1aba667a-c505-8022-a4c3-f8e63cc2b377"><td class="cell-title"><a href="%EC%A0%9C%ED%92%88%20%EB%A7%88%EC%BC%80%ED%8C%85%201aba667ac5058022a4c3f8e63cc2b377.html">제품 마케팅</a></td><td class="cell-c[vl">100%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-red">PMO</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-orange">2021</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-blue">PR</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-orange">Biz</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-purple">솔리드웨어</span></td></tr><tr id="1aba667a-c505-8085-a86c-f1b2ffaa56ed"><td class="cell-title"><a href="AI%20%EB%B0%94%EC%9D%B4%EC%98%A4%EB%A7%88%EC%BB%A4%20%EC%A7%84%EB%8B%A8%20%EC%86%94%EB%A3%A8%EC%85%98%20(HER2,%20ER%20PR)%201aba667ac5058085a86cf1b2ffaa56ed.html">AI 바이오마커 진단 솔루션 (HER2, ER/PR)</a></td><td class="cell-c[vl">10%</td><td class="cell-ZN~F"><span class="selected-value select-value-color-green">LLM이전</span></td><td class="cell-npwC"><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-purple">스토리보드</span></td><td class="cell-mnGM"><span class="selected-value select-value-color-gray">2022</span></td><td class="cell-sZY`"><span class="selected-value select-value-color-orange">PM</span></td><td class="cell-h&gt;@Q"><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-default">Doctors&amp;Pathologists</span><span class="selected-value select-value-color-purple">FE</span></td><td class="cell-|lJ:"><span class="selected-value select-value-color-blue">루닛</span></td></tr></tbody></table><br/><br/></div></div><div style="display:contents" dir="auto"><hr id="1aba667a-c505-808a-a627-f1f33d70176c"/></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-804d-959b-e35c5b17d843"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80df-96b8-ebe851a1948b" class="">End of Document.</p></div></div></figure></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

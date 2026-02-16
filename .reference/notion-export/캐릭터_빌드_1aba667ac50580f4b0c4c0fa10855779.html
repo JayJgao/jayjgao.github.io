@@ -1,0 +1,729 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>캐릭터 빌드</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-80f4-b0c4-c0fa10855779" class="page sans"><header><h1 class="page-title" dir="auto">캐릭터 빌드</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80ba-9a4a-d6f56c1fb302" class="">유저 캐릭터</h1></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-805b-81d8-c9ef7736c41b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b6-b29d-e9fff3f8de13" class="">이름은 유저의 실제이름</p></div></div></figure></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80a1-a614-d1c2f818f37e" class="">남자 A </h2></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-804b-9869-c09bd8a2178b" class="image"><a href="%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"><img style="width:710px" src="%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80f8-9273-d9945ea0c14d" class="">직업: 피부과 전문의</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8027-8182-d5183bb4822f" class="">나이: 32</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8003-9f3b-d81743476e01" class="">MBTI: ENTJ</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80cc-af1e-f2e64cd2bf88"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-803f-bf10-de81a68cfe7b" class="">남A 선택 시 여성 캐릭터: INFP, INTP, ENTJ, ISFP</p></div></div></figure></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8009-bac3-c38b86f66e7c" class="">남자 B </h2></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8084-9ef8-c63fa0498e80" class="image"><a href="AE_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"><img style="width:710px" src="AE_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8059-b32a-cca247ea49f8" class="">직업: 글로벌 광고회사 AE</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-800d-aee0-c2ffd3a0a596" class="">나이: 33</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8045-ad3a-e8c42545b55f" class="">MBTI: ENFP</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8022-891d-ca5d2183598c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8081-8745-c4d08cedd222" class="">남B 선택 시 여성 캐릭터: INFJ, INTJ, ENTP, ENFP</p></div></div></figure></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8015-a681-f56ecbbeef00" class="">남자 C</h2></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8093-adce-f4b15fc13b70" class="image"><a href="%E1%84%80%E1%85%A5%E1%86%AB%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%89%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"><img style="width:710px" src="%E1%84%80%E1%85%A5%E1%86%AB%E1%84%8E%E1%85%AE%E1%86%A8%E1%84%89%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c7-ac64-e8d228512fd3" class="">직업: 건축사</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80e3-a7d7-f5cff29ad868" class="">나이: 34</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-809c-9622-e197b77c3c88" class="">MBTI: ISFJ</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80ab-b5d5-eb56de65f3e3"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-801b-a9fb-fe38bc12de06" class="">남C 선택 시 여성 캐릭터: ESFP, ESTP, ISFJ, ISTJ</p></div></div></figure></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8072-8cc4-eceae31fb98c" class="">남자 D</h2></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8014-aff3-cca1b148461c" class="image"><a href="%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%E1%84%8C%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"><img style="width:710px" src="%E1%84%80%E1%85%A2%E1%84%87%E1%85%A1%E1%86%AF%E1%84%8C%E1%85%A1_%E1%84%87%E1%85%A2%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b4-9db7-f966a7af12ed" class="">직업: 스타트업 BE 개발자</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8040-afc7-ee3f93de9672" class="">나이: 30</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80cd-b7ef-cd8a675d84d3" class="">MBTI: ISFP</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8012-bf21-df7f88f8a0c2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-806b-8a36-daa01ca12946" class="">남D 선택 시 여성 캐릭터: ENFJ, ESFJ, ESTJ, ISTP</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-809c-a8c4-cda20d031298" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80cd-8a32-c8f8e126a3bf" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80e2-980d-fe9501f49a31" class="">여성캐릭터 빌드</h1></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8018-b22a-ffa5a7d95ea7" class="">ref: <a href="https://finance.yahoo.com/news/best-jobs-every-personality-type-200000864.html?guccounter=1&amp;guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&amp;guce_referrer_sig=AQAAABMMIQmmEIW7urUUgnVcn00VTNrzoLl9t3Oc3txLDdNSE4vZw4K9NyvZCvCJpvQpdDshZ9lvr51o_n2cQxCZ4_J5asbzrQUzbyNlOejkt_U6hYLzqorq9rkvL0MMy7B__8zT9C-lei52wDAuM3eQ46lNQqi_8VomOLLW1T18k0vV">https://finance.yahoo.com/news/best-jobs-every-personality-type-200000864.html?guccounter=1&amp;guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&amp;guce_referrer_sig=AQAAABMMIQmmEIW7urUUgnVcn00VTNrzoLl9t3Oc3txLDdNSE4vZw4K9NyvZCvCJpvQpdDshZ9lvr51o_n2cQxCZ4_J5asbzrQUzbyNlOejkt_U6hYLzqorq9rkvL0MMy7B__8zT9C-lei52wDAuM3eQ46lNQqi_8VomOLLW1T18k0vV</a></p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c7-944a-dca6650d13b4" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-807e-af7f-cd4c069df3e5" class="">ESTJ V</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8038-8b48-c596173888a6" class="">이름: 이지수</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808b-a54d-e48ed9946a09" class="">직업: 중학교 체육교사</p></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-8031-9a0b-cd8294df1bf0" class="">한강공원</h3></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80d1-9af5-e5734caf2b87" class="image"><a href="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"><img style="width:1591.25px" src="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"/></a></figure></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80b3-b9ba-f577f5dcf611" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-8055-a7f5-c3bceba5bcb4" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8005-b8c0-d8723e5400ef" class="image"><a href="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:292.49346923828125px" src="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8006-a9eb-f50b27269868" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80a4-bcdb-e9fa3c5eedcf" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800b-8b2e-f54b512359fe" class="image"><a href="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"><img style="width:292.49346923828125px" src="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-808f-bbd6-e1b13bb85ec4" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8060-bbeb-ddaaf956f20a" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80f7-8ca8-f5b4b7e604c0" class="image"><a href="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"><img style="width:134.8046875px" src="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a6-bede-d80aed6990da" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80bf-a3e8-f41a9472d6c6" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8098-83ec-d9f321eb6b77" class="image"><a href="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"><img style="width:134.8046875px" src="%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8058-837e-c2c9f5ea8f8a" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8064-a001-c47b0c72a056" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80d8-b563-e64c8fbe3126" class="">ESFJ V</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8010-9179-c1924bb0f4cb" class="">이름: 정로제</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8078-bb3f-d6551bbee491" class="">직업: 간호사</p></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8072-a01d-c5881fbcd098" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-8004-86ef-db1895d648b8" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80b1-8fea-cc1a30e9fc49" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB.png"><img style="width:142.98828125px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8050-b290-c050c3db633c" class="">기본</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8096-b2f5-cbf5f9a85592" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:363.310546875px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-801b-a668-edf3609025f7" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-804c-9bc3-d7a30f68ee9e" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"><img style="width:292.49346923828125px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a6-bca8-d3f92b410e45" class="">무뚝뚝</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-807a-8925-f3f44c53a501" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:363.310546875px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8047-95b3-ec09170cf243" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80a6-ab86-ee8c9db21832" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"><img style="width:292.49346923828125px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8036-8dd2-e9ad9aba09e3" class="">웃음</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80c0-a4f5-f6f2eb32ca23" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:292.49346923828125px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80f4-881f-e3856c54b2f5" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8080-8191-c1f95abdc648" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"><img style="width:292.49346923828125px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8010-a099-f65793d054af" class="">화남</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8051-b3c9-d4fd22045e6b" class="image"><a href="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:363.310546875px" src="%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80a9-8038-e6526e101024" class="">ISTP V</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-809d-9d2e-c68c22ab33c3" class="">이름: 강리사</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b8-a7ae-dd009b91863f" class="">직업: 회계법인 컨설턴트</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-805c-8404-d4db9d74040c" class="image"><a href="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"><img style="width:1591.25px" src="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"/></a></figure></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-805b-8518-d6af15f18fdf" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-800b-b120-dc1fdf8decc0" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80fd-86e6-c948311c89e7" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8055-b3cb-eb3595de39f5" class="image"><a href="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:134.8046875px" src="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80a2-9cc7-c8e972029ba6" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-806b-be86-fa046b6bb5b4" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8066-b679-f319a34b2b25" class="image"><a href="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"><img style="width:134.8046875px" src="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d0-a075-c6212a974957" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8014-b957-e033048c6835" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-801c-83d0-fe77c9149371" class="image"><a href="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"><img style="width:134.8046875px" src="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d0-979a-e9cad301d4c5" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8041-85b8-fc1e9f634efc" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8027-9409-f82afc3c2218" class="image"><a href="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"><img style="width:134.8046875px" src="%E1%84%80%E1%85%A1%E1%86%BC%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80db-a49f-c6b95e80fb96" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8089-81f2-ea5934cd212f" class="">ENFJ V</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c1-b4c7-fec0c20368b1" class="">이름: 김제니</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c9-a981-d86eb3d0c870" class="">직업: 세일즈매니저</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8022-b198-ece35d0896ac" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"><img style="width:1591.25px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%86%AB.png"/></a></figure></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80c1-8ba5-ca8100ad6c38" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-80e5-925b-faea2d7f694f" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-808c-8682-d49f50f252a9" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"><img style="width:155.4971466064453px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a5-959a-cd3a3aea8dc8" class="">기본</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8015-b266-f1919fed8b9e" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"><img style="width:480px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ad-ad8b-cd64aa0749b6" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8056-b670-ca476dc1926c" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8029-af1e-f1275d40e71d" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"><img style="width:155.4971466064453px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80bb-a8fa-ce41300a57df" class="">무뚝뚝</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8060-a554-d4107a1dc8ee" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"><img style="width:528px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%86%E1%85%AE%E1%84%84%E1%85%AE%E1%86%A8%E1%84%84%E1%85%AE%E1%86%A8_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80b7-ae56-f29607be1fc3" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8028-b23b-fce3c352759f" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"><img style="width:134.8046875px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8044-9c91-ee9d6c6bbe07" class="">웃음</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80bf-976c-f0a44b638655" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"><img style="width:528px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%8B%E1%85%AE%E1%86%BA%E1%84%8B%E1%85%B3%E1%86%B7_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8056-9a73-f19a03768d75" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80a9-aed0-c84993c32bfe" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"><img style="width:155.4971466064453px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8039-bc59-dbfabc16d99a" class="">화남</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800b-be22-d69f89e9945a" class="image"><a href="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"><img style="width:511.7447814941406px" src="%E1%84%80%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A6%E1%84%82%E1%85%B5_%E1%84%92%E1%85%AA%E1%84%82%E1%85%A1%E1%86%B7_%E1%84%91%E1%85%A2%E1%84%89%E1%85%A7%E1%86%AB.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8045-8483-ce1884af3b30" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-808a-a7e6-ecbca7119ae3" class="">INTJ</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8009-acd3-f6a18bdd0b4b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8090-86d2-f2a5f4b90bef" class="">이름: </p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a9-b0ae-c52cf502641c" class="">직업: VC (심사역)</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-805f-a004-ee610cc12072" class="">INTP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8067-a7d9-eb71d91c5ab1" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8057-89e5-e3b3466675e5" class="">직업: 프로그래머</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8039-b893-e15b3746d914" class="">ENTJ</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ae-a0be-d73cdbcd6e3c" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-803d-b7e2-f51c6aea56d1" class="">직업: 변호사</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-809b-b9a9-ef6c9d0e3dc0" class="">ENTP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8045-8ec5-f0bc678d6e29" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8043-b15b-f8f76194a215" class="">직업: 공인중개사</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-805c-b3c7-e9036b36c275" class="">INFJ</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8026-ab99-cf34efe71f7a" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b5-8e9b-d655af88e197" class="">직업: 환경운동가</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80a3-bbec-e12fd0607de0" class="">INFP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8084-9dfe-e400d8a5d57b" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8001-8910-eb06c022bde8" class="">직업: 그래픽디자이너</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-801e-8eaf-f301e5c8dd32" class="">ENFP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8031-b91e-c4647b69deef" class="">이름: </p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8086-a48c-e9aad8e8b4c2" class="">직업: 웨딩플래너</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80ec-b9e3-f40efe24dc32" class="">ISTJ</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8000-9316-dd9f867aa512" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80e5-bcfc-f452ac4b02ed" class="">직업: 회계사</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80bf-8e7c-c1fde3151667" class="">ISFJ</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80e6-992f-dd57dcf1de1f" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b3-b5b4-cf8cb832e251" class="">직업: 초등학교교사</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80ac-aeac-f1e087b377db" class="">ISFP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8086-bdb4-e030df332b9d" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-804e-9083-c842d09e2dc1" class="">직업: 물리치료사</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80e7-a00f-e414fdf235fb" class="">ESTP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-800d-93da-d940f980195e" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ca-9c44-da7e05f54a2b" class="">직업: 은행원</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8008-8389-f9d06f85d15a" class="">ESFP</h2></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ce-9651-d5d8d3e73082" class="">이름:</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ba-af63-d4374205e846" class="">직업: 배우지망생</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

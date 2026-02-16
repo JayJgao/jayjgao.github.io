@@ -1,0 +1,1139 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>숏폼 제작 AIaaS </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-8045-89c3-c97427e43132" class="page sans"><header><h1 class="page-title" dir="auto">숏폼 제작 AIaaS </h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>기여도</th><td>60%</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>시기</th><td><span class="selected-value select-value-color-gray">LLM이후</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>역할</th><td><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-green">스키마정의</span><span class="selected-value select-value-color-purple">스토리보드</span><span class="selected-value select-value-color-orange">프롬프트엔지니어링</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>연도</th><td><span class="selected-value select-value-color-red">2024</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>직무성격</th><td><span class="selected-value select-value-color-orange">PM</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>협업부서</th><td><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-gray">Data Engineering</span><span class="selected-value select-value-color-purple">FE</span><span class="selected-value select-value-color-green">Product Design</span><span class="selected-value select-value-color-red">QA</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>회사명</th><td><span class="selected-value select-value-color-yellow">버즈니</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-802a-b038-c6c3002000b1" class="image"><a href="image%203.png"><img style="width:711.3635864257812px" src="image%203.png"/></a></figure></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8062-be28-ef32bca833b8" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">flowchart LR
+  %% User subgraph
+  subgraph User
+    U1[Input Videos]
+    U2[Description]
+    U3[Provide Feedback/Preferences]
+    U4[Receive Final Video]
+  end
+
+  %% Agent subgraph
+  subgraph Agent
+    A1[Receive Input]
+    A2[Initiate Feedback Loop]
+    A3[Ask: Highlight Persona?]
+    A4[Ask: Subtitle Language?]
+    A5[Ask: Design Style?]
+    A6[Ask: Text Font/Position?]
+    A7[Ask: Video Ratio?]
+    D1[Feedback Complete?]
+    A8[Call APIs Sequentially]
+    A9[Aggregate API Responses]
+    A10[Generate Final Video]
+  end
+
+  %% Product APIs subgraph
+  subgraph &quot;Product APIs&quot;
+    API1[Highlight API]
+    API2[Subtitle API]
+    API3[Design API]
+    API4[Editing API]
+  end
+
+  %% User -&gt; Agent: Input 전달
+  U1 --&gt; U2
+  U2 --&gt; A1
+
+  %% Agent: 피드백 루프 진행
+  A1 --&gt; A2
+  A2 --&gt; A3
+  A3 --&gt; U3
+  U3 --&gt; A4
+  A4 --&gt; U3
+  U3 --&gt; A5
+  A5 --&gt; U3
+  U3 --&gt; A6
+  A6 --&gt; U3
+  U3 --&gt; A7
+  A7 --&gt; D1
+  D1 -- Yes --&gt; A8
+  D1 -- No --&gt; A2
+
+  %% Agent -&gt; Product APIs: API 호출 및 응답 수집
+  A8 --&gt;|Call| API1
+  API1 --&gt;|Response| A8
+  A8 --&gt;|Call| API2
+  API2 --&gt;|Response| A8
+  A8 --&gt;|Call| API3
+  API3 --&gt;|Response| A8
+  A8 --&gt;|Call| API4
+  API4 --&gt;|Response| A8
+
+  %% API 응답 종합 및 최종 영상 생성
+  A8 --&gt; A9
+  A9 --&gt; A10
+
+  %% Agent -&gt; User: 최종 영상 전달
+  A10 --&gt; U4
+</code></pre></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80db-b5e1-c82f6b2df774"><div style="font-size:1.5em"><span class="icon">🚧</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80de-b9f3-dbaeb54e92e7" class="">문제: 홈쇼핑 산업 이외의 확장 가능성이 없는 사업구조 상, 신성장동력 발굴 필요</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8095-901b-dbcb4bc01fb6"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80e6-9dde-cdb2c359b4d2" class="">솔루션: 현재 회사가 보유한 데이터(홈쇼핑원본영상-하이라이트영상 쌍)와 공개 되어있는 라이브러리(whisper, clip 등)를 결합했을 때, 확장성 있는 시장을 정의(=영상 도메인)해 신규 제품을 기획함.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-806b-a3af-fef7a034bf27"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80bc-81cb-d4816c7ea7b4" class="">성과: 프로토타입 기반 고객사 1곳 확보(CJ온스타일), 발전된 형태의 VER.1으로 고객사 3곳 확보(신세계라이브쇼핑, 쇼핑엔티, SK스토아), 현재 MOU체결 후 컨텐츠 제작 업체와 VER.2 개발 진행 중</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80ef-b24d-f1b76722d12c"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8098-bfaa-dddf85e91f5b" class="">아이템 선정부터 초기 자금 조달, BM설계까지 다양한 시행착오를 겪으며 단계마다의 문제를 해결해왔습니다.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-800e-82c9-ec1d47138448"><div style="font-size:1.5em"><span class="icon">🔗</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8083-9184-d129ed172a1a" class="">숏폼AI 데모페이지: <a href="https://www.aplusai.ai/demo/112148">https://www.aplusai.ai/demo/112148</a></p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1bfa667a-c505-80f6-b12e-f93cc954a18c"><div style="font-size:1.5em"><span class="icon">🔗</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1bfa667a-c505-809a-972a-f8eaf8809ba9" class=""><a href="https://n.news.naver.com/article/092/0002367641?sid=105">https://n.news.naver.com/article/092/0002367641?sid=105</a></p></div></div></figure></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-801c-9f73-c883bcc11d5f" class="">고객사 서비스 전시 사례(도입 후 생성된 클립의 전시)</h1></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d7-ac8a-ededc34620dd" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-80ab-8dae-ebb8e320bf08" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8098-9f66-fc1ff291f00a" class="image"><a href="image%204.png"><img style="width:4716px" src="image%204.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8089-8e01-d46fcc113004" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8094-85f5-ef7722f57524" class="image"><a href="image%205.png"><img style="width:4716px" src="image%205.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d8-b1f9-e3e05956c7e0" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8080-888b-f914c2c7be94" class="image"><a href="image%206.png"><img style="width:4716px" src="image%206.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80e2-b846-f04e1552d0f3" style="width:25%" class="column"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80d4-b261-ff8d4bb79067" class="image"><a href="IMG_3173.jpg"><img style="width:711.3635864257812px" src="IMG_3173.jpg"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8014-b523-f73257a06d28" class="">트렌드코리아 2025 수록</p></div></div></div></div></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-803c-b100-e5afcc8cab03" class="">
+</p></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">프로토타입</summary><div class="indented"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8079-8ebc-f0a39d644ea3"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-801e-9fdc-ef9d905a33ba" class="">단순히 기획과 구상만을 바탕으로 영업을 통해 고객사를 확보, 프로젝트 추진을 위한 자금을 확보했습니다.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80b4-a372-c58777cd5ccd" class="">다만, 그 과정에서 영상 편집 프로세스에 대한 구체적인 이해 없이 고객사의 입맛에 맞춰진 프로토타입을 완성할 수 밖에 없는 제약조건이 발생했고,</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8026-a7aa-caeabe65963e" class="">VER.1 개발 시에는 보다 영상 편집 맥락에 적합한 제품을 개발해야겠다는 교훈이 있었습니다.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8008-9b47-e431778bba8a"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-808c-a09b-df7975686642" class="">그러나, 빠른 Iteration을 통한 가설 검증이라는 측면에서 지체없이 개발 리소스를 최소화해 MVP를 만들고 이를 바탕으로 바로 시장을 태핑해본 경험은 분명히 가치 있는 경험이었습니다.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8015-9a7d-f52e26abac7b" class="link-to-page"><a href="https://www.notion.so/1aba667ac50580159a7df52e26abac7b?pvs=21">프로토타입 유저매뉴얼</a></figure></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-806c-8528-db846b377a9d" class="">End of Document.</h2></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8037-b95d-c7ea602c8b51"><div style="font-size:1.5em"><span class="icon">👌</span></div><div style="width:100%">Step 1,2,3에 명시된 절차에 따라 사용해주시면 됩니다.<br/><br/>문제 상황이 있을 경우, teams 채널을 통해 담당자에게 노티 부탁드립니다.</div></figure></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">VER.1</summary><div class="indented"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80e2-8053-d83c0a1bac9c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8008-af39-c872bf955f06" class="">프로토타입의 제한적인 유저시나리오를 추후 확장가능한 형태로 설계를 변경하기 위한 기획 수립, 실제 기업 유저의 사용에 따른 통계삽입, 추후 개선 인사이트 수집</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80e2-8362-c73058327994" class="link-to-page"><a href="https://www.notion.so/AI-User-Manual_Common_VER-1-1aba667ac50580e28362c73058327994?pvs=21">숏폼AI User Manual_Common_VER.1</a></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80fd-8057-d42376a81227" class="toggle"><li><details open=""><summary>통계 설계</summary><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8082-9985-fa62db09eabc" class="">통계</h2></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-8040-a575-deef35ce1841" class="">공통 필드</h3></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d6-a0a1-fcf1c5ee752e" class="bulleted-list"><li style="list-style-type:disc">기존 통계 관련 필드</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80db-aa72-ded9d1bf7b82" class="bulleted-list"><li style="list-style-type:disc">추가 필요 필드<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c3-a920-febd3a01c3f3" class="bulleted-list"><li style="list-style-type:circle">user profile (object)<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-807e-ad1c-fcd1aeb83312" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;id&quot;: 0,
+  &quot;role&quot;: &quot;VIEWER&quot;,
+  &quot;channel&quot;: &quot;string&quot;,
+  &quot;channel_name&quot;: &quot;string&quot;,
+  &quot;service_usage&quot;: [
+    &quot;shorts_editor&quot;
+  ],
+  &quot;tv_channels&quot;: [
+    {
+      &quot;tv_channel&quot;: &quot;string&quot;,
+      &quot;tv_channel_name&quot;: &quot;string&quot;,
+      &quot;is_mlc&quot;: true
+    }
+  ],
+  &quot;is_tenant_setup_s3&quot;: false,
+  &quot;display_type&quot;: &quot;vertical&quot;,
+  &quot;search_days_ahead&quot;: 0
+}</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80da-85a2-f764cd6de450" class="bulleted-list"><li style="list-style-type:circle">video_id</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8018-aecb-d306422af348" class="bulleted-list"><li style="list-style-type:disc">진입한 페이지 (endpoint) sidebar<div style="display:contents" dir="auto"><ul id="1aba667a-c505-807d-9d47-f58eeff9db8c" class="bulleted-list"><li style="list-style-type:circle">좌측 버튼 을 누른 시점의 페이지 </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-80c6-b6f9-cea5c090d55b" class="">페이지 별  PATH 통계 지점</h3></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8081-8103-e352b7fddd5f" class="toggle"><li><details open=""><summary><strong><span style="border-bottom:0.05em solid">대시보드 페이지</span></strong></summary><div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-80f1-b4cd-e608e7a3963a" class="">요청드리는 통계 시점 : <code>검색</code>  또는 <code>조회하기</code> 버튼 클릭시</blockquote></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d2-a87b-d522ea27110b" class="bulleted-list"><li style="list-style-type:disc">필터 (object)<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-80fc-9910-f34190644456" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+	&quot;tv_channel&quot;: &quot;string&quot;,
+	&quot;is_mlc&quot;: true,
+	&quot;start_date&quot;: &quot;2024-09-09&quot;, 
+	&quot;end_date&quot;: &quot;2024-09-09&quot;, 
+	&quot;offset&quot;: 0,
+	&quot;limit&quot;: 0,
+	&quot;search_string&quot;: &quot;string&quot;,
+	&quot;is_upload&quot;: true,
+	&quot;status&quot;: &quot;waiting&quot; | &quot;processing&quot; | &quot;completed&quot; | &quot;failed&quot; | &quot;skipped&quot;,
+	&quot;categorys&quot;: &quot;string&quot;
+}</code></pre></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801b-8a8a-d4fcb2858b3b" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">클립 편집 페이지</span></summary><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8094-851b-f77ec35fbd7d" class="bulleted-list"><li style="list-style-type:disc">추천AI 탭<div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-809e-a0c5-d9fee62d8cd9" class="">요청드리는 통계 시점 : <code>편집 저장하기</code>  버튼을 누른 시점</blockquote></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8050-9840-fe5a273e3aa6" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+	&quot;video_id&quot;: &quot;&quot;,
+	&quot;clip_id&quot;: 0,
+	&quot;rank&quot; :0,
+	&quot;edited_subtitle_cnt&quot;: 0,	
+	&quot;selected_time_section&quot;: { /*유저가 선택한 구간(편집 저장될때)*/
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0.00
+	},
+	&quot;recomeded_time_section&quot;: { /*AI가 선택한 구간*/
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0,00
+	},
+	&quot;original_time_section&quot;: {  /*원본영상 선택한 구간*/
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0,00
+	},
+</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80c5-a82f-ef48735a54be" class="bulleted-list"><li style="list-style-type:disc">클립 검색 탭<div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-8076-92c7-dd8a0e05c3d9" class="">요청드리는 통계 시점 : <code>편집 저장하기</code>  버튼을 누른 시점</blockquote></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8065-ae21-e436716b7737" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+	&quot;video_id&quot;: &quot;&quot;,
+	&quot;search_keyword&quot;: &quot;string&quot;,
+	&quot;is_recommended_keyword&quot;: true,
+	&quot;playhead&quot;: null | 0, (optional)
+	
+	&quot;clip_id&quot;: 0,
+	&quot;rank&quot; :0,
+	&quot;edited_subtitle_cnt&quot;: 0,	
+	&quot;selected_time_section&quot;: {
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0.00
+	},
+	&quot;recomeded_time_section&quot;: {
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0,00
+	},
+	&quot;original_time_section&quot;: {
+		&quot;start&quot;: 0.00,
+		&quot;end&quot;: 0,00
+	},	
+}</code></pre></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8088-b49d-c8a6b95cd3af" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">디자인 편집 페이지</span></summary><div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-80af-a6f8-ff7d604ca3de" class="">요청드리는 통계 시점 : <code>편집 저장하기</code>  버튼을 누른 시점</blockquote></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-80ed-b2d0-d6d8f1a523c1" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+		&quot;video_id&quot;:&quot;&quot;,
+    &quot;clip_id&quot;: &quot;highlight1&quot;,
+    &quot;clip_title&quot;: &quot;전기그릴의 장점_1&quot;,
+    &quot;design_id&quot;: &quot;fa894019-198e-401b-b61d-1c5c126f2fe8&quot;,
+    &quot;trim&quot;: {
+      &quot;start&quot;: 1049.062,
+      &quot;end&quot;: 1057.104
+    },
+    &quot;edit_info&quot;: {
+      &quot;crop&quot;: {
+        &quot;start_x&quot;: 0.218835304822566,
+        &quot;start_y&quot;: 0.21875000000000003,
+        &quot;width&quot;: 0.5623293903548681,
+        &quot;height&quot;: 0.5625
+      },
+      &quot;subtitle&quot;: {
+        &quot;use_subtitle&quot;: true,
+        &quot;font&quot;: &quot;Arial&quot;,
+        &quot;font_size&quot;: 55,
+        &quot;text_color&quot;: &quot;#ffffff&quot;,
+        &quot;text_position&quot;: 0.02,
+        &quot;text_highlight_type&quot;: &quot;outline&quot;,
+        &quot;text_highlight_color&quot;: &quot;#000000&quot;,
+        &quot;text_highlight_width&quot;: 5,
+        &quot;text_highlight_opacity&quot;: 1
+      },
+      &quot;fade&quot;: {
+        &quot;use_fade&quot;: false,
+        &quot;fade_in&quot;: 0,
+        &quot;fade_out&quot;: 1,
+        &quot;with_video&quot;: true,
+        &quot;with_audio&quot;: true
+      },
+      &quot;template&quot;: {
+        &quot;use_template&quot;: true,
+        &quot;use_auto_template&quot;: true,
+        &quot;template&quot;: &quot;white&quot;,
+        &quot;video_position&quot;: 0.5
+      },
+      &quot;headline&quot;: {
+        &quot;use_headline&quot;: true,
+        &quot;headline&quot;: &quot;헤드라인을 입력해주세요.&quot;,
+        &quot;font&quot;: &quot;Arial&quot;,
+        &quot;font_size&quot;: 100,
+        &quot;text_color&quot;: &quot;#ffffff&quot;,
+        &quot;text_position&quot;: 0.08,
+        &quot;text_highlight_type&quot;: &quot;outline&quot;,
+        &quot;text_highlight_color&quot;: &quot;#000000&quot;,
+        &quot;text_highlight_width&quot;: 2,
+        &quot;text_highlight_opacity&quot;: 0.85
+      },
+      &quot;sticker&quot;: {
+        &quot;use_sticker&quot;: true,
+        &quot;sticker_info&quot;: [
+          {
+            &quot;name&quot;: &quot;sdf&quot;,
+            &quot;start_x&quot;: 0,
+            &quot;start_y&quot;: 0,
+            &quot;width&quot;: 0.5,
+            &quot;height&quot;: 0.084,
+            &quot;start_time&quot;: 0,
+            &quot;end_time&quot;: 1000
+          }
+        ]
+      }
+    },
+    &quot;created_at&quot;: &quot;2024-09-09T16:25:27.334038&quot;,
+    &quot;updated_at&quot;: &quot;2024-09-09T16:25:27.334045&quot;,
+    &quot;is_upload_clip&quot;: false
+}</code></pre></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8021-84ef-f5c17b09a378" class="bulleted-list"><li style="list-style-type:disc">프리셋 관련 통계 </li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8041-839f-c77aa7add58e" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">디자인 편집 페이지 → 프리셋 가져오기 </span></summary><div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-806d-96b6-f671719e566e" class="">요청드리는 통계 시점 : <code>특정 프리셋</code>을 클릭하는 시점</blockquote></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-809b-8a80-cdf1d3371e46" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+	&quot;video_id&quot;: &quot;&quot;.
+	&quot;design_id&quot;: &quot;&quot;,
+	&quot;preset_info&quot;:  {
+      &quot;preset_name&quot;: &quot;string&quot;,
+      &quot;channel&quot;: &quot;string&quot;,
+      &quot;scope&quot;: &quot;user&quot;,
+      &quot;user_id&quot;: &quot;string&quot;,
+      &quot;created_at&quot;: &quot;2024-09-09T16:25:27.338053&quot;,
+      &quot;updated_at&quot;: &quot;2024-09-09T16:25:27.338057&quot;
+    }
+}</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-802e-9d15-e00b5e32234f" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid">컷편집 페이지</span></summary><div style="display:contents" dir="auto"><blockquote id="1aba667a-c505-80f4-a118-de0dadb02564" class="">요청드리는 통계 시점 : <code>동영상 다운받기</code> 버튼을 누른 시점</blockquote></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8011-b20d-f688d74749b9" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+	&quot;video_id&quot;: &quot;&quot;,
+  &quot;my_concat_list&quot;: [
+    {
+      &quot;clip_id&quot;: &quot;string&quot;,
+      &quot;clip_title&quot;: &quot;string&quot;,
+      &quot;design_id&quot;: &quot;string&quot;,
+      &quot;start&quot;: 0,
+      &quot;end&quot;: 0,
+      &quot;fade_in&quot;: 0,
+      &quot;fade_out&quot;: 0,
+      &quot;volume&quot;: 1,
+      &quot;created_at&quot;: &quot;2024-09-09T16:25:27.326951&quot;,
+      &quot;updated_at&quot;: &quot;2024-09-09T16:25:27.326958&quot;
+    }
+  ],
+  &quot;music_list&quot;: [
+    {
+      &quot;group&quot;: &quot;공통&quot;,
+      &quot;music&quot;: &quot;Challenge_highlight 영감을주는, 신나는, EDM.mp3&quot;,
+      &quot;volume&quot;: 1,
+      &quot;start&quot;: 0,
+      &quot;end&quot;: 0,
+      &quot;start_position&quot;: 0,
+      &quot;fade_in&quot;: 0,
+      &quot;fade_out&quot;: 0
+    }
+  ]
+}</code></pre></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-802e-9576-efe64db3a24a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8011-b028-ee4492d32d01" class="">실제 기업고객사 운영 과정에서, 실제 유저가 이탈하는 플로우(분절된 디자인 편집 단계)를 식별해 이에 대한 개선방향을 설정(통합 컷편집), 결국 유저가 기대하는 것은 <code>자동으로 숏폼이 만들어지는 것(생성)</code>과 <code>일반적인 편집툴과 동일한 맥락에서의 클립 갈아끼우기(편집)</code>에 있다는 것을 식별해 B2C까지 확장가능한 VER.2기획 시작</p></div></div></figure></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">VER.2</summary><div class="indented"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-809d-8e3f-fc41a994f392" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">sequenceDiagram
+    participant U as User
+    participant A as Agent
+    participant H as Highlight API
+    participant S as Subtitle API
+    participant D as Design API
+    participant E as Editing API
+
+    U-&gt;&gt;A: Provide Videos &amp; Description
+    loop Feedback Loop (until confirmed complete)
+        A-&gt;&gt;U: Ask: &quot;Which Highlight Persona?&quot;
+        U-&gt;&gt;A: Answer: &quot;...&quot;
+        A-&gt;&gt;U: Ask: &quot;Subtitle Language?&quot;
+        U-&gt;&gt;A: Answer: &quot;...&quot;
+        A-&gt;&gt;U: Ask: &quot;Design Style?&quot;
+        U-&gt;&gt;A: Answer: &quot;...&quot;
+        A-&gt;&gt;U: Ask: &quot;Text Font &amp; Position?&quot;
+        U-&gt;&gt;A: Answer: &quot;...&quot;
+        A-&gt;&gt;U: Ask: &quot;Video Ratio?&quot;
+        U-&gt;&gt;A: Answer: &quot;...&quot;
+        A-&gt;&gt;U: Confirm: &quot;Is the feedback complete?&quot;
+        U-&gt;&gt;A: Confirmation: &quot;Yes&quot; (or &quot;No&quot; → loop again)
+    end
+    A-&gt;&gt;H: Call Highlight API (with parameters)
+    H--&gt;&gt;A: Highlight Results
+    A-&gt;&gt;S: Call Subtitle API (with parameters)
+    S--&gt;&gt;A: Subtitle Results
+    A-&gt;&gt;D: Call Design API (with parameters)
+    D--&gt;&gt;A: Design Results
+    A-&gt;&gt;E: Call Editing API (with parameters)
+    E--&gt;&gt;A: Editing Results
+    A-&gt;&gt;U: Deliver Final Video
+</code></pre></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80e6-bebc-cbd5cf7009cc"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8046-a3e2-ca9a34c44ae0" class="">확보한 전문가 레퍼런스(4개 홈쇼핑사 PD들의 사용)를 바탕으로 보다 제너럴한 영역에서 B2B가 아닌 B2C(creators)에서 제품이 소비될 수 있도록 프로덕트 플랜을 수립함.</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80e0-a73b-d5b9a7d8a0fc"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a8-b08c-c9d1e07daa65" class="">홈쇼핑사가 아닌, 일반 영상을 취급하는 도메인의 노하우 학습이 필요했기 때문에 컨텐츠 제작업체와 MOU를 체결, 이를 바탕으로 제품 빌드 중</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8087-b8e4-efbd6748c888" class="image"><a href="image%207.png"><img style="width:2066px" src="image%207.png"/></a><figcaption>피쳐 레벨의 제품 비전 설정</figcaption></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">서비스 플로우차트</summary><div class="indented"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8081-b2f9-d903b91a4411" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph LandingPage[홈 - 랜딩 페이지]
+        A[스튜디오 버튼] --&gt; |로그인 필요| LoginPage[로그인 페이지]
+        B[프로젝트 버튼] --&gt; |로그인 필요| LoginPage
+        C[아카이브 버튼] --&gt; |로그인 필요| LoginPage
+    end
+
+    subgraph Studio[스튜디오 페이지]
+        D[원본영상 폴더구조] --&gt; |채널별 공유 폴더| E[원본영상]
+        E --&gt; |분석 완료된 경우 클릭 가능| F[클립편집 V2 - 클립 지정]
+        E --&gt; |분석 진행 중| G[진행도 표시]
+        F --&gt; |클립 저장| H[클립 저장 상태 표시]
+        H --&gt; |클립 개수 표시| E
+    end
+
+    subgraph Archive[아카이브 페이지]
+        I[내 아카이브] --&gt; |폴더 구조| J[클립 미리보기]
+        K[공유 아카이브] --&gt; |폴더 구조| L[클립 미리보기]
+        J --&gt; |업로드| M[클립 업로드 기능]
+        L --&gt; |업로드| M
+    end
+
+    subgraph Project[프로젝트 페이지]
+        N[최근 프로젝트 5개]
+        O[전체 프로젝트 리스트 - 페이지네이션]
+        P[프로젝트 만들기] --&gt; |자동 프로젝트| Q[추천 클립 &amp; 템플릿 적용 프로젝트 생성]
+        P --&gt; |수동 프로젝트| R[빈 프로젝트 생성]
+
+        O --&gt; |프로젝트 클릭| S[컷편집 V2]
+        N --&gt; |프로젝트 클릭| S
+
+        subgraph CutEditV2[클립가져오기모달]
+            T[일반 클립] --&gt; |원본영상 클립 가져오기| U[클립 선택 및 추가]
+            V[아카이브] --&gt; |리소스 선택| W[내/공유 아카이브에서 가져오기]
+            X[GIPHY-TBD] --&gt; |검색 후 선택| Y[검색 결과 추가]
+        end
+    end
+
+    %% 연결 구조
+    LandingPage --&gt; Studio
+    LandingPage --&gt; Archive
+    LandingPage --&gt; Project</code></pre></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80f6-88cd-f14440860ce7" class="">홈화면</h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-805e-9f11-e7db4a9fa849" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph LandingPage[홈 - 랜딩페이지]
+        Studio[스튜디오]
+        StudioList[최근 스튜디오 목록]
+        Project[프로젝트]
+        ProjectList[최근 스튜디오 목록]
+        Archive[아카이브]
+        ArchiveList[최근 아카이브 목록]
+        
+        Studio --&gt; StudioList
+        Project --&gt; ProjectList
+        Archive --&gt; ArchiveList
+    end
+    
+    Login[로그인 페이지]
+		
+		%% 연결 구조
+		Login --&gt; LandingPage
+</code></pre></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8053-bffd-f8b53c648927" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80e9-a615-c67ec9884770" class="">스튜디오</h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8085-b279-f970e324d1ed" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph StudioHome[스튜디오 홈]
+		    subgraph FolderStructure[폴더구조에서 리스트 보기]
+				    subgraph OriginalVideos[원본영상 목록]
+						    OriginalVideo[원본영상]
+						    Analys[분석]
+						    
+						    Analys --ETA(분석진행도)--&gt; OriginalVideo
+						end
+					end
+					
+			end
+		subgraph Studio[스튜디오]
+        Clips[클립 목록]
+        AIClips[AI 추천 클립]
+        ManualClips[직접 설정한 클립]
+	
+        OriginalVideo --&gt;|영상 선택| Clips
+        Clips --&gt; AIClips
+        Clips --&gt; ManualClips
+    end
+</code></pre></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8026-aeba-f8826e0c1bd7" class="">프로젝트</h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-80f7-bd7f-d8a744521872" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph Project[프로젝트]
+		    subgraph Clips[클립]
+				    subgraph OriginalVideo[원본 영상]
+			        AiClips[추천 클립]
+			        MyClips[내 클립]
+			      end
+		        Archive[아카이브]
+		    end
+        Templates[템플릿]
+        Subtitles[자막]
+        Text[텍스트]
+        Stickers[스티커]
+        Music[음악]
+        Translation[번역]
+        subgraph Timeline[타임라인]
+            VideoEdit[영상 편집 공간]
+        end
+
+        Preset[프리셋 - 클립을 제외한 요소]
+        FinalVideo[숏폼 영상 다운로드]
+
+        Clips --&gt;|배치| Timeline
+        Templates --&gt;|배치| Timeline
+        Subtitles --&gt;|배치| Timeline
+        Text --&gt;|배치| Timeline
+        Stickers --&gt;|배치| Timeline
+        Music --&gt;|배치| Timeline
+        Translation --&gt;|설정| Timeline
+
+
+				Timeline --&gt;|최종 다운로드| FinalVideo
+        Timeline &lt;--&gt;|저장 / 불러오기| Preset
+    end
+</code></pre></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-807d-8ae0-c501e576ce3f" class="">아카이브</h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8099-9bf7-daeeabea76e3" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph Archive[아카이브]
+        subgraph FolderStructure[폴더구조]
+            MyArchive[내 아카이브]
+            SharedArchive[공유 아카이브]
+        end
+        FolderStructure --&gt; Upload[업로드]
+        FolderStructure --&gt; Preview[미리보기]
+        FolderStructure --&gt; Delete[삭제]
+    end
+</code></pre></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80fb-8a5c-f61bcd6bfced" class="">워크플로우</h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8014-a891-f045eb101ebb" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+    subgraph Workflow[워크플로우]
+        WorkflowSettings[워크플로우 설정]
+        WorkflowCreate[워크플로우 생성]
+        OriginalVideo[원본 영상]
+
+				subgraph Version[다양한 버젼의 숏폼]
+		        ShortForm1[단일소스 숏폼 1]
+		        ShortForm2[단일소스 숏폼 2]
+		        ShortForm3[단일소스 숏폼 3]
+		        ShortForm4[단일소스 숏폼 4]
+		        ShortForm5[단일소스 숏폼 5]
+		        MultiSourceShortForm[멀티소스 숏폼]
+		    end
+
+        WorkflowSettings --&gt;|설정| WorkflowCreate
+        WorkflowCreate --&gt;|원본 영상 선택| OriginalVideo
+        OriginalVideo --&gt; ShortForm1
+        OriginalVideo --&gt; ShortForm2
+        OriginalVideo --&gt; ShortForm3
+        OriginalVideo --&gt; ShortForm4
+        OriginalVideo --&gt; ShortForm5
+        OriginalVideo --&gt; MultiSourceShortForm
+    end
+</code></pre></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">서비스 화면 시안</summary><div class="indented"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80c3-a2ed-e2ab1fffec54" class="image"><a href="image%208.png"><img style="width:655.3764038085938px" src="image%208.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8060-87a6-e41432d41df8" class="image"><a href="image%209.png"><img style="width:655.3764038085938px" src="image%209.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8076-a1d3-c6b10250c9aa" class="image"><a href="image%2010.png"><img style="width:655.3764038085938px" src="image%2010.png"/></a></figure></div></div></details></div></div></details></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80c1-9369-d3137bf3c509" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

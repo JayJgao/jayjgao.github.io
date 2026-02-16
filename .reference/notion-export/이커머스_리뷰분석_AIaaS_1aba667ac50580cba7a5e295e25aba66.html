@@ -1,0 +1,886 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>이커머스 리뷰분석 AIaaS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-80cb-a7a5-e295e25aba66" class="page sans"><header><h1 class="page-title" dir="auto">이커머스 리뷰분석 AIaaS</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>기여도</th><td>50%</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>시기</th><td><span class="selected-value select-value-color-gray">LLM이후</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>역할</th><td><span class="selected-value select-value-color-red">PMO</span><span class="selected-value select-value-color-pink">PRD</span><span class="selected-value select-value-color-brown">기능기획</span><span class="selected-value select-value-color-blue">문서화</span><span class="selected-value select-value-color-gray">스크럼매니지먼트</span><span class="selected-value select-value-color-orange">프롬프트엔지니어링</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>연도</th><td><span class="selected-value select-value-color-brown">2025</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>직무성격</th><td><span class="selected-value select-value-color-orange">PM</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>협업부서</th><td><span class="selected-value select-value-color-blue">AI research</span><span class="selected-value select-value-color-yellow">BE</span><span class="selected-value select-value-color-gray">Data Engineering</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>회사명</th><td><span class="selected-value select-value-color-yellow">버즈니</span></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80af-8617-c391feb5cd68" class="image"><a href="image%2021.png"><img style="width:6722px" src="image%2021.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800b-98be-c7d580548aeb" class="image"><a href="image%2022.png"><img style="width:3537px" src="image%2022.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-805e-8ad9-e952a2386d75"><div style="font-size:1.5em"><span class="icon">🚧</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8022-b508-da6070a2ba43" class="">문제: 규격화되지 않은 데이터 수집 방법론, LLM API 비용최적화 필요성, 정리되지 않은 운영정책</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80a4-b570-ddbfdcc9bf5b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8015-9b1f-dc9739522ab9" class="">솔루션: 리뷰 및 상품 베이스로 동작하는 AIaaS 프로덕트 라인업에서 공용으로 사용할 수 있는 EP 규격 정의. API 스키마 또한 명확히 고객사에서 사용하는 기능 위주로 정리. 분석 및 업데이트 기준에 대한 구체적인 정책 수립</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8048-9f13-c5eb9119f9da"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80dd-99ca-f782abe163fc" class="">성과: 2개 고객사 납품 (현대홈쇼핑, 쇼핑엔티)</p></div></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-805d-9747-caf3a57a10e1"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="1aba667a-c505-804b-869c-f18f87dbe11d" class="">기존 GPT 4o API로 동작하던 요약 기능들을 프롬프트 엔지니어링을 통해 1/10가격의 4o-mini로 교체.</p></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-809c-a504-d9a91da6b1df" class="">2개의 프롬프트를 써서 나누어 처리하던 요청 건을 1개 프롬프트로 통합. 추가 비용 효율화.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Prompt 샘플</summary><div class="indented"><div style="display:contents" dir="auto"><div id="1aba667a-c505-8041-bed7-c195f2437fd8" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-809a-be6d-fa33dd49f381" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-802a-9ecf-df55e0329b05" class="">AS-IS</p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8021-9468-fca717dede4f" class="bulleted-list"><li style="list-style-type:disc">프롬프트<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-808d-92ca-c343fb2cd165" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;model&quot;: &quot;gpt-4o&quot;,
+  &quot;oneline_summary_prompt&quot;: &quot;\n당신은 쇼핑 회사의 상품에 대한 고객들의 리뷰를 분석하는 분석가입니다.\n주어진 제품에 대해 키워드와 관련 문구로 구성된 리뷰 데이터를 분석해 유익한 요약을 제공해야 합니다.\n주어진 사용자 리뷰 목록을 인용하여 새로운 리뷰를 생성해주세요.\n다음 지침을 따라 요약을 작성하세요:\n\n1. 입력형식: 사용자의 상품평들이 뭉치로 주어집니다.\n\n2. 출력형식:\n- 총 세문장으로 한 문장에 50자, 총 150 정도의 요약을 작성하세요.\n- 주어진 내용에서 상품의 특징을 자세하게 설명하세요.\n- 친근한 말투로 &#x27;요&#x27;체를 사용하세요.\n- 화자가 되어 말하는 문어체를 사용하세요. (예: 준다고 합니다 -&gt; 줍니다. 좋다고 하네요 -&gt; 좋아요.)\n- 아쉬움이나 부정적인 표현은 제외.\n\n※ 주의사항:\n- 반복되는 표현, 평가는 하지마세요.\n- 맞춤법과 문법에 주의하세요.\n- 이모티콘이나 이모지는 사용하지 마세요.\n- 상품 이름이나 브랜드 이름에 해당하는 고유명사는 사용하지 마세요. (예: &#x27;아이폰&#x27; 대신 &#x27;스마트폰&#x27;, &#x27;도루코 면도기&#x27; 대신 &#x27;면도기&#x27;)\n- 추상적인 표현이나 감상, 예상(추천, 만족, 기분, 기대, 듯해요)은 제외하세요.\n- 상상력을 발휘하지 마세요. 주어진 리뷰 내용을 기반으로 작성하세요.\n- 아쉬움이나 부정적인 표현은 제외.\n&quot;,
+  &quot;highlight_prompt&quot;: &quot;\n각 문장의 중요해 보이는 표현을 강조하세요.\n\n1. 입력형식\n- 세 문장으로 구성된 리뷰 요약이 주어집니다.\n\n2. 출력형식\n- 각 문장에서 주요 표현을 강조하세요.\n- 간결한 표현을 선택해야 합니다.\n\n※ 주의사항:\n- 단순 단어는 안됩니다.\n- 문장 전체는 안됩니다.\n- 10자 이상의 단어는 안됩니다.\n- 문장에서 강조하려는 용도로 사용하므로, 정확하게 일치하는 형태로 강조해야 합니다. (예: 가성비 좋고 배송도 빨라서 다음번에도 구매할 예정입니다. -&gt; 가성비 좋고 배송도 빨라서)\n&quot;,
+  &quot;pdid&quot;: &quot;shopnt_12988016&quot;
+}</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804f-ac96-cc7d9247c278" class="bulleted-list"><li style="list-style-type:disc">응답<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-805c-8c13-f85c697bc5dd" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;summary&quot;: &quot;질 좋은 원단과 다양한 색상으로 구성된 티셔츠 세트예요.\n네크라인과 원단의 우수함 덕분에 시원하게 착용할 수 있고, 여유 있는 핏으로 편안함도 줍니다.\n한여름에도 착용 가능하며 다양한 사이즈로 구성되어 유용하게 사용됩니다.&quot;,
+  &quot;highlights&quot;: [
+    &quot;질 좋은 원단과 다양한 색상&quot;,
+    &quot;네크라인과 원단의 우수함&quot;,
+    &quot;여유 있는 핏으로 편안함&quot;,
+    &quot;한여름에도 착용 가능&quot;,
+    &quot;다양한 사이즈로 구성&quot;
+  ]
+}</code></pre></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8092-b3cc-ef8db37b1930" class="">
+</p></div></li></ul></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-804b-96c1-fc7b249be36b" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8075-8d13-d5c115fd55fd" class="">TO-BE</p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8056-bffa-f5712d0d1190" class="bulleted-list"><li style="list-style-type:disc">프롬프트<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-801e-bbc2-cb2a68076e5b" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">한국어 상품 리뷰들을 요약하고 주요 표현을 강조하는 작업을 수행하세요.
+입력은 대괄호로 묶인 리뷰 리스트 형태입니다. 예: [리뷰1, 리뷰2, 리뷰3, ...]
+# Steps
+1. 리뷰 분석: 입력된 각 리뷰 내용을 검토하여 제품의 실제 특징과 장점을 파악합니다.
+2. 정보 선정: 주관적 감정을 배제하고, 제품의 기능과 장점을 중심으로 중요한 정보를 선정합니다.
+3. 요약 작성: 한국어 문법에 맞고 자연스러운 흐름을 유지하면서 다음의 조건에 맞게 세 개의 문장을 작성합니다:
+   - 총 150자 내외
+   - 각 문장은 50자 내외
+   - &#x27;-요&#x27; 종결어미 사용
+   - 부정적 표현과 브랜드명 제외
+   - 올바른 문법 사용
+4. 강조 표현 선정: 각 문장에서 다음 조건에 맞는 핵심 표현을 선택합니다:
+   - 2~10자 길이의 구절 선택
+   - 단순 단어나 문장 전체는 제외
+   - 요약문에서 정확히 일치하는 표현만 선택
+   - 문장당 1-2개의 표현 선택
+# Output Format
+JSON 형식으로 출력하며, 요약문(summary)과 강조표현(highlights) 두 개의 키를 포함합니다:
+{
+  &quot;summary&quot;: &quot;첫 번째 문장은 제품의 주요 특징을 다뤄요.\n두 번째 문장은 사용성이나 효과를 설명해요.\n세 번째 문장은 실용적인 장점을 마무리해요.&quot;,
+  &quot;highlights&quot;: [&quot;주요 특징&quot;, &quot;사용성이나 효과&quot;, &quot;실용적인 장점&quot;]
+}
+# Examples
+### Input
+[상품이 튼튼하고 사용이 편리했어요, 성능이 우수하고 디자인이 세련됐어요, 가격 대비 가치가 좋아요]
+### Output
+{
+  &quot;summary&quot;: &quot;제품의 견고함과 사용의 용이성이 돋보여요.\n뛰어난 성능과 세련된 디자인이 특징이에요.\n가격 대비 높은 가치를 제공해요.&quot;,
+  &quot;highlights&quot;: [&quot;견고함과 사용의 용이성&quot;, &quot;뛰어난 성능과 세련된 디자인&quot;, &quot;가격 대비 높은 가치&quot;]
+}
+# Notes
+- 브랜드나 특정 제품명을 사용하지 않고, 대체 가능한 일반 명칭을 사용하세요.
+- 같은 표현이나 의미를 반복하지 않도록 유의하세요.
+- 강조 표현은 반드시 요약문에 포함된 정확한 구절이어야 합니다.</code></pre></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-807e-8301-ce75fa93ce56" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">{
+ &quot;prompt&quot;: &quot;\n한국어 상품 리뷰들을 요약하고 주요 표현을 강조하는 작업을 수행하세요.\n입력은 대괄호로 묶인 리뷰 리스트 형태입니다. 예: [리뷰1, 리뷰2, 리뷰3, ...]\n# Steps\n1. **리뷰 분석**: 입력된 각 리뷰 내용을 검토하여 제품의 실제 특징과 장점을 파악합니다.\n2. **정보 선정**: 주관적 감정을 배제하고, 제품의 기능과 장점을 중심으로 중요한 정보를 선정합니다.\n3. **요약 작성**: 한국어 문법에 맞고 자연스러운 흐름을 유지하면서 다음의 조건에 맞게 세 개의 문장을 작성합니다:\n   - 총 150자 내외\n   - 각 문장은 50자 내외\n   - &#x27;-요&#x27; 종결어미 사용\n   - 부정적 표현과 브랜드명 제외\n   - 올바른 문법 사용\n4. **강조 표현 선정**: 요약문에서 아래 조건에 맞는 핵심 단어나 구절을 선택합니다:\n   - 제품의 특징을 나타내는 명사 또는 형용사 위주로 선택\n   - 1-3글자의 핵심 단어 위주로 선택 (예: 편안한 -&gt; 편안, 활동성이 좋은 -&gt; 활동성)\n   - 문장 전체나 긴 구절은 제외\n   - 주관적 평가나 감정 표현은 제외\n   - 문장당 제한 없이 의미 있는 표현 모두 선택\n   - 유사한 의미의 단어는 하나만 선택\n# Output Format\nJSON 형식으로 출력하며, 요약문(summary)과 강조표현(highlights) 두 개의 키를 포함합니다. 요약문에는 어떠한 마크다운 표시나 특수문자도 포함되지 않아야 합니다:\n{\n  \&quot;summary\&quot;: \&quot;제품의 주요 특징을 다뤄요.\\n두 번째 문장은 사용성이나 효과를 설명해요.\\n세 번째 문장은 실용적인 장점을 마무리해요.\&quot;,\n  \&quot;highlights\&quot;: [\&quot;특징\&quot;, \&quot;사용성\&quot;, \&quot;실용적\&quot;]\n}\n# Examples\n### Input\n[상품이 튼튼하고 사용이 편리했어요, 성능이 우수하고 디자인이 세련됐어요, 가격 대비 가치가 좋아요]\n### Output\n{\n  \&quot;summary\&quot;: \&quot;제품의 견고함과 사용의 용이성이 돋보여요.\\n뛰어난 성능과 세련된 디자인이 특징이에요.\\n가격 대비 높은 가치를 제공해요.\&quot;,\n  \&quot;highlights\&quot;: [\&quot;견고\&quot;, \&quot;용이성\&quot;, \&quot;성능\&quot;, \&quot;세련\&quot;, \&quot;가치\&quot;]\n}\n# Notes\n- 브랜드나 특정 제품명을 사용하지 않고, 대체 가능한 일반 명칭을 사용하세요.\n- 같은 표현이나 의미를 반복하지 않도록 유의하세요.\n- 강조 표현은 반드시 요약문에 포함된 단어나 형용사여야 합니다.\n&quot;,
+ &quot;pdid&quot;: &quot;string&quot;
+}</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8083-a648-ea3365ffe597" class="bulleted-list"><li style="list-style-type:disc">응답<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8077-acba-d9c0da37db6c" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;summary&quot;: &quot;허리 밴딩으로 편안함과 신축성이 뛰어나요.\n스판과 다양한 색상으로 선택의 폭이 넓어요.\n운동 시에도 착용 가능하고 실용성이 높아요.&quot;,
+  &quot;highlights&quot;: [
+    &quot;밴딩&quot;,
+    &quot;신축성&quot;,
+    &quot;다양성&quot;,
+    &quot;실용성&quot;
+  ]
+}</code></pre></div></li></ul></div></div></div></div></div></div></details></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8010-a3dc-cf3b55e21ff3" class="image"><a href="image%2023.png"><img style="width:711.3565063476562px" src="image%2023.png"/></a></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">API가이드 작성 예시</summary><div class="indented"><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-801d-80e3-c7f8d50fb5f6" class="">리뷰목록 (/reviews)</h3></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8061-8671-c2dbccf00fbe" class=""> URL : <code>https://aiaas.buzzni.com/api/reviews</code></p></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8023-b78e-d78fa3257460" class="toggle"><li><details open=""><summary>사용 Query String (Essential)</summary><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8077-a697-e834ddb8361c" class="bulleted-list"><li style="list-style-type:disc">전체 사용가능 Query string이 아닌, 최소 수준 구현 시 사용될 핵심 쿼리입니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b0-8cca-edd478570a00" class="bulleted-list"><li style="list-style-type:disc"><code>mall_product_id</code> : 상품의 ID <div style="display:contents" dir="auto"><ul id="1aba667a-c505-8013-ac91-c1f9858268e5" class="bulleted-list"><li style="list-style-type:circle">type : <code>String</code></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e1-9b71-dc37b994b05c" class="bulleted-list"><li style="list-style-type:circle">example : <code>12006590</code></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8074-acee-efec58a91ad3" class="bulleted-list"><li style="list-style-type:disc"><code>opinion_attribute</code> : 의견 속성 필터<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8011-b435-ea87d1248652" class="bulleted-list"><li style="list-style-type:circle">type : <code>String</code></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-802f-bb4f-f8e7d4a8e30e" class="bulleted-list"><li style="list-style-type:circle">example : <code>소재</code></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e8-bbe7-dce47a9ead02" class="bulleted-list"><li style="list-style-type:disc"><code>opinion_group</code> : 의견 그룹 필터<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80cd-a52f-fb5091c9f759" class="bulleted-list"><li style="list-style-type:circle">type : <code>String</code></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a7-8881-d90e0ec7b8c1" class="bulleted-list"><li style="list-style-type:circle">example : <code>소재가 두꺼움</code></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-800a-98bf-f5cc21c227d4" class="bulleted-list"><li style="list-style-type:disc"><code>order_by</code> : 리뷰의 정렬 순서<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80be-9367-d89cffa1ed38" class="bulleted-list"><li style="list-style-type:circle">type : <code>String(enum)</code></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-805b-a3bf-f8d3912a786f" class="bulleted-list"><li style="list-style-type:circle">enums<div style="display:contents" dir="auto"><ul id="1aba667a-c505-806b-8281-dca24d037662" class="bulleted-list"><li style="list-style-type:square"><code>recommend</code> : 추천순</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-805a-b0c1-cafcbfe15c36" class="bulleted-list"><li style="list-style-type:square"><code>registered_desc</code> : 최신순</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806b-9531-cdcb9cc01f75" class="bulleted-list"><li style="list-style-type:square"><code>like_count_desc</code> : 좋아요 높은순</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-809a-b468-c16d072e7743" class="bulleted-list"><li style="list-style-type:square"><code>satisfaction_desc</code> : 만족도(별점, 평점) 높은순 </li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80dd-b071-f974e2b7032c" class="bulleted-list"><li style="list-style-type:square"><code>satisfaction_asc</code> : 만족도(별점, 평점) 낮은순</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8004-8076-d7998bc7d209" class="bulleted-list"><li style="list-style-type:square"><code>satisfaction_desc_with_registered_desc</code> : 평점높은순&amp;최신순</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-802c-9a24-d5e153c54f0a" class="bulleted-list"><li style="list-style-type:square"><code>satisfaction_asc_with_registered_desc</code> : 평점낮은순&amp;최신순</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8031-a73c-d5ba81575d7a" class="bulleted-list"><li style="list-style-type:disc"><code>satisfaction_score_weights</code> : 만족도 점수 가중치<div style="display:contents" dir="ltr"><figure class="block-color-pink_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80fc-8430-ff66481c29e7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801d-a11a-ec69b6233e23" class="bulleted-list"><li style="list-style-type:disc"><code>order_by</code> 가 <code>recmmend</code> 일때만 동작하며, 추천순일때 만족도가 높은것을 상위로 올리기 위해 사용할 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806b-80ec-f2bff295136a" class="bulleted-list"><li style="list-style-type:disc">default 값은 0으로 설정되어 있으나 <code>2</code> 정도의 수치를 주면 대체로 긍정 리뷰가 상위에 노출되게 됩니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8015-abdd-e45d8b41ea4c" class="bulleted-list"><li style="list-style-type:disc">기본적으로는 추천 알고리즘에 따라 정렬되기 때문에, 정렬의 용도로 사용되진 않습니다. <br/>만족도 순 정렬을 위해서는 <code>satisfaction_desc</code> 옵션을 사용하도록 해주세요</li></ul></div></div></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8065-95e7-c1cab98dd190" class="bulleted-list"><li style="list-style-type:circle">type :  <code>Float</code> (0 이상)</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80cd-9600-db2f7dba2377" class="bulleted-list"><li style="list-style-type:circle">example : <code>2.2</code></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e5-9d81-e3630bbededa" class="bulleted-list"><li style="list-style-type:disc"><code>offset</code> , <code>limit</code> : 데이터 제어에 사용<div style="display:contents" dir="auto"><ul id="1aba667a-c505-806a-92e7-c10301eb10b4" class="bulleted-list"><li style="list-style-type:circle">type: <code>Int</code> </li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8011-9ab5-e7f76d4e5908" class="bulleted-list"><li style="list-style-type:circle">exmaple : <code>offset : 0</code>, <code>limit : 20</code></li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b7-81b7-fa569e6af8c6" class="toggle"><li><details open=""><summary>Response Example (Json)</summary><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-804d-82cc-ccc45f9c84ce" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">	
+{
+  &quot;results&quot;: [
+    {
+      &quot;mall_review_id&quot;: 
+      &quot;mall_product_id&quot;: 
+      &quot;title&quot;: &quot;4종 모두 마음에 들지만 특히 네이비가 절 예쁘네요. 카라가 레이스로 되있어서 고급스러워 보여요. 소재들은 여름에 입기 좋아요. 달라붙지않고 사이즈도 넉넉하고요. 다음에는 단색이나&quot;,
+      &quot;content&quot;: &quot;4종 모두 마음에 들지만 특히 네이비가 절 예쁘네요. 카라가 레이스로 되있어서 고급스러워 보여요. 소재들은 여름에 입기 좋아요. 달라붙지않고 사이즈도 넉넉하고요. 다음에는 단색이나 사선, 세로 줄무니. 땡땡이 무늬도 있으면 구매하고 싶어요&quot;,
+      &quot;highlight&quot;: &quot;&lt;em class=\&quot;positive\&quot;&gt;4종 모두 마음에 들지만&lt;/em&gt; 특히 &lt;em class=\&quot;positive\&quot;&gt;네이비가 절 예쁘네요.&lt;/em&gt; 카라가 레이스로 되있어서 &lt;em class=\&quot;positive\&quot;&gt;고급스러워 보여요.&lt;&gt; &lt;em class=\&quot;positive\&quot;&gt;소재들은 여름에 입기 좋아요.&lt;/em&gt; &lt;em class=\&quot;positive\&quot;&gt;달라붙지않고 사이즈도 넉넉하고요.&lt;/em&gt; 다음에는 단색이나 사선, 세로 줄무니. 땡땡이 무늬도 있으면 구매하고 싶어요&quot;,
+      &quot;masked_username&quot;: 
+      &quot;purchased_option&quot;: &quot;66&quot;,
+      &quot;registered&quot;: &quot;2022-08-09T15:00:00&quot;,
+      &quot;updated&quot;: &quot;2022-08-09T15:00:00&quot;,
+      &quot;images&quot;: [],
+      &quot;videos&quot;: [],
+      &quot;survey&quot;: [],
+      &quot;satisfaction_score&quot;: 1,
+      &quot;like_count&quot;: 0,
+      &quot;is_pinned&quot;: false,
+      &quot;opinions&quot;: [
+        {
+          &quot;text&quot;: &quot;달라붙지않고 사이즈도 넉넉하고요.&quot;,
+          &quot;attribute&quot;: &quot;사이즈&quot;,
+          &quot;group&quot;: &quot;사이즈가 넉넉하다&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;소재들은 여름에 입기 좋아요.&quot;,
+          &quot;attribute&quot;: &quot;소재&quot;,
+          &quot;group&quot;: &quot;여름에 입기 좋다&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;특히 네이비가 절 예쁘네요.&quot;,
+          &quot;attribute&quot;: &quot;색상&quot;,
+          &quot;group&quot;: &quot;&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;4종 모두 마음에 들지만&quot;,
+          &quot;attribute&quot;: &quot;디자인&quot;,
+          &quot;group&quot;: &quot;마음에 든다&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;고급스러워 보여요.&quot;,
+          &quot;attribute&quot;: &quot;외관&quot;,
+          &quot;group&quot;: &quot;고급스럽다&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        }
+      ]
+    },
+    {
+      &quot;mall_review_id&quot;: &quot;1313420&quot;,
+      &quot;mall_product_id&quot;: &quot;11772632&quot;,
+      &quot;title&quot;: &quot;블라우스 4종이 디자인도 제각각 다르고 색상도 다양해서 골라입기 넘 좋아요 속옷 비치지도 않고 길이감고 적당해서 바지 스커트 정장핏으로 너무 잘 어울려요  오피스룩으로 골라 입어요&quot;,
+      &quot;content&quot;: &quot;블라우스 4종이 디자인도 제각각 다르고 색상도 다양해서 골라입기 넘 좋아요 속옷 비치지도 않고 길이감고 적당해서 바지 스커트 정장핏으로 너무 잘 어울려요  오피스룩으로 골라 입어요&quot;,
+      &quot;highlight&quot;: &quot;블라우스 4종이 디자인도 제각각 다르고 &lt;em class=\&quot;positive\&quot;&gt;색상도 다양해서&lt;/em&gt; &lt;em class=\&quot;positive\&quot;&gt;골라입기 넘 좋아요&lt;/em&gt; 속옷 비치지도 않고 &lt;em class=\&quot;neutral\&quot;&gt;길이감고&lt;/em&gt; &lt;em class=\&quot;neutral\&quot;&gt;적당해서&lt;/em&gt; &lt;em class=\&quot;positive\&quot;&gt;바지 스커트 정장핏으로 너무 잘 어울려요&lt;/em&gt;  오피스룩으로 골라 입어요&quot;,
+      &quot;masked_username&quot;: &quot;shs***&quot;,
+      &quot;purchased_option&quot;: &quot;55&quot;,
+      &quot;registered&quot;: &quot;2022-08-17T15:00:00&quot;,
+      &quot;updated&quot;: &quot;2022-08-17T15:00:00&quot;,
+      &quot;images&quot;: [],
+      &quot;videos&quot;: [],
+      &quot;survey&quot;: [],
+      &quot;satisfaction_score&quot;: 1,
+      &quot;like_count&quot;: 0,
+      &quot;is_pinned&quot;: false,
+      &quot;opinions&quot;: [
+        {
+          &quot;text&quot;: &quot;골라입기 넘 좋아요&quot;,
+          &quot;attribute&quot;: &quot;코디&quot;,
+          &quot;group&quot;: &quot;&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;적당해서&quot;,
+          &quot;attribute&quot;: &quot;&quot;,
+          &quot;group&quot;: &quot;양이 적당하다&quot;,
+          &quot;sentiment&quot;: &quot;NEUTRAL&quot;
+        },
+        {
+          &quot;text&quot;: &quot;색상도 다양해서&quot;,
+          &quot;attribute&quot;: &quot;양&quot;,
+          &quot;group&quot;: &quot;다양하다&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        },
+        {
+          &quot;text&quot;: &quot;길이감고&quot;,
+          &quot;attribute&quot;: &quot;컷팅&quot;,
+          &quot;group&quot;: &quot;길이가 길다&quot;,
+          &quot;sentiment&quot;: &quot;NEUTRAL&quot;
+        },
+        {
+          &quot;text&quot;: &quot;바지 스커트 정장핏으로 너무 잘 어울려요&quot;,
+          &quot;attribute&quot;: &quot;코디&quot;,
+          &quot;group&quot;: &quot;&quot;,
+          &quot;sentiment&quot;: &quot;POSITIVE&quot;
+        }
+      ]
+    }
+  ],
+  &quot;total&quot;: 236,
+  &quot;count&quot;: 2
+}</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b6-9613-c2c376e94562" class="toggle"><li><details open=""><summary>데이터 활용 방안 예시 (<code>text</code>, <code>sentiment</code> , <code>highlight</code>)</summary><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807d-be0c-c17d39271538" class="bulleted-list"><li style="list-style-type:disc"><code>highlight</code> : &lt;em&gt;태그와 class를 통해 CSS를 통해 하이라이트를 쉽게 처리할 수 있도록 반환되는 html 텍스트 필드<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-8062-99bd-e1c1cb5f78dd" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;em class=&quot;positive&quot;&gt;긍정적인 멘트&lt;/em&gt;
+&lt;em class=&quot;neutral&quot;&gt;중립적인 멘트&lt;/em&gt;
+&lt;em class=&quot;negative&quot;&gt;부정적인 멘트&lt;/em&gt;</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8035-b414-eddd0b219132" class="bulleted-list"><li style="list-style-type:disc">응답 데이터 리스트에서 <code>text</code> , <code>sentiment</code> 를 확인할 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80bf-90aa-e794cb3c9d1c" class="bulleted-list"><li style="list-style-type:disc"><code>text</code> 는 속성이 있는 텍스트의 실제 텍스트 그대로 둔것으로, 리뷰의 내용인 <code>content</code> 와 직접 매칭되는 부분을 하이라이트하는데에 사용할 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-801f-8afd-dab11b28df70" class="bulleted-list"><li style="list-style-type:disc"><code>sentiment</code> 는 <code>text</code> 에 내용이 부정적(<code>NEGATIVE</code>)인지, 긍정적(<code>POSITIVE</code>)인지, 중립적(<code>NEUTRAL</code>)인지 반환하는 내용입니다. <div style="display:contents" dir="auto"><ul id="1aba667a-c505-808f-ba3c-e323035db2be" class="bulleted-list"><li style="list-style-type:circle"><code>sentiment</code> 를 활용한 리뷰 내용 하이라이트 예시<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80ee-98b8-e9156c52be7d" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-teal_background">바지 스커트 정장핏으로 너무 잘 어울려요</mark>  오피스룩으로 <mark class="highlight-red_background">입기에는 별로에요.</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8088-a4c1-c43515f304b2" class="toggle"><li><details open=""><summary>데이터</summary><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aba667a-c505-80c9-905c-eb12979b6068" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">content : &quot;바지 스커트 정장핏으로 너무 잘 어울려요  오피스룩으로 입기에는 별로에요.&quot;
+
+text: &quot;바지 스커트 정장핏으로 너무 잘 어울려요&quot;
+sentiment: &quot;POSITIVE&quot;
+
+text: &quot;입기에는 별로에요.&quot;
+sentiment: &quot;NEGATIVE&quot;</code></pre></div></details></li></ul></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8014-9734-dc118ad7b1c9" class="image"><a href="%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2025-01-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.53.45.png"><img style="width:679.98583984375px" src="%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2025-01-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.53.45.png"/></a><figcaption>네이버 쇼핑의 리뷰 하이라이트 예시</figcaption></figure></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-800c-b645-dc0046018831" class="">
+</p></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">통합EP 신규 스키마 설계 예시</summary><div class="indented"><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-809a-ba23-d01807e27c20" class="">EP File Format</h1></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8039-ba6e-d161df0d30f1" class="bulleted-list"><li style="list-style-type:disc">file type: tsv<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8020-92da-e01c65927e83" class="bulleted-list"><li style="list-style-type:circle">seperator: \t</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8082-929b-c40b43b7dc13" class="bulleted-list"><li style="list-style-type:circle">file encoding: utf-8</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b0-9ad7-db979954f93d" class="bulleted-list"><li style="list-style-type:circle">header: 첫번째 row는 header로 사용</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8064-b89f-f2a15c61c92c" class="">EP File 이름 규칙</h2></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8096-9436-c8eff892698a" class="bulleted-list"><li style="list-style-type:disc">일반 파일 규칙<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e2-91ad-cdd1ab972848" class="bulleted-list"><li style="list-style-type:circle">products-{ep_type}-{file_type}-{yyyymmddHHMM}-{index}.tsv</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80dc-8539-c9e07d3ee4fc" class="bulleted-list"><li style="list-style-type:disc">압축 할 경우 규칙<div style="display:contents" dir="auto"><ul id="1aba667a-c505-809f-88ae-fa21af66303b" class="bulleted-list"><li style="list-style-type:circle">products-{ep_type}-{file_type}-{yyyymmddHHMM}-{index}.tsv.tar.gz</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803d-ae96-f06448e027ae" class="bulleted-list"><li style="list-style-type:disc">{ep_type}<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80cd-9964-d03f7c981549" class="bulleted-list"><li style="list-style-type:circle">all</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80da-b310-c2378590f9f2" class="bulleted-list"><li style="list-style-type:circle">summary</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8026-9ac3-f24ccaa7a727" class="bulleted-list"><li style="list-style-type:disc">{file_type}<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8070-ae63-c4ff4039e465" class="bulleted-list"><li style="list-style-type:circle">base</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8014-ae5f-f324ab28982e" class="bulleted-list"><li style="list-style-type:disc">{yyyymmddHHMM}<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80cd-9407-c3de0e754ad0" class="bulleted-list"><li style="list-style-type:circle">example: 202312270000</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-803e-86a9-eefe57a4dc76" class="bulleted-list"><li style="list-style-type:disc">{index}<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8046-9655-f6c416430997" class="bulleted-list"><li style="list-style-type:circle">파일 사이즈가 클 경우 분할</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-802f-bd8c-c98fa92cea51" class="bulleted-list"><li style="list-style-type:circle">0~99 까지 순차적으로 붙여줌</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-805f-8dee-d4292ac3e1db" class="bulleted-list"><li style="list-style-type:circle">100개까지 전부 나눌필요 없음</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8082-9297-eb0c101b6807" class="bulleted-list"><li style="list-style-type:circle">파일을 나누지 않을 경우 0번째 파일만 생성</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="1aba667a-c505-8008-880c-f9c24d68ee78" class="">상품 EP 파일 이름규칙 예제</h3></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8014-9f76-c76dc7de1e52" class="bulleted-list"><li style="list-style-type:disc">전체: products-all-base-{yyyymmdd}-{index}.jsonl<div style="display:contents" dir="auto"><ul id="1aba667a-c505-800f-b1af-d490d8292479" class="bulleted-list"><li style="list-style-type:circle">example: 전체 기초정보 파일을 5개로 분할한 경우<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e4-8996-e9063e204714" class="bulleted-list"><li style="list-style-type:square">products-all-base-20231227-0.tsv</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80de-8aff-f7c60079c9ff" class="bulleted-list"><li style="list-style-type:square">products-all-base-20231227-1.tsv</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8007-8c89-ef3d4c059cdd" class="bulleted-list"><li style="list-style-type:square">products-all-base-20231227-2.tsv</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a9-8d38-ff42ab064081" class="bulleted-list"><li style="list-style-type:square">products-all-base-20231227-3.tsv</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d0-86cc-d2b0092b3148" class="bulleted-list"><li style="list-style-type:square">products-all-base-20231227-4.tsv</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8034-a714-c4e58e6e009d" class="bulleted-list"><li style="list-style-type:disc">요약: products-summary-base-{yyyymmddHHMM}-{index}.tsv<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8079-b64f-c0b9353d562e" class="bulleted-list"><li style="list-style-type:circle">example</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8046-ba95-de74b85a02ca" class="bulleted-list"><li style="list-style-type:circle">products-summary-base-202312270100-0.tsv</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-80c8-a479-f480c819713d" class="">상품 EP 파일 압축 지원</h2></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8018-91ba-f7b8b8cf19a1" class="bulleted-list"><li style="list-style-type:disc">지원 가능한 포맷: tar.gz</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8028-a226-e23afdab6646" class="bulleted-list"><li style="list-style-type:disc">압축 시 각 파일별로 압축</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8004-99f9-ef9af7508cda" class="bulleted-list"><li style="list-style-type:disc">example: 전체 파일이 2개씩 만들어진 경우 각 파일별로 압축<div style="display:contents" dir="auto"><ul id="1aba667a-c505-805a-be5e-c69cae1001a4" class="bulleted-list"><li style="list-style-type:circle">products-all-base-202312270000-0.tsv.tar.gz</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804c-8eb6-f98aac218d1f" class="bulleted-list"><li style="list-style-type:circle">products-all-base-202312270000-1.tsv.tar.gz</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-8064-81d4-f02d9a0b4f65" class="">상품 EP Data Schema</h1></div><div style="display:contents" dir="auto"><h2 id="1aba667a-c505-8066-8234-c30b234e69eb" class="">상품 Data Schema</h2></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a2-8155-c74dddf743c6" class="bulleted-list"><li style="list-style-type:disc">required<div style="display:contents" dir="auto"><ul id="1aba667a-c505-805d-bbd1-c4dba6828555" class="bulleted-list"><li style="list-style-type:circle">해당 필드가 EP파일에 필수로 있어야 하는지 여부</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807c-bf8e-ffff6a4d7eff" class="bulleted-list"><li style="list-style-type:disc">default<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8074-975b-c1588c0cdc51" class="bulleted-list"><li style="list-style-type:circle">EP파일에 해당 필드가 없을 경우 사용할 기본값</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80fd-b91a-f7fd63fdbe96" class="bulleted-list"><li style="list-style-type:circle">- : 필수</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8080-a007-faa9105281bc" class="bulleted-list"><li style="list-style-type:circle">&quot;&quot; : empty string</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8043-84bc-defb4ea54c84" class="bulleted-list"><li style="list-style-type:circle">[] : empty array</li></ul></div></li></ul></div><div style="display:contents" dir="ltr"><table id="1aba667a-c505-80a2-850b-e3d64c81b4bf" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80a5-84f5-f90f02d11898"><th id="&gt;&gt;Fw" class="block-color-gray_background simple-table-header" style="width:148.1328125px">field name</th><th id="RO@Q" class="block-color-gray_background simple-table-header" style="width:144.96875px">field description</th><th id="t{MU" class="block-color-gray_background simple-table-header" style="width:81.0859375px">field type</th><th id="t_;&lt;" class="block-color-gray_background simple-table-header" style="width:74.515625px">카테고리</th><th id="PgYr" class="block-color-gray_background simple-table-header" style="width:68px">카탈로그</th><th id="ddWX" class="block-color-gray_background simple-table-header" style="width:72px">속성추출</th><th id=";jLf" class="block-color-gray_background simple-table-header" style="width:241.546875px">example</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80c5-b9b3-c7442c8ec849"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">name</td><td id="RO@Q" class="" style="width:144.96875px">상품명</td><td id="t{MU" class="" style="width:81.0859375px">string</td><td id="t_;&lt;" class="" style="width:74.515625px">O</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">상품1</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-809e-9541-e256b764ac21"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">pid</td><td id="RO@Q" class="" style="width:144.96875px">상품 고유 ID</td><td id="t{MU" class="" style="width:81.0859375px">string</td><td id="t_;&lt;" class="" style="width:74.515625px">O</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">P00001</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80fc-b050-f998e47adb78"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">brand</td><td id="RO@Q" class="" style="width:144.96875px">브랜드명</td><td id="t{MU" class="" style="width:81.0859375px">string</td><td id="t_;&lt;" class="" style="width:74.515625px">X</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">나이키</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-8004-846f-f062ae3b7ef7"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">price</td><td id="RO@Q" class="" style="width:144.96875px">상품 원가</td><td id="t{MU" class="" style="width:81.0859375px">int</td><td id="t_;&lt;" class="" style="width:74.515625px">X</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">10000</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80fc-8e8e-ee7784a9683f"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">sale_price</td><td id="RO@Q" class="" style="width:144.96875px">할인가</td><td id="t{MU" class="" style="width:81.0859375px">int</td><td id="t_;&lt;" class="" style="width:74.515625px">X</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">9000</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80c8-81a0-d6a1397333df"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">image</td><td id="RO@Q" class="" style="width:144.96875px">상품 대표 이미지</td><td id="t{MU" class="" style="width:81.0859375px">string</td><td id="t_;&lt;" class="" style="width:74.515625px">O</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">https://image.com/P0001.png</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-8098-aec6-da73d3be1813"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">detail_images</td><td id="RO@Q" class="" style="width:144.96875px">상품 상세 이미지 목록<br/>- seporator: ^</td><td id="t{MU" class="" style="width:81.0859375px">string with seperator</td><td id="t_;&lt;" class="" style="width:74.515625px">X</td><td id="PgYr" class="" style="width:68px">X</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">https://image.com/detail_image1_1.png^https://image.com/detail_image1_1.png</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-80a1-894c-d3202fa17235"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">main_category</td><td id="RO@Q" class="" style="width:144.96875px">상품 카테고리 기입<br/>상세 설명은 아래 main_category example 참고</td><td id="t{MU" class="" style="width:81.0859375px">string with seperator</td><td id="t_;&lt;" class="" style="width:74.515625px">X</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">1000|카테고리대;2000|카테고리중;3000|카테고리소;4000|카테고리세</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-802e-9409-f791fcad5876"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">categories</td><td id="RO@Q" class="" style="width:144.96875px">상품 카테고리 목록<br/>- 다중 카테고리를 사용할 경우 사용<br/>- 단일 카테고리의 경우 main_category와 동일한 카테고리 기입</td><td id="t{MU" class="" style="width:81.0859375px">string with seperator</td><td id="t_;&lt;" class="" style="width:74.515625px"></td><td id="PgYr" class="" style="width:68px"></td><td id="ddWX" class="" style="width:72px"></td><td id=";jLf" class="" style="width:241.546875px">example - 3개 전시 카테고리일 경우<br/>- category1 - 20000001|패션의류/언더웨어<br/>- category2 - 10000002|패션/잡화;20000052|티셔츠;20000266|긴팔<br/>- category3 - 10000002|패션/잡화;20000052|티셔츠;20000267|반팔<br/>-&gt;<br/>20000001|패션의류/언더웨어^10000002|패션/잡화;20000052|티셔츠;20000266|긴팔^10000002|패션/잡화;20000052|티셔츠;20000267|반팔</td></tr></div><div style="display:contents" dir="ltr"><tr id="1aba667a-c505-805f-bb0d-e18ad618492b"><td id="&gt;&gt;Fw" class="" style="width:148.1328125px">class</td><td id="RO@Q" class="" style="width:144.96875px">상품 신규/변경/삭제 구분<br/>- I: 신규<br/>- U: 변경<br/>- D: 삭제</td><td id="t{MU" class="" style="width:81.0859375px">string</td><td id="t_;&lt;" class="" style="width:74.515625px">O</td><td id="PgYr" class="" style="width:68px">O</td><td id="ddWX" class="" style="width:72px">O</td><td id=";jLf" class="" style="width:241.546875px">I</td></tr></div></tbody></table></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">리뷰 관련 정책 정의</summary><div class="indented"><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80f2-9cfa-f52a86cbc2e9" class="image"><a href="image%2024.png"><img style="width:2466px" src="image%2024.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80a5-b80b-ef332b4ddde0" class="image"><a href="image%2025.png"><img style="width:2500px" src="image%2025.png"/></a></figure></div></div></details></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80a2-b12d-da80fe9d1d58" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

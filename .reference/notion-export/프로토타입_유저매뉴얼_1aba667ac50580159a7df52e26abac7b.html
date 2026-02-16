@@ -1,0 +1,718 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>프로토타입 유저매뉴얼</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1aba667a-c505-8015-9a7d-f52e26abac7b" class="page sans"><header><h1 class="page-title" dir="auto">프로토타입 유저매뉴얼</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80aa-9a84-ffadefc40950" class="">Step 1. 분석 대상 방송 선택</h1></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800a-a472-d661652dbd7d" class="image"><a href="Untitled.png"><img style="width:947.9937744140625px" src="Untitled.png"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80cc-b5a9-dce422e955d0" class="numbered-list" start="1"><li>해당 페이지에서는 방송일시와 방송채널, 상품코드를 기준으로 旣생성된 추천 키워드 목록을 함께 확인할 수 있습니다. <div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80f5-b5c0-c72f4b1800a0" class="numbered-list" start="1"><li><code>name 열</code>에 있는 링크가 활성화된 푸른 텍스트를 클릭하시면, 해당 방송이 분석 대상으로 선택되어, <code>탐색 페이지</code>로 자동으로 이동합니다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8050-b243-e99e10dc3bfb" class="numbered-list" start="2"><li>(베타 테스트 限) 분석 대상 방송 선택 페이지 상에서는 <code>상품코드</code>를 기준으로 나누어 표시하고 있지만, 같은 <code>방송날짜</code> 에 방송된 방송일 경우 서로다른 상품명을 클릭하더라도 <code>방송기준</code>으로 <code>통합된 추천 키워드</code>를  확인하는 방식입니다.<div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80c9-8065-d7589496315d" class="numbered-list" start="1"><li>추후 요구사항 유무에 따라 상품 기준으로의 탐색 또한 개발 검토하겠습니다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8055-b3fa-df8993c9efd7" class="numbered-list" start="3"><li>분석 대상 방송의 선택은 해당 페이지에서만 가능합니다. <div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-8057-9627-d9919d099ea4" class="numbered-list" start="1"><li>2,3단계로 넘어가서 작업 수행 중 다른 분석 대상 방송을 선택하고 싶다면 페이지 좌측 상단의 <code>홈화면</code> 버튼을 클릭해주세요.<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8070-b8fc-f8445cf3f311"><div style="font-size:1.5em"><span class="icon">🏠</span></div><div style="width:100%">홈화면을 클릭하시면 위의 [AI] 숏츠 생성 대상 비디오 리스트 페이지로 이동합니다.</div></figure></div></li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-80e8-aeb9-ce4be82c0c80" class="">Step 2. 편집 대상 클립 탐색 및 선택</h1></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-809a-9e65-fd8b4a033730" class="image"><a href="Untitled%201.png"><img style="width:1296px" src="Untitled%201.png"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80ee-be63-c1745d47fa05" class="numbered-list" start="1"><li>1단계에서 분석 대상 방송을 선택하셨다면 위의 화면으로 이동되는 것을 확인하실 수 있습니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-808f-b6c8-fec5683a012d" class="numbered-list" start="2"><li>본 페이지의 목적은 다음과 같습니다.<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80b7-be4d-f0c6d64a72e8"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 1. 버즈니 생성AI 모델이 추천하는 <code>하이라이트성 구간</code>과 해당 구간을 요약한 <code>키워드 정보</code>를 확인하실 수 있습니다. </div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8042-b013-f206e5a1a351"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 2. 텍스트 기반의 검색을 통해 사용자가 직접 <code>원하는 키워드/장면이 포함된 구간</code>을 탐색해보실 수 있습니다.</div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-803f-bd30-c0056203bb21"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 3. 추천 구간 및 사용자 정의 구간을 선택해 다음단계인 <code>편집 페이지</code>로 전달할 수 있습니다.</div></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80dc-adf6-d707048af8d8" class="numbered-list" start="3"><li>본 페이지의 사용법을 구성 요소별로 나누어 설명드립니다.<div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d6-b4f6-eb36189e6442" class="toggle"><li><details open=""><summary>화면구성요소</summary><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80fe-b000-fb6891a6ee11" class="image"><a href="Untitled%202.png"><img style="width:1344px" src="Untitled%202.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8002-a908-e748cf3650bd" class="image" style="text-align:center"><a href="Untitled%203.png"><img style="width:672px" src="Untitled%203.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-800e-bb3f-dc88c80cdb38"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">체크박스의 경우 한 번 클릭해두시면 선택 여부가 자동으로 저장됩니다. <br/>예를들어 <code>추천 탭</code>에서 클립을 선택하신 후, <code>AI 검색 탭</code>에서 다른 클립을 선택하고 다시 <code>추천 탭</code>으로 돌아오셔도 선택 히스토리가 사라지지 않습니다.</div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8035-aebf-eaaad7278e0d" class="toggle"><li><details open=""><summary>1. 탐색탭-추천탭</summary><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-808c-a6d4-cbb7247a9e9f" class="image"><a href="Untitled%204.png"><img style="width:240px" src="Untitled%204.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8047-a7d4-f810a35f7a5c" class="bulleted-list"><li style="list-style-type:disc">위의 화면처럼 보여지는 경우, 추천 탭이 활성화된 화면입니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807c-b80b-e8bd62a40b5d" class="bulleted-list"><li style="list-style-type:disc">개별 키워드 카드의 체크박스 이외의 영역을 클릭하면 자동으로 영상이 재생됩니다.<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8078-ae8e-d5cae3656fe9" class="image"><a href="Untitled%203.png"><img style="width:652.0170288085938px" src="Untitled%203.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-802e-bfd6-c8ddb573e202" class="bulleted-list"><li style="list-style-type:disc">각각의 키워드를 클릭해 재생되는 영상을 확인하며 유용한 클립을 선별합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8070-9f2f-d6e3d26763c0" class="bulleted-list"><li style="list-style-type:disc">동영상플레이어 영역의 아무 곳이나 클릭하시면 영상을 <code>재생/일시정지</code> 하실 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e1-b831-ff68fb9dfea0" class="bulleted-list"><li style="list-style-type:disc">편집을 원하는 클립이 결정되면, 좌측의 체크박스를 클릭해주세요. <div style="display:contents" dir="auto"><ul id="1aba667a-c505-80b6-aa36-e7f10bdf6680" class="bulleted-list"><li style="list-style-type:circle">체크박스를 클릭하고 별도의 동작을 수행하지 않아도 편집 대기열에 추가됩니다.</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8092-8a5b-d06667783617" class="toggle"><li><details open=""><summary>2. AI검색탭</summary><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80ce-b7e6-cb82f63a49fd" class="image"><a href="Untitled%205.png"><img style="width:240px" src="Untitled%205.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8026-b784-cdcf02bf6fab" class="bulleted-list"><li style="list-style-type:disc">위의 화면처럼 보여지는 경우, AI 검색 탭이 활성화된 화면입니다. 아래의 검색창에 검색어를 입력하여 구간을 검색해볼 수 있습니다.<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-800d-a6a7-eba880c0d220" class="image"><a href="Untitled%206.png"><img style="width:624.0269775390625px" src="Untitled%206.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-808e-9c03-c4190fc32966" class="bulleted-list"><li style="list-style-type:disc">입력가능한 검색어의 제한은 없으며, 특정 검색어를 포함한 경우 <code>내용 기준의 검색</code>이 아닌, <code>화면 내 포함된 이미지에 대한 검색</code>을 수행합니다.<div style="display:contents" dir="auto"><ul id="1aba667a-c505-801b-8026-cf7e37ae10a5" class="bulleted-list"><li style="list-style-type:circle"><code>화면 내 포함된 이미지에 대해 검색</code>하고자 하시는 경우 아래의 세 단어를 포함해 검색해주세요.<div style="display:contents" dir="auto"><ul id="1aba667a-c505-800d-b863-f741a8d3fbae" class="bulleted-list"><li style="list-style-type:square">(검색 내용)+장면<div style="display:contents" dir="auto"><ul id="1aba667a-c505-807c-8518-d10816699090" class="bulleted-list"><li style="list-style-type:disc">e.g. ‘먹는 장면’</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8021-9dde-ca01751562b9" class="bulleted-list"><li style="list-style-type:square">(검색 내용)+화면<div style="display:contents" dir="auto"><ul id="1aba667a-c505-807a-b66c-cfbeb832810c" class="bulleted-list"><li style="list-style-type:disc">e.g. ‘마스크 팩을 붙인 사람이 있는 화면’</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8055-8a8e-e3f82d4eccee" class="bulleted-list"><li style="list-style-type:square">(검색 내용)+모습<div style="display:contents" dir="auto"><ul id="1aba667a-c505-809f-ab8a-d415ec44be9d" class="bulleted-list"><li style="list-style-type:disc">e.g. ‘금팔찌를 찬 손목을 보여주는 장면’</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8001-b591-c2009a5afe81" class="bulleted-list"><li style="list-style-type:circle">위 세가지 단어가 포함되지 않는 경우, <code>내용 기준</code>의 검색을 수행합니다.<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80b2-843a-e88bd4904bb0"><div style="font-size:1.5em"><span class="icon">❓</span></div><div style="width:100%">내용 기준의 검색이란?<br/>→ 실제 쇼호스트가 발언한 내용에 대해 수행하는 검색을 의미하며, 입력한 검색어와 의미상 유사한 내용이 포함된 구간을 선별해 추천합니다.</div></figure></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80fd-8718-dd7fa049dd2c" class="bulleted-list"><li style="list-style-type:disc">검색어를 입력하고 일정 시간이 지나면 탭 내 목록에서 검색어 별 클립 폴더가 생성됩니다.<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8073-8f72-f10427d41e32" class="image"><a href="Untitled%207.png"><img style="width:624.0269775390625px" src="Untitled%207.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a1-87f4-d64e8ca3ba04" class="bulleted-list"><li style="list-style-type:disc">생성된 폴더를 클릭해주시면 아래 그림과 같이 리스트가 열립니다.<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-804f-aa4a-ffd825063827" class="image"><a href="Untitled%208.png"><img style="width:288px" src="Untitled%208.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80e6-9932-eef79ab991bc" class="bulleted-list"><li style="list-style-type:disc">개별 검색어 마다 최대<code> 5개</code>의 연관 클립이 생성됩니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-804a-80c3-e2add5c2506c" class="bulleted-list"><li style="list-style-type:disc">탐색을 원하시는 다양한 검색어를 입력하신 뒤, 각각의 키워드를 클릭해 재생되는 영상을 확인하며 유용한 클립을 선별합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8066-b9bf-d4d46a32c7f8" class="bulleted-list"><li style="list-style-type:disc">동영상플레이어 영역의 아무 곳이나 클릭하시면 영상을 <code>재생/일시정지</code> 하실 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8070-a56b-e15e38a94f11" class="bulleted-list"><li style="list-style-type:disc">편집을 원하는 클립이 결정되면, 좌측의 체크박스를 클릭해주세요. <div style="display:contents" dir="auto"><ul id="1aba667a-c505-8063-8115-c0d4f11e41e9" class="bulleted-list"><li style="list-style-type:circle">체크박스를 클릭하고 별도의 동작을 수행하지 않아도 편집 대기열에 추가됩니다.</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-809b-85a1-ff847de4688a" class="toggle"><li><details open=""><summary>3. 자막수정 기능</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80c6-9fb1-f8418e9a524b"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">자막 수정 기능은 체크박스를 클릭한 클립에 한해서만 적용됩니다.<br/>반드시 먼저 체크박스를 클릭해주세요.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8063-87f3-d669ddd3c487" class="image"><a href="Untitled%209.png"><img style="width:892px" src="Untitled%209.png"/></a><figcaption>붉은테두리: 자동생성자막 / 푸른테두리: 자막수정영역</figcaption></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8013-9b17-c407f45499a9" class="bulleted-list"><li style="list-style-type:disc">편집을 위한 체크박스 클릭이 완료된 클립에 한해 오타를 수정할 수 있습니다.<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-807f-9efa-cec0865cdd54" class="image"><a href="Untitled%2010.png"><img style="width:624.0269775390625px" src="Untitled%2010.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80de-a576-d59e7afdc222" class="image"><a href="Untitled%2011.png"><img style="width:863.9437866210938px" src="Untitled%2011.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-804c-91c6-d08e6f57af41" class="image"><a href="Untitled%2012.png"><img style="width:863.9500122070312px" src="Untitled%2012.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80d4-aea6-e54b088f2d55" class="bulleted-list"><li style="list-style-type:disc">위의 그림처럼 자막 수정영역에서 문서 작성과 동일하게 자유롭게 수정이 가능하며, 상단 행의 자동생성자막을 참고해 편집을 수행합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-807f-b723-e0269a38589d" class="bulleted-list"><li style="list-style-type:disc">클립에 대해 추출된 모든 자막에 대한 검토 및 수정이 완료되시면, 우측 상단의 <code>수정</code> 버튼을 눌러주세요.<div style="display:contents" dir="auto"><ul id="1aba667a-c505-805e-b7fd-de7a274a3d57" class="bulleted-list"><li style="list-style-type:circle">로딩 인터페이스가 사라지면, 적용이 완료된 것입니다.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-809f-8827-df6d3a18af4e" class="bulleted-list"><li style="list-style-type:disc">자막 수정은 체크 박스를 클릭한 모든 클립에 대해 적용하실 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806b-9ad2-d0ca33e25212" class="bulleted-list"><li style="list-style-type:disc">설정이 완료된 자막에 대한 preview는 <code>다음 페이지</code>의 <code>미리보기 화면</code> 내에서 확인 가능합니다.</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a4-b96e-f88dd1f4db3d" class="bulleted-list"><li style="list-style-type:disc"><code>1,2,3단계의 작업</code>을 모두 완료하신 후, <code>다음 페이지</code>를 클릭하시면, 선택한 클립들에 대한 <code>편집화면</code>으로 넘어가실 수 있습니다.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80b9-ac18-c6a4c9938fcf" class="numbered-list" start="4"><li>3번 항목에서 말씀드린 개별 기능들을 사용자 관점에서 시나리오화 하면 다음과 같이 정리할 수 있습니다.<div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80df-bbb7-ff4d42444e73" class="numbered-list" start="1"><li>1단계<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-800b-82f9-c5bff56340d5" class="numbered-list" start="1"><li>AI가 자동으로 생성한 추천 클립 가운데 유용한 클립을 탐색한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-8055-a22a-c80857dbebc6" class="numbered-list" start="2"><li>유용한 클립이 식별되면 체크박스를 클릭해 편집할 클립을 선택한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80fa-81e3-d95916e0aa4b" class="numbered-list" start="2"><li>2단계<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-803a-9297-fb2a635e2e2b" class="numbered-list" start="1"><li>체크박스를 클릭해 선택한 개별 클립들에 대해 자막수정을 진행한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-8033-9b90-c186d38f9614" class="numbered-list" start="2"><li>각각의 클립을 클릭해 자막을 수정한 후, <code>수정</code> 버튼을 클릭해 수정결과를 저장해준다. </li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-8086-95ef-d90cff9c7798" class="numbered-list" start="3"><li>3단계<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80c3-ad40-f69d72ee3ac1" class="numbered-list" start="1"><li>AI검색탭으로 이동해 검색하고자하는 검색어를 입력한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80fe-bdd6-ea1eb26df8e8" class="numbered-list" start="2"><li>개별 검색어마다 생성되는 클립을 검토하며 검색을 반복한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80ad-91f9-fd6571dbb1cc" class="numbered-list" start="3"><li>유용한 클립이 식별되면 체크박스를 클릭해 편집할 클립을 선택한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-808a-a3f7-e4413a35169e" class="numbered-list" start="4"><li>4단계<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-807e-96f5-fd1cd61e3967" class="numbered-list" start="1"><li>체크박스를 클릭해 선택한 개별 클립들에 대해 자막수정을 진행한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-8057-bf74-d2cf4b931b0c" class="numbered-list" start="2"><li>각각의 클립을 클릭해 자막을 수정한 후, <code>수정</code> 버튼을 클릭해 수정결과를 저장해준다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-801b-9713-efc12ed37bc8" class="numbered-list" start="5"><li>5단계<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80c3-b718-fa5c8d9a62e4" class="numbered-list" start="1"><li>모든 클립을 빠짐없이 선택했고, 자막 수정을 완료했다면, <code>다음 페이지</code> 버튼을 클릭해 편집 화면으로 넘어간다.</li></ol></div></li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h1 id="1aba667a-c505-8023-98a3-eb184a7cb9ea" class="">Step 3. 개별 클립에 대한 디자인 편집</h1></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8031-9977-d26a3aba2057" class="image"><a href="Untitled%2013.png"><img style="width:998px" src="Untitled%2013.png"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-8062-8a23-f5503246928c" class="numbered-list" start="1"><li>Step 2에서 체크박스를 클릭하신 후 <code>다음 페이지</code>를 누르셨다면 위의 화면으로 이동하는 것을 확인하실 수 있습니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-801f-9d80-d4bd7e4105e9" class="numbered-list" start="2"><li>본 페이지의 목적은 다음과 같습니다.</li></ol></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80c0-abaf-d249a36c84fb"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 1. 선택한 개별 클립에 대해 <code>템플릿 종류</code>, <code>BGM</code> 을 지정할 수 있습니다.</div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8006-ba7d-ef32a16d4e64"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 2. <code>멘트자막</code>과 <code>커스텀 텍스트</code>를 사용하는 경우 <code>미리보기 팝업</code>을 통해 <code>텍스트에 대한 디자인 요소</code>를 편집할 수 있습니다.</div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-807f-ad57-f48e7df2e99d"><div style="font-size:1.5em"><span class="icon">🏁</span></div><div style="width:100%">목적 3. 모든 편집요소가 적용된 클립을 <code>다운로드</code> 받으실 수 있습니다.</div></figure></div><div style="display:contents" dir="auto"><ol type="1" id="1aba667a-c505-80f1-abc5-c09300529746" class="numbered-list" start="3"><li>본 페이지의 사용법을 구성요소 별로 나누어 설명드립니다.<div style="display:contents" dir="auto"><ul id="1aba667a-c505-8009-8a9a-efe094fa7e47" class="toggle"><li><details open=""><summary>화면구성요소</summary><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8017-b3c7-c4433376adc5" class="image"><a href="Untitled%2014.png"><img style="width:2220px" src="Untitled%2014.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80a6-9e86-ec8bd9bb911b" class="bulleted-list"><li style="list-style-type:disc">음악찾기 버튼 클릭 시 활성화되는 화면 (아래)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-807e-8203-e5d51f740456" class="image"><a href="Untitled%2015.png"><img style="width:384px" src="Untitled%2015.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-806d-9600-cb1374d2cc8d" class="bulleted-list"><li style="list-style-type:disc">미리보기 버튼 클릭 시 활성화되는 화면 (아래)<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-803e-b342-f824981c1648" class="image"><a href="Untitled%2016.png"><img style="width:3058px" src="Untitled%2016.png"/></a><figcaption>해당 팝업 활성화되면 반드시 <code>생성하기</code> 버튼을 먼저 눌러주셔야 합니다.</figcaption></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-80cc-8f88-e08ac390860f" class="">
+</p></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-8070-a008-c41f52ca56b1" class="toggle"><li><details open=""><summary>1. 기본 편집 설정</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80dd-a006-e4290e54aa78"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">선택된 개별 클립에 대해 기본적인 편집 옵션을 사전 지정하는 기능영역 입니다.</div></figure></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80bb-ba4e-d705ce86f5f8" class="numbered-list" start="1"><li>템플릿 선택<div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80b1-a56d-e606cee06688" class="numbered-list" start="1"><li>템플릿 종류<div style="display:contents" dir="auto"><div id="1aba667a-c505-806b-8c39-e106fd44962f" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-803f-876e-d801acea81d7" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-802d-b690-e4f187460560" class="">&lt;보라색 1:1&gt;</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8051-a7bc-c8dcc98d0f5c" class="image"><a href="puple_1_1_alpha_00000.png"><img style="width:1080px" src="puple_1_1_alpha_00000.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-805c-82ba-c48b916e318f" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8056-8db4-dc2c0b2a7485" class="">&lt;보라색 16:9&gt;</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8055-bc7c-c8dcb6d146de" class="image"><a href="puple_16_9_alpha_00000.png"><img style="width:240px" src="puple_16_9_alpha_00000.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-803f-a875-f82df6cf65d3" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80e3-adb5-ef3d4102d04b" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8028-8944-cc9580e53dc7" class="">&lt;흰색 1:1&gt;</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80c9-83b4-cd48791d03e9" class="image"><a href="white__1-1_alpha_00000.png"><img style="width:240px" src="white__1-1_alpha_00000.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-808e-bc5e-d2b9d33d322c" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8055-a010-e20d1b687b0c" class="">&lt;흰색 16:9&gt;</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8073-9fdf-df5b01334bac" class="image"><a href="white__16-9_alpha_00000.png"><img style="width:240px" src="white__16-9_alpha_00000.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8020-b60f-f9ba196b5746" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80e8-a5fa-c6c5419b731b" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ab-8814-ded74d72b1e8" class="">&lt;크롭 9:16&gt;</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80d3-a1b2-d0f637ab8158" class="image"><a href="%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.55.16.png"><img style="width:528px" src="%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.55.16.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8013-b5c4-ef77db2a1891"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">원하는 템플릿 옵션을 선택하면 자동으로 해당 템플릿 비율에 맞게 영상이미지가 크롭됩니다.</div></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-80be-99f2-d2ee12712012" class="numbered-list" start="2"><li>음악 선택<div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80be-aba7-ca409856a643" class="image"><a href="Untitled%2017.png"><img style="width:1248px" src="Untitled%2017.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-808d-9d3a-e4e501dbe2f8"><div style="font-size:1.5em"><span class="icon">➡️</span></div><div style="width:100%"><code>음악 찾기</code> 버튼을 클릭해주세요.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80b1-9143-f193580dd7c3" class="image" style="text-align:center"><a href="Untitled%2018.png"><img style="width:384px" src="Untitled%2018.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8018-ab8c-e0b439b97c69"><div style="font-size:1.5em"><span class="icon">➡️</span></div><div style="width:100%">위와 같은 팝업이 열리면, 음원명을 클릭한 후 <code>음악 선택</code> 버튼을 눌러주세요. </div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80af-92c6-c5d166688a37" class="image"><a href="Untitled%2019.png"><img style="width:1906px" src="Untitled%2019.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8083-9f41-ce72cde5d637"><div style="font-size:1.5em"><span class="icon">➡️</span></div><div style="width:100%">팝업이 닫히고나면 위의 이미지처럼 선택한 음원이 적용된 것을 확인할 수 있습니다.</div></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-8048-bb17-ce207c002d13" class="numbered-list" start="3"><li><del>멘트 자막</del> (3월 26일 업데이트로 제거)<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80c4-9433-cbb6cd6d068b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><del>AI가 추출하고 사용자가 편집한 멘트자막을 화면에 표시할지 여부를 선택하는 옵션입니다. </del><del><code>미사용</code></del><del> 체크 시, 멘트자막이 영상에 노출되지 않습니다.</del></div></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="i" id="1aba667a-c505-806e-8d30-f8e9b05af40f" class="numbered-list" start="4"><li><del>커스텀 텍스트</del> (3월 26일 업데이트로 제거)<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8033-997b-d38e59750ec7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><del>템플릿(배경) 영역에 사용자가 별도로 입력할 수 있는 텍스트를 사용할지 여부를 선택하는 옵션입니다.  </del><del><code>미사용</code></del><del> 체크 시, 별도 텍스트 없이 기본 템플릿만 씌워집니다.</del></div></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8095-8661-f5304c1da855"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><del>텍스트의 입력은 </del><del><code>미리보기 </code></del><del>창에서 가능합니다.</del></div></figure></div></li></ol></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8082-90dd-c5971b5b365e" class="">
+</p></div></li></ol></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-800a-80a4-f0706007e139" class="toggle"><li><details open=""><summary>2. 미리보기</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80ba-b15c-e4036045b50f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">디자인 텍스트에 대한 사용자 지정 값을 부여할 수 있는 페이지입니다.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8033-8c89-dbe81ebb99eb" class="image" style="text-align:center"><a href="Untitled%2020.png"><img style="width:528px" src="Untitled%2020.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8002-a2e2-c39337e9f2d2"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">미리보기 팝업 활성화 시, 반드시 먼저 생성하기 버튼을 먼저 클릭해주셔야, 프리뷰가 생성됩니다.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80be-bff2-c089800f45b4" class="image"><a href="Untitled%2021.png"><img style="width:942px" src="Untitled%2021.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-805f-a3b5-c0beac4bbd74"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">생성하기 버튼을 눌러 프리뷰가 활성화되면 아래의 작업을 수행해주세요. </div></figure></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-80ed-85e6-db2fc7cc9f38" class="numbered-list" start="1"><li>멘트 자막 설정<div style="display:contents" dir="auto"><div id="1aba667a-c505-8091-b463-c21a5262ad46" class="column-list"><div style="display:contents" dir="auto"><div id="1aba667a-c505-805f-8baf-eae98169ce09" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-8090-8639-f70e0978e15b" class="">배경색 설정</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8073-a663-cc48659ced05" class="image"><a href="Untitled%2022.png"><img style="width:146px" src="Untitled%2022.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8095-ac5f-f8b97cb62c74" class="">색상을 지정할 수 있습니다.</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-807a-8f36-ffadd0d54be2" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80ae-9206-d97d845b7e2b" class="">글자색 설정</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80f7-ad2f-d23efe337219" class="image"><a href="Untitled%2023.png"><img style="width:678px" src="Untitled%2023.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8033-8967-ea665c0d8051" class="">색상을 지정할 수 있습니다.</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-8051-a3c1-d9bbce492342" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80dc-8d04-d4342a217c90" class="">글자크기</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8041-b0c6-e636f51c75a2" class="image"><a href="Untitled%2024.png"><img style="width:686px" src="Untitled%2024.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80a8-89a5-e1751498da66" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-804d-85e4-efe5f3b4b9b8" class="">글꼴</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80a0-98e2-e26fad994465" class="image"><a href="Untitled%2025.png"><img style="width:146px" src="Untitled%2025.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-804c-ae51-e6e1e1ed4834" class="">폰트는 업데이트 예정입니다.</p></div></div></div><div style="display:contents" dir="auto"><div id="1aba667a-c505-80d5-8aaa-e7e263d5acb4" style="width:100%" class="column"><div style="display:contents" dir="auto"><p id="1aba667a-c505-80d1-ae67-eeae13b380ab" class="">자막 위치</p></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80b6-9b7d-c72a54b2e13e" class="image"><a href="Untitled%2026.png"><img style="width:146px" src="Untitled%2026.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-806c-b226-dc5eb78d97b6" class="">추후 자유도 높은 방식으로 바뀔예정이며, 숫자의 의미는 템플릿최상단으로부터의 거리입니다.</p></div></div></div></div></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80c5-b94d-e3ca06a2ea0c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">지정을 원하는 모든 설정값을 지정하신 후 <strong>적용하기</strong> 버튼을 클릭하시면, 좌측 플레이어에 적용된 결과가 로딩됩니다.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-802b-8b92-dbf3bee0c17d" class="image"><a href="Untitled%2027.png"><img style="width:864px" src="Untitled%2027.png"/></a></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="1aba667a-c505-8025-9942-f5307805b690" class="numbered-list" start="2"><li>커스텀 자막 설정 (멘트 자막 설정과 기능은 동일합니다.)<div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-8040-b710-f1263faf8f68"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">내용 입력창에 자유롭게 텍스트를 입력하실 수 있으며, 글자크기에 따라 입력가능한 최대 글자수가 달라집니다.<br/>40pt 기준 16개 character를 입력하시는 걸 추천드립니다. (띄어쓰기 및 문장부호 포함)</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-80cb-af74-ff4e193e6fe9" class="image"><a href="Untitled%2028.png"><img style="width:3010px" src="Untitled%2028.png"/></a></figure></div></li></ol></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80f7-a7f6-ebc6a7067d6e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>멘트 자막 설정</code> 및 <code>커스텀 자막 설정</code> 까지 적용하기를 완료하셨다면, <code>다운로드</code> 항목으로 이동해주세요.</div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1aba667a-c505-80ad-a1f0-f7c361cc3440" class="toggle"><li><details open=""><summary>3. 다운로드</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-80a0-a982-c3a91d579f89"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">모든 편집 설정이 적용된 최종 영상의 <code>다운로드</code>는 <code>미리보기 팝업</code> 내에서만 가능합니다. 아래 설명을 따라주세요.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-8073-8e44-ecda828296cf" class="image" style="text-align:center"><a href="Untitled%2029.png"><img style="width:576px" src="Untitled%2029.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-804c-b416-f19e45340df8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>미리보기</code> 팝업 내부의 플레이어 위에 마우스 커서를 올려주세요, <code>컨트롤바</code>가 나타납니다. <code>컨트롤바</code> 우측의 <code>옵션 더보기</code>(점3개 아이콘)를 클릭해주세요.</div></figure></div><div style="display:contents" dir="ltr"><figure id="1aba667a-c505-808a-a927-efaf4921c454" class="image" style="text-align:center"><a href="Untitled%2030.png"><img style="width:672px" src="Untitled%2030.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1aba667a-c505-804c-a303-ee7372b9c58d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>다운로드</code>를 클릭하시면, 모든 수정내용이 적용된 최종파일을 .mp4형태로 다운로드 받으실 수 있습니다.</div></figure></div></details></li></ul></div></li></ol></div><div style="display:contents" dir="auto"><p id="1aba667a-c505-8070-9324-fd14f8e60139" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
