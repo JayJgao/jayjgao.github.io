@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07090f;
+  --foreground: #e5e7eb;
+  --muted: #95a3b8;
+  --accent: #34d399;
+  --surface: #0d111a;
+  --surface-2: #121826;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans:
+    "Pretendard", "Inter", "Noto Sans CJK KR", "Noto Sans CJK SC", "Noto Sans",
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -20%, #18243e 0%, transparent 65%),
+    radial-gradient(900px 480px at 90% -10%, #1b2a45 0%, transparent 70%),
+    var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+}

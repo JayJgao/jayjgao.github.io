@@ -72,22 +72,22 @@
 
 > **목표**: 빌드 가능한 빈 껍데기. `pnpm dev` → 로컬 확인, `pnpm build` → static export, GitHub Actions → 자동 배포.
 
-- [ ] **0.1** `create-next-app` 초기화 (TypeScript, Tailwind, App Router, src/ 디렉토리)
+- [x] **0.1** `create-next-app` 초기화 (TypeScript, Tailwind, App Router, src/ 디렉토리)
   ```bash
   pnpx create-next-app@latest jayjgao.github.io --typescript --tailwind --app --src-dir --use-pnpm
   ```
-- [ ] **0.2** `next.config.js` 설정
+- [x] **0.2** `next.config.js` 설정
   - `output: 'export'`
   - `basePath: ''` (username.github.io는 basePath 불필요)
   - `images: { unoptimized: true }`
   - `trailingSlash: true` (GitHub Pages 호환)
-- [ ] **0.3** 의존성 설치
+- [x] **0.3** 의존성 설치
   ```bash
   pnpm add @react-three/fiber @react-three/drei three framer-motion next-intl next-mdx-remote
   pnpm add -D @types/three
   ```
-- [ ] **0.4** 디렉토리 구조 생성 (Agent.md §3 참조)
-- [ ] **0.5** GitHub Actions 워크플로우 설정
+- [x] **0.4** 디렉토리 구조 생성 (Agent.md §3 참조)
+- [x] **0.5** GitHub Actions 워크플로우 설정
   ```yaml
   # .github/workflows/deploy.yml
   name: Deploy to GitHub Pages
@@ -112,17 +112,17 @@
           with: { path: ./out }
         - uses: actions/deploy-pages@v4
   ```
-- [ ] **0.6** Tailwind 커스텀 테마 기본값 설정
+- [x] **0.6** Tailwind 커스텀 테마 기본값 설정
   - 폰트: Pretendard (KO) + Inter (EN) + 시스템 중문 폰트
   - 컬러 팔레트: 다크 모드 우선 (PM 포트폴리오는 다크가 프리미엄 느낌)
   - 브레이크포인트: sm(640), md(768), lg(1024), xl(1280)
-- [ ] **0.7** 빈 페이지 라우팅 확인
+- [x] **0.7** 빈 페이지 라우팅 확인
   - `/` → Home
   - `/about` → About
   - `/projects` → Projects
   - `/resume` → Resume
   - `/contact` → Contact
-- [ ] **0.8** `pnpm build` + `npx serve out` 로 static export 정상 확인
+- [x] **0.8** `pnpm build` + `npx serve out` 로 static export 정상 확인
 - [ ] **0.9** GitHub에 push → Pages 자동 배포 → `jayjgao.github.io` 라이브 확인
 
 **Phase 0 완료 기준**: 빈 페이지 5개가 GitHub Pages에 라이브로 보이면 완료.
@@ -490,7 +490,7 @@ Languages: Korean (Native), Chinese (Business Fluent), English (Professional), J
 ## 📌 Current Status
 
 ```
-Phase 0: ⬜ NOT STARTED
+Phase 0: 🟨 IN PROGRESS (0.1~0.8 완료, 0.9 대기)
 Phase 1: ⬜ NOT STARTED
 Phase 2: ⬜ NOT STARTED
 Phase 3: ⬜ NOT STARTED
@@ -499,7 +499,7 @@ Phase 5: ⬜ NOT STARTED
 Phase 6: ⬜ NOT STARTED
 ```
 
-**Next Action**: Phase 0 — 프로젝트 셋업 시작
+**Next Action**: 0.9 main push 후 GitHub Pages 라이브 배포 확인
 
 ---
 

@@ -1,0 +1,9 @@
+{
+  "nav": {
+    "home": "홈",
+    "about": "소개",
+    "projects": "프로젝트",
+    "resume": "이력서",
+    "contact": "연락처"
+  }
+}
