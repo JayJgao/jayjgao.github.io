@@ -1,0 +1,29 @@
+## 🚧 Problem
+CineV의 핵심 파이프라인 S2M은 자연어 시나리오를 실제 3D 결과물로 연결하는 과정에서 병목이 심했고,
+모듈 간 인터페이스가 불안정해 반복 실험 비용이 높았습니다.
+
+## 💡 Approach
+- 프롬프트-플래닝-씬구성-렌더링 단계를 명시적으로 분리
+- LLM Agent orchestration 레이어와 실행 레이어를 분리
+- Unreal 연동 계약을 스키마 기반으로 재정의
+
+## ⚙️ Execution
+- 기존 파이프라인 의존성 맵핑 및 실패 포인트 식별
+- 단계별 입력/출력 스키마 재설계
+- 통합 테스트 시나리오와 회귀 체크리스트 정립
+
+## ✅ Results
+- 합류 3개월 내 첫 LLM-to-Unreal E2E 통합 달성
+- 실험 실패율 감소 및 반복 속도 개선
+- 이후 MOAI/A2P 확장의 기반 아키텍처 확보
+
+## 📎 Artifacts
+<details>
+  <summary>아키텍처 다이어그램 (Phase 2에서 추가)</summary>
+  <p>현재는 NDA-safe 재구성 버전을 준비 중입니다.</p>
+</details>
+
+<details>
+  <summary>프롬프트 설계 샘플 (Phase 2에서 추가)</summary>
+  <p>AS-IS / TO-BE 비교 예시를 추가할 예정입니다.</p>
+</details>

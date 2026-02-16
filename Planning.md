@@ -134,13 +134,13 @@
 > **목표**: 한국어 단일 언어로 핵심 레이아웃과 콘텐츠 완성. 방문자가 "이 사람이 뭘 하는 사람인지" 10초 안에 파악 가능.
 
 ### 1.1 Layout & Navigation
-- [ ] `Navbar.tsx` — 로고(Jay Ko) + 메뉴(Projects, About, Resume, Contact) + 다국어 토글(Phase 4에서 활성화)
-- [ ] `Footer.tsx` — "Built with vibe coding (Claude Code + Cursor)" + 소셜 링크 + © 2026
-- [ ] 페이지 전환 애니메이션 (Framer Motion `AnimatePresence`)
-- [ ] 다크 모드 기본 (라이트 모드 토글은 Backlog)
+- [x] `Navbar.tsx` — 로고(Jay Ko) + 메뉴(Projects, About, Resume, Contact) + 다국어 토글(Phase 4에서 활성화)
+- [x] `Footer.tsx` — "Built with vibe coding (Claude Code + Cursor)" + 소셜 링크 + © 2026
+- [x] 페이지 전환 애니메이션 (Framer Motion `AnimatePresence`)
+- [x] 다크 모드 기본 (라이트 모드 토글은 Backlog)
 
 ### 1.2 Home Page (`/`)
-- [ ] **Hero Section**
+- [x] **Hero Section**
   - 이름: **고재현 (Jay Ko)**
   - 타이틀: **AI Product Leader**
   - 원라인: "Building and scaling AI products from tabular ML to generative video — 6+ years, 10x revenue growth"
@@ -151,7 +151,7 @@
   - CTA 버튼 1개: "View Projects" → /projects
   - **NOTE**: 별도 Resume 다운로드 없음. 메인 페이지 자체가 이력서 역할.
   - 배경: Phase 1에서는 CSS 그라디언트 (Phase 3에서 Three.js로 교체)
-- [ ] **Featured Projects** (Showcase 5~6개, 카드 그리드)
+- [x] **Featured Projects** (Showcase 5~6개, 카드 그리드)
   - 카드: Thumbnail + 한줄 임팩트 + Era 태그 + 회사명
   - Showcase 선정 (확정, Agent.md §12.2 참조):
     1. ⭐ CineV S2M — LLM Agent → Unreal 파이프라인 (기여 50%)
@@ -161,40 +161,41 @@
     5. ⭐ Buzzni AIaaS 사업부 빌딩 & 리딩 — MRR 10x, 20명 팀빌딩 (기여 80%)
     6. ⭐ Solidware MLaaS — 일본 엔터프라이즈 13개사 (기여 70%)
   - "View All Projects →" 링크
-- [ ] **Career Timeline** (3-Era 시각화)
+- [x] **Career Timeline** (3-Era 시각화)
   - 가로 타임라인 (2018 → 2026)
   - Era별 색상 구분
   - 회사 로고/이름 + 기간 + 한줄 요약
   - Framer Motion으로 스크롤 인 애니메이션
 
 ### 1.3 Projects Page (`/projects`)
-- [ ] **Era Filter** (탭 또는 필터 버튼: All / Before LLM / After LLM / GenAI Era)
-- [ ] **Project Grid** (카드, 3열 → 2열(태블릿) → 1열(모바일))
-- [ ] Featured 프로젝트는 상단에 크게, Archive는 하단에 작게
-- [ ] 카드 클릭 → `/projects/{slug}`
+- [x] **Era Filter** (탭 또는 필터 버튼: All / Before LLM / After LLM / GenAI Era)
+- [x] **Project Grid** (카드, 3열 → 2열(태블릿) → 1열(모바일))
+- [x] Featured 프로젝트는 상단에 크게, Archive는 하단에 작게
+- [x] 카드 클릭 → `/projects/{slug}`
 
 ### 1.4 Project Detail Page (`/projects/[slug]`)
-- [ ] `CaseStudy.tsx` 컴포넌트 (Agent.md §4.4 통일 템플릿)
-- [ ] MDX 렌더링 (Phase 2에서 콘텐츠 채움, Phase 1은 S2M 1개만 작성)
-- [ ] Artifacts 섹션 collapsible (Framer Motion accordion)
-- [ ] 이전/다음 프로젝트 네비게이션
+- [x] `CaseStudy.tsx` 컴포넌트 (Agent.md §4.4 통일 템플릿)
+- [x] MDX 렌더링 (Phase 2에서 콘텐츠 채움, Phase 1은 S2M 1개만 작성)
+- [x] Artifacts 섹션 collapsible (Framer Motion accordion)
+- [x] 이전/다음 프로젝트 네비게이션
 
 ### 1.5 About Page (`/about`)
-- [ ] 커리어 서사 (도메인 확장 내러티브, 2~3문단)
-- [ ] Skills 섹션 (카테고리별 태그 클라우드, 바 그래프 대신)
-- [ ] Languages 섹션 (KO/ZH/EN/RU + 레벨)
-- [ ] Education (칭화대, 수상이력)
-- [ ] Publications, Patents, Hackathons (요약 리스트)
+- [x] 커리어 서사 (도메인 확장 내러티브, 2~3문단)
+- [x] Skills 섹션 (카테고리별 태그 클라우드, 바 그래프 대신)
+- [x] Languages 섹션 (KO/ZH/EN/RU + 레벨)
+- [x] Education (칭화대, 수상이력)
+- [x] Publications, Patents, Hackathons (요약 리스트)
 
 ### 1.6 Resume Page (`/resume`)
-- [ ] `ResumeRenderer.tsx` — `data/resume.ko.json`을 읽어 웹에서 렌더링
-- [ ] PDF 다운로드 버튼 (언어별 PDF)
-- [ ] 웹 렌더링 버전과 PDF 버전이 동일한 데이터 소스 사용
+- [x] `ResumeRenderer.tsx` — `data/resume.ko.json`을 읽어 웹에서 렌더링
+- [x] PDF 다운로드 버튼 (언어별 PDF)
+- [x] 웹 렌더링 버전과 PDF 버전이 동일한 데이터 소스 사용
 
 ### 1.7 Contact Page (`/contact`)
 - [ ] Contact Form (Formspree 또는 Getform 연동)
-- [ ] 이메일, 전화, LinkedIn, GitHub 링크
-- [ ] "Let's work together" 메시지
+  - Confirmed Content 기준 현재는 mailto만 사용 (폼은 보류)
+- [x] 이메일, 전화, LinkedIn, GitHub 링크
+- [x] "Let's work together" 메시지
 
 **Phase 1 완료 기준**: 한국어로 모든 페이지가 동작하고, S2M 프로젝트 1개의 케이스 스터디가 완성. 모바일 반응형 확인.
 
@@ -508,7 +509,7 @@ Phase 5: ⬜ NOT STARTED
 Phase 6: ⬜ NOT STARTED
 ```
 
-**Next Action**: Phase 1 — Layout & Navigation + Home 핵심 섹션 구현
+**Next Action**: Phase 1 잔여 항목 결정 (Contact Form 연동 vs mailto 유지) 후 Phase 2 착수
 
 ---
 

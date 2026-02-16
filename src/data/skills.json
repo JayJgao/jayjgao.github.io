@@ -1,5 +1,35 @@
 {
-  "ai_ml": ["LLM Agent", "Prompt Engineering", "AI Evaluation"],
-  "product": ["B2B SaaS", "Roadmapping", "Go-to-Market"],
-  "technical": ["Next.js", "Three.js", "System Architecture"]
+  "AI/ML": [
+    "LLM Agent",
+    "Prompt Engineering",
+    "Context Engineering",
+    "RAG",
+    "AI Evaluation",
+    "Generative AI",
+    "Computer Vision",
+    "Motion AI",
+    "AutoML"
+  ],
+  "Product": [
+    "B2B SaaS",
+    "AIaaS",
+    "Go-to-Market",
+    "Roadmapping",
+    "PRD",
+    "Agile/Scrum",
+    "Cross-functional Leadership",
+    "Team Building"
+  ],
+  "Technical": [
+    "Vibe Coding",
+    "System Architecture",
+    "API Design",
+    "SQL",
+    "GA",
+    "Figma",
+    "Notion",
+    "Jira",
+    "Mermaid",
+    "LangChain"
+  ]
 }
