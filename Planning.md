@@ -148,17 +148,18 @@
     - `MRR 10x Growth`
     - `25+ B2B Clients`
     - `3 ML Patents`
-  - CTA 버튼 2개: "View Projects" / "Download Resume"
+  - CTA 버튼 1개: "View Projects" → /projects
+  - **NOTE**: 별도 Resume 다운로드 없음. 메인 페이지 자체가 이력서 역할.
   - 배경: Phase 1에서는 CSS 그라디언트 (Phase 3에서 Three.js로 교체)
 - [ ] **Featured Projects** (Showcase 5~6개, 카드 그리드)
   - 카드: Thumbnail + 한줄 임팩트 + Era 태그 + 회사명
-  - Showcase 선정:
-    1. ⭐ CineV S2M — LLM Agent → Unreal 파이프라인
-    2. ⭐ CineV MOAI — 모션 AI 평가 플랫폼
-    3. ⭐ Buzzni Short-form AI Video Editor (MRR 2,400만)
-    4. ⭐ Buzzni Shopping Assistant Chatbot
-    5. ⭐ Solidware MLaaS (일본 대기업 13개 클라이언트)
-    6. ⭐ Chroma Awards Finalist — Fully AI-Generated Short Film (영상 임베드 가능, 시각적 차별화)
+  - Showcase 선정 (확정, Agent.md §12.2 참조):
+    1. ⭐ CineV S2M — LLM Agent → Unreal 파이프라인 (기여 50%)
+    2. ⭐ CineV MOAI — 모션 AI 평가 플랫폼 (기여 50%)
+    3. ⭐ Chroma Awards — Fully AI-Generated Film (기여 50%)
+    4. ⭐ Buzzni 숏폼 AI 비디오 편집기 — 0→1 기획·출시·운영 (기여 80%)
+    5. ⭐ Buzzni AIaaS 사업부 빌딩 & 리딩 — MRR 10x, 20명 팀빌딩 (기여 80%)
+    6. ⭐ Solidware MLaaS — 일본 엔터프라이즈 13개사 (기여 70%)
   - "View All Projects →" 링크
 - [ ] **Career Timeline** (3-Era 시각화)
   - 가로 타임라인 (2018 → 2026)
@@ -223,10 +224,13 @@
 
 **Era 2: After LLM (2023-2025)**
 - [ ] `buzzni-shortform-ai.mdx` — Long→Short-form AI 비디오 편집기 (⭐ Showcase)
-  - Impact: MRR 2,400만 원
+  - Impact: 0→1 기획·출시·운영
   - Artifacts: 제품 스크린샷, Mermaid 플로우차트, 프롬프트 AS-IS/TO-BE
-- [ ] `buzzni-chatbot.mdx` — 이커머스 쇼핑 어시스턴트 챗봇 (⭐ Showcase)
-  - Impact: 신규 서비스 기획~출시
+- [ ] `buzzni-aiaas-biz.mdx` — AIaaS 사업부 빌딩 & 리딩 (⭐ Showcase)
+  - Impact: MRR 500만→5,200만 원 (10x), 20명 팀빌딩, 12개 고객사
+  - Artifacts: 제품 라인업, 가격 정책, 팀 구조, 챗봇·검색·리뷰 AIaaS 서브 프로젝트 포함
+- [ ] `buzzni-chatbot.mdx` — 이커머스 쇼핑 어시스턴트 챗봇 (Archive)
+  - Impact: 신규 서비스 0→1 기획~출시
   - Artifacts: 챗봇 대화 시나리오, EP 스키마
 - [ ] `buzzni-aiaas.mdx` — AIaaS 제품 라인업 (검색, 리뷰, 카테고리, 카탈로그)
   - Impact: MRR 2,800만 원, 12개 고객사

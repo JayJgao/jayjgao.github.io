@@ -546,7 +546,178 @@ main          ← Production (GitHub Pages 배포 소스)
 
 ---
 
-## 12. Quick Start (for Agent)
+## 12. Confirmed Content (확정 텍스트 — 에이전트는 이대로 렌더링)
+
+### 12.1 Hero Section
+
+```yaml
+name_ko: "고재현"
+name_en: "Jay Ko"
+title: "AI Product Leader"
+oneliner_ko: "Tabular ML에서 생성형 비디오까지 — AI 제품을 만들고 스케일합니다."
+oneliner_en: "Building and scaling AI products — from tabular ML to generative video."
+subtitle_ko: "6+ years, 매출 10배 성장, 25+ 엔터프라이즈 클라이언트"
+subtitle_en: "6+ years, 10x revenue growth, 25+ enterprise clients."
+
+stats:
+  - value: "MRR 10x"
+    label_ko: "매출 성장"
+    label_en: "Revenue Growth"
+  - value: "25+"
+    label_ko: "B2B 클라이언트"
+    label_en: "Enterprise Clients"
+  - value: "3"
+    label_ko: "ML 특허"
+    label_en: "ML Patents"
+
+cta:
+  - text_ko: "프로젝트 보기"
+    text_en: "View Projects"
+    href: "/projects"
+# NOTE: 별도 Resume 다운로드 CTA 없음. 메인 페이지 자체가 이력서 역할.
+```
+
+### 12.2 Featured Projects (Showcase 6개, 확정)
+
+```json
+[
+  {
+    "slug": "cinev-s2m",
+    "era": 3,
+    "eraLabel": "Generative AI Era",
+    "showcaseOrder": 1,
+    "title_ko": "CineV S2M — LLM Agent → Unreal Pipeline",
+    "title_en": "CineV S2M — LLM Agent to Unreal Pipeline",
+    "oneLiner_ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합 달성",
+    "oneLiner_en": "Achieved first E2E LLM-to-Unreal integration within 3 months of joining",
+    "company": "Cinamon",
+    "role": "AI Tech PO",
+    "contribution": 50,
+    "tags": ["LLM Agent", "Unreal Engine", "System Architecture"]
+  },
+  {
+    "slug": "cinev-moai",
+    "era": 3,
+    "eraLabel": "Generative AI Era",
+    "showcaseOrder": 2,
+    "title_ko": "CineV MOAI — Motion AI 평가 플랫폼",
+    "title_en": "CineV MOAI — Motion AI Evaluation Platform",
+    "oneLiner_ko": "바이브코딩으로 직접 구축, 8개월간 유저스터디 6회 + 모델 2건 통합",
+    "oneLiner_en": "Vibe-coded from scratch; 6 user studies + 2 model integrations in 8 months",
+    "company": "Cinamon",
+    "role": "AI Tech PO",
+    "contribution": 50,
+    "tags": ["Vibe Coding", "AI Evaluation", "User Study"]
+  },
+  {
+    "slug": "chroma-awards",
+    "era": 3,
+    "eraLabel": "Generative AI Era",
+    "showcaseOrder": 3,
+    "title_ko": "Chroma Awards — Fully AI-Generated Short Film",
+    "title_en": "Chroma Awards — Fully AI-Generated Short Film",
+    "oneLiner_ko": "세계 최대 AI Film Competition Sponsor Award Top 11 Finalist",
+    "oneLiner_en": "Top 11 Finalist, Sponsor Award — World's largest AI Film Competition (ElevenLabs)",
+    "company": "Side Project",
+    "role": "Creator / Director",
+    "contribution": 50,
+    "tags": ["Generative AI", "AI Film", "Video Generation"]
+  },
+  {
+    "slug": "buzzni-shortform-ai",
+    "era": 2,
+    "eraLabel": "After LLM",
+    "showcaseOrder": 4,
+    "title_ko": "Long→Short-form AI 비디오 편집기",
+    "title_en": "Long→Short-form AI Video Editor",
+    "oneLiner_ko": "Long→Short-form AI 비디오 편집기, 0→1 기획·출시·운영",
+    "oneLiner_en": "AI video editor, built 0→1 from planning to launch and operation",
+    "company": "BUZZNI",
+    "role": "AI PM / Team Lead",
+    "contribution": 80,
+    "tags": ["LLM", "Video AI", "B2B SaaS", "Prompt Engineering"]
+  },
+  {
+    "slug": "buzzni-aiaas-biz",
+    "era": 2,
+    "eraLabel": "After LLM",
+    "showcaseOrder": 5,
+    "title_ko": "AIaaS 사업부 빌딩 & 리딩",
+    "title_en": "AIaaS Business Unit — Build & Lead",
+    "oneLiner_ko": "제로에서 20명 팀 빌딩, AIaaS 사업부 리딩 — MRR 500만→5,200만 원 (10x 성장)",
+    "oneLiner_en": "Built 20-person team from zero, led AIaaS unit — MRR ₩5M→₩52M (10x growth)",
+    "company": "BUZZNI",
+    "role": "AI PM / Team Lead",
+    "contribution": 80,
+    "tags": ["Team Building", "B2B SaaS", "AIaaS", "Go-to-Market"]
+  },
+  {
+    "slug": "solidware-mlaas",
+    "era": 1,
+    "eraLabel": "Before LLM",
+    "showcaseOrder": 6,
+    "title_ko": "핀테크 MLaaS — 일본 엔터프라이즈",
+    "title_en": "Fintech MLaaS — Japan Enterprise",
+    "oneLiner_ko": "Mitsubishi, AEON 등 13개 클라이언트 확보, 연매출 100% 신장",
+    "oneLiner_en": "Acquired 13 clients incl. Mitsubishi, AEON; YoY revenue +100%",
+    "company": "Solidware",
+    "role": "AI PM / Biz Lead",
+    "contribution": 70,
+    "tags": ["AutoML", "Fintech", "B2B", "Japan Market"]
+  }
+]
+```
+
+### 12.3 About — 커리어 서사 (확정)
+
+**한국어:**
+
+> 저는 "새로운 산업 도메인에 AI를 적용하는 것"에 가장 큰 에너지를 느끼는 AI 프로덕트 리더입니다.
+>
+> 핀테크에서 AutoML 솔루션을 일본 대기업에 판매하며 AI PM 커리어를 시작했고, 헬스케어에서 바이오마커 분석 소프트웨어를, 이커머스에서 LLM 기반 숏폼 영상 편집기와 쇼핑 챗봇을 만들었습니다. 현재는 생성형 AI와 3D 모션을 결합한 영상 제작 파이프라인을 설계하고 있습니다. Tabular ML → Computer Vision → LLM Agent → Motion AI — 매번 새로운 기술과 도메인으로 확장하면서도, 제로에서 팀을 빌딩하고 MRR을 10배 성장시킨 일관된 성과를 만들어왔습니다.
+>
+> PM의 역할은 제품의 성공을 위해 "문제"를 식별하고 해결하는 모든 영역을 커버하는 것이라 생각합니다. 기획뿐 아니라 직접 바이브코딩으로 내부 도구를 만들고, 프롬프트를 설계하고, 고객 앞에 서서 영업하고, 팀을 조직하는 — End-to-end Problem Manager로서 일합니다.
+
+**English:**
+
+> I'm an AI Product Leader who thrives on applying AI to new industry domains.
+>
+> I started my AI PM career selling AutoML solutions to Japanese enterprises in fintech, then built biomarker analysis software in healthcare, and LLM-powered short-form video editors and shopping chatbots in e-commerce. Currently, I'm designing video production pipelines that combine generative AI with 3D motion. Tabular ML → Computer Vision → LLM Agents → Motion AI — with each expansion into new technology and domain, I've delivered consistent results: building teams from zero and growing MRR by 10x.
+>
+> I believe a PM's role is to cover every area where problems need solving for a product's success. Beyond planning, I vibe-code internal tools, design prompts, pitch to clients, and build teams — working as an end-to-end Problem Manager.
+
+### 12.4 Skills (카테고리별 태그, 확정)
+
+```json
+{
+  "AI/ML": ["LLM Agent", "Prompt Engineering", "Context Engineering", "RAG", "AI Evaluation", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
+  "Product": ["B2B SaaS", "AIaaS", "Go-to-Market", "Roadmapping", "PRD", "Agile/Scrum", "Cross-functional Leadership", "Team Building"],
+  "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Notion", "Jira", "Mermaid", "LangChain"],
+  "Languages": ["Korean (Native)", "Chinese (Business Fluent, HSK 6)", "English (Professional)", "Japanese (Basic)", "Russian (Elementary)"]
+}
+```
+
+### 12.5 Contact (확정)
+
+```yaml
+email: rhwogus0205@gmail.com          # 공개
+github: https://github.com/JayJgao    # 공개
+phone: null                            # 비공개
+linkedin: null                         # 비공개 (추후 추가 가능)
+form_service: null                     # 폼 없음, mailto 링크만
+```
+
+### 12.6 Asset Status (확정)
+
+```yaml
+profile_photo: available               # 프로필 사진 있음
+project_thumbnails: partial            # 일부 준비됨, 나머지는 placeholder로 진행
+resume_pdf: to_be_updated              # 시나몬 경험 반영 필요 (Phase 6)
+```
+
+---
+
+## 13. Quick Start (for Agent)
 
 ```bash
 # 1. Clone & Install
