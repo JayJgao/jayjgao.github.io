@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "cinev-s2m",
+    "era": 3,
+    "featured": true,
+    "title": {
+      "ko": "CineV S2M",
+      "en": "CineV S2M",
+      "zh": "CineV S2M"
+    },
+    "oneLiner": {
+      "ko": "자연어 기반 3D 영상 생성 파이프라인",
+      "en": "Natural-language to 3D video pipeline",
+      "zh": "自然语言到3D视频生成管线"
+    }
+  }
+]
