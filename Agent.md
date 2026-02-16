@@ -165,7 +165,7 @@ jayjgao.github.io/
 사이트 전체에 걸쳐 일관되게 적용:
 ```
 Era 1: Before LLM (2018-2022) — "ML Product Foundation"
-  Solidware MLaaS, AutoML, Hana Bank / Lunit Biomarker
+  Solidware MLaaS, AutoML, Hana Bank / Lunit Biomarker / Dasan E&E (HR 컨설팅 경영정상화)
   
 Era 2: After LLM (2023-2025) — "AI Product at Scale"  
   Buzzni Short-form AI, Chatbot, Review AIaaS, Search AIaaS
@@ -261,7 +261,45 @@ const HeroSection = () => {
         "A2P: I2V, I2I, TTS, Music Gen 등 외부 모델 통합 전략 수립 및 스키마/API 레이어 설계"
       ]
     },
-    // ... (Buzzni, Lunit, Solidware)
+    {
+      "company": "버즈니 (BUZZNI, 홈쇼핑모아)",
+      "role": "AI Product Manager, AIaaS 프로덕트팀 팀장",
+      "period": { "start": "2023-04", "end": "2025-03" },
+      "highlights": [
+        "MRR 10배 이상 성장 (500만 원 → 5,200만 원), 신규 계약 고객사 12개 확보",
+        "신규 서비스 2건 기획·출시 (숏폼 AI 비디오 편집기 MRR 2,400만 원, 이커머스 쇼핑 어시스턴트 챗봇)",
+        "20명 규모 팀 빌딩 및 조직 재구조화, AIaaS 제품 라인업·가격 정책 수립"
+      ]
+    },
+    {
+      "company": "다산 E&E (가족 운영 HR 컨설팅 기업)",
+      "role": "Business Operations Manager",
+      "period": { "start": "2022-06", "end": "2023-03" },
+      "highlights": [
+        "경영 위기 상황에서 사업 정상화 주도",
+        "AI 활용 과제개발 프로세스 재설계를 통한 운영 효율화",
+        "사업 전반 운영 관리 (재무, 고객관리, 서비스 운영)"
+      ]
+    },
+    {
+      "company": "루닛 (Lunit)",
+      "role": "AI Product Manager, Lunit SCOPE team",
+      "period": { "start": "2022-01", "end": "2022-04" },
+      "highlights": [
+        "비전모델 기반 바이오마커 분석 SW 초기 기획 (HER2, ER/PR)",
+        "초기 제품 PRD 작성 및 기존 제품 FDA/CE regulation 문서 작성"
+      ]
+    },
+    {
+      "company": "솔리드웨어 (現 아일리스)",
+      "role": "AI Product Manager, 신사업기획팀 책임",
+      "period": { "start": "2018-12", "end": "2021-12" },
+      "highlights": [
+        "핀테크 MLaaS 신규 고객사 13개 확보 (Mitsubishi, AEON, Japan Post Bank)",
+        "전년 대비 연매출 100% 신장, Sales 컨택포인트 256% 증대",
+        "총 15억 원 규모 정부지원 사업 수주 (6건)"
+      ]
+    }
   ],
   "education": [...],
   "skills": {...},
