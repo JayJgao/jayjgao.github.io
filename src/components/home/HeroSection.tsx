@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
-  { value: "MRR 10x", label: "매출 성장" },
-  { value: "25+", label: "B2B 클라이언트" },
-  { value: "3", label: "ML 특허" },
+  { value: "LLM→Unreal", label: "E2E 통합" },
+  { value: "6 / 5개월", label: "MOAI 유저스터디" },
+  { value: "MRR 10x", label: "사업 성장" },
 ];
 
 export function HeroSection() {
@@ -21,7 +21,7 @@ export function HeroSection() {
             Tabular ML에서 생성형 비디오까지 — AI 제품을 만들고 스케일합니다.
           </p>
           <p className="mt-3 text-sm text-muted">
-            6+ years, 매출 10배 성장, 25+ 엔터프라이즈 클라이언트
+            6+ years, 제품 출시와 통합 속도 개선에 집중한 AI Product 리딩
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">

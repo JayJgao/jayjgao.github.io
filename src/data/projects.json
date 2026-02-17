@@ -11,15 +11,20 @@
       "zh": "CineV S2M — LLM Agent 到 Unreal"
     },
     "oneLiner": {
-      "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합 달성",
-      "en": "Achieved first E2E LLM-to-Unreal integration within 3 months of joining",
-      "zh": "入职3个月内完成首个 LLM 到 Unreal 的端到端集成"
+      "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
+      "en": "Delivered first LLM-to-Unreal E2E integration in 3 months and cut experiment lead time by 50%",
+      "zh": "入职3个月完成首个 LLM→Unreal 端到端集成，并将实验周期缩短50%"
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
     "contribution": 50,
-    "tags": ["LLM Agent", "Unreal Engine", "System Architecture"],
-    "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp"
+    "tags": [
+      "LLM Agent",
+      "Unreal Engine",
+      "System Architecture"
+    ],
+    "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp",
+    "primaryMetric": "E2E 통합 + 리드타임 50%↓"
   },
   {
     "slug": "cinev-moai",
@@ -33,15 +38,20 @@
       "zh": "CineV MOAI — Motion AI 评测平台"
     },
     "oneLiner": {
-      "ko": "바이브코딩으로 직접 구축, 8개월간 유저스터디 6회 + 모델 2건 통합",
-      "en": "Vibe-coded from scratch; 6 user studies + 2 model integrations in 8 months",
-      "zh": "从零搭建评测平台，8个月完成6次用户研究与2个模型集成"
+      "ko": "바이브코딩으로 구축, 5개월간 유저스터디 6회 + 모델 2건 통합",
+      "en": "Vibe-coded platform; 6 user studies in 5 months and 2 model integrations",
+      "zh": "从零搭建评测平台，5个月完成6次用户研究并集成2个模型"
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
     "contribution": 50,
-    "tags": ["Vibe Coding", "AI Evaluation", "User Study"],
-    "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp"
+    "tags": [
+      "Vibe Coding",
+      "AI Evaluation",
+      "User Study"
+    ],
+    "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
+    "primaryMetric": "5개월 유저스터디 6회"
   },
   {
     "slug": "chroma-awards",
@@ -62,8 +72,14 @@
     "company": "Side Project",
     "role": "Creator / Director",
     "contribution": 50,
-    "tags": ["Generative AI", "AI Film", "Video Generation"],
-    "thumbnail": "/assets/images/projects/chroma/chroma-thumb.webp"
+    "tags": [
+      "Generative AI",
+      "AI Film",
+      "Video Generation"
+    ],
+    "thumbnail": "/assets/images/projects/chroma/chroma-thumb.webp",
+    "primaryMetric": "Sponsor Award Top 11 Finalist",
+    "demoUrl": "https://vimeo.com/1137973544"
   },
   {
     "slug": "buzzni-shortform-ai",
@@ -84,8 +100,15 @@
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 80,
-    "tags": ["LLM", "Video AI", "B2B SaaS", "Prompt Engineering"],
-    "thumbnail": "/assets/images/projects/buzzni/shortform-thumb.webp"
+    "tags": [
+      "LLM",
+      "Video AI",
+      "B2B SaaS",
+      "Prompt Engineering"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/shortform-thumb.webp",
+    "primaryMetric": "0→1 launch in production",
+    "demoUrl": "https://www.aplusai.ai/shortform"
   },
   {
     "slug": "buzzni-aiaas-biz",
@@ -106,8 +129,14 @@
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 80,
-    "tags": ["Team Building", "B2B SaaS", "AIaaS", "Go-to-Market"],
-    "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp"
+    "tags": [
+      "Team Building",
+      "B2B SaaS",
+      "AIaaS",
+      "Go-to-Market"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
+    "primaryMetric": "MRR 10x (₩5M→₩52M)"
   },
   {
     "slug": "solidware-mlaas",
@@ -128,8 +157,15 @@
     "company": "Solidware",
     "role": "AI PM / Biz Lead",
     "contribution": 70,
-    "tags": ["AutoML", "Fintech", "B2B", "Japan Market"],
-    "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp"
+    "tags": [
+      "AutoML",
+      "Fintech",
+      "B2B",
+      "Japan Market"
+    ],
+    "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
+    "primaryMetric": "13 enterprise clients won",
+    "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e"
   },
   {
     "slug": "buzzni-chatbot",
@@ -150,8 +186,13 @@
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 75,
-    "tags": ["Chatbot", "E-commerce", "LLM"],
-    "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp"
+    "tags": [
+      "Chatbot",
+      "E-commerce",
+      "LLM"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
+    "primaryMetric": "Shopping assistant launched"
   },
   {
     "slug": "solidware-automl",
@@ -172,8 +213,12 @@
     "company": "Solidware",
     "role": "AI PM / Biz Lead",
     "contribution": 70,
-    "tags": ["AutoML", "Product Planning"],
-    "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp"
+    "tags": [
+      "AutoML",
+      "Product Planning"
+    ],
+    "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
+    "primaryMetric": "New AutoML module shipped"
   },
   {
     "slug": "lunit-biomarker",
@@ -194,29 +239,12 @@
     "company": "Lunit",
     "role": "AI PM",
     "contribution": 60,
-    "tags": ["Healthcare AI", "Regulation", "PRD"],
-    "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp"
-  },
-  {
-    "slug": "hackathon-elevenlabs",
-    "era": 3,
-    "eraLabel": "Generative AI Era",
-    "featured": false,
-    "showcaseOrder": null,
-    "title": {
-      "ko": "ElevenLabs 해커톤 — Multi-persona Agent",
-      "en": "ElevenLabs Hackathon — Multi-persona Agent",
-      "zh": "ElevenLabs 黑客松 — 多角色 Agent"
-    },
-    "oneLiner": {
-      "ko": "에이전틱 롤플레잉 시스템 프로토타입 제작",
-      "en": "Built an agentic role-playing prototype in hackathon sprint",
-      "zh": "在黑客松冲刺中构建多角色 Agent 原型"
-    },
-    "company": "Hackathon",
-    "role": "Builder",
-    "contribution": 100,
-    "tags": ["Agentic AI", "Voice", "Hackathon"],
-    "thumbnail": "/assets/images/projects/hackathons/elevenlabs-thumb.webp"
+    "tags": [
+      "Healthcare AI",
+      "Regulation",
+      "PRD"
+    ],
+    "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
+    "primaryMetric": "Initial PRD completed"
   }
 ]

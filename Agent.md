@@ -61,8 +61,8 @@ jayjgao.github.io/
 │   │   ├── models/                 # Three.js용 3D 에셋 (glTF/glb)
 │   │   ├── fonts/                  # Pretendard, Inter 등 커스텀 폰트
 │   │   └── resume/
-│   │       ├── JayKo_Resume_KO.pdf
-│   │       └── JayKo_Resume_EN.pdf
+│   │       ├── resume_ko.pdf
+│   │       └── resume_en.pdf
 │   ├── favicon.ico
 │   └── og-image.png                # Open Graph 이미지
 ├── src/
@@ -121,9 +121,10 @@ jayjgao.github.io/
 │   │   │   │   └── ... (동일 구조)
 │   │   │   └── zh/
 │   │   │       └── ... (동일 구조)
-│   │   └── archive/                # Archive 콘텐츠 (프롬프트 모음, 유저매뉴얼 등)
-│   │       ├── ko/
-│   │       └── en/
+│   │   ├── archive/                # Archive 콘텐츠 (프롬프트 모음, 유저매뉴얼 등)
+│   │   │   ├── ko/
+│   │   │   └── en/
+│   │   └── diagrams/               # Mermaid source of truth (.mmd)
 │   ├── data/
 │   │   ├── resume.ko.json          # 이력서 구조화 데이터 (한국어)
 │   │   ├── resume.en.json          # 이력서 구조화 데이터 (영어)
@@ -330,7 +331,7 @@ const HeroSection = () => {
     "oneLiner": { "ko": "자연어 한 줄로 3D 영상을 생성하는 AI Agent 시스템", "en": "..." },
     "impact": { "ko": "합류 3개월 내 첫 E2E 통합 달성", "en": "..." },
     "tags": ["LLM Agent", "Unreal Engine", "Prompt Engineering", "System Architecture"],
-    "thumbnail": "/assets/images/projects/s2m-thumb.png",
+    "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp",
     "company": "Cinamon",
     "role": "AI Tech PO",
     "contribution": 80
@@ -345,7 +346,7 @@ const HeroSection = () => {
     "oneLiner": { "ko": "세계 최대 AI Film Competition에서 Sponsor Award Top 11 Finalist 선정", "en": "Top 11 Finalist at the world's largest AI Film Competition (ElevenLabs)" },
     "impact": { "ko": "Sponsor Award Top 11 Finalist (2025)", "en": "Sponsor Award Top 11 Finalist (2025)" },
     "tags": ["Generative AI", "AI Film", "Video Generation", "Creative AI"],
-    "thumbnail": "/assets/images/projects/chroma-thumb.png",
+    "thumbnail": "/assets/images/projects/chroma/chroma-thumb.webp",
     "company": "Side Project",
     "role": "Creator / Director",
     "contribution": 100
@@ -456,13 +457,14 @@ GPU Tier 0 / No WebGL:    정적 이미지 + 간단한 CSS 전환
 ## 7. Available Assets
 
 ### 7.1 Confirmed Available
-- [x] 이력서 PDF (2025.01 기준, 시나몬 미반영 — 업데이트 필요)
+- [x] 이력서 PDF (KO/EN 최신본 반영 완료)
 - [x] Notion 포트폴리오 HTML 18개 (콘텐츠 소스)
 - [x] 프로필 사진
 - [x] Cinamon/CineV 공개 가능한 에셋 (유저가 확인함)
 - [x] 보도자료에 공개된 Buzzni 관련 이미지
 - [x] 해커톤 관련 에셋 (ElevenLabs, Meta Llama)
 - [x] Chroma Awards 출품 AI 영상 (임베드/링크 가능)
+- [x] 배포 제외용 raw 에셋 보관소 (`.reference/notion-export/public-assets-raw/`)
 
 ### 7.2 To Be Created
 - [ ] 프로젝트 스크린샷/GIF (CineV S2M, MOAI, A2P)
@@ -711,8 +713,8 @@ form_service: null                     # 폼 없음, mailto 링크만
 
 ```yaml
 profile_photo: available               # 프로필 사진 있음
-project_thumbnails: partial            # 일부 준비됨, 나머지는 placeholder로 진행
-resume_pdf: to_be_updated              # 시나몬 경험 반영 필요 (Phase 6)
+project_thumbnails: normalized         # slug 기반 webp 썸네일 정규화 완료
+resume_pdf: updated                    # /assets/resume/resume_{ko,en}.pdf
 ```
 
 ---

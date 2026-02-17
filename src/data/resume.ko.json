@@ -15,9 +15,10 @@
       "role": "AI Tech Product Owner",
       "period": "2025.04 - Present",
       "highlights": [
-        "S2M 파이프라인 재설계로 합류 3개월 내 첫 LLM-to-Unreal E2E 통합 달성",
-        "MOAI 평가 플랫폼을 직접 구축하여 8개월간 유저스터디 6회 및 모델 2건 통합",
-        "A2P 통합 전략 수립: I2V, I2I, TTS, Music Gen 모델 연동 아키텍처 설계"
+        "LangChain 기반 Film Agent 설계로 LLM-to-Unreal E2E 통합 달성",
+        "MOAI 평가 플랫폼 구축으로 Model-to-Product 통합 사이클 가속: 도입 전 2년 2건 → 도입 후 5개월 2건(Locomotion, Text-to-Motion), 유저스터디 총 6회",
+        "외부 모델 라우팅 플랫폼 도입으로 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축, I2V/I2I/TTS/Music Gen 연동 아키텍처·API 설계",
+        "CineV 런칭 전략 수립 및 AI 파트 리딩 (2026년 1월 공식 런칭)"
       ]
     },
     {
@@ -48,7 +49,7 @@
       ]
     },
     {
-      "company": "Solidware (Ailiis)",
+      "company": "Solidware (Ailys)",
       "role": "AI PM / New Business Team Lead",
       "period": "2018.12 - 2021.12",
       "highlights": [
@@ -59,9 +60,9 @@
     }
   ],
   "skills": {
-    "AI/ML": ["LLM Agent", "Prompt Engineering", "Context Engineering", "RAG", "AI Evaluation", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
-    "Product": ["B2B SaaS", "AIaaS", "Go-to-Market", "Roadmapping", "PRD", "Agile/Scrum", "Cross-functional Leadership", "Team Building"],
-    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Notion", "Jira", "Mermaid", "LangChain"]
+    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
+    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
+    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
   },
   "education": [
     "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
