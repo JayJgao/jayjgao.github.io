@@ -1,7 +1,82 @@
 {
   "meta": {
-    "name": "Jay Ko",
-    "title": "AI Product Leader"
+    "name": "Jaehyun Ko (Jay Ko)",
+    "title": "AI Product Leader",
+    "subtitle": "6+ Years | Tabular ML -> Vision -> LLM Agent -> Motion AI",
+    "location": "Seoul, Korea",
+    "email": "rhwogus0205@gmail.com",
+    "website": "https://jayjgao.github.io",
+    "github": "https://github.com/JayJgao"
   },
-  "summary": "To be finalized in Phase 2"
+  "summary": "AI Product Leader focused on applying AI to new domains, shipping products, and scaling teams. From strategy to architecture and execution, I run end-to-end product outcomes with measurable business impact.",
+  "experience": [
+    {
+      "company": "Cinamon (CineV)",
+      "role": "AI Tech Product Owner",
+      "period": "2025.04 - Present",
+      "highlights": [
+        "Designed a LangChain-based Film Agent and delivered LLM-to-Unreal E2E integration",
+        "Built the MOAI evaluation platform and accelerated model-to-product cycle: 2 integrations in 2 years before adoption -> 2 integrations in 5 months after adoption (Locomotion, Text-to-Motion), with 6 user studies",
+        "Introduced an external model routing platform, cutting integration cycle from weekly cadence to near-instant deployment; designed architecture and APIs for I2V, I2I, TTS, and Music Gen",
+        "Led the AI track in CineV launch strategy (official launch in January 2026)"
+      ]
+    },
+    {
+      "company": "BUZZNI",
+      "role": "AI PM / Team Lead",
+      "period": "2023.04 - 2025.03",
+      "highlights": [
+        "Built and led an AIaaS business unit from zero to 20 people",
+        "Scaled MRR from KRW 5M to KRW 52M (10x) and won 12 new enterprise clients",
+        "Launched two services from 0 to 1: Long-to-Short AI video editor and shopping assistant chatbot"
+      ]
+    },
+    {
+      "company": "Dasan E&E",
+      "role": "Business Operations Manager",
+      "period": "2022.06 - 2023.03",
+      "highlights": [
+        "Improved operations of a family HR consulting business and supported turnaround",
+        "Redesigned operating process and execution framework"
+      ]
+    },
+    {
+      "company": "Lunit",
+      "role": "AI Product Manager",
+      "period": "2022.01 - 2022.04",
+      "highlights": [
+        "Defined initial PRD and regulation-driven requirements for vision biomarker analysis software"
+      ]
+    },
+    {
+      "company": "Solidware (Ailys)",
+      "role": "AI PM / New Business Team Lead",
+      "period": "2018.12 - 2021.12",
+      "highlights": [
+        "Won 13 enterprise clients in Japan (including Mitsubishi and AEON)",
+        "Delivered +100% YoY revenue growth and +256% sales touchpoints",
+        "Secured KRW 1.5B in government-funded projects"
+      ]
+    }
+  ],
+  "skills": {
+    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
+    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
+    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
+  },
+  "education": [
+    "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
+  ],
+  "achievements": [
+    "3 ML patents",
+    "KSC 2023 conference publication",
+    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
+  ],
+  "languages": [
+    "Korean (Native)",
+    "Chinese (Business Fluent, HSK 6)",
+    "English (Professional)",
+    "Japanese (Basic)",
+    "Russian (Elementary)"
+  ]
 }

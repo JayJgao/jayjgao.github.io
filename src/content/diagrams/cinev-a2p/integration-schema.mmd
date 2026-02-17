@@ -1,0 +1,7 @@
+flowchart LR
+  Client["Product App"] --> Gateway["A2P Gateway"]
+  Gateway --> Router["Routing Policy"]
+  Router --> I2V["I2V Provider"]
+  Router --> I2I["I2I Provider"]
+  Router --> TTS["TTS Provider"]
+  Router --> Music["Music Gen Provider"]
