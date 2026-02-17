@@ -40,24 +40,24 @@ export function VideoSpotlightCarousel() {
   return (
     <section className="space-y-4 md:space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-xs tracking-[0.18em] text-accent uppercase">Creative Spotlight</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">Watch First</h2>
-          <p className="mt-1.5 text-xs text-muted md:mt-2 md:text-sm">
+        <div className="space-y-2">
+          <p className="section-kicker">Creative Spotlight</p>
+          <h2 className="editorial-title text-3xl md:text-5xl">Watch First</h2>
+          <p className="text-sm text-white/70 md:text-base">
             AI Filmmaking Showcase.
           </p>
         </div>
         <div className="flex items-center gap-2 self-start sm:self-auto">
-          <button type="button" onClick={prev} className="btn-secondary px-3 py-1.5 text-xs md:py-2" aria-label="Previous spotlight">
+          <button type="button" onClick={prev} className="btn-secondary px-3 text-xs md:text-sm" aria-label="Previous spotlight">
             Prev
           </button>
-          <button type="button" onClick={next} className="btn-secondary px-3 py-1.5 text-xs md:py-2" aria-label="Next spotlight">
+          <button type="button" onClick={next} className="btn-secondary px-3 text-xs md:text-sm" aria-label="Next spotlight">
             Next
           </button>
         </div>
       </div>
 
-      <article className="panel overflow-hidden p-3.5 md:p-6">
+      <article className="panel overflow-hidden p-3 md:p-6">
         <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
           <iframe
             key={`${current.provider}-${current.videoId}`}
@@ -72,20 +72,20 @@ export function VideoSpotlightCarousel() {
         <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 md:mt-4">
           <div>
             <h3 className="text-base font-medium text-white/95 md:text-lg">{current.workTitle}</h3>
-            <p className="mt-1 text-xs text-muted md:text-sm">{current.caption}</p>
+            <p className="mt-1 text-sm text-white/72">{current.caption}</p>
           </div>
           <Link href={`/projects/${current.slug}`} className="btn-primary text-xs md:text-sm">
             관련 프로젝트 보기
           </Link>
         </div>
 
-        <div className="mt-3.5 grid grid-cols-2 gap-2.5 md:mt-4 md:gap-3 lg:grid-cols-4">
+        <div className="mt-4 flex gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-3">
           {items.map((item, itemIndex) => (
             <button
               key={`${item.provider}-${item.videoId}`}
               type="button"
               onClick={() => setIndex(itemIndex)}
-              className={`spotlight-item rounded-xl border text-left ${
+              className={`spotlight-item w-[162px] shrink-0 rounded-xl border text-left md:w-[190px] ${
                 itemIndex === index ? "border-accent/60 bg-accent/10" : "border-white/12 bg-white/5"
               }`}
               aria-label={`Select ${item.title}`}
@@ -96,12 +96,12 @@ export function VideoSpotlightCarousel() {
                   alt={`${item.title} poster`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 45vw, 240px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
               </div>
               <div className="p-2.5 md:p-3">
-                <p className="line-clamp-2 text-xs font-medium text-white/90 md:text-sm whitespace-pre-line">{item.title}</p>
+                <p className="line-clamp-2 text-xs font-medium leading-snug text-white/90 md:text-sm whitespace-pre-line">{item.title}</p>
               </div>
             </button>
           ))}

@@ -5,10 +5,10 @@ import { CareerTimeline } from "@/components/home/CareerTimeline";
 
 export default function HomePage() {
   return (
-    <main className="page-container space-y-11 py-8 md:space-y-16 md:py-14">
+    <main className="page-container space-y-10 py-6 md:space-y-14 md:py-12">
       <HeroSection />
-      <VideoSpotlightCarousel />
       <FeaturedProjects />
+      <VideoSpotlightCarousel />
       <CareerTimeline />
     </main>
   );
