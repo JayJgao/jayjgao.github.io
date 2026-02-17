@@ -24,7 +24,7 @@
       "System Architecture"
     ],
     "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp",
-    "primaryMetric": "E2E 통합 + 리드타임 50%↓"
+    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%"
   },
   {
     "slug": "cinev-moai",
@@ -51,7 +51,7 @@
       "User Study"
     ],
     "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
-    "primaryMetric": "5개월 유저스터디 6회"
+    "primaryMetric": "6 USER STUDIES / 5 MONTHS"
   },
   {
     "slug": "chroma-awards",
@@ -78,7 +78,7 @@
       "Video Generation"
     ],
     "thumbnail": "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
-    "primaryMetric": "Sponsor Award Top 11 Finalist",
+    "primaryMetric": "TOP 11 FINALIST",
     "demoUrl": "https://vimeo.com/1137973544"
   },
   {
@@ -107,8 +107,8 @@
       "Prompt Engineering"
     ],
     "thumbnail": "/assets/images/projects/buzzni/shortform-thumb.webp",
-    "primaryMetric": "0→1 launch in production",
-    "demoUrl": "https://www.aplusai.ai/shortform"
+    "primaryMetric": "0→1 PRODUCT LAUNCH",
+    "demoUrl": "https://devpost.com/software/mystery-invitation"
   },
   {
     "slug": "buzzni-aiaas-biz",
@@ -135,8 +135,8 @@
       "AIaaS",
       "Go-to-Market"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
-    "primaryMetric": "MRR 10x (₩5M→₩52M)"
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+    "primaryMetric": "MRR 10X"
   },
   {
     "slug": "solidware-mlaas",
@@ -164,7 +164,7 @@
       "Japan Market"
     ],
     "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
-    "primaryMetric": "13 enterprise clients won",
+    "primaryMetric": "13 ENTERPRISE CLIENTS WON",
     "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e"
   },
   {
@@ -192,7 +192,7 @@
       "LLM"
     ],
     "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
-    "primaryMetric": "Shopping assistant launched"
+    "primaryMetric": "SHOPPING ASSISTANT LAUNCHED"
   },
   {
     "slug": "cinev-ai-po-leadership",
@@ -212,14 +212,41 @@
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
-    "contribution": 40,
+    "contribution": 100,
     "tags": [
       "System Integration",
       "Architecture",
       "AI Leadership"
     ],
     "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-    "primaryMetric": "3-way integration spec standardized"
+    "primaryMetric": "3-WAY SPEC STANDARDIZED"
+  },
+  {
+    "slug": "cinev-a2p",
+    "era": 3,
+    "eraLabel": "Generative AI Era",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "CineV A2P — External Model Routing Integration",
+      "en": "CineV A2P — External Model Routing Integration",
+      "zh": "CineV A2P — 外部模型路由整合"
+    },
+    "oneLiner": {
+      "ko": "I2V·I2I·TTS·Music Gen 통합 라우팅 설계로 외부 모델 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축",
+      "en": "Unified I2V, I2I, TTS, and Music Gen routing to reduce model integration cycles from weekly to near-immediate deployment",
+      "zh": "通过统一 I2V、I2I、TTS、Music Gen 路由，将外部模型接入周期从按周缩短到接近即时部署"
+    },
+    "company": "Cinamon",
+    "role": "AI Tech PO",
+    "contribution": 50,
+    "tags": [
+      "A2P",
+      "Model Routing",
+      "API Design"
+    ],
+    "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
+    "primaryMetric": "WEEKLY → IMMEDIATE DEPLOYMENT"
   },
   {
     "slug": "buzzni-review-aiaas",
@@ -246,7 +273,7 @@
       "B2B SaaS"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
-    "primaryMetric": "2 clients + cost optimization"
+    "primaryMetric": "2 CLIENTS · COST OPTIMIZATION"
   },
   {
     "slug": "buzzni-search-aiaas",
@@ -273,7 +300,7 @@
       "API Strategy"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
-    "primaryMetric": "3 clients + 7 PoCs"
+    "primaryMetric": "3 CLIENTS + 7 POCS"
   },
   {
     "slug": "buzzni-branding-marketing",
@@ -299,8 +326,8 @@
       "PR",
       "Content"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-thumb.webp",
-    "primaryMetric": "In-house branding and PR execution"
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
+    "primaryMetric": "IN-HOUSE BRANDING & PR"
   },
   {
     "slug": "solidware-automl",
@@ -326,7 +353,7 @@
       "Product Planning"
     ],
     "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
-    "primaryMetric": "New AutoML module shipped"
+    "primaryMetric": "NEW AUTOML MODULE SHIPPED"
   },
   {
     "slug": "solidware-product-marketing",
@@ -353,7 +380,7 @@
       "B2B Sales"
     ],
     "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
-    "primaryMetric": "Touchpoints +256% / 13 new clients"
+    "primaryMetric": "CONTACT POINTS +256% · 13 NEW CLIENTS"
   },
   {
     "slug": "lunit-biomarker",
@@ -380,6 +407,6 @@
       "PRD"
     ],
     "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
-    "primaryMetric": "Initial PRD completed"
+    "primaryMetric": "INITIAL PRD COMPLETED"
   }
 ]

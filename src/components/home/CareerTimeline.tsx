@@ -11,7 +11,7 @@ const timeline = [
     era: "Era 2 · After LLM (2023-2025)",
     color: "bg-[#38bdf8]",
     items: [
-      "BUZZNI — AIaaS 사업부 제로→20명 팀빌딩, MRR 10x 성장",
+      "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
       "Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
       "Dasan E&E — 사업운영 고도화 및 경영정상화 지원",
     ],

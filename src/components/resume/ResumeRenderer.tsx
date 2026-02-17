@@ -1,6 +1,18 @@
-import resumeData from "@/data/resume.ko.json";
+"use client";
 
-type ResumeData = typeof resumeData;
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import resumeEn from "@/data/resume.en.json";
+import resumeKo from "@/data/resume.ko.json";
+import resumeZh from "@/data/resume.zh.json";
+import type { Locale } from "@/lib/locale";
+
+type ResumeData = typeof resumeKo;
+
+const resumeByLocale: Record<Locale, ResumeData> = {
+  ko: resumeKo,
+  en: resumeEn,
+  zh: resumeZh,
+};
 
 function SectionTitle({ children }: { children: string }) {
   return (
@@ -11,7 +23,8 @@ function SectionTitle({ children }: { children: string }) {
 }
 
 export function ResumeRenderer() {
-  const data = resumeData as ResumeData;
+  const { locale } = useLocale();
+  const data = resumeByLocale[locale] as ResumeData;
 
   return (
     <article className="panel p-6 md:p-8">

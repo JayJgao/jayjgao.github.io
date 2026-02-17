@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getFeaturedProjects } from "@/lib/projects";
+import type { Locale } from "@/lib/locale";
 
 const eraAccent: Record<number, string> = {
   1: "text-[#f59e0b]",
@@ -8,21 +12,44 @@ const eraAccent: Record<number, string> = {
   3: "text-[#34d399]",
 };
 
+const copyByLocale: Record<
+  Locale,
+  { sectionLabel: string; title: string; viewAll: string; detail: string }
+> = {
+  ko: {
+    sectionLabel: "Featured Showcase",
+    title: "Notable Projects",
+    viewAll: "전체 보기",
+    detail: "케이스 스터디",
+  },
+  en: {
+    sectionLabel: "Featured Showcase",
+    title: "Notable Projects",
+    viewAll: "View All",
+    detail: "Case Study",
+  },
+  zh: {
+    sectionLabel: "精选项目",
+    title: "产品化项目",
+    viewAll: "查看全部",
+    detail: "案例详情",
+  },
+};
+
 export function FeaturedProjects() {
+  const { locale } = useLocale();
   const featured = getFeaturedProjects();
+  const copy = copyByLocale[locale];
 
   return (
     <section className="space-y-5 md:space-y-7">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs tracking-[0.18em] text-accent uppercase">Featured Showcase</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">Productized Projects</h2>
-          <p className="mt-1.5 text-xs text-muted md:mt-2 md:text-sm">
-            이미지와 핵심 지표 중심으로 빠르게 스캔할 수 있게 재구성했습니다.
-          </p>
+          <p className="text-xs tracking-[0.18em] text-accent uppercase">{copy.sectionLabel}</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">{copy.title}</h2>
         </div>
         <Link href="/projects" className="btn-secondary w-fit px-4 py-1.5 text-xs tracking-wide uppercase md:py-2">
-          View All
+          {copy.viewAll}
         </Link>
       </div>
 
@@ -32,7 +59,7 @@ export function FeaturedProjects() {
             <div className="relative">
               <Image
                 src={project.thumbnail}
-                alt={`${project.title.ko} thumbnail`}
+                alt={`${project.title[locale]} thumbnail`}
                 width={1200}
                 height={675}
                 className="project-image h-44 w-full object-cover md:h-48"
@@ -47,8 +74,10 @@ export function FeaturedProjects() {
               </div>
             </div>
             <div className="space-y-2.5 p-4 md:space-y-3 md:p-5">
-              <h3 className="line-clamp-2 text-base font-semibold leading-snug text-white/95 md:text-lg">{project.title.ko}</h3>
-              <p className="line-clamp-2 text-xs leading-relaxed text-white/80 md:text-sm">{project.oneLiner.ko}</p>
+              <h3 className="line-clamp-2 text-base font-semibold leading-snug text-white/95 md:text-lg">
+                {project.title[locale]}
+              </h3>
+              <p className="line-clamp-2 text-xs leading-relaxed text-white/80 md:text-sm">{project.oneLiner[locale]}</p>
               <p className="text-xs text-muted">{project.company} · {project.role}</p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.slice(0, 3).map((tag) => (
@@ -59,7 +88,7 @@ export function FeaturedProjects() {
               </div>
               <div className="pt-1">
                 <Link href={`/projects/${project.slug}`} className="text-sm font-medium text-accent hover:underline">
-                  케이스 스터디
+                  {copy.detail}
                 </Link>
               </div>
             </div>

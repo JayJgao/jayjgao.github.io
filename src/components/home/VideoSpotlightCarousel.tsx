@@ -10,6 +10,7 @@ type Spotlight = {
   provider: "youtube" | "vimeo";
   videoId: string;
   title: string;
+  workTitle: string;
   caption: string;
   poster: string;
 };
@@ -27,8 +28,8 @@ export function VideoSpotlightCarousel() {
   const current = items[index] ?? items[0];
 
   const frameTitle = useMemo(
-    () => `${current?.title ?? "Spotlight"} (${index + 1}/${items.length})`,
-    [current?.title, index, items.length],
+    () => `${current?.workTitle ?? "Spotlight"} (${index + 1}/${items.length})`,
+    [current?.workTitle, index, items.length],
   );
 
   if (!current) return null;
@@ -40,10 +41,10 @@ export function VideoSpotlightCarousel() {
     <section className="space-y-4 md:space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs tracking-[0.18em] text-accent uppercase">Media Spotlight</p>
+          <p className="text-xs tracking-[0.18em] text-accent uppercase">Creative Spotlight</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">Watch First</h2>
           <p className="mt-1.5 text-xs text-muted md:mt-2 md:text-sm">
-            Featured 프로젝트를 영상 우선으로 탐색할 수 있도록 구성했습니다.
+            AI Filmmaking Showcase.
           </p>
         </div>
         <div className="flex items-center gap-2 self-start sm:self-auto">
@@ -70,7 +71,7 @@ export function VideoSpotlightCarousel() {
         </div>
         <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 md:mt-4">
           <div>
-            <h3 className="text-base font-medium text-white/95 md:text-lg">{current.title}</h3>
+            <h3 className="text-base font-medium text-white/95 md:text-lg">{current.workTitle}</h3>
             <p className="mt-1 text-xs text-muted md:text-sm">{current.caption}</p>
           </div>
           <Link href={`/projects/${current.slug}`} className="btn-primary text-xs md:text-sm">
@@ -100,8 +101,7 @@ export function VideoSpotlightCarousel() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
               </div>
               <div className="p-2.5 md:p-3">
-                <p className="line-clamp-1 text-xs font-medium text-white/90 md:text-sm">{item.title}</p>
-                <p className="mt-1 line-clamp-1 text-xs text-muted">{item.provider.toUpperCase()}</p>
+                <p className="line-clamp-2 text-xs font-medium text-white/90 md:text-sm whitespace-pre-line">{item.title}</p>
               </div>
             </button>
           ))}
