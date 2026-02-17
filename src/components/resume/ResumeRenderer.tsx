@@ -35,6 +35,24 @@ export function ResumeRenderer() {
         </div>
       </header>
 
+      <section className="mt-6 grid gap-3 md:grid-cols-3">
+        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
+          <p className="text-xs tracking-[0.14em] text-muted uppercase">Revenue</p>
+          <p className="mt-1 text-lg font-semibold">MRR 10x</p>
+          <p className="text-xs text-white/75">₩5M → ₩52M</p>
+        </div>
+        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
+          <p className="text-xs tracking-[0.14em] text-muted uppercase">Client Scale</p>
+          <p className="mt-1 text-lg font-semibold">25+ B2B clients</p>
+          <p className="text-xs text-white/75">KR / JP enterprise tracks</p>
+        </div>
+        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
+          <p className="text-xs tracking-[0.14em] text-muted uppercase">IP & Research</p>
+          <p className="mt-1 text-lg font-semibold">3 patents</p>
+          <p className="text-xs text-white/75">KSC publication + awards</p>
+        </div>
+      </section>
+
       <section className="mt-6">
         <SectionTitle>Summary</SectionTitle>
         <p className="mt-3 text-sm leading-relaxed text-white/85">{data.summary}</p>

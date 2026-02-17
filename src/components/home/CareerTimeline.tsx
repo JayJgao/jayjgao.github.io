@@ -3,7 +3,7 @@ const timeline = [
     era: "Era 1 · Before LLM (2018-2022)",
     color: "bg-[#f59e0b]",
     items: [
-      "Solidware (Ailiis) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
+      "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
       "Lunit — 비전 바이오마커 분석 SW 초기 기획",
     ],
   },

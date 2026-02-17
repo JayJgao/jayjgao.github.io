@@ -12,6 +12,7 @@
 2. [의사결정 히스토리](#2-의사결정-히스토리)
 3. [Phase 0: 프로젝트 셋업](#3-phase-0-프로젝트-셋업)
 4. [Phase 1: Core Structure (MVP)](#4-phase-1-core-structure-mvp)
+4.5. [Phase 1.5: UX & Asset Rework](#45-phase-15-ux--asset-rework)
 5. [Phase 2: Content Population](#5-phase-2-content-population)
 6. [Phase 3: Three.js & Interactivity](#6-phase-3-threejs--interactivity)
 7. [Phase 4: i18n (다국어)](#7-phase-4-i18n-다국어)
@@ -135,7 +136,7 @@
 
 ### 1.1 Layout & Navigation
 - [x] `Navbar.tsx` — 로고(Jay Ko) + 메뉴(Projects, About, Resume, Contact) + 다국어 토글(Phase 4에서 활성화)
-- [x] `Footer.tsx` — "Built with vibe coding (Claude Code + Cursor)" + 소셜 링크 + © 2026
+- [x] `Footer.tsx` — 미니멀 링크(GitHub/Email) + © 2026
 - [x] 페이지 전환 애니메이션 (Framer Motion `AnimatePresence`)
 - [x] 다크 모드 기본 (라이트 모드 토글은 Backlog)
 
@@ -198,6 +199,41 @@
 - [x] "Let's work together" 메시지
 
 **Phase 1 완료 기준**: 한국어로 모든 페이지가 동작하고, S2M 프로젝트 1개의 케이스 스터디가 완성. 모바일 반응형 확인.
+
+---
+
+## 4.5. Phase 1.5: UX & Asset Rework
+
+> **목표**: Phase 2 진입 전, 정보 밀도 축소 + 시인성 개선 + 에셋 계약 고정 + Mermaid 렌더 파이프라인 도입.
+
+### 1.5.1 Blocking Fixes
+- [x] Resume PDF 링크를 실제 파일명(`resume_ko.pdf`, `resume_en.pdf`)으로 동기화
+- [x] `hackathon-elevenlabs`를 Era 2 (`After LLM`)로 이동
+
+### 1.5.2 Mermaid Infra
+- [x] Mermaid 런타임 렌더 컴포넌트 추가 (`MermaidBlock`)
+- [x] MDX ` ```mermaid ` 코드블록 자동 매핑 레이어 추가
+- [x] Mermaid 다크 테마 스타일 추가
+- [x] source of truth 디렉토리 생성 (`src/content/diagrams/{slug}/*.mmd`)
+- [x] 폴백 SVG 규칙 도입 (`public/assets/diagrams/flows/*.svg`)
+
+### 1.5.3 Asset Contract Normalization
+- [x] Notion raw HTML/원본 에셋을 `.reference/notion-export/public-assets-raw/`로 이동
+- [x] 프로젝트 썸네일 10개를 slug 기반 webp로 재생성
+- [x] 대용량 영상 1건 웹 최적화(`solidware-marketing-demo-01.mp4`)
+- [x] 에셋 매핑 파일 추가 (`src/data/asset-manifest.json`)
+
+### 1.5.4 UX Rebuild
+- [x] Home 상단 영상 스포트라이트 캐러셀 추가
+- [x] Featured/Projects 카드 이미지 우선(상품형) 구조로 통일
+- [x] Footer의 `Built with vibe coding` 문구 제거
+- [x] About/Resume 역할 분리: About=브랜드, Resume=증빙
+
+### 1.5.5 Content Compression
+- [x] KO 프로젝트 MDX를 impact-first 압축형 문체로 리라이트
+- [x] `cinev-s2m`, `buzzni-shortform-ai`에 Mermaid 코드블록 삽입
+
+**Phase 1.5 완료 기준**: 홈/프로젝트 시인성 개선, Mermaid 렌더 동작, 썸네일 경로 일치, raw 에셋 비배포화 완료.
 
 ---
 
@@ -501,7 +537,8 @@ Languages: Korean (Native), Chinese (Business Fluent), English (Professional), J
 
 ```
 Phase 0: ✅ COMPLETED
-Phase 1: 🟨 IN PROGRESS
+Phase 1: ✅ COMPLETED
+Phase 1.5: ✅ COMPLETED
 Phase 2: ⬜ NOT STARTED
 Phase 3: ⬜ NOT STARTED
 Phase 4: ⬜ NOT STARTED
@@ -509,8 +546,8 @@ Phase 5: ⬜ NOT STARTED
 Phase 6: ⬜ NOT STARTED
 ```
 
-**Next Action**: Phase 1 잔여 항목 결정 (Contact Form 연동 vs mailto 유지) 후 Phase 2 착수
+**Next Action**: Phase 2 콘텐츠 보강 (EN/ZH resume 번역, 프로젝트 상세 아티팩트 확장) 착수
 
 ---
 
-*Last updated: 2026-02-16*
+*Last updated: 2026-02-17*

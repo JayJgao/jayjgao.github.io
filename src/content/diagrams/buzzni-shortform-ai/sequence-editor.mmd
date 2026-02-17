@@ -1,0 +1,9 @@
+sequenceDiagram
+  participant U as User
+  participant S as Studio
+  participant A as AI Engine
+  U->>S: Upload / Select Content
+  S->>A: Request Highlight + Cut Plan
+  A-->>S: Draft Clips
+  U->>S: Edit / Approve
+  S-->>U: Exported Shorts

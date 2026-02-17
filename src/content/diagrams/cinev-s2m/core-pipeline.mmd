@@ -1,0 +1,7 @@
+flowchart LR
+  Script[Script Input] --> Planner[LLM Planner]
+  Planner --> Scene[Scene Graph]
+  Scene --> Action[Action/Camera Agent]
+  Action --> Unreal[Unreal Runtime]
+  Unreal --> Review[Evaluation Loop]
+  Review --> Planner

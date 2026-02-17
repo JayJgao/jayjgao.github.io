@@ -15,12 +15,14 @@ Place static files under this directory so paths are stable in static export.
 - `images/projects/buzzni/`: Buzzni project images
 - `images/projects/solidware/`: Solidware project images
 - `images/projects/lunit/`: Lunit project images
-- `images/projects/hackathons/`: hackathon images
 - `images/projects/chroma/`: Chroma Awards images
 
 ## Diagrams
 - `diagrams/architecture/`: system architecture exports (PNG/SVG)
 - `diagrams/flows/`: flowcharts and process diagrams
+- Mermaid source of truth is **not** in `public/`.
+  - Use `src/content/diagrams/{slug}/*.mmd` for editable sources.
+  - Export fallback SVG/PNG into `public/assets/diagrams/...`.
 
 ## Media
 - `media/projects/`: project GIF/MP4 assets
@@ -28,8 +30,12 @@ Place static files under this directory so paths are stable in static export.
 
 ## Resume
 - `resume/`: downloadable resume PDFs
+  - `resume_ko.pdf`
+  - `resume_en.pdf`
 
 ## Suggested naming
 - Use lowercase kebab-case.
 - Include locale suffix only when needed: `*-ko`, `*-en`, `*-zh`.
 - Prefer WebP for images, PNG fallback if transparency/detail is required.
+- Project thumbnail contract: `{slug}-thumb.webp` (1200x675 recommended)
+- Project detail shot contract: `{slug}-shot-01.webp` (max width 1600)

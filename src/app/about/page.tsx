@@ -1,10 +1,12 @@
 import skills from "@/data/skills.json";
-import resumeKo from "@/data/resume.ko.json";
 
-const aboutParagraphs = [
-  "저는 \"새로운 산업 도메인에 AI를 적용하는 것\"에 가장 큰 에너지를 느끼는 AI 프로덕트 리더입니다.",
-  "핀테크에서 AutoML 솔루션을 일본 대기업에 판매하며 AI PM 커리어를 시작했고, 헬스케어에서 바이오마커 분석 소프트웨어를, 이커머스에서 LLM 기반 숏폼 영상 편집기와 쇼핑 챗봇을 만들었습니다. 현재는 생성형 AI와 3D 모션을 결합한 영상 제작 파이프라인을 설계하고 있습니다. Tabular ML → Computer Vision → LLM Agent → Motion AI — 매번 새로운 기술과 도메인으로 확장하면서도, 제로에서 팀을 빌딩하고 MRR을 10배 성장시킨 일관된 성과를 만들어왔습니다.",
-  "PM의 역할은 제품의 성공을 위해 \"문제\"를 식별하고 해결하는 모든 영역을 커버하는 것이라 생각합니다. 기획뿐 아니라 직접 바이브코딩으로 내부 도구를 만들고, 프롬프트를 설계하고, 고객 앞에 서서 영업하고, 팀을 조직하는 — End-to-end Problem Manager로서 일합니다.",
+const brandNarrative =
+  "도메인이 바뀌어도 성과를 내는 AI Product Leader를 지향합니다. Tabular ML에서 Vision, LLM Agent, Motion AI로 확장해오며 0→1 런칭과 수익화까지 연결해왔습니다.";
+
+const workPrinciples = [
+  "Impact-first: KPI가 선명한 문제만 풀고 실행 속도를 우선합니다.",
+  "Product + System: PRD와 UX뿐 아니라 데이터/스키마/API 설계까지 직접 연결합니다.",
+  "Build to Align: 바이브코딩 기반 프로토타입으로 팀 정렬과 의사결정을 빠르게 만듭니다.",
 ];
 
 export default function AboutPage() {
@@ -13,21 +15,46 @@ export default function AboutPage() {
       <section className="panel p-6 md:p-8">
         <p className="text-xs tracking-[0.16em] text-accent uppercase">Narrative</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight md:text-5xl">About</h1>
-        <div className="mt-6 space-y-4 text-base leading-relaxed text-white/85 md:text-lg">
-          {aboutParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
+          {brandNarrative}
+        </p>
+        <ul className="mt-5 space-y-2 text-sm text-white/85 md:text-base">
+          {workPrinciples.map((item) => (
+            <li key={item}>• {item}</li>
           ))}
-        </div>
+        </ul>
+        <p className="mt-5 text-sm text-muted">
+          상세 경력/성과 증빙은 Resume 페이지에서 확인할 수 있습니다.
+        </p>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-3">
+        <article className="panel p-5">
+          <h2 className="text-lg font-semibold tracking-tight">Core Metric</h2>
+          <p className="mt-3 text-sm text-white/90">MRR 10x growth</p>
+          <p className="text-xs text-muted">₩5M → ₩52M / AIaaS 사업부</p>
+        </article>
+        <article className="panel p-5">
+          <h2 className="text-lg font-semibold tracking-tight">Delivery Range</h2>
+          <p className="mt-3 text-sm text-white/90">25+ enterprise clients</p>
+          <p className="text-xs text-muted">Fintech · Ecommerce · GenAI</p>
+        </article>
+        <article className="panel p-5">
+          <h2 className="text-lg font-semibold tracking-tight">R&D Output</h2>
+          <p className="mt-3 text-sm text-white/90">3 ML patents</p>
+          <p className="text-xs text-muted">Applied AI productization</p>
+        </article>
       </section>
 
       <section className="panel p-6 md:p-8">
-        <h2 className="text-2xl font-semibold tracking-tight">Skills</h2>
-        <div className="mt-5 space-y-5">
+        <h2 className="text-2xl font-semibold tracking-tight">Capability Stack</h2>
+        <p className="mt-2 text-sm text-muted">핵심 키워드만 남기고 나머지는 Resume에서 상세 확인</p>
+        <div className="mt-5 grid gap-5 md:grid-cols-3">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category}>
               <h3 className="text-sm font-medium text-white/90">{category}</h3>
               <div className="mt-2 flex flex-wrap gap-2">
-                {items.map((item) => (
+                {items.slice(0, 6).map((item) => (
                   <span key={item} className="pill text-xs">
                     {item}
                   </span>
@@ -36,29 +63,6 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-2">
-        <article className="panel p-6">
-          <h2 className="text-xl font-semibold tracking-tight">Languages</h2>
-          <ul className="mt-4 space-y-2 text-sm text-white/85">
-            {resumeKo.languages.map((language) => (
-              <li key={language}>• {language}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="panel p-6">
-          <h2 className="text-xl font-semibold tracking-tight">Education & Achievements</h2>
-          <ul className="mt-4 space-y-2 text-sm text-white/85">
-            {resumeKo.education.map((item) => (
-              <li key={item}>• {item}</li>
-            ))}
-            {resumeKo.achievements.map((item) => (
-              <li key={item}>• {item}</li>
-            ))}
-          </ul>
-        </article>
       </section>
     </main>
   );

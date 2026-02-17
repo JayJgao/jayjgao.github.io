@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0b1220"/>
+  <text x="640" y="90" fill="#e5e7eb" font-size="34" text-anchor="middle" font-family="sans-serif">Shortform Sequence</text>
+  <g stroke="#64748b" stroke-width="2">
+    <line x1="240" y1="140" x2="240" y2="650"/>
+    <line x1="640" y1="140" x2="640" y2="650"/>
+    <line x1="1040" y1="140" x2="1040" y2="650"/>
+  </g>
+  <g fill="#cbd5e1" font-family="sans-serif" font-size="24" text-anchor="middle">
+    <text x="240" y="125">User</text>
+    <text x="640" y="125">Studio</text>
+    <text x="1040" y="125">AI Engine</text>
+  </g>
+  <g stroke="#38bdf8" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <line x1="260" y1="220" x2="620" y2="220"/>
+    <line x1="660" y1="320" x2="1020" y2="320"/>
+    <line x1="1020" y1="420" x2="660" y2="420"/>
+    <line x1="260" y1="520" x2="620" y2="520"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+</svg>

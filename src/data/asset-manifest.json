@@ -1,0 +1,72 @@
+{
+  "updatedAt": "2026-02-17",
+  "policy": {
+    "naming": "lowercase-kebab-case",
+    "thumbnail": "1200x675 webp",
+    "shot": "max-1600 webp",
+    "rawStorage": ".reference/notion-export/public-assets-raw"
+  },
+  "projects": [
+    {
+      "slug": "cinev-s2m",
+      "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp",
+      "shot": "/assets/images/projects/cinev/cinev-s2m-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/cinev/s2m"
+    },
+    {
+      "slug": "cinev-moai",
+      "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
+      "shot": "/assets/images/projects/cinev/cinev-moai-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/cinev/moai"
+    },
+    {
+      "slug": "chroma-awards",
+      "thumbnail": "/assets/images/projects/chroma/chroma-thumb.webp",
+      "shot": "/assets/images/projects/chroma/chroma-awards-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/chroma"
+    },
+    {
+      "slug": "buzzni-shortform-ai",
+      "thumbnail": "/assets/images/projects/buzzni/shortform-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-shortform-ai-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/featured/shortfrom_buzzni"
+    },
+    {
+      "slug": "buzzni-aiaas-biz",
+      "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-aiaas-biz-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
+    },
+    {
+      "slug": "solidware-mlaas",
+      "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
+      "shot": "/assets/images/projects/solidware/solidware-mlaas-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_mlaas"
+    },
+    {
+      "slug": "buzzni-chatbot",
+      "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_chatbot"
+    },
+    {
+      "slug": "solidware-automl",
+      "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
+      "shot": "/assets/images/projects/solidware/solidware-automl-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_automl"
+    },
+    {
+      "slug": "lunit-biomarker",
+      "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
+      "shot": "/assets/images/projects/lunit/lunit-biomarker-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/lunit/lunit_biomarker"
+    }
+  ],
+  "media": [
+    {
+      "slug": "solidware-marketing",
+      "file": "/assets/media/projects/solidware/solidware-marketing-demo-01.mp4",
+      "source": ".reference/notion-export/public-assets-raw/solidware/solidware_marketing"
+    }
+  ]
+}

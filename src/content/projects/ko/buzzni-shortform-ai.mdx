@@ -1,20 +1,43 @@
 ## 🚧 Problem
-롱폼 콘텐츠를 숏폼으로 빠르게 전환하는 편집 수요가 증가했지만 제작 비용이 높았습니다.
+롱폼을 숏폼으로 전환하는 워크플로우가 길고, 제작 단가가 높아 반복 운영이 어려웠습니다.
 
 ## 💡 Approach
-AI 기반 편집 파이프라인으로 주요 컷 추출, 요약, 리프레이밍을 자동화했습니다.
+생성/편집/배포를 하나의 제품 플로우로 연결해 운영자가 빠르게 반복할 수 있게 설계했습니다.
 
 ## ⚙️ Execution
-- 사용자 워크플로우 분석 후 0→1 제품 설계
-- 편집 품질 기준 및 프롬프트 전략 수립
-- 출시 후 운영 지표 기반 반복 개선
+- 핵심 화면(홈/스튜디오/프로젝트/아카이브) 기준 작업 단계를 재정의
+- 편집 흐름에서 이탈 구간을 제거하고 통합 컷편집 방향으로 개선
+- 운영 로그 기준 KPI 포인트를 이벤트 구조로 표준화
+
+```mermaid
+flowchart LR
+  Input[Long-form Input] --> Analyze[Auto Analyze]
+  Analyze --> Clip[Clip Draft]
+  Clip --> Edit[Edit + Template]
+  Edit --> Export[Short-form Export]
+  Export --> Archive[Archive/Reuse]
+```
+
+![Shortform flow fallback](/assets/diagrams/flows/buzzni-shortform-authoring-flow.svg)
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant S as Studio
+  participant A as AI Engine
+  U->>S: Upload / Select Content
+  S->>A: Request Highlight + Cut Plan
+  A-->>S: Draft Clips
+  U->>S: Edit / Approve
+  S-->>U: Exported Shorts
+```
+
+![Shortform sequence fallback](/assets/diagrams/flows/buzzni-shortform-sequence.svg)
 
 ## ✅ Results
-- Long→Short-form AI 비디오 편집기 출시
-- B2B2C 환경에서 운영 검증
+- Long→Short-form AI 편집기 0→1 출시
+- 실제 운영 환경에서 플로우 검증 및 제품 고도화
 
 ## 📎 Artifacts
-<details>
-  <summary>플로우차트/스크린샷 (Phase 2에서 추가)</summary>
-  <p>Mermaid/이미지 기반 자료를 업로드 예정입니다.</p>
-</details>
+- Diagram sources: `/src/content/diagrams/buzzni-shortform-ai/*.mmd`
+- Demo shot: `/assets/images/projects/buzzni/buzzni-shortform-ai-shot-01.webp`

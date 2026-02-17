@@ -14,7 +14,9 @@ export type Project = {
   role: string;
   contribution: number;
   tags: string[];
-  thumbnail?: string;
+  thumbnail: string;
+  primaryMetric?: string | null;
+  demoUrl?: string;
 };
 
 const projects = projectsJson as Project[];
