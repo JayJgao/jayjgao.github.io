@@ -1,7 +1,82 @@
 {
   "meta": {
-    "name": "高在贤",
-    "title": "AI Product Leader"
+    "name": "高在贤 (Jay Ko)",
+    "title": "AI Product Leader",
+    "subtitle": "6+ Years | Tabular ML -> Vision -> LLM Agent -> Motion AI",
+    "location": "Seoul, Korea",
+    "email": "rhwogus0205@gmail.com",
+    "website": "https://jayjgao.github.io",
+    "github": "https://github.com/JayJgao"
   },
-  "summary": "将在 Phase 2 完成"
+  "summary": "专注于将 AI 应用到新行业并实现产品化与规模化增长的 AI Product Leader。具备从战略、系统架构到落地执行的端到端能力，并持续交付可量化的业务结果。",
+  "experience": [
+    {
+      "company": "Cinamon (CineV)",
+      "role": "AI Tech Product Owner",
+      "period": "2025.04 - Present",
+      "highlights": [
+        "设计基于 LangChain 的 Film Agent，达成 LLM-to-Unreal 端到端集成",
+        "搭建 MOAI 评测平台并加速 model-to-product 周期：导入前 2 年仅 2 次集成 -> 导入后 5 个月完成 2 次集成（Locomotion, Text-to-Motion），并运营 6 次用户研究",
+        "引入外部模型路由平台，将模型接入周期从按周推进缩短到接近即时部署；完成 I2V、I2I、TTS、Music Gen 的架构与 API 设计",
+        "主导 CineV 上线策略中的 AI 方向（2026 年 1 月正式上线）"
+      ]
+    },
+    {
+      "company": "BUZZNI",
+      "role": "AI PM / Team Lead",
+      "period": "2023.04 - 2025.03",
+      "highlights": [
+        "从零搭建并带领 AIaaS 业务团队至 20 人规模",
+        "MRR 从 500 万韩元增长到 5,200 万韩元（10 倍），新增 12 家企业客户",
+        "完成两款产品从 0 到 1 上线：Long-to-Short AI 视频编辑器与电商购物助手聊天机器人"
+      ]
+    },
+    {
+      "company": "Dasan E&E",
+      "role": "Business Operations Manager",
+      "period": "2022.06 - 2023.03",
+      "highlights": [
+        "优化家族 HR 咨询业务运营并支持经营恢复",
+        "重构运营流程与执行机制"
+      ]
+    },
+    {
+      "company": "Lunit",
+      "role": "AI Product Manager",
+      "period": "2022.01 - 2022.04",
+      "highlights": [
+        "基于监管要求定义视觉生物标志物分析软件初版 PRD 与需求"
+      ]
+    },
+    {
+      "company": "Solidware (Ailys)",
+      "role": "AI PM / New Business Team Lead",
+      "period": "2018.12 - 2021.12",
+      "highlights": [
+        "获得 13 家日本企业客户（包括 Mitsubishi、AEON）",
+        "实现年营收同比增长 100%，销售触点增长 256%",
+        "累计获得 15 亿韩元政府课题经费"
+      ]
+    }
+  ],
+  "skills": {
+    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
+    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
+    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
+  },
+  "education": [
+    "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
+  ],
+  "achievements": [
+    "3 项 ML 专利",
+    "KSC 2023 论文发表",
+    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
+  ],
+  "languages": [
+    "Korean (Native)",
+    "Chinese (Business Fluent, HSK 6)",
+    "English (Professional)",
+    "Japanese (Basic)",
+    "Russian (Elementary)"
+  ]
 }

@@ -242,57 +242,57 @@
 > **목표**: 모든 프로젝트 콘텐츠(MDX)와 이력서 데이터(JSON) 완성.
 
 ### 2.1 Resume Data 작성
-- [ ] `data/resume.ko.json` — 시나몬 경험 추가, 최신화
-- [ ] `data/resume.en.json` — 영문 번역
-- [ ] `data/resume.zh.json` — 중문 번역
+- [x] `data/resume.ko.json` — 시나몬 경험 추가, 최신화
+- [x] `data/resume.en.json` — 영문 번역
+- [x] `data/resume.zh.json` — 중문 번역
 
 ### 2.2 Project MDX 작성 (한국어 우선)
 
 **Era 3: Generative AI Era (2025~)**
-- [ ] `cinev-s2m.mdx` — LLM Agent → Unreal 파이프라인 (⭐ Showcase)
+- [x] `cinev-s2m.mdx` — LLM Agent → Unreal 파이프라인 (⭐ Showcase)
   - Impact: 합류 3개월 내 첫 E2E 통합
   - Artifacts: 아키텍처 다이어그램 (직접 재구성), 프롬프트 설계 예시
-- [ ] `cinev-moai.mdx` — 모션 AI 평가 플랫폼 (⭐ Showcase)
-  - Impact: 8개월간 유저스터디 6회 + 모델 2건 (vs 이전 3년간 2건)
+- [x] `cinev-moai.mdx` — 모션 AI 평가 플랫폼 (⭐ Showcase)
+  - Impact: 5개월간 유저스터디 6회 + 모델 2건 (도입 전 2년 2건)
   - Artifacts: 평가 플랫폼 스크린샷/GIF, 유저스터디 설계
-- [ ] `cinev-a2p.mdx` — Off-the-shelf 모델 통합 전략
+- [x] `cinev-a2p.mdx` — Off-the-shelf 모델 통합 전략
   - Impact: I2V, I2I, TTS, Music Gen 통합 전략 수립
   - Artifacts: 스키마 설계, 통합 전략 문서
 
 **Era 2: After LLM (2023-2025)**
-- [ ] `buzzni-shortform-ai.mdx` — Long→Short-form AI 비디오 편집기 (⭐ Showcase)
+- [x] `buzzni-shortform-ai.mdx` — Long→Short-form AI 비디오 편집기 (⭐ Showcase)
   - Impact: 0→1 기획·출시·운영
   - Artifacts: 제품 스크린샷, Mermaid 플로우차트, 프롬프트 AS-IS/TO-BE
-- [ ] `buzzni-aiaas-biz.mdx` — AIaaS 사업부 빌딩 & 리딩 (⭐ Showcase)
+- [x] `buzzni-aiaas-biz.mdx` — AIaaS 사업부 빌딩 & 리딩 (⭐ Showcase)
   - Impact: MRR 500만→5,200만 원 (10x), 20명 팀빌딩, 12개 고객사
   - Artifacts: 제품 라인업, 가격 정책, 팀 구조, 챗봇·검색·리뷰 AIaaS 서브 프로젝트 포함
-- [ ] `buzzni-chatbot.mdx` — 이커머스 쇼핑 어시스턴트 챗봇 (Archive)
+- [x] `buzzni-chatbot.mdx` — 이커머스 쇼핑 어시스턴트 챗봇 (Archive)
   - Impact: 신규 서비스 0→1 기획~출시
   - Artifacts: 챗봇 대화 시나리오, EP 스키마
-- [ ] `buzzni-aiaas.mdx` — AIaaS 제품 라인업 (검색, 리뷰, 카테고리, 카탈로그)
+- [x] `buzzni-aiaas.mdx` — AIaaS 제품 라인업 (검색, 리뷰, 카테고리, 카탈로그)
   - Impact: MRR 2,800만 원, 12개 고객사
   - Artifacts: API 정책 문서, 가격 정책
 
 **Era 1: Before LLM (2018-2022)**
-- [ ] `solidware-mlaas.mdx` — 핀테크 MLaaS (⭐ Showcase)
+- [x] `solidware-mlaas.mdx` — 핀테크 MLaaS (⭐ Showcase)
   - Impact: 연매출 100% 신장, 일본 대기업 13개 클라이언트
   - Artifacts: AutoML 제품 소개, 마케팅 전략
-- [ ] `solidware-automl.mdx` — AutoML 신규 모듈 개발 (Archive)
-- [ ] `lunit-biomarker.mdx` — 비전 바이오마커 SW 초기 기획 (Archive)
+- [x] `solidware-automl.mdx` — AutoML 신규 모듈 개발 (Archive)
+- [x] `lunit-biomarker.mdx` — 비전 바이오마커 SW 초기 기획 (Archive)
 
 **Side Hustles**
-- [ ] `hackathon-elevenlabs.mdx` — Multi-persona Agentic AI 롤플레잉
-- [ ] `hackathon-meta-llama.mdx` — Text-to-Video Retrieval 3위 입상
-- [ ] `chroma-awards.mdx` — Fully AI-Generated Short Film, Sponsor Award Top 11 Finalist (ElevenLabs Chroma Awards 2025)
+- [x] `hackathon-elevenlabs.mdx` — scope에서 제외 (archive에서 제거)
+- [x] `hackathon-meta-llama.mdx` — Text-to-Video Retrieval 3위 입상
+- [x] `chroma-awards.mdx` — Fully AI-Generated Short Film, Sponsor Award Top 11 Finalist (ElevenLabs Chroma Awards 2025)
 
 ### 2.3 프로젝트 에셋 준비
-- [ ] CineV S2M 아키텍처 다이어그램 (직접 재구성)
-- [ ] CineV MOAI 플랫폼 스크린샷/GIF
-- [ ] CineV A2P 통합 스키마 다이어그램
-- [ ] Buzzni 숏폼 AI 제품 스크린샷 (보도자료 기반)
-- [ ] Buzzni 챗봇 대화 예시 스크린샷
-- [ ] Solidware AutoML 제품 이미지
-- [ ] 각 프로젝트 thumbnail 이미지 (1200x630, OG 비율)
+- [x] CineV S2M 아키텍처 다이어그램 (직접 재구성)
+- [x] CineV MOAI 플랫폼 스크린샷/GIF
+- [x] CineV A2P 통합 스키마 다이어그램
+- [x] Buzzni 숏폼 AI 제품 스크린샷 (보도자료 기반)
+- [x] Buzzni 챗봇 대화 예시 스크린샷
+- [x] Solidware AutoML 제품 이미지
+- [x] 각 프로젝트 thumbnail 이미지 (1200x630, OG 비율)
 
 ### 2.4 Archive 콘텐츠 정리
 - [ ] 프롬프트 모음 → `content/archive/ko/prompt-collection.mdx`
