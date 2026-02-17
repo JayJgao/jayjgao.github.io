@@ -1,6 +1,5 @@
 import projectsJson from "@/data/projects.json";
-
-export type Locale = "ko" | "en" | "zh";
+import type { Locale } from "@/lib/locale";
 
 export type Project = {
   slug: string;

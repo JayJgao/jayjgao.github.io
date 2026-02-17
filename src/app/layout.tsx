@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -19,9 +20,11 @@ export default function RootLayout({
     <html lang="ko" className="dark">
       <body className="antialiased">
         <div className="background-grid" aria-hidden="true" />
-        <Navbar />
-        <PageTransition>{children}</PageTransition>
-        <Footer />
+        <LocaleProvider>
+          <Navbar />
+          <PageTransition>{children}</PageTransition>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

@@ -33,8 +33,8 @@
     },
     {
       "slug": "buzzni-aiaas-biz",
-      "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-aiaas-biz-shot-01.webp",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
     },
     {
@@ -63,8 +63,8 @@
     },
     {
       "slug": "buzzni-branding-marketing",
-      "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-01.webp",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
+      "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
     },
     {
@@ -82,7 +82,13 @@
     {
       "slug": "cinev-ai-po-leadership",
       "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.webp",
+      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.jpg",
+      "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
+    },
+    {
+      "slug": "cinev-a2p",
+      "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
+      "shot": "/assets/images/projects/cinev/a2p-shot-01.png",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
     },
     {

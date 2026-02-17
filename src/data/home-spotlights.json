@@ -3,7 +3,8 @@
     "slug": "chroma-awards",
     "provider": "vimeo",
     "videoId": "1137973544",
-    "title": "Chroma Awards Finalist Reel",
+    "title": "Chorma Awards Top11 Finalist\nHappyend",
+    "workTitle": "Happyend",
     "caption": "Sponsor Award Top 11 Finalist 작품",
     "poster": "/assets/images/projects/chroma/chroma-happyend-thumb.webp"
   },
@@ -11,7 +12,8 @@
     "slug": "chroma-awards",
     "provider": "vimeo",
     "videoId": "1137947360",
-    "title": "Mystery Invitation",
+    "title": "Chroma Awards\nMistery Invitation",
+    "workTitle": "Mistery Invitation",
     "caption": "Chroma Awards Romance 트랙 본선 진출작",
     "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
   },
@@ -19,16 +21,18 @@
     "slug": "chroma-awards",
     "provider": "youtube",
     "videoId": "4ngeQ9EJew4",
-    "title": "GUHO AI Video",
-    "caption": "Generative directing workflow showcase",
+    "title": "WAIFF\nGUHO Advertisement",
+    "workTitle": "GUHO Advertisement",
+    "caption": "WAIFF 2026 광고부문 출품작",
     "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
   },
   {
     "slug": "chroma-awards",
     "provider": "youtube",
     "videoId": "hB03aGbuG04",
-    "title": "APEC AI 영상공모전",
-    "caption": "Narrative + motion composition sample",
+    "title": "APEC AI 영상 공모전\n다시 여기, 경주",
+    "workTitle": "다시 여기, 경주",
+    "caption": "2025APEC AI 영상 공모전 출품작",
     "poster": "/assets/images/projects/chroma/chroma-apec-thumb.webp"
   }
 ]
