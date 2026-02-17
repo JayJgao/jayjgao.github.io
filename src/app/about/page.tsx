@@ -1,7 +1,7 @@
 import skills from "@/data/skills.json";
 
 const brandNarrative =
-  "도메인이 바뀌어도 성과를 내는 AI Product Leader를 지향합니다. Tabular ML에서 Vision, LLM Agent, Motion AI로 확장해오며 0→1 런칭과 수익화까지 연결해왔습니다.";
+  "도메인이 바뀌어도 성과를 내는 AI Product Leader를 지향합니다.\nTabular ML에서 Vision, LLM Agent, Motion AI로 확장해오며 0→1 런칭과 수익화까지 연결해왔습니다.";
 
 const workPrinciples = [
   "Impact-first: KPI가 선명한 문제만 풀고 실행 속도를 우선합니다.",
@@ -15,7 +15,7 @@ export default function AboutPage() {
       <section className="panel p-6 md:p-8">
         <p className="text-xs tracking-[0.16em] text-accent uppercase">Narrative</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight md:text-5xl">About</h1>
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg whitespace-pre-line">
           {brandNarrative}
         </p>
         <ul className="mt-5 space-y-2 text-sm text-white/85 md:text-base">
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
       <section className="panel p-6 md:p-8">
         <h2 className="text-2xl font-semibold tracking-tight">Capability Stack</h2>
-        <p className="mt-2 text-sm text-muted">핵심 키워드만 남기고 나머지는 Resume에서 상세 확인</p>
+        <p className="mt-2 text-sm text-muted">Resume에서 상세 확인</p>
         <div className="mt-5 grid gap-5 md:grid-cols-3">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category}>
