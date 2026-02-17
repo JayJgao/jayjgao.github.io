@@ -5,7 +5,7 @@
     "videoId": "1137973544",
     "title": "Chroma Awards Finalist Reel",
     "caption": "Sponsor Award Top 11 Finalist 작품",
-    "poster": "/assets/images/projects/chroma/chroma-thumb.webp"
+    "poster": "/assets/images/projects/chroma/chroma-happyend-thumb.webp"
   },
   {
     "slug": "chroma-awards",
@@ -13,7 +13,7 @@
     "videoId": "1137947360",
     "title": "Mystery Invitation",
     "caption": "Chroma Awards Romance 트랙 본선 진출작",
-    "poster": "/assets/images/projects/chroma/chroma-awards-shot-01.webp"
+    "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
   },
   {
     "slug": "chroma-awards",
@@ -21,7 +21,7 @@
     "videoId": "4ngeQ9EJew4",
     "title": "GUHO AI Video",
     "caption": "Generative directing workflow showcase",
-    "poster": "/assets/images/projects/chroma/chroma-awards-shot-01.webp"
+    "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
   },
   {
     "slug": "chroma-awards",
@@ -29,6 +29,6 @@
     "videoId": "hB03aGbuG04",
     "title": "APEC AI 영상공모전",
     "caption": "Narrative + motion composition sample",
-    "poster": "/assets/images/projects/chroma/chroma-thumb.webp"
+    "poster": "/assets/images/projects/chroma/chroma-apec-thumb.webp"
   }
 ]

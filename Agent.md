@@ -346,7 +346,7 @@ const HeroSection = () => {
     "oneLiner": { "ko": "세계 최대 AI Film Competition에서 Sponsor Award Top 11 Finalist 선정", "en": "Top 11 Finalist at the world's largest AI Film Competition (ElevenLabs)" },
     "impact": { "ko": "Sponsor Award Top 11 Finalist (2025)", "en": "Sponsor Award Top 11 Finalist (2025)" },
     "tags": ["Generative AI", "AI Film", "Video Generation", "Creative AI"],
-    "thumbnail": "/assets/images/projects/chroma/chroma-thumb.webp",
+    "thumbnail": "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
     "company": "Side Project",
     "role": "Creator / Director",
     "contribution": 100
