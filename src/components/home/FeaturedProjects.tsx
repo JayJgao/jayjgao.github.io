@@ -14,25 +14,22 @@ const eraAccent: Record<number, string> = {
 
 const copyByLocale: Record<
   Locale,
-  { sectionLabel: string; title: string; viewAll: string; detail: string }
+  { sectionLabel: string; title: string; viewAll: string }
 > = {
   ko: {
     sectionLabel: "Featured Showcase",
     title: "Notable Projects",
     viewAll: "전체 보기",
-    detail: "케이스 스터디",
   },
   en: {
     sectionLabel: "Featured Showcase",
     title: "Notable Projects",
     viewAll: "View All",
-    detail: "Case Study",
   },
   zh: {
     sectionLabel: "精选项目",
     title: "产品化项目",
     viewAll: "查看全部",
-    detail: "案例详情",
   },
 };
 
@@ -74,23 +71,20 @@ export function FeaturedProjects() {
               </div>
             </div>
             <div className="space-y-2.5 p-4 md:space-y-3 md:p-5">
-              <h3 className="line-clamp-2 text-base font-semibold leading-snug text-white/95 md:text-lg">
-                {project.title[locale]}
-              </h3>
-              <p className="line-clamp-2 text-xs leading-relaxed text-white/80 md:text-sm">{project.oneLiner[locale]}</p>
-              <p className="text-xs text-muted">{project.company} · {project.role}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="pill text-[11px]">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="pt-1">
-                <Link href={`/projects/${project.slug}`} className="text-sm font-medium text-accent hover:underline">
-                  {copy.detail}
-                </Link>
-              </div>
+              <Link href={`/projects/${project.slug}`} className="block space-y-2.5 md:space-y-3">
+                <h3 className="line-clamp-2 text-base font-semibold leading-snug text-white/95 md:text-lg">
+                  {project.title[locale]}
+                </h3>
+                <p className="line-clamp-2 text-xs leading-relaxed text-white/80 md:text-sm">{project.oneLiner[locale]}</p>
+                <p className="text-xs text-muted">{project.company} · {project.role}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="pill text-[11px]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
             </div>
           </article>
         ))}

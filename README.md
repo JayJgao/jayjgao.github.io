@@ -4,7 +4,7 @@
 
 **AI Product Leader** | 6+ Years | Tabular → Vision → LLM → Motion AI
 
-🚧 **Under Construction** — Built with vibe coding (Claude Code + Cursor)
+🚧 **WIP**
 
 ## About
 
@@ -22,11 +22,6 @@ npm run dev        # http://localhost:3000
 npm run build      # Static export → /out
 npm run preview    # Preview static build locally
 ```
-
-## Documentation
-
-- [Agent.md](./Agent.md) — 프로젝트 지침서 (코딩 에이전트용)
-- [Planning.md](./Planning.md) — 로드맵 & 의사결정 히스토리
 
 ## Deploy
 

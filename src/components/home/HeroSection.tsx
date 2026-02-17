@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
-  { value: "MRR 10x", label: "사업 성장" },
+  { value: "MRR 10x", label: "Revenue Growth" },
   { value: "25+ B2B Clients", label: "Enterprise Delivery" },
   { value: "3 Patents", label: "IP Assets" },
 ];
@@ -33,10 +33,10 @@ export function HeroSection() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/projects" className="btn-primary">
-              프로젝트 보기
+              View Portfolio
             </Link>
             <Link href="/about" className="btn-secondary">
-              About 보기
+              About Me
             </Link>
           </div>
         </div>
