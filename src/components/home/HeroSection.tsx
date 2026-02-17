@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
-  { value: "LLM→Unreal", label: "E2E 통합" },
-  { value: "6 / 5개월", label: "MOAI 유저스터디" },
   { value: "MRR 10x", label: "사업 성장" },
+  { value: "25+ B2B Clients", label: "Enterprise Delivery" },
+  { value: "3 Patents", label: "IP Assets" },
 ];
 
 export function HeroSection() {
@@ -18,11 +18,9 @@ export function HeroSection() {
             고재현 <span className="text-white/65">(Jay Ko)</span>
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/90">
-            Tabular ML에서 생성형 비디오까지 — AI 제품을 만들고 스케일합니다.
+            Tabular ML에서 생성형 비디오까지 — AI 제품을 만들고 성장시킵니다.
           </p>
-          <p className="mt-3 text-sm text-muted">
-            6+ years, 제품 출시와 통합 속도 개선에 집중한 AI Product 리딩
-          </p>
+          <p className="mt-3 text-sm text-muted">6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력</p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {stats.map((stat) => (

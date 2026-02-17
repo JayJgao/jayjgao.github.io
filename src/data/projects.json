@@ -195,6 +195,114 @@
     "primaryMetric": "Shopping assistant launched"
   },
   {
+    "slug": "cinev-ai-po-leadership",
+    "era": 3,
+    "eraLabel": "Generative AI Era",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "AI PO Integration Leadership",
+      "en": "AI PO Integration Leadership",
+      "zh": "AI PO 统合领导"
+    },
+    "oneLiner": {
+      "ko": "Unreal·Web·LLM 3자 표준 통신 스펙 정의, 조직 AI Literacy 정렬 가속",
+      "en": "Defined 3-way Unreal-Web-LLM interface standards and accelerated AI literacy alignment",
+      "zh": "制定 Unreal/Web/LLM 三方通信标准并加速组织 AI 认知对齐"
+    },
+    "company": "Cinamon",
+    "role": "AI Tech PO",
+    "contribution": 40,
+    "tags": [
+      "System Integration",
+      "Architecture",
+      "AI Leadership"
+    ],
+    "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
+    "primaryMetric": "3-way integration spec standardized"
+  },
+  {
+    "slug": "buzzni-review-aiaas",
+    "era": 2,
+    "eraLabel": "After LLM",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "이커머스 리뷰분석 AIaaS",
+      "en": "E-commerce Review Analytics AIaaS",
+      "zh": "电商评论分析 AIaaS"
+    },
+    "oneLiner": {
+      "ko": "2개 고객사 납품 + GPT-4o 워크로드를 4o-mini로 최적화해 비용 절감",
+      "en": "Shipped to 2 clients and optimized GPT-4o workloads to 4o-mini for major cost savings",
+      "zh": "交付2家客户，并将 GPT-4o 工作负载优化到 4o-mini 以降低成本"
+    },
+    "company": "BUZZNI",
+    "role": "AI PM / Team Lead",
+    "contribution": 50,
+    "tags": [
+      "Review AI",
+      "Prompt Engineering",
+      "B2B SaaS"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
+    "primaryMetric": "2 clients + cost optimization"
+  },
+  {
+    "slug": "buzzni-search-aiaas",
+    "era": 2,
+    "eraLabel": "After LLM",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "이커머스 검색 AIaaS",
+      "en": "E-commerce Search AIaaS",
+      "zh": "电商搜索 AIaaS"
+    },
+    "oneLiner": {
+      "ko": "3개 고객사 검색 서비스 납품 + 7개 기업 PoC로 확장 파이프라인 구축",
+      "en": "Delivered search service to 3 clients and ran 7 enterprise PoCs for expansion",
+      "zh": "为3家客户交付搜索服务，并完成7家企业 PoC"
+    },
+    "company": "BUZZNI",
+    "role": "AI PM / Team Lead",
+    "contribution": 30,
+    "tags": [
+      "Search AI",
+      "Schema Design",
+      "API Strategy"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
+    "primaryMetric": "3 clients + 7 PoCs"
+  },
+  {
+    "slug": "buzzni-branding-marketing",
+    "era": 2,
+    "eraLabel": "After LLM",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "제품 브랜딩&마케팅",
+      "en": "Product Branding & Marketing",
+      "zh": "产品品牌与营销"
+    },
+    "oneLiner": {
+      "ko": "홍보 콘텐츠 제작, 외부 강연/부스 운영, 보도자료 운영까지 End-to-End 리드",
+      "en": "Led end-to-end promotion content, speaking events, expo booths, and PR coverage",
+      "zh": "端到端负责内容、演讲、展会展台与媒体宣传"
+    },
+    "company": "BUZZNI",
+    "role": "Product Marketing / PR",
+    "contribution": 100,
+    "tags": [
+      "Branding",
+      "PR",
+      "Content"
+    ],
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-thumb.webp",
+    "primaryMetric": "In-house branding and PR execution"
+  },
+  {
     "slug": "solidware-automl",
     "era": 1,
     "eraLabel": "Before LLM",
@@ -219,6 +327,33 @@
     ],
     "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
     "primaryMetric": "New AutoML module shipped"
+  },
+  {
+    "slug": "solidware-product-marketing",
+    "era": 1,
+    "eraLabel": "Before LLM",
+    "featured": false,
+    "showcaseOrder": null,
+    "title": {
+      "ko": "제품 마케팅",
+      "en": "Product Marketing",
+      "zh": "产品营销"
+    },
+    "oneLiner": {
+      "ko": "별도 조직 없이 제품 마케팅 체계 구축, 컨택포인트 256% 증가·신규 고객 13개 확보",
+      "en": "Built product marketing operations without a dedicated team: touchpoints +256%, 13 new clients",
+      "zh": "在无独立团队情况下搭建营销体系：触点 +256%，新增13家客户"
+    },
+    "company": "Ailys (Solidware)",
+    "role": "PMO / Product Marketing",
+    "contribution": 100,
+    "tags": [
+      "Go-to-Market",
+      "Event Marketing",
+      "B2B Sales"
+    ],
+    "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
+    "primaryMetric": "Touchpoints +256% / 13 new clients"
   },
   {
     "slug": "lunit-biomarker",

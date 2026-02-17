@@ -194,33 +194,6 @@ a {
   background: rgb(255 255 255 / 0.04);
 }
 
-.mermaid-block {
-  margin-top: 1rem;
-  border: 1px solid rgb(255 255 255 / 0.12);
-  border-radius: 0.8rem;
-  padding: 0.75rem;
-  background: rgb(8 13 24 / 0.82);
-  overflow-x: auto;
-}
-
-.mermaid-svg svg {
-  width: 100%;
-  height: auto;
-}
-
-.mermaid-source {
-  margin: 0;
-  color: rgb(229 231 235 / 0.9);
-  font-size: 0.8rem;
-  line-height: 1.6;
-}
-
-.mermaid-error {
-  margin-top: 0.6rem;
-  color: #fca5a5;
-  font-size: 0.78rem;
-}
-
 @media (max-width: 640px) {
   .page-container {
     width: min(1120px, 100% - 1.25rem);

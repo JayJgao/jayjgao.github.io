@@ -1,0 +1,22 @@
+## 🚧 Problem
+리뷰 데이터 수집 규격이 고객사마다 달라 운영 비용이 컸고, 요약 파이프라인의 LLM API 단가도 높았습니다.
+
+## 💡 Approach
+EP(Engine Paper) 규격과 API 스키마를 공용 계약으로 고정하고, 프롬프트 구조를 재설계해 비용 효율을 먼저 확보했습니다.
+
+## ⚙️ Execution
+- 리뷰/상품 데이터 공통 EP 포맷 정의 및 고객사 온보딩 가이드 문서화
+- 고객 사용 시나리오 기준으로 API 스키마를 재정리해 운영 정책 단순화
+- 요약 워크로드를 GPT-4o 중심에서 4o-mini 중심으로 전환
+- 2-프롬프트 처리 경로를 1-프롬프트로 통합해 토큰 비용 추가 절감
+
+![이커머스 리뷰분석 AIaaS 화면](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp)
+
+## ✅ Results
+- 2개 고객사 납품 완료 (현대홈쇼핑, 쇼핑엔티)
+- 기존 GPT-4o 기반 요약을 4o-mini로 전환해 비용 구조 최적화
+- 요청 단계를 단일 프롬프트로 축소해 운영 복잡도와 비용 동시 절감
+
+## 📎 Artifacts
+- Thumbnail: `/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp`
+- Shot: `/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp`
