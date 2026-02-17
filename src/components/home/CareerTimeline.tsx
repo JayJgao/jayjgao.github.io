@@ -29,20 +29,20 @@ const timeline = [
 
 export function CareerTimeline() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-5 md:space-y-6">
       <div>
-        <p className="text-xs tracking-[0.16em] text-accent uppercase">3-Era Narrative</p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">Career Timeline</h2>
+        <p className="section-kicker">3-Era Narrative</p>
+        <h2 className="editorial-title mt-2 text-3xl md:text-5xl">Career Timeline</h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3.5 md:space-y-4">
         {timeline.map((era) => (
-          <article key={era.era} className="panel p-5">
+          <article key={era.era} className="panel p-4 md:p-5">
             <div className="flex items-center gap-3">
               <span className={`h-2.5 w-2.5 rounded-full ${era.color}`} aria-hidden="true" />
-              <h3 className="text-lg font-medium">{era.era}</h3>
+              <h3 className="text-base font-medium text-white/92 md:text-lg">{era.era}</h3>
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-white/85">
+            <ul className="mt-3.5 space-y-2 text-sm leading-[1.8] text-white/84">
               {era.items.map((item) => (
                 <li key={item}>• {item}</li>
               ))}

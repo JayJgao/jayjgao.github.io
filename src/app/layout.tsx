@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="ko" className="dark">
       <body className="antialiased">
         <div className="background-grid" aria-hidden="true" />
+        <div className="grain-overlay fixed inset-0 -z-10" aria-hidden="true" />
         <LocaleProvider>
           <Navbar />
           <PageTransition>{children}</PageTransition>

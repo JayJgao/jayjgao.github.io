@@ -2,14 +2,14 @@ import { ResumeRenderer } from "@/components/resume/ResumeRenderer";
 
 export default function ResumePage() {
   return (
-    <main className="page-container space-y-6 py-10 md:py-14">
-      <header className="space-y-3">
-        <p className="text-xs tracking-[0.16em] text-accent uppercase">Resume</p>
-        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">Interactive Resume</h1>
-        <p className="max-w-2xl text-base text-muted md:text-lg">
-          웹 이력서와 다운로드 PDF를 동일한 기준으로 관리합니다.
+    <main className="page-container space-y-6 py-8 md:space-y-8 md:py-12">
+      <header className="space-y-3 md:space-y-4">
+        <p className="section-kicker">Resume</p>
+        <h1 className="editorial-title text-5xl md:text-6xl">Jay Ko Resume</h1>
+        <p className="max-w-2xl text-base leading-relaxed text-white/72 md:text-lg">
+          웹 이력서와 다운로드 PDF를 동일한 기준으로 관리하고 있습니다.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
+        <div className="flex flex-wrap gap-2.5 pt-1 md:gap-3">
           <a href="/assets/resume/resume_ko.pdf" className="btn-secondary">
             한국어 PDF 다운로드
           </a>

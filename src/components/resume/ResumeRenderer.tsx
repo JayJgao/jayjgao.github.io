@@ -16,7 +16,7 @@ const resumeByLocale: Record<Locale, ResumeData> = {
 
 function SectionTitle({ children }: { children: string }) {
   return (
-    <h2 className="text-xs font-semibold tracking-[0.16em] text-accent uppercase">
+    <h2 className="section-kicker">
       {children}
     </h2>
   );
@@ -27,14 +27,14 @@ export function ResumeRenderer() {
   const data = resumeByLocale[locale] as ResumeData;
 
   return (
-    <article className="panel p-6 md:p-8">
-      <header className="border-b border-white/10 pb-6">
-        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+    <article className="panel p-5 md:p-8">
+      <header className="border-b border-white/10 pb-6 md:pb-7">
+        <h1 className="editorial-title text-4xl md:text-5xl">
           {data.meta.name}
         </h1>
-        <p className="mt-2 text-lg text-white/90">{data.meta.title}</p>
-        <p className="mt-2 text-sm text-muted">{data.meta.subtitle}</p>
-        <div className="mt-4 flex flex-wrap gap-3 text-sm text-muted">
+        <p className="mt-2 text-xl text-white/90">{data.meta.title}</p>
+        <p className="mt-2 text-sm leading-relaxed text-white/68">{data.meta.subtitle}</p>
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/70">
           <span>{data.meta.location}</span>
           <a className="hover:text-white" href={`mailto:${data.meta.email}`}>
             {data.meta.email}
@@ -48,37 +48,37 @@ export function ResumeRenderer() {
         </div>
       </header>
 
-      <section className="mt-6 grid gap-3 md:grid-cols-3">
-        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
-          <p className="text-xs tracking-[0.14em] text-muted uppercase">Revenue</p>
-          <p className="mt-1 text-lg font-semibold">MRR 10x</p>
-          <p className="text-xs text-white/75">₩5M → ₩52M</p>
+      <section className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
+        <div className="rounded-xl border border-white/12 bg-white/6 p-4">
+          <p className="text-xs tracking-[0.14em] text-white/62 uppercase">Revenue</p>
+          <p className="display-kpi mt-1 text-2xl leading-none">MRR 10x</p>
+          <p className="mt-1 text-xs text-white/72">₩5M → ₩52M</p>
         </div>
-        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
-          <p className="text-xs tracking-[0.14em] text-muted uppercase">Client Scale</p>
-          <p className="mt-1 text-lg font-semibold">25+ B2B clients</p>
-          <p className="text-xs text-white/75">KR / JP enterprise tracks</p>
+        <div className="rounded-xl border border-white/12 bg-white/6 p-4">
+          <p className="text-xs tracking-[0.14em] text-white/62 uppercase">Client Scale</p>
+          <p className="display-kpi mt-1 text-2xl leading-none">25+ B2B clients</p>
+          <p className="mt-1 text-xs text-white/72">KR / JP enterprise tracks</p>
         </div>
-        <div className="rounded-xl border border-white/12 bg-white/5 p-4">
-          <p className="text-xs tracking-[0.14em] text-muted uppercase">IP & Research</p>
-          <p className="mt-1 text-lg font-semibold">3 patents</p>
-          <p className="text-xs text-white/75">KSC publication + awards</p>
+        <div className="rounded-xl border border-white/12 bg-white/6 p-4">
+          <p className="text-xs tracking-[0.14em] text-white/62 uppercase">IP & Research</p>
+          <p className="display-kpi mt-1 text-2xl leading-none">3 patents</p>
+          <p className="mt-1 text-xs text-white/72">KSC publication + awards</p>
         </div>
       </section>
 
-      <section className="mt-6">
+      <section className="mt-7 md:mt-8">
         <SectionTitle>Summary</SectionTitle>
-        <p className="mt-3 text-sm leading-relaxed text-white/85">{data.summary}</p>
+        <p className="mt-3 text-sm leading-[1.88] text-white/86">{data.summary}</p>
       </section>
 
-      <section className="mt-8 space-y-6">
+      <section className="mt-9 space-y-7">
         <SectionTitle>Experience</SectionTitle>
         {data.experience.map((item) => (
-          <div key={`${item.company}-${item.period}`} className="border-l border-white/15 pl-4">
-            <p className="text-sm text-muted">{item.period}</p>
-            <h3 className="mt-1 text-lg font-medium">{item.company}</h3>
-            <p className="text-sm text-white/75">{item.role}</p>
-            <ul className="mt-3 space-y-2 text-sm leading-relaxed text-white/85">
+          <div key={`${item.company}-${item.period}`} className="border-l border-white/15 pl-4 md:pl-5">
+            <p className="text-sm text-white/64">{item.period}</p>
+            <h3 className="mt-1 text-xl font-medium text-white/95">{item.company}</h3>
+            <p className="text-sm text-white/76">{item.role}</p>
+            <ul className="mt-3 space-y-2.5 text-sm leading-[1.82] text-white/86">
               {item.highlights.map((highlight) => (
                 <li key={highlight}>• {highlight}</li>
               ))}
@@ -87,13 +87,13 @@ export function ResumeRenderer() {
         ))}
       </section>
 
-      <section className="mt-8">
+      <section className="mt-9">
         <SectionTitle>Skills</SectionTitle>
-        <div className="mt-4 space-y-4">
+        <div className="mt-4 space-y-5">
           {Object.entries(data.skills).map(([category, items]) => (
             <div key={category}>
-              <h3 className="text-sm font-medium text-white/90">{category}</h3>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <h3 className="text-sm font-medium text-white/92">{category}</h3>
+              <div className="mt-2.5 flex flex-wrap gap-2.5">
                 {items.map((skill) => (
                   <span key={skill} className="pill text-xs">
                     {skill}
@@ -105,10 +105,10 @@ export function ResumeRenderer() {
         </div>
       </section>
 
-      <section className="mt-8 grid gap-6 md:grid-cols-2">
+      <section className="mt-9 grid gap-7 md:grid-cols-2">
         <div>
           <SectionTitle>Education</SectionTitle>
-          <ul className="mt-3 space-y-2 text-sm text-white/85">
+          <ul className="mt-3 space-y-2.5 text-sm leading-[1.8] text-white/86">
             {data.education.map((entry) => (
               <li key={entry}>• {entry}</li>
             ))}
@@ -116,7 +116,7 @@ export function ResumeRenderer() {
         </div>
         <div>
           <SectionTitle>Achievements</SectionTitle>
-          <ul className="mt-3 space-y-2 text-sm text-white/85">
+          <ul className="mt-3 space-y-2.5 text-sm leading-[1.8] text-white/86">
             {data.achievements.map((entry) => (
               <li key={entry}>• {entry}</li>
             ))}
@@ -124,9 +124,9 @@ export function ResumeRenderer() {
         </div>
       </section>
 
-      <section className="mt-8">
+      <section className="mt-9">
         <SectionTitle>Languages</SectionTitle>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-2.5">
           {data.languages.map((language) => (
             <span key={language} className="pill text-xs">
               {language}
