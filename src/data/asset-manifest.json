@@ -50,10 +50,40 @@
       "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_chatbot"
     },
     {
+      "slug": "buzzni-review-aiaas",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_review_aiaas"
+    },
+    {
+      "slug": "buzzni-search-aiaas",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-search-aiaas-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_search"
+    },
+    {
+      "slug": "buzzni-branding-marketing",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-thumb.webp",
+      "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
+    },
+    {
       "slug": "solidware-automl",
       "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
       "shot": "/assets/images/projects/solidware/solidware-automl-shot-01.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_automl"
+    },
+    {
+      "slug": "solidware-product-marketing",
+      "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
+      "shot": "/assets/images/projects/solidware/solidware-product-marketing-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_marketing"
+    },
+    {
+      "slug": "cinev-ai-po-leadership",
+      "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
+      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.webp",
+      "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
     },
     {
       "slug": "lunit-biomarker",

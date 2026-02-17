@@ -11,17 +11,7 @@
 - LLM 평가셋과 E2E 체크리스트를 운영 루프에 고정
 - LangChain 기반 Film Agent 오케스트레이션 레이어를 설계
 
-```mermaid
-flowchart LR
-  Script[Script Input] --> Planner[LLM Planner]
-  Planner --> Scene[Scene Graph]
-  Scene --> Action[Action/Camera Agent]
-  Action --> Unreal[Unreal Runtime]
-  Unreal --> Review[Evaluation Loop]
-  Review --> Planner
-```
-
-![S2M pipeline fallback](/assets/diagrams/flows/cinev-s2m-core.svg)
+![S2M pipeline](/assets/diagrams/flows/cinev-s2m-core.svg)
 
 ## ✅ Results
 - 합류 3개월 내 첫 LLM-to-Unreal E2E 통합
@@ -30,5 +20,4 @@ flowchart LR
 - 2026년 1월 CineV 공식 런칭 AI 파트 리딩 기반 마련
 
 ## 📎 Artifacts
-- Diagram source: `/src/content/diagrams/cinev-s2m/core-pipeline.mmd`
-- Fallback SVG: `/public/assets/diagrams/flows/cinev-s2m-core.svg`
+- Diagram SVG: `/public/assets/diagrams/flows/cinev-s2m-core.svg`

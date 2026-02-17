@@ -2,7 +2,6 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { CaseStudy } from "@/components/projects/CaseStudy";
 import { getAllProjectSlugs, getAllProjects, getProjectBySlug } from "@/lib/projects";
 
@@ -41,7 +40,6 @@ export default async function ProjectDetailPage({
 
   const { content } = await compileMDX({
     source,
-    components: mdxComponents,
     options: {
       parseFrontmatter: true,
     },
