@@ -9,14 +9,14 @@
   "projects": [
     {
       "slug": "cinev-s2m",
-      "thumbnail": "/assets/images/projects/cinev/s2m-thumb.webp",
+      "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
       "shot": "/assets/images/projects/cinev/cinev-s2m-shot-01.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/cinev/s2m"
     },
     {
       "slug": "cinev-moai",
       "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
-      "shot": "/assets/images/projects/cinev/cinev-moai-shot-01.webp",
+      "shot": "/assets/images/projects/cinev/cinev-moai-shot-02.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/cinev/moai"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "slug": "buzzni-shortform-ai",
-      "thumbnail": "/assets/images/projects/buzzni/shortform-thumb.webp",
+      "thumbnail": "/assets/images/projects/buzzni/shortform-shot-02.webp",
       "shot": "/assets/images/projects/buzzni/buzzni-shortform-ai-shot-01.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/featured/shortfrom_buzzni"
     },
@@ -82,7 +82,7 @@
     {
       "slug": "cinev-ai-po-leadership",
       "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.jpg",
+      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
     },
     {
