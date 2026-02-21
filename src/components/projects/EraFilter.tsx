@@ -4,9 +4,9 @@ type EraFilterValue = "all" | "1" | "2" | "3";
 
 const options: Array<{ value: EraFilterValue; label: string }> = [
   { value: "all", label: "All" },
-  { value: "1", label: "Before LLM" },
-  { value: "2", label: "After LLM" },
-  { value: "3", label: "Generative AI Era" },
+  { value: "1", label: "Classical ML (2018-2022)" },
+  { value: "2", label: "LLM Application (2023-2024)" },
+  { value: "3", label: "Generative AI Native (2025~)" },
 ];
 
 export function EraFilter({

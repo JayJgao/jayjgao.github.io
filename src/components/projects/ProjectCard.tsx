@@ -3,10 +3,16 @@ import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import type { Locale } from "@/lib/locale";
 
-const eraClass: Record<number, string> = {
-  1: "text-[#f59e0b]",
-  2: "text-[#38bdf8]",
-  3: "text-[#34d399]",
+const eraChipClass: Record<number, string> = {
+  1: "project-era-chip--era1",
+  2: "project-era-chip--era2",
+  3: "project-era-chip--era3",
+};
+
+const eraChipLabel: Record<number, string> = {
+  1: "Classical ML Era",
+  2: "LLM Application Era",
+  3: "Generative AI Native Era",
 };
 
 const contributionLabel: Record<Locale, string> = {
@@ -29,10 +35,10 @@ export function ProjectCard({ project, locale }: { project: Project; locale: Loc
         <div className="absolute left-3 top-3">
           <span className="metric-chip">{project.primaryMetric ?? `${project.contribution}% ownership`}</span>
         </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-          <div className="flex items-center justify-between gap-3 text-xs">
-            <span className={`tracking-[0.14em] uppercase ${eraClass[project.era]}`}>{project.eraLabel}</span>
-            <span className="text-white/80">{project.company}</span>
+        <div className="project-image-meta">
+          <div className="project-image-meta-row">
+            <span className={`project-era-chip ${eraChipClass[project.era]}`}>{eraChipLabel[project.era]}</span>
+            <span className="project-company-chip">{project.company}</span>
           </div>
         </div>
       </div>
