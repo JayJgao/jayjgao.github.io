@@ -1,6 +1,6 @@
 const timeline = [
   {
-    era: "Era 1 · Before LLM (2018-2022)",
+    era: "Era 1 · Classical ML (2018-2022)",
     color: "bg-[#f59e0b]",
     items: [
       "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
@@ -8,16 +8,16 @@ const timeline = [
     ],
   },
   {
-    era: "Era 2 · After LLM (2023-2025)",
+    era: "Era 2 · LLM Application (2023-2024)",
     color: "bg-[#38bdf8]",
     items: [
       "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-      "Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
-      "Dasan E&E — 사업운영 고도화 및 경영정상화 지원",
+      "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
+      "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
     ],
   },
   {
-    era: "Era 3 · Generative AI Era (2025~)",
+    era: "Era 3 · Generative AI Native (2025~)",
     color: "bg-[#34d399]",
     items: [
       "Cinamon CineV S2M — LLM Agent to Unreal E2E 통합",

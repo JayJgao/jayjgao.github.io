@@ -6,10 +6,16 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getFeaturedProjects } from "@/lib/projects";
 import type { Locale } from "@/lib/locale";
 
-const eraAccent: Record<number, string> = {
-  1: "text-[#f59e0b]",
-  2: "text-[#38bdf8]",
-  3: "text-[#34d399]",
+const eraChipClass: Record<number, string> = {
+  1: "project-era-chip--era1",
+  2: "project-era-chip--era2",
+  3: "project-era-chip--era3",
+};
+
+const eraChipLabel: Record<number, string> = {
+  1: "Classical ML Era",
+  2: "LLM Application Era",
+  3: "Generative AI Native Era",
 };
 
 const copyByLocale: Record<
@@ -64,10 +70,11 @@ export function FeaturedProjects() {
               <div className="absolute left-3 top-3">
                 <span className="metric-chip">{project.primaryMetric ?? `기여 ${project.contribution}%`}</span>
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3">
-                <span className={`text-[11px] tracking-[0.14em] uppercase ${eraAccent[project.era]}`}>
-                  {project.eraLabel}
-                </span>
+              <div className="project-image-meta">
+                <div className="project-image-meta-row">
+                  <span className={`project-era-chip ${eraChipClass[project.era]}`}>{eraChipLabel[project.era]}</span>
+                  <span className="project-company-chip">{project.company}</span>
+                </div>
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-between space-y-2.5 p-4 md:space-y-3 md:p-5">
@@ -78,7 +85,7 @@ export function FeaturedProjects() {
                 <p className="line-clamp-2 min-h-[2.2rem] text-sm leading-relaxed text-white/82">
                   {project.oneLiner[locale]}
                 </p>
-                <p className="text-xs text-white/68">{project.company} · {project.role}</p>
+                <p className="text-xs text-white/68">{project.role}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.slice(0, 3).map((tag) => (
                     <span key={tag} className="pill text-[11px]">
