@@ -2,8 +2,166 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
-    "resume": "Resume",
-    "contact": "Contact"
+    "projects": "Portfolio",
+    "resume": "Resume"
+  },
+  "common": {
+    "website": "Website",
+    "github": "GitHub",
+    "email": "Email",
+    "projectsUnit": "projects"
+  },
+  "home": {
+    "hero": {
+      "kicker": "AI Product Leader",
+      "name": "Jay Ko",
+      "alias": "Ko Jaehyun",
+      "headline": "Building and scaling AI products\n—from tabular ML to generative video.",
+      "subheadline": "6+ years leading AI product planning, launch, and scale across domains",
+      "ctaPortfolio": "View Portfolio",
+      "ctaResume": "View Resume",
+      "profileAlt": "Jay Ko profile photo",
+      "stats": [
+        {
+          "value": "MRR 10x",
+          "label": "Revenue Growth"
+        },
+        {
+          "value": "25+ B2B Clients",
+          "label": "Enterprise Delivery"
+        },
+        {
+          "value": "3 Patents",
+          "label": "IP Assets"
+        }
+      ]
+    },
+    "featured": {
+      "sectionLabel": "Featured Showcase",
+      "title": "Notable Projects",
+      "viewAll": "View All",
+      "metricFallbackPrefix": "Contribution"
+    },
+    "spotlight": {
+      "kicker": "Creative Spotlight",
+      "title": "Watch First",
+      "subtitle": "AI Filmmaking Showcase.",
+      "prev": "Prev",
+      "next": "Next",
+      "prevAria": "Previous spotlight",
+      "nextAria": "Next spotlight",
+      "relatedProject": "View Related Project",
+      "selectPrefix": "Select",
+      "frameFallback": "Spotlight",
+      "posterAltSuffix": "poster"
+    },
+    "timeline": {
+      "kicker": "3-Era Narrative",
+      "title": "Career Timeline",
+      "eras": {
+        "era1": {
+          "label": "Era 1 · Classical ML (2018-2022)",
+          "items": [
+            "Solidware (Ailys) — Won 13 Japanese enterprise clients, YoY revenue +100%",
+            "Lunit — Early product planning for vision biomarker analysis software"
+          ]
+        },
+        "era2": {
+          "label": "Era 2 · LLM Application (2023-2024)",
+          "items": [
+            "BUZZNI — Built AIaaS unit from 0 to 20 members, MRR 10x growth",
+            "BUZZNI — Launched Long→Short-form AI video editor and shopping assistant chatbot",
+            "Dasan E&E — Integrated AI task development workflow for business efficiency and recovery support"
+          ]
+        },
+        "era3": {
+          "label": "Era 3 · Generative AI Native (2025~)",
+          "items": [
+            "Cinamon CineV S2M — LLM Agent to Unreal E2E integration",
+            "Cinamon MOAI — Built Motion AI evaluation platform",
+            "Chroma Awards — Sponsor Award Top 11 Finalist"
+          ]
+        }
+      }
+    }
+  },
+  "about": {
+    "motivationKicker": "What Moves Me",
+    "images": {
+      "opening": "Domain expansion narrative image",
+      "markets": "Three languages and three markets image",
+      "motivation": "AI creative motivation image",
+      "working": "Working style image"
+    }
+  },
+  "projects": {
+    "page": {
+      "kicker": "Portfolio",
+      "title": "Projects",
+      "description": "Projects are organized by the 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+    },
+    "explorer": {
+      "featuredTitle": "Featured",
+      "featuredDescription": "Only high-signal projects are highlighted first.",
+      "archiveTitle": "Archive",
+      "archiveDescription": "Execution history and domain expansion tracks.",
+      "emptyFeatured": "No featured projects in the selected era.",
+      "emptyArchive": "No archive projects in the selected era."
+    },
+    "filter": {
+      "all": "All",
+      "era1": "Classical ML (2018-2022)",
+      "era2": "LLM Application (2023-2024)",
+      "era3": "Generative AI Native (2025~)"
+    },
+    "card": {
+      "contributionLabel": "Contribution",
+      "metricFallbackPrefix": "Contribution",
+      "thumbnailAltSuffix": "thumbnail"
+    },
+    "eras": {
+      "era1": "Classical ML Era",
+      "era2": "LLM Application Era",
+      "era3": "Generative AI Native Era"
+    },
+    "caseStudy": {
+      "role": "Role",
+      "company": "Company",
+      "contribution": "Contribution",
+      "firstProject": "First project",
+      "lastProject": "Last project",
+      "backToList": "Back to project list"
+    }
+  },
+  "resume": {
+    "page": {
+      "kicker": "Resume",
+      "title": "Jay Ko Resume",
+      "description": "The web resume and downloadable PDFs are maintained with the same standard.",
+      "downloadKo": "Download Korean PDF",
+      "downloadEn": "Download English PDF"
+    },
+    "renderer": {
+      "website": "Website",
+      "github": "GitHub",
+      "revenue": "Revenue",
+      "clientScale": "Client Scale",
+      "ipResearch": "IP & Research",
+      "summary": "Summary",
+      "experience": "Experience",
+      "skills": "Skills",
+      "education": "Education",
+      "achievements": "Achievements",
+      "languages": "Languages"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you requested could not be found.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "brand": "Jay Ko Portfolio",
+    "copyright": "© 2026 Jay Ko"
   }
 }

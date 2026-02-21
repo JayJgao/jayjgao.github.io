@@ -2,8 +2,166 @@
   "nav": {
     "home": "首页",
     "about": "关于",
-    "projects": "项目",
-    "resume": "简历",
-    "contact": "联系"
+    "projects": "作品集",
+    "resume": "简历"
+  },
+  "common": {
+    "website": "网站",
+    "github": "GitHub",
+    "email": "邮箱",
+    "projectsUnit": "项目"
+  },
+  "home": {
+    "hero": {
+      "kicker": "AI Product Leader",
+      "name": "Jay Ko",
+      "alias": "高在贤",
+      "headline": "从表格机器学习到生成式视频\n— 持续打造并规模化 AI 产品。",
+      "subheadline": "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
+      "ctaPortfolio": "查看作品集",
+      "ctaResume": "查看简历",
+      "profileAlt": "Jay Ko 头像",
+      "stats": [
+        {
+          "value": "MRR 10x",
+          "label": "营收增长"
+        },
+        {
+          "value": "25+ B2B Clients",
+          "label": "企业交付"
+        },
+        {
+          "value": "3 Patents",
+          "label": "知识产权"
+        }
+      ]
+    },
+    "featured": {
+      "sectionLabel": "精选展示",
+      "title": "代表项目",
+      "viewAll": "查看全部",
+      "metricFallbackPrefix": "贡献"
+    },
+    "spotlight": {
+      "kicker": "创作聚焦",
+      "title": "先看这个",
+      "subtitle": "AI 电影创作展示。",
+      "prev": "上一个",
+      "next": "下一个",
+      "prevAria": "上一个精选视频",
+      "nextAria": "下一个精选视频",
+      "relatedProject": "查看相关项目",
+      "selectPrefix": "选择",
+      "frameFallback": "精选",
+      "posterAltSuffix": "海报"
+    },
+    "timeline": {
+      "kicker": "三阶段叙事",
+      "title": "职业时间线",
+      "eras": {
+        "era1": {
+          "label": "阶段 1 · Classical ML (2018-2022)",
+          "items": [
+            "Solidware (Ailys) — 拿下 13 家日本企业客户，年营收同比增长 100%",
+            "Lunit — 视觉生物标志物分析软件早期产品规划"
+          ]
+        },
+        "era2": {
+          "label": "阶段 2 · LLM Application (2023-2024)",
+          "items": [
+            "BUZZNI — AIaaS 事业部从 0 到 20 人，MRR 增长 10 倍",
+            "BUZZNI — 上线 Long→Short-form AI 视频编辑器与购物助手聊天机器人",
+            "Dasan E&E — 整合 AI 课题开发流程，提升业务效率并支持经营恢复"
+          ]
+        },
+        "era3": {
+          "label": "阶段 3 · Generative AI Native (2025~)",
+          "items": [
+            "Cinamon CineV S2M — 完成 LLM Agent 到 Unreal 的 E2E 集成",
+            "Cinamon MOAI — 搭建 Motion AI 评测平台",
+            "Chroma Awards — Sponsor Award Top 11 Finalist"
+          ]
+        }
+      }
+    }
+  },
+  "about": {
+    "motivationKicker": "驱动我的东西",
+    "images": {
+      "opening": "领域拓展叙事图像",
+      "markets": "三种语言与三大市场图像",
+      "motivation": "AI 创作动机图像",
+      "working": "协作方式图像"
+    }
+  },
+  "projects": {
+    "page": {
+      "kicker": "作品集",
+      "title": "项目",
+      "description": "项目基于三阶段叙事进行组织。\n阶段 1: Classical ML，阶段 2: LLM Application，阶段 3: Generative AI Native。"
+    },
+    "explorer": {
+      "featuredTitle": "精选",
+      "featuredDescription": "优先展示核心成果最清晰的项目。",
+      "archiveTitle": "归档",
+      "archiveDescription": "累计执行记录与领域扩展轨迹。",
+      "emptyFeatured": "所选阶段下没有精选项目。",
+      "emptyArchive": "所选阶段下没有归档项目。"
+    },
+    "filter": {
+      "all": "全部",
+      "era1": "Classical ML (2018-2022)",
+      "era2": "LLM Application (2023-2024)",
+      "era3": "Generative AI Native (2025~)"
+    },
+    "card": {
+      "contributionLabel": "贡献度",
+      "metricFallbackPrefix": "贡献",
+      "thumbnailAltSuffix": "缩略图"
+    },
+    "eras": {
+      "era1": "Classical ML 阶段",
+      "era2": "LLM Application 阶段",
+      "era3": "Generative AI Native 阶段"
+    },
+    "caseStudy": {
+      "role": "角色",
+      "company": "公司",
+      "contribution": "贡献度",
+      "firstProject": "第一个项目",
+      "lastProject": "最后一个项目",
+      "backToList": "返回项目列表"
+    }
+  },
+  "resume": {
+    "page": {
+      "kicker": "简历",
+      "title": "Jay Ko Resume",
+      "description": "网页简历与可下载 PDF 采用同一标准维护。",
+      "downloadKo": "下载韩文 PDF",
+      "downloadEn": "Download English PDF"
+    },
+    "renderer": {
+      "website": "网站",
+      "github": "GitHub",
+      "revenue": "营收",
+      "clientScale": "客户规模",
+      "ipResearch": "知识产权与研究",
+      "summary": "概述",
+      "experience": "经历",
+      "skills": "技能",
+      "education": "教育",
+      "achievements": "成就",
+      "languages": "语言"
+    }
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "未找到你请求的页面。",
+    "backHome": "返回首页"
+  },
+  "footer": {
+    "brand": "Jay Ko Portfolio",
+    "copyright": "© 2026 Jay Ko"
   }
 }

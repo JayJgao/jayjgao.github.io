@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getMessages } from "@/lib/i18n";
 import type { Project } from "@/lib/projects";
 import type { Locale } from "@/lib/locale";
 
@@ -9,31 +10,28 @@ const eraChipClass: Record<number, string> = {
   3: "project-era-chip--era3",
 };
 
-const eraChipLabel: Record<number, string> = {
-  1: "Classical ML Era",
-  2: "LLM Application Era",
-  3: "Generative AI Native Era",
-};
-
-const contributionLabel: Record<Locale, string> = {
-  ko: "기여도",
-  en: "Contribution",
-  zh: "贡献度",
-};
-
 export function ProjectCard({ project, locale }: { project: Project; locale: Locale }) {
+  const copy = getMessages(locale).projects;
+  const eraChipLabel: Record<number, string> = {
+    1: copy.eras.era1,
+    2: copy.eras.era2,
+    3: copy.eras.era3,
+  };
+
   return (
     <article className="panel project-card group flex h-full flex-col overflow-hidden p-0">
       <div className="relative">
         <Image
           src={project.thumbnail}
-          alt={`${project.title[locale]} thumbnail`}
+          alt={`${project.title[locale]} ${copy.card.thumbnailAltSuffix}`}
           width={1200}
           height={675}
           className="project-image h-44 w-full object-cover md:h-48"
         />
         <div className="absolute left-3 top-3">
-          <span className="metric-chip">{project.primaryMetric ?? `${project.contribution}% ownership`}</span>
+          <span className="metric-chip">
+            {project.primaryMetric ?? `${copy.card.metricFallbackPrefix} ${project.contribution}%`}
+          </span>
         </div>
         <div className="project-image-meta">
           <div className="project-image-meta-row">
@@ -58,7 +56,7 @@ export function ProjectCard({ project, locale }: { project: Project; locale: Loc
         </Link>
 
         <div className="mt-auto flex items-center justify-between rounded-xl border border-white/12 bg-white/5 px-3 py-2">
-          <span className="text-[11px] tracking-[0.14em] text-white/68 uppercase">{contributionLabel[locale]}</span>
+          <span className="text-[11px] tracking-[0.14em] text-white/68 uppercase">{copy.card.contributionLabel}</span>
           <span className="text-sm font-semibold text-white/95">{project.contribution}%</span>
         </div>
       </div>

@@ -1,0 +1,44 @@
+{
+  "title": "About Jay Ko",
+  "opening": {
+    "quote": "I do not fear stepping into new domains. In fact, that is how I operate.",
+    "body": [
+      "I studied theatre direction in Korea, then moved to Tsinghua University with one conviction: I needed to experience a wider world. I wrote my thesis in Chinese and became the first international student in the department to receive the top thesis award. My first career chapter after returning was in fintech AutoML. Then came medical AI, then e-commerce LLM, and now generative video and motion.",
+      "Each domain shift felt unfamiliar for the first three months, but that unfamiliarity consistently produced one question: \"Why is this built this way?\" That question has repeatedly led to tangible outcomes."
+    ]
+  },
+  "markets": {
+    "kicker": "Three Languages, Three Markets",
+    "intro": "The markets I can work with are not limited to Korea.",
+    "items": [
+      {
+        "language": "Chinese (HSK 6, Business Fluent)",
+        "detail": "Four years at Tsinghua. Classes, thesis, and daily life were all in Chinese. I did not just learn a language; I learned a way of thinking. As China remains a major axis in AI, I read it as real opportunity."
+      },
+      {
+        "language": "English (Business Professional)",
+        "detail": "Global hackathons and the world's largest AI film competition taught me to communicate in high-context environments where nuance matters more than literal wording."
+      },
+      {
+        "language": "Japanese (Business Basic)",
+        "detail": "While securing Mitsubishi, AEON, and Japan Post Bank as clients, I led product planning and marketing execution. It gave me direct exposure to the texture of Japanese business culture."
+      }
+    ]
+  },
+  "motivation": {
+    "body": [
+      "I am both a PM who uses AI as a tool and a creator who makes films with AI. Chroma Awards Top 11 Finalist was not just an award line, but an experiment to prove that AI can push human creativity further.",
+      "I do not see AI as a productivity utility alone. I see it as a partner that helps us reach expressive territories that are difficult to access alone."
+    ],
+    "belief": "That belief is why I love this work."
+  },
+  "workingWithMe": {
+    "kicker": "Working with Me",
+    "lead": "Clarity first. Then speed.",
+    "principles": [
+      "I prioritize understanding market and product context first. I do not execute under ambiguity.",
+      "Wherever bottlenecks appear, I step in and move cycles forward, across product, sales, and team operations.",
+      "I prototype first with vibe coding to align stakeholders quickly and make decisions tangible."
+    ]
+  }
+}

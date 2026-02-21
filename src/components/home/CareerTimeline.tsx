@@ -1,49 +1,39 @@
-const timeline = [
-  {
-    era: "Era 1 · Classical ML (2018-2022)",
-    color: "bg-[#f59e0b]",
-    items: [
-      "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
-      "Lunit — 비전 바이오마커 분석 SW 초기 기획",
-    ],
-  },
-  {
-    era: "Era 2 · LLM Application (2023-2024)",
-    color: "bg-[#38bdf8]",
-    items: [
-      "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-      "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
-      "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
-    ],
-  },
-  {
-    era: "Era 3 · Generative AI Native (2025~)",
-    color: "bg-[#34d399]",
-    items: [
-      "Cinamon CineV S2M — LLM Agent to Unreal E2E 통합",
-      "Cinamon MOAI — 모션 AI 평가 플랫폼 구축",
-      "Chroma Awards — Sponsor Award Top 11 Finalist",
-    ],
-  },
-];
+"use client";
+
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getMessages } from "@/lib/i18n";
+
+const eraColors = {
+  era1: "bg-[#f59e0b]",
+  era2: "bg-[#38bdf8]",
+  era3: "bg-[#34d399]",
+} as const;
 
 export function CareerTimeline() {
+  const { locale } = useLocale();
+  const copy = getMessages(locale).home.timeline;
+  const timeline = [
+    { key: "era1", color: eraColors.era1, data: copy.eras.era1 },
+    { key: "era2", color: eraColors.era2, data: copy.eras.era2 },
+    { key: "era3", color: eraColors.era3, data: copy.eras.era3 },
+  ] as const;
+
   return (
     <section className="space-y-5 md:space-y-6">
       <div>
-        <p className="section-kicker">3-Era Narrative</p>
-        <h2 className="editorial-title mt-2 text-3xl md:text-5xl">Career Timeline</h2>
+        <p className="section-kicker">{copy.kicker}</p>
+        <h2 className="editorial-title mt-2 text-3xl md:text-5xl">{copy.title}</h2>
       </div>
 
       <div className="space-y-3.5 md:space-y-4">
         {timeline.map((era) => (
-          <article key={era.era} className="panel p-4 md:p-5">
+          <article key={era.key} className="panel p-4 md:p-5">
             <div className="flex items-center gap-3">
               <span className={`h-2.5 w-2.5 rounded-full ${era.color}`} aria-hidden="true" />
-              <h3 className="text-base font-medium text-white/92 md:text-lg">{era.era}</h3>
+              <h3 className="text-base font-medium text-white/92 md:text-lg">{era.data.label}</h3>
             </div>
             <ul className="mt-3.5 space-y-2 text-sm leading-[1.8] text-white/84">
-              {era.items.map((item) => (
+              {era.data.items.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
             </ul>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getFeaturedProjects } from "@/lib/projects";
-import type { Locale } from "@/lib/locale";
+import { getMessages } from "@/lib/i18n";
 
 const eraChipClass: Record<number, string> = {
   1: "project-era-chip--era1",
@@ -12,37 +12,16 @@ const eraChipClass: Record<number, string> = {
   3: "project-era-chip--era3",
 };
 
-const eraChipLabel: Record<number, string> = {
-  1: "Classical ML Era",
-  2: "LLM Application Era",
-  3: "Generative AI Native Era",
-};
-
-const copyByLocale: Record<
-  Locale,
-  { sectionLabel: string; title: string; viewAll: string }
-> = {
-  ko: {
-    sectionLabel: "Featured Showcase",
-    title: "Notable Projects",
-    viewAll: "전체 보기",
-  },
-  en: {
-    sectionLabel: "Featured Showcase",
-    title: "Notable Projects",
-    viewAll: "View All",
-  },
-  zh: {
-    sectionLabel: "精选项目",
-    title: "产品化项目",
-    viewAll: "查看全部",
-  },
-};
-
 export function FeaturedProjects() {
   const { locale } = useLocale();
   const featured = getFeaturedProjects();
-  const copy = copyByLocale[locale];
+  const messages = getMessages(locale);
+  const copy = messages.home.featured;
+  const eraChipLabel: Record<number, string> = {
+    1: messages.projects.eras.era1,
+    2: messages.projects.eras.era2,
+    3: messages.projects.eras.era3,
+  };
 
   return (
     <section className="space-y-5 md:space-y-7">
@@ -62,13 +41,15 @@ export function FeaturedProjects() {
             <div className="relative">
               <Image
                 src={project.thumbnail}
-                alt={`${project.title[locale]} thumbnail`}
+                alt={`${project.title[locale]} ${messages.projects.card.thumbnailAltSuffix}`}
                 width={1200}
                 height={675}
                 className="project-image h-44 w-full object-cover md:h-52"
               />
               <div className="absolute left-3 top-3">
-                <span className="metric-chip">{project.primaryMetric ?? `기여 ${project.contribution}%`}</span>
+                <span className="metric-chip">
+                  {project.primaryMetric ?? `${copy.metricFallbackPrefix} ${project.contribution}%`}
+                </span>
               </div>
               <div className="project-image-meta">
                 <div className="project-image-meta-row">
