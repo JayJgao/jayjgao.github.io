@@ -1,15 +1,39 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <h3 className="highlight-callout__title">결국 Proprietary LLMs도 늙는다.</h3>
+  <p className="highlight-callout__body">
+    아무리 좋은 모델이 존재한다고 하더라도, 해당 모델에 제품의 워크플로우를 과적합한다면, 결말은 좋지 못할 것임.
+  </p>
+  <ul className="highlight-callout__list">
+    <li>LangChain·LangGraph 기반의 계층적 에이전트 아키텍처로 구성된 프로젝트를 맡은 후, 각 그래프의 노드에서 어떤 LLM을 호출해 사용하는 것이 최적인지에 대한 고민이 깊었음.</li>
+    <li>개별 LLM을 각 노드의 역할에 따라 그 한계 효용까지 활용하고자 하는 시도를 초반에는 반복하였으나, 다음 세대의 모델이 발표될 때마다, 그러한 엔지니어링이 불필요한 부채를 남긴다는 것을 깨달음.</li>
+    <li>이에, 해당 노드의 본질적인 역할에만 집중하고, 현재 수준의 한계에 대한 문제인식을 바탕으로 제품의 스펙을 정의하는 것이 종국에는 더 나은 결과를 만들어내었음.</li>
+  </ul>
+</div>
+
+## CineV Highlight
+
+<div className="video-embed">
+  <iframe
+    src="https://www.youtube.com/embed/P1nohI-uHOI"
+    title="CineV Highlight"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
+
 ## 🚧 Problem
 자연어 스크립트를 Unreal 결과물로 연결하는 구간에서 병목이 컸고, 모듈 계약이 느슨해 실험 실패 비용이 높았습니다.
 
 ## 💡 Approach
-- 오케스트레이션 레이어와 실행 레이어를 분리했습니다.(S2M)
+- 오케스트레이션 레이어와 실행 레이어를 분리했습니다.(S2M=오케스트레이션 레이어)
 - 모듈간 데이터 입력/출력 스키마를 확정해 제품 파이프라인을 확립했습니다.
 
 ## ⚙️ Execution
 - 파이프라인 실패 로그를 기준으로 병목 3개 구간을 먼저 정리
-- Scene/Action/Camera 계약을 JSON schema 중심으로 재작성
-- LLM 평가셋과 E2E 체크리스트를 운영 루프에 고정
-- LangChain 기반 Film Agent 오케스트레이션 레이어를 설계
+- Scene/Action/Camera/Map/Character 계약을 JSON schema 중심으로 재작성
+- LLM 평가셋과 E2E 체크리스트를 운영 루프에 고정할 수 있도록 설계 (LLM evals)
+- LangChain·LangGraph 기반 Film Agent 오케스트레이션 레이어 설계에 참여
 
 ![S2M shot 01](/assets/images/projects/cinev/cinev-s2m-shot-01.webp)
 ![S2M shot 03](/assets/images/projects/cinev/cinev-s2m-shot-03.webp)
@@ -17,5 +41,5 @@
 ## ✅ Results
 - 합류 3개월 내 첫 LLM-to-Unreal E2E 통합
 - 실험 리드타임 약 50% 단축 (600s → 300s)
-- MOAI/A2P 확장을 위한 재사용 가능한 베이스 확보
+- MOAI/A2P 확장을 위한 재사용 가능한 베이스 확보 (json 형태의 프로젝트 파일)
 - 2026년 1월 CineV 공식 런칭 AI 파트 리딩 기반 마련

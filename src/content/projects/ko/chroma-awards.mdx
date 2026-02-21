@@ -1,17 +1,45 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <h3 className="highlight-callout__title">시장을 이해하기 위해서는 내가 그 시장의 플레이어가 되어야 한다.</h3>
+  <p className="highlight-callout__body">
+    기술의 최신성과, 시장의 최신성은 같은 듯 분명한 차이를 보임. 아무리 fancy한 기술이라도, 시장의 인정을 받지 못한다면 기술적 성취의 의미가 없음.
+  </p>
+  <ul className="highlight-callout__list">
+    <li>AI Tech PO로서 최신 publications와 각종 community를 섭렵하는 것만으로는 실제 시장의 반응을 예측하는데에 한계가 있음을 깨달음.</li>
+    <li>Video Generation 프로덕트를 만드는 입장에서, 실제 영상창작자가 어떤 워크플로우로 AI모델을 활용하는지 이해할 수 있어야 했음.</li>
+    <li>이에 직접 팀을 꾸려 다양한 대회에 AI gen 영상작품들을 출품함. 실제 콘텐츠업계의 종사자와 동일한 시각으로 &quot;최신기술&quot;을 바라보고자 했음.</li>
+    <li>Chroma Awards에서의 finalist선정을 통해, 콘텐츠 업계의 평균 수준에서 제품을 바라볼 수 있게 되었다고 생각하며, 앞으로도 내가 만드는 제품의 가망 고객을 보다 적극적으로 이해할 수 있는 side project를 지속할 예정임.</li>
+  </ul>
+</div>
+
 ## 🚧 Problem
-완전 AI 생성 영상에서 스토리 일관성과 연출 밀도를 동시에 확보해야 했습니다.
+회사 Product 홍보를 위해 필요한 original contents의 부재
 
 ## 💡 Approach
-아이디어→컷 구성→생성→후편집 루프를 짧게 반복하고, 장면별 스타일 가이드를 먼저 고정했습니다.
+“CineV를 사용하면 이런 고퀄리티 영상도 손쉽게 만들 수 있어”라는 명제의 증거가 되기 위한 영상물의 기획 및 창작
 
 ## ⚙️ Execution
 - 생성 모델 조합별 장단점 매트릭스 작성
+- 사내 콘텐츠 전문가들에 대한 AI 모델 활용 노하우 전수
 - 컷 단위 프롬프트 템플릿 표준화
 - 후보 영상 반복 생성 후 편집 기준으로 수렴
+- 각종 글로벌 AI 비디오 컴페티션에 작업물 제출
 
-### Devpost
-- Happy End: https://devpost.com/software/what-we-said-at-the-end
-- Mystery Invitation: https://devpost.com/software/mystery-invitation
+## 🔗 Appendix
+- 🔗 [Happy End](https://devpost.com/software/what-we-said-at-the-end)
+- 🔗 [Mystery Invitation](https://devpost.com/software/mystery-invitation)
+
+![Chroma Awards 결과](/assets/images/projects/chroma/cinev-chroma-shot-01.webp)
 
 ## ✅ Results
-- ElevenLabs Chroma Awards Sponsor Award Top 11 Finalist
+
+<p className="award-result">🏆 ElevenLabs Chroma Awards Sponsor Award Top 11 Finalist</p>
+
+<div className="video-embed">
+  <iframe
+    src="https://player.vimeo.com/video/1137973544"
+    title="Happy End - Chroma Awards 2025 Top 11 Finalist"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowFullScreen
+  />
+</div>
