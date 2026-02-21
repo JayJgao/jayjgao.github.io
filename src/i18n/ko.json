@@ -2,8 +2,166 @@
   "nav": {
     "home": "홈",
     "about": "소개",
-    "projects": "프로젝트",
-    "resume": "이력서",
-    "contact": "연락처"
+    "projects": "포트폴리오",
+    "resume": "이력서"
+  },
+  "common": {
+    "website": "웹사이트",
+    "github": "GitHub",
+    "email": "이메일",
+    "projectsUnit": "projects"
+  },
+  "home": {
+    "hero": {
+      "kicker": "AI Product Leader",
+      "name": "고재현",
+      "alias": "Jay Ko",
+      "headline": "Tabular ML에서 생성형 비디오까지\n— AI 제품을 만들고 성장시킵니다.",
+      "subheadline": "6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
+      "ctaPortfolio": "View Portfolio",
+      "ctaResume": "View Resume",
+      "profileAlt": "고재현 프로필 사진",
+      "stats": [
+        {
+          "value": "MRR 10x",
+          "label": "매출 성장"
+        },
+        {
+          "value": "25+ B2B Clients",
+          "label": "엔터프라이즈 납품"
+        },
+        {
+          "value": "3 Patents",
+          "label": "IP 자산"
+        }
+      ]
+    },
+    "featured": {
+      "sectionLabel": "Featured Showcase",
+      "title": "Notable Projects",
+      "viewAll": "전체 보기",
+      "metricFallbackPrefix": "기여"
+    },
+    "spotlight": {
+      "kicker": "Creative Spotlight",
+      "title": "Watch First",
+      "subtitle": "AI Filmmaking Showcase.",
+      "prev": "Prev",
+      "next": "Next",
+      "prevAria": "이전 스포트라이트",
+      "nextAria": "다음 스포트라이트",
+      "relatedProject": "관련 프로젝트 보기",
+      "selectPrefix": "선택",
+      "frameFallback": "스포트라이트",
+      "posterAltSuffix": "포스터"
+    },
+    "timeline": {
+      "kicker": "3-Era Narrative",
+      "title": "Career Timeline",
+      "eras": {
+        "era1": {
+          "label": "Era 1 · Classical ML (2018-2022)",
+          "items": [
+            "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
+            "Lunit — 비전 바이오마커 분석 SW 초기 기획"
+          ]
+        },
+        "era2": {
+          "label": "Era 2 · LLM Application (2023-2024)",
+          "items": [
+            "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
+            "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
+            "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원"
+          ]
+        },
+        "era3": {
+          "label": "Era 3 · Generative AI Native (2025~)",
+          "items": [
+            "Cinamon CineV S2M — LLM Agent to Unreal E2E 통합",
+            "Cinamon MOAI — 모션 AI 평가 플랫폼 구축",
+            "Chroma Awards — Sponsor Award Top 11 Finalist"
+          ]
+        }
+      }
+    }
+  },
+  "about": {
+    "motivationKicker": "저를 움직이는 것",
+    "images": {
+      "opening": "도메인 확장 내러티브 이미지",
+      "markets": "3개 언어 3개 시장 소개 이미지",
+      "motivation": "AI 창작 동기 이미지",
+      "working": "협업 방식 이미지"
+    }
+  },
+  "projects": {
+    "page": {
+      "kicker": "Portfolio",
+      "title": "Projects",
+      "description": "3-Era Narrative를 기준으로 포트폴리오를 구성했습니다.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+    },
+    "explorer": {
+      "featuredTitle": "Featured",
+      "featuredDescription": "핵심 성과가 선명한 프로젝트만 우선 배치했습니다.",
+      "archiveTitle": "Archive",
+      "archiveDescription": "축적된 실행 이력과 도메인 확장 트랙입니다.",
+      "emptyFeatured": "선택한 Era에 해당하는 Featured 프로젝트가 없습니다.",
+      "emptyArchive": "선택한 Era에 해당하는 Archive 프로젝트가 없습니다."
+    },
+    "filter": {
+      "all": "All",
+      "era1": "Classical ML (2018-2022)",
+      "era2": "LLM Application (2023-2024)",
+      "era3": "Generative AI Native (2025~)"
+    },
+    "card": {
+      "contributionLabel": "기여도",
+      "metricFallbackPrefix": "기여",
+      "thumbnailAltSuffix": "썸네일"
+    },
+    "eras": {
+      "era1": "Classical ML Era",
+      "era2": "LLM Application Era",
+      "era3": "Generative AI Native Era"
+    },
+    "caseStudy": {
+      "role": "역할",
+      "company": "회사",
+      "contribution": "기여도",
+      "firstProject": "첫 프로젝트",
+      "lastProject": "마지막 프로젝트",
+      "backToList": "프로젝트 목록으로"
+    }
+  },
+  "resume": {
+    "page": {
+      "kicker": "Resume",
+      "title": "Jay Ko Resume",
+      "description": "웹 이력서와 다운로드 PDF를 동일한 기준으로 관리하고 있습니다.",
+      "downloadKo": "한국어 PDF 다운로드",
+      "downloadEn": "English PDF Download"
+    },
+    "renderer": {
+      "website": "웹사이트",
+      "github": "GitHub",
+      "revenue": "Revenue",
+      "clientScale": "Client Scale",
+      "ipResearch": "IP & Research",
+      "summary": "Summary",
+      "experience": "Experience",
+      "skills": "Skills",
+      "education": "Education",
+      "achievements": "Achievements",
+      "languages": "Languages"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "요청하신 페이지를 찾을 수 없습니다.",
+    "backHome": "홈으로 돌아가기"
+  },
+  "footer": {
+    "brand": "Jay Ko Portfolio",
+    "copyright": "© 2026 Jay Ko"
   }
 }

@@ -4,16 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import en from "@/i18n/en.json";
-import ko from "@/i18n/ko.json";
-import zh from "@/i18n/zh.json";
+import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
-
-const labels = {
-  ko: ko.nav,
-  en: en.nav,
-  zh: zh.nav,
-} as const;
 
 const localeText: Record<Locale, string> = {
   ko: "한국어",
@@ -30,6 +22,7 @@ const localeOptions: Array<{ value: Locale; label: string }> = [
 export function Navbar() {
   const pathname = usePathname();
   const { locale, setLocale } = useLocale();
+  const labels = getMessages(locale).nav;
   const [localeOpen, setLocaleOpen] = useState(false);
   const localeMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -56,12 +49,12 @@ export function Navbar() {
 
   const navItems = useMemo(
     () => [
-      { href: "/", label: labels[locale].home },
-      { href: "/about", label: labels[locale].about },
-      { href: "/projects", label: "Portfolio" },
-      { href: "/resume", label: labels[locale].resume },
+      { href: "/", label: labels.home },
+      { href: "/about", label: labels.about },
+      { href: "/projects", label: labels.projects },
+      { href: "/resume", label: labels.resume },
     ],
-    [locale],
+    [labels],
   );
 
   return (

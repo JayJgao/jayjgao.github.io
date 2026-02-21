@@ -3,36 +3,84 @@
     "slug": "chroma-awards",
     "provider": "vimeo",
     "videoId": "1137973544",
-    "title": "Chorma Awards Top11 Finalist\nHappyend",
-    "workTitle": "Happyend",
-    "caption": "Sponsor Award Top 11 Finalist 작품",
+    "title": {
+      "ko": "Chorma Awards Top11 Finalist\nHappyend",
+      "en": "Chorma Awards Top11 Finalist\nHappyend",
+      "zh": "Chorma Awards Top11 Finalist\nHappyend"
+    },
+    "workTitle": {
+      "ko": "Happyend",
+      "en": "Happyend",
+      "zh": "Happyend"
+    },
+    "caption": {
+      "ko": "Sponsor Award Top 11 Finalist 작품",
+      "en": "Sponsor Award Top 11 Finalist selection",
+      "zh": "Sponsor Award Top 11 Finalist 入围作品"
+    },
     "poster": "/assets/images/projects/chroma/chroma-happyend-thumb.webp"
   },
   {
     "slug": "chroma-awards",
     "provider": "vimeo",
     "videoId": "1137947360",
-    "title": "Chroma Awards\nMistery Invitation",
-    "workTitle": "Mistery Invitation",
-    "caption": "Chroma Awards Romance 트랙 본선 진출작",
+    "title": {
+      "ko": "Chroma Awards\nMistery Invitation",
+      "en": "Chroma Awards\nMistery Invitation",
+      "zh": "Chroma Awards\nMistery Invitation"
+    },
+    "workTitle": {
+      "ko": "Mistery Invitation",
+      "en": "Mistery Invitation",
+      "zh": "Mistery Invitation"
+    },
+    "caption": {
+      "ko": "Chroma Awards Romance 트랙 본선 진출작",
+      "en": "Finalist entry in the Chroma Awards Romance track",
+      "zh": "Chroma Awards Romance 赛道入围作品"
+    },
     "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
   },
   {
     "slug": "chroma-awards",
     "provider": "youtube",
     "videoId": "4ngeQ9EJew4",
-    "title": "WAIFF\nGUHO Advertisement",
-    "workTitle": "GUHO Advertisement",
-    "caption": "WAIFF 2026 광고부문 출품작",
+    "title": {
+      "ko": "WAIFF\nGUHO Advertisement",
+      "en": "WAIFF\nGUHO Advertisement",
+      "zh": "WAIFF\nGUHO Advertisement"
+    },
+    "workTitle": {
+      "ko": "GUHO Advertisement",
+      "en": "GUHO Advertisement",
+      "zh": "GUHO Advertisement"
+    },
+    "caption": {
+      "ko": "WAIFF 2026 광고부문 출품작",
+      "en": "Submitted to WAIFF 2026 Ad category",
+      "zh": "WAIFF 2026 广告单元参赛作品"
+    },
     "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
   },
   {
     "slug": "chroma-awards",
     "provider": "youtube",
     "videoId": "hB03aGbuG04",
-    "title": "APEC AI 영상 공모전\n다시 여기, 경주",
-    "workTitle": "다시 여기, 경주",
-    "caption": "2025APEC AI 영상 공모전 출품작",
+    "title": {
+      "ko": "APEC AI 영상 공모전\n다시 여기, 경주",
+      "en": "APEC AI Video Contest\nBack Here, Gyeongju",
+      "zh": "APEC AI 视频大赛\n再次来到庆州"
+    },
+    "workTitle": {
+      "ko": "다시 여기, 경주",
+      "en": "Back Here, Gyeongju",
+      "zh": "再次来到庆州"
+    },
+    "caption": {
+      "ko": "2025APEC AI 영상 공모전 출품작",
+      "en": "Submitted to the 2025 APEC AI Video Contest",
+      "zh": "2025 APEC AI 视频大赛参赛作品"
+    },
     "poster": "/assets/images/projects/chroma/chroma-apec-thumb.webp"
   }
 ]

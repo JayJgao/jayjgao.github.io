@@ -1,13 +1,9 @@
 "use client";
 
-type EraFilterValue = "all" | "1" | "2" | "3";
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getMessages } from "@/lib/i18n";
 
-const options: Array<{ value: EraFilterValue; label: string }> = [
-  { value: "all", label: "All" },
-  { value: "1", label: "Classical ML (2018-2022)" },
-  { value: "2", label: "LLM Application (2023-2024)" },
-  { value: "3", label: "Generative AI Native (2025~)" },
-];
+type EraFilterValue = "all" | "1" | "2" | "3";
 
 export function EraFilter({
   value,
@@ -16,6 +12,15 @@ export function EraFilter({
   value: EraFilterValue;
   onChange: (next: EraFilterValue) => void;
 }) {
+  const { locale } = useLocale();
+  const copy = getMessages(locale).projects.filter;
+  const options: Array<{ value: EraFilterValue; label: string }> = [
+    { value: "all", label: copy.all },
+    { value: "1", label: copy.era1 },
+    { value: "2", label: copy.era2 },
+    { value: "3", label: copy.era3 },
+  ];
+
   return (
     <div className="flex flex-wrap gap-2.5">
       {options.map((option) => {

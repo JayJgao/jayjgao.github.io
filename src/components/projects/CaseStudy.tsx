@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getMessages } from "@/lib/i18n";
 import type { Project } from "@/lib/projects";
 
 export function CaseStudy({
@@ -13,24 +17,33 @@ export function CaseStudy({
   prev?: Project;
   next?: Project;
 }) {
+  const { locale } = useLocale();
+  const messages = getMessages(locale);
+  const copy = messages.projects.caseStudy;
+  const eraByIndex: Record<number, string> = {
+    1: messages.projects.eras.era1,
+    2: messages.projects.eras.era2,
+    3: messages.projects.eras.era3,
+  };
+
   return (
     <article className="space-y-7 md:space-y-8">
       <header className="panel p-5 md:p-8">
-        <p className="section-kicker">{project.eraLabel}</p>
-        <h1 className="editorial-title mt-3 text-4xl md:text-6xl">{project.title.ko}</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/86">{project.oneLiner.ko}</p>
+        <p className="section-kicker">{eraByIndex[project.era] ?? project.eraLabel}</p>
+        <h1 className="editorial-title mt-3 text-4xl md:text-6xl">{project.title[locale]}</h1>
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/86">{project.oneLiner[locale]}</p>
 
         <dl className="mt-6 grid gap-4 border-t border-white/10 pt-5 text-sm md:grid-cols-3 md:gap-6">
           <div>
-            <dt className="text-white/64">Role</dt>
+            <dt className="text-white/64">{copy.role}</dt>
             <dd className="mt-1 text-white/90">{project.role}</dd>
           </div>
           <div>
-            <dt className="text-white/64">Company</dt>
+            <dt className="text-white/64">{copy.company}</dt>
             <dd className="mt-1 text-white/90">{project.company}</dd>
           </div>
           <div>
-            <dt className="text-white/64">Contribution</dt>
+            <dt className="text-white/64">{copy.contribution}</dt>
             <dd className="mt-1 text-white/90">{project.contribution}%</dd>
           </div>
         </dl>
@@ -52,22 +65,22 @@ export function CaseStudy({
         <div>
           {prev ? (
             <Link href={`/projects/${prev.slug}`} className="text-white/66 hover:text-white">
-              ← {prev.title.ko}
+              ← {prev.title[locale]}
             </Link>
           ) : (
-            <span className="text-white/56">첫 프로젝트</span>
+            <span className="text-white/56">{copy.firstProject}</span>
           )}
         </div>
         <Link href="/projects" className="text-accent/95 hover:underline">
-          프로젝트 목록으로
+          {copy.backToList}
         </Link>
         <div>
           {next ? (
             <Link href={`/projects/${next.slug}`} className="text-white/66 hover:text-white">
-              {next.title.ko} →
+              {next.title[locale]} →
             </Link>
           ) : (
-            <span className="text-white/56">마지막 프로젝트</span>
+            <span className="text-white/56">{copy.lastProject}</span>
           )}
         </div>
       </nav>
