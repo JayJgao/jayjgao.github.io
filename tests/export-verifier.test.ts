@@ -1,0 +1,500 @@
+import assert from "node:assert/strict";
+import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import test from "node:test";
+
+import {
+  createProductionExportContract,
+  extractDocumentSignals,
+  resolveInternalHref,
+  routeToExportRelativePath,
+  scanHtmlTags,
+  verifyExport,
+  type ExportContract,
+} from "../scripts/lib/export-verifier";
+
+const siteUrl = "https://jayjgao.github.io";
+
+function localizedHead(
+  locale: "ko" | "en" | "zh",
+  route: string,
+  options: { omitXDefault?: boolean } = {},
+): string {
+  const suffix = route.replace(/^\/(?:ko|en|zh)/, "");
+  const localized = (target: "ko" | "en" | "zh") =>
+    `${siteUrl}/${target}${suffix}`.replace(/(?<!:)\/{2,}/g, "/");
+
+  return [
+    `<html lang="${locale}"><head>`,
+    `<link rel="canonical" href="${siteUrl}${route}">`,
+    `<link rel="alternate" hreflang="ko" href="${localized("ko")}">`,
+    `<link rel="alternate" hreflang="en" href="${localized("en")}">`,
+    `<link rel="alternate" hreflang="zh" href="${localized("zh")}">`,
+    options.omitXDefault
+      ? ""
+      : `<link rel="alternate" hreflang="x-default" href="${localized("ko")}">`,
+    "</head><body>",
+  ].join("");
+}
+
+function localizedExpectation(
+  locale: "ko" | "en" | "zh",
+  route: string,
+): ExportContract["localizedRoutes"][number] {
+  const suffix = route.replace(/^\/(?:ko|en|zh)/, "");
+  const localized = (target: "ko" | "en" | "zh") =>
+    `${siteUrl}/${target}${suffix}`.replace(/(?<!:)\/{2,}/g, "/");
+
+  return {
+    route,
+    locale,
+    canonical: `${siteUrl}${route}`,
+    alternates: {
+      ko: localized("ko"),
+      en: localized("en"),
+      zh: localized("zh"),
+      "x-default": localized("ko"),
+    },
+  };
+}
+
+async function writeRoute(outDir: string, route: string, html: string) {
+  const relativePath = routeToExportRelativePath(route);
+  const filename = path.join(outDir, relativePath);
+  await mkdir(path.dirname(filename), { recursive: true });
+  await writeFile(filename, html, "utf8");
+}
+
+function fixtureContract(): ExportContract {
+  return {
+    siteUrl,
+    basePath: "",
+    localizedRoutes: [
+      localizedExpectation("en", "/en/"),
+      localizedExpectation("en", "/en/about/"),
+    ],
+    legacyRoutes: [
+      {
+        route: "/about/",
+        canonical: `${siteUrl}/ko/about/`,
+        fallbackHrefs: ["/ko/about/", "/en/about/", "/zh/about/"],
+      },
+    ],
+    rootRedirect: {
+      route: "/",
+      fallbackHrefs: ["/ko/", "/en/", "/zh/"],
+    },
+    projectDetailRoutes: [],
+    demoDetailRoutes: [],
+    require404: true,
+    forbiddenHtmlPatterns: [],
+    sourceEvidenceBasenames: [],
+  };
+}
+
+async function createValidFixture(): Promise<{ outDir: string; contract: ExportContract }> {
+  const outDir = await mkdtemp(path.join(tmpdir(), "export-verifier-"));
+  const contract = fixtureContract();
+
+  await writeRoute(
+    outDir,
+    "/en/",
+    `${localizedHead("en", "/en/")}
+      <a href="about/">About</a>
+      <a href="?view=all">Query</a>
+      <a href="#work">Hash</a>
+      <a href="mailto:test@example.com">Email</a>
+      <a href="https://example.com/elsewhere/">External</a>
+      <a href="//jayjgao.github.io/en/about/">Same-origin protocol relative</a>
+      <a href="/_next/static/chunk.js">Next asset</a>
+      <a href="/assets/images/missing.webp">Public asset</a>
+      <a href="/favicon.ico">Favicon</a>
+      <script>self.__next_f.push([1, '<a href="/en/not-real/"><iframe></iframe></a>'])</script>
+      <style>.x::after { content: '<a href="/en/not-real/">'; }</style>
+      <template><a href="/en/not-real/">Template fallback</a></template>
+    </body></html>`,
+  );
+  await writeRoute(
+    outDir,
+    "/en/about/",
+    `${localizedHead("en", "/en/about/")}<a href="../">Home</a></body></html>`,
+  );
+  await writeRoute(
+    outDir,
+    "/about/",
+    `<html lang="ko"><head>
+      <meta name="robots" content="noindex, follow">
+      <link rel="canonical" href="${siteUrl}/ko/about/">
+    </head><body>
+      <a href="/ko/about/">한국어</a><a href="/en/about/">English</a><a href="/zh/about/">中文</a>
+    </body></html>`,
+  );
+  await writeRoute(
+    outDir,
+    "/",
+    `<html lang="ko"><body><a href="/ko/">한국어</a><a href="/en/">English</a><a href="/zh/">中文</a></body></html>`,
+  );
+  await writeFile(path.join(outDir, "404.html"), "not found", "utf8");
+
+  for (const route of ["/ko/", "/zh/", "/ko/about/", "/zh/about/"]) {
+    await writeRoute(outDir, route, "<html><body>fallback target</body></html>");
+  }
+
+  return { outDir, contract };
+}
+
+function sliderDocument(markers: "none" | "valid" | "wrong-kind"): string {
+  const marker = (role: string, element: "button" | "span") => {
+    if (markers === "none") return "";
+    if (markers === "wrong-kind" && role === "previous") {
+      return element === "button" ? "" : ` data-demo-gallery-control="${role}"`;
+    }
+    return ` data-demo-gallery-control="${role}"`;
+  };
+  const image = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">';
+
+  return `${localizedHead("en", "/en/about/")}
+    <div data-demo-gallery-mode="slider">
+      ${markers === "wrong-kind" ? `<div${marker("previous", "span")}></div>` : ""}
+      ${image}
+      <button${marker("previous", "button")}>Previous</button>
+      <span aria-live="polite"${marker("counter", "span")}>1 / 2</span>
+      <button${marker("next", "button")}>Next</button>
+      <button aria-current="true"${marker("thumbnail", "button")}>${image}</button>
+      <button${marker("thumbnail", "button")}>${image}</button>
+    </div>
+    <section data-demo-block="how-it-works"></section>
+  </body></html>`;
+}
+
+function addSliderExpectation(contract: ExportContract): void {
+  const expectation: ExportContract["demoDetailRoutes"][number] = {
+    route: "/en/about/",
+    slug: "fixture-slider",
+    galleryMode: "slider" as const,
+    galleryItemCount: 2,
+    videoMode: "none" as const,
+  };
+  contract.demoDetailRoutes = [expectation];
+}
+
+function legacyDocument(robotsContents: string[]): string {
+  return `<html lang="ko"><head>
+    ${robotsContents
+      .map((content) => `<meta name="robots" content="${content}">`)
+      .join("\n")}
+    <link rel="canonical" href="${siteUrl}/ko/about/">
+  </head><body>
+    <a href="/ko/about/">한국어</a><a href="/en/about/">English</a><a href="/zh/about/">中文</a>
+  </body></html>`;
+}
+
+test("route mapping uses trailing-slash index files and cannot escape the export root", () => {
+  assert.equal(routeToExportRelativePath("/en/about/"), "en/about/index.html");
+  assert.equal(routeToExportRelativePath("/en/about"), "en/about/index.html");
+  assert.equal(routeToExportRelativePath("/"), "index.html");
+  assert.equal(routeToExportRelativePath("/404.html"), "404.html");
+  assert.throws(
+    () => routeToExportRelativePath("/%2e%2e/private/"),
+    /encoded traversal/i,
+  );
+});
+
+test("the scanner is quote-aware, normalizes attributes, decodes entities, and skips inert markup", () => {
+  const html = `<!doctype html><!-- <a href="/comment/"> -->
+    <HTML LANG='en'><head>
+      <script>const fake = '<a href="/flight/">';</script>
+      <style>.x{content:'<link rel="canonical" href="/style/">'}</style>
+      <template><a href="/template/">ignored</a></template>
+      <LINK REL=canonical HREF='https://jayjgao.github.io/en/?a=1&amp;b=2'>
+      <link rel="alternate" hreflang=x-default href="https://jayjgao.github.io/ko/">
+    </head><body><A HREF=/en/about/?q=&#x31;>About</A></body></HTML>`;
+
+  const tags = scanHtmlTags(html);
+  assert.deepEqual(tags.map(({ name }) => name), ["html", "head", "link", "link", "body", "a"]);
+  assert.equal(tags[0].attributes.lang, "en");
+  assert.equal(tags[2].attributes.href, "https://jayjgao.github.io/en/?a=1&b=2");
+  assert.equal(tags[5].attributes.href, "/en/about/?q=1");
+
+  const signals = extractDocumentSignals(html);
+  assert.equal(signals.lang, "en");
+  assert.equal(signals.canonical, "https://jayjgao.github.io/en/?a=1&b=2");
+  assert.equal(signals.alternates["x-default"], "https://jayjgao.github.io/ko/");
+  assert.deepEqual(signals.anchorHrefs, ["/en/about/?q=1"]);
+  assert.equal(signals.iframes.length, 0);
+});
+
+test("internal href resolution handles relative and same-origin URLs while ignoring non-page links", () => {
+  const options = { siteUrl, basePath: "" };
+
+  assert.equal(resolveInternalHref("../about/?x=1#top", "/en/projects/", options), "/en/about/");
+  assert.equal(resolveInternalHref("?x=1", "/en/about/", options), "/en/about/");
+  assert.equal(resolveInternalHref("//jayjgao.github.io/en/about/", "/en/", options), "/en/about/");
+  assert.equal(resolveInternalHref("https://jayjgao.github.io/en/about/", "/en/", options), "/en/about/");
+  assert.equal(resolveInternalHref("https://example.com/en/about/", "/en/", options), null);
+  assert.equal(resolveInternalHref("mailto:test@example.com", "/en/", options), null);
+  assert.equal(resolveInternalHref("#section", "/en/", options), null);
+  assert.equal(resolveInternalHref("/_next/static/a.js", "/en/", options), null);
+  assert.equal(resolveInternalHref("/assets/image.webp", "/en/", options), null);
+  assert.equal(resolveInternalHref("/favicon.ico", "/en/", options), null);
+  assert.throws(
+    () => resolveInternalHref("/%2e%2e/private/", "/en/", options),
+    /encoded traversal/i,
+  );
+});
+
+test("verification aggregates a missing target and missing x-default without trusting Flight markup", async () => {
+  const { outDir, contract } = await createValidFixture();
+  await writeRoute(
+    outDir,
+    "/en/",
+    `${localizedHead("en", "/en/", { omitXDefault: true })}
+      <a href="/en/missing/">Missing</a>
+      <script>self.__next_f.push([1, '<link rel="alternate" hreflang="x-default" href="${siteUrl}/ko/">'])</script>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    (error: Error) => {
+      assert.match(error.message, /x-default/);
+      assert.match(error.message, /\/en\/missing\//);
+      assert.match(error.message, /2 export verification errors/);
+      return true;
+    },
+  );
+});
+
+test("verification rejects decoded traversal and reports other document failures in the same run", async () => {
+  const { outDir, contract } = await createValidFixture();
+  await writeRoute(
+    outDir,
+    "/en/about/",
+    `${localizedHead("en", "/en/about/")}<a href="/%2e%2e/private/">Bad</a></body></html>`,
+  );
+  await writeRoute(
+    outDir,
+    "/about/",
+    `<html lang="ko"><head><meta name="robots" content="index,follow"></head><body>
+      <a href="/ko/about/">Only one fallback</a>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    (error: Error) => {
+      assert.match(error.message, /encoded traversal/i);
+      assert.match(error.message, /noindex,follow/i);
+      assert.match(error.message, /canonical/i);
+      assert.match(error.message, /fallback/i);
+      return true;
+    },
+  );
+});
+
+test("legacy robots metadata rejects conflicting, duplicate, and extra-directive variants", async () => {
+  const cases = [
+    ["noindex, follow", "index, follow"],
+    ["noindex, follow", "noindex, follow"],
+    ["noindex, follow, noarchive"],
+  ];
+
+  for (const robotsContents of cases) {
+    const { outDir, contract } = await createValidFixture();
+    await writeRoute(outDir, "/about/", legacyDocument(robotsContents));
+
+    await assert.rejects(
+      () => verifyExport(outDir, contract),
+      /exactly one robots meta.*noindex,follow/i,
+      robotsContents.join(" | "),
+    );
+  }
+});
+
+test("verification reports a missing local image asset while anchor assets remain ignored", async () => {
+  const { outDir, contract } = await createValidFixture();
+  await writeRoute(
+    outDir,
+    "/en/about/",
+    `${localizedHead("en", "/en/about/")}
+      <a href="/assets/downloads/not-a-page.pdf">Ignored anchor asset</a>
+      <img src="/assets/images/missing-poster.webp" alt="Missing poster">
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /missing local image.*missing-poster\.webp/i,
+  );
+});
+
+test("source-evidence boundary names are rejected without blocking ordinary build artifacts", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const forbiddenNames = [
+    "private-source.png",
+    "raw.png",
+    "capture-original.jpg",
+    "product-screenshot.webp",
+    "product-screen_shot.png",
+    "product-screen-shot.png",
+  ];
+  const allowedNames = [
+    "resource.png",
+    "originality.png",
+    "rawhide.png",
+    "screenshotter.png",
+    "sourceful.png",
+    "README.md",
+    "next-route.txt",
+  ];
+  await mkdir(path.join(outDir, "assets", "review"), { recursive: true });
+  for (const basename of [...forbiddenNames, ...allowedNames]) {
+    await writeFile(path.join(outDir, "assets", "review", basename), "fixture", "utf8");
+  }
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    (error: Error) => {
+      for (const basename of forbiddenNames) assert.match(error.message, new RegExp(basename.replace(".", "\\.")));
+      for (const basename of allowedNames) assert.doesNotMatch(error.message, new RegExp(basename.replace(".", "\\.")));
+      return true;
+    },
+  );
+});
+
+test("forbidden public URLs cover raw, escaped, scheme-relative, and bare forms", async () => {
+  const cases = [
+    "https://github.com/CINEV/private",
+    String.raw`https:\/\/github.com\/CINEV\/private`,
+    "//github.com/CINEV/private",
+    "github.com/CINEV/private",
+    "https://assets.cinamon.io/private",
+    String.raw`https:\/\/assets.cinamon.io\/private`,
+    "//assets.cinamon.io/private",
+    "assets.cinamon.io/private",
+  ];
+  const productionPatterns = createProductionExportContract().forbiddenHtmlPatterns;
+
+  for (const forbiddenUrl of cases) {
+    const { outDir, contract } = await createValidFixture();
+    contract.forbiddenHtmlPatterns = productionPatterns;
+    await writeRoute(
+      outDir,
+      "/en/about/",
+      `${localizedHead("en", "/en/about/")}<p>${forbiddenUrl}</p></body></html>`,
+    );
+
+    await assert.rejects(
+      () => verifyExport(outDir, contract),
+      /contains forbidden (?:CINEV GitHub URL|Cinamon domain URL)/i,
+      forbiddenUrl,
+    );
+  }
+});
+
+test("forbidden URL matching does not treat domain-like path segments or substrings as hosts", async () => {
+  const cases = [
+    "https://github.com/CINEVision/public",
+    "https://notgithub.com/CINEV/public",
+    "https://mycinamon.io/public",
+    "https://cinamon.io.example.com/public",
+    "https://example.com/archive/github.com/CINEV/public",
+    "https://example.com/archive/assets.cinamon.io/public",
+  ];
+  const productionPatterns = createProductionExportContract().forbiddenHtmlPatterns;
+
+  for (const allowedUrl of cases) {
+    const { outDir, contract } = await createValidFixture();
+    contract.forbiddenHtmlPatterns = productionPatterns;
+    await writeRoute(
+      outDir,
+      "/en/about/",
+      `${localizedHead("en", "/en/about/")}<p>${allowedUrl}</p></body></html>`,
+    );
+
+    const result = await verifyExport(outDir, contract);
+    assert.equal(result.errors, 0, allowedUrl);
+  }
+});
+
+test("slider controls cannot satisfy the contract through unrelated button and image counts", async () => {
+  const { outDir, contract } = await createValidFixture();
+  addSliderExpectation(contract);
+  await writeRoute(outDir, "/en/about/", sliderDocument("none"));
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /slider gallery controls/i,
+  );
+});
+
+test("slider control roles must be attached to their semantic element kinds", async () => {
+  const { outDir, contract } = await createValidFixture();
+  addSliderExpectation(contract);
+  await writeRoute(outDir, "/en/about/", sliderDocument("wrong-kind"));
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /slider gallery controls/i,
+  );
+});
+
+test("stable semantic slider controls satisfy the verifier contract", async () => {
+  const { outDir, contract } = await createValidFixture();
+  addSliderExpectation(contract);
+  await writeRoute(outDir, "/en/about/", sliderDocument("valid"));
+
+  const result = await verifyExport(outDir, contract);
+  assert.equal(result.demoDetails, 1);
+  assert.equal(result.galleryModes.slider, 1);
+});
+
+test("static galleries reject every slider control marker", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const image = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">';
+  contract.demoDetailRoutes = [
+    {
+      route: "/en/about/",
+      slug: "fixture-static",
+      galleryMode: "static",
+      galleryItemCount: 1,
+      videoMode: "none",
+    },
+  ];
+  await writeRoute(
+    outDir,
+    "/en/about/",
+    `${localizedHead("en", "/en/about/")}
+      <div data-demo-gallery-mode="static" data-demo-gallery-control="thumbnail">${image}</div>
+      <section data-demo-block="how-it-works"></section>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /static gallery.*control/i,
+  );
+});
+
+test("a valid fixture passes and counts only actual page anchors", async () => {
+  const { outDir, contract } = await createValidFixture();
+
+  const result = await verifyExport(outDir, contract);
+
+  assert.equal(result.localizedRoutes, 2);
+  assert.equal(result.legacyRoutes, 1);
+  assert.equal(result.demoDetails, 0);
+  assert.equal(result.internalLinks, 10);
+  assert.equal(result.errors, 0);
+});
+
+test("404/index.html must match 404.html when the optional directory form exists", async () => {
+  const { outDir, contract } = await createValidFixture();
+  await writeRoute(outDir, "/404/", "different not found");
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /404\/index\.html.*match.*404\.html/i,
+  );
+});

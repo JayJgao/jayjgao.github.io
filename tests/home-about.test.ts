@@ -11,8 +11,32 @@ function readRepoFile(path: string): string {
   return readFileSync(new URL(path, repoRoot), "utf8");
 }
 
-function readJson(path: string): Record<string, any> {
-  return JSON.parse(readRepoFile(path)) as Record<string, any>;
+type PortfolioJson = {
+  home: {
+    hero: {
+      headline: string;
+      subheadline: string;
+      supporting: string;
+      [key: string]: unknown;
+    };
+    demos: {
+      viewAll: string;
+    };
+    [key: string]: unknown;
+  };
+  about: {
+    demosCta: string;
+    [key: string]: unknown;
+  };
+  workingWithMe: {
+    principles: string[];
+    demosBridge: string;
+  };
+  [key: string]: unknown;
+};
+
+function readJson(path: string): PortfolioJson {
+  return JSON.parse(readRepoFile(path)) as PortfolioJson;
 }
 
 function shapeOf(value: unknown): unknown {

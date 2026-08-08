@@ -32,8 +32,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test
+        run: npm test
+
+      - name: Lint
+        run: npm run lint -- --no-cache
+
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Build static export
         run: npm run build
+
+      - name: Verify static export
+        run: npm run verify:export
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

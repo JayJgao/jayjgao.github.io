@@ -69,6 +69,7 @@ export function DemoGallery({ items, labels }: DemoGalleryProps) {
       <div className="flex items-center justify-between gap-3">
         <button
           type="button"
+          data-demo-gallery-control="previous"
           onClick={showPrevious}
           aria-label={labels.previous}
           className="btn-secondary min-w-11 px-4"
@@ -76,6 +77,7 @@ export function DemoGallery({ items, labels }: DemoGalleryProps) {
           <span aria-hidden="true">←</span>
         </button>
         <span
+          data-demo-gallery-control="counter"
           aria-live="polite"
           aria-atomic="true"
           className="font-mono text-xs tracking-[0.14em] text-white/68"
@@ -85,6 +87,7 @@ export function DemoGallery({ items, labels }: DemoGalleryProps) {
         </span>
         <button
           type="button"
+          data-demo-gallery-control="next"
           onClick={showNext}
           aria-label={labels.next}
           className="btn-secondary min-w-11 px-4"
@@ -105,6 +108,7 @@ export function DemoGallery({ items, labels }: DemoGalleryProps) {
             <button
               key={item.src}
               type="button"
+              data-demo-gallery-control="thumbnail"
               onClick={() => setActiveIndex(index)}
               aria-label={`${labels.selectPrefix} ${index + 1}: ${item.alt}`}
               aria-current={selected ? "true" : undefined}

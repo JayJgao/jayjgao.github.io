@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "preview": "npx serve out",
     "test": "tsx --test tests/*.test.ts",
     "test:watch": "tsx --test --watch tests/*.test.ts",
-    "typecheck": "tsc --noEmit --incremental false"
+    "typecheck": "tsc --noEmit --incremental false",
+    "verify:export": "tsx scripts/verify-export.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -25,6 +26,7 @@
     "three": "^0.182.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "3.3.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
