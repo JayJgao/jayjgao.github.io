@@ -4,12 +4,13 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import spotlights from "@/data/home-spotlights.json";
+import spotlights from "@/data/spotlights.json";
 import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 import { getLocalizedPath } from "@/lib/routes";
+import type { Localized } from "@/types/content";
 
-function pickText(value: Record<Locale, string>, locale: Locale) {
+function pickText(value: Localized<string>, locale: Locale) {
   return value[locale] ?? value.ko;
 }
 
@@ -17,9 +18,9 @@ type Spotlight = {
   slug: string;
   provider: "youtube" | "vimeo";
   videoId: string;
-  title: Record<Locale, string>;
-  workTitle: Record<Locale, string>;
-  caption: Record<Locale, string>;
+  title: Localized<string>;
+  workTitle: Localized<string>;
+  caption: Localized<string>;
   poster: string;
 };
 

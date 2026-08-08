@@ -1,9 +1,8 @@
 "use client";
 
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getAllEras, getEraLabel, type EraFilterValue } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
-
-type EraFilterValue = "all" | "1" | "2" | "3";
 
 export function EraFilter({
   value,
@@ -16,9 +15,10 @@ export function EraFilter({
   const copy = getMessages(locale).projects.filter;
   const options: Array<{ value: EraFilterValue; label: string }> = [
     { value: "all", label: copy.all },
-    { value: "1", label: copy.era1 },
-    { value: "2", label: copy.era2 },
-    { value: "3", label: copy.era3 },
+    ...getAllEras().map((era) => ({
+      value: `${era.id}` as EraFilterValue,
+      label: getEraLabel(era.id, locale),
+    })),
   ];
 
   return (

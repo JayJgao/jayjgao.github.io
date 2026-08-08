@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "ko": "Classical ML",
+      "en": "Classical ML",
+      "zh": "Classical ML"
+    },
+    "period": "2018-2022"
+  },
+  {
+    "id": 2,
+    "name": {
+      "ko": "LLM Application",
+      "en": "LLM Application",
+      "zh": "LLM Application"
+    },
+    "period": "2023-2024"
+  },
+  {
+    "id": 3,
+    "name": {
+      "ko": "Generative AI Native",
+      "en": "Generative AI Native",
+      "zh": "Generative AI Native"
+    },
+    "period": "2025~"
+  }
+]

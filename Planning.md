@@ -26,7 +26,7 @@
 | 고재현 포트폴리오 | `.reference/notion-export/고재현_포트폴리오_1aba667ac505800aa943c9704163e21a.html` | `Planning.md`, `src/data/projects.json` | Published | B2-PLAN-BASE |
 | CineV S2M (Film Agent) | `.reference/notion-export/public-assets-raw/cinev/s2m/CineV S2M (Film Agent) 30aa667ac505802da1a4f41e622eb38f.html` | `src/content/projects/ko/cinev-s2m.mdx` | Published | B2-CONTENT-CORE |
 | MOAI 데모 콘솔 | `.reference/notion-export/public-assets-raw/cinev/moai/MOAI 데모 콘솔 30aa667ac50580bba067c5e48b17c1eb.html` | `src/content/projects/ko/cinev-moai.mdx` | Published | B2-CONTENT-CORE |
-| AI video directing | `.reference/notion-export/public-assets-raw/chroma/AI video directing 30aa667ac5058006a68ace68ad14ff74.html` | `src/content/projects/ko/chroma-awards.mdx`, `src/data/home-spotlights.json` | Published | B2-CHROMA-MAP |
+| AI video directing | `.reference/notion-export/public-assets-raw/chroma/AI video directing 30aa667ac5058006a68ace68ad14ff74.html` | `src/content/projects/ko/chroma-awards.mdx`, `src/data/spotlights.json` | Published | B2-CHROMA-MAP |
 | 숏폼 제작 AIaaS | `.reference/notion-export/숏폼_제작_AIaaS_1aba667ac505804589c3c97427e43132.html` | `src/content/projects/ko/buzzni-shortform-ai.mdx` | Published | B2-CONTENT-CORE |
 | AIaaS 사업부 빌딩 & 리딩 | `.reference/notion-export/고재현_포트폴리오_1aba667ac505800aa943c9704163e21a.html` | `src/content/projects/ko/buzzni-aiaas-biz.mdx` | Published | B2-CONTENT-CORE |
 | 이커머스 쇼핑 어시스턴트 챗봇 AIaaS | `.reference/notion-export/이커머스_쇼핑_어시스턴트_챗봇_AIaaS_1aba667ac50580a793cfc05611971468.html` | `src/content/projects/ko/buzzni-chatbot.mdx` | Published | B2-CONTENT-CORE |
@@ -75,7 +75,7 @@
 ## 6. Open Risks
 - Archive 프로젝트 증가로 카드 밀도가 높아져 모바일 스캔 피로가 재발할 수 있음
 - 노션 원본의 장문 내용을 그대로 옮기면 About/Resume 중복이 다시 증가할 수 있음
-- 영상 썸네일 교체 시 `home-spotlights.json` 동기화 누락 위험
+- 영상 썸네일 교체 시 `spotlights.json` 동기화 누락 위험
 
 ## 7. Changelog
 - 2026-02-17: Phase 2.2 반영 — Archive 5개 Published 승격 및 MDX/에셋 추가

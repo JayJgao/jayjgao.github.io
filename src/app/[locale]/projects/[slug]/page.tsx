@@ -9,6 +9,7 @@ import {
   getAllProjectSlugs,
   getAllProjects,
   getProjectBySlug,
+  getProjectDisplayTitle,
 } from "@/lib/projects";
 
 export const dynamicParams = false;
@@ -31,7 +32,7 @@ export async function generateMetadata({
   return createLocalizedMetadata({
     locale,
     path: `/projects/${slug}/`,
-    title: `${project.title[locale]} | Jay Ko`,
+    title: `${getProjectDisplayTitle(project, locale)} | Jay Ko`,
     description: project.oneLiner[locale],
   });
 }

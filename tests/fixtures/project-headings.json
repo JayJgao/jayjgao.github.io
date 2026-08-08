@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "cinev-s2m",
+    "title": {
+      "ko": "CineV S2M — LLM Agent → Unreal Pipeline",
+      "en": "CineV S2M — LLM Agent to Unreal Pipeline",
+      "zh": "CineV S2M — LLM Agent 到 Unreal"
+    }
+  },
+  {
+    "slug": "cinev-moai",
+    "title": {
+      "ko": "CineV MOAI — Motion AI 평가 플랫폼",
+      "en": "CineV MOAI — Motion AI Evaluation Platform",
+      "zh": "CineV MOAI — Motion AI 评测平台"
+    }
+  },
+  {
+    "slug": "chroma-awards",
+    "title": {
+      "ko": "Chroma Awards — Fully AI-Generated Short Film",
+      "en": "Chroma Awards — Fully AI-Generated Short Film",
+      "zh": "Chroma Awards — 全AI生成短片"
+    }
+  },
+  {
+    "slug": "buzzni-shortform-ai",
+    "title": {
+      "ko": "Long→Short-form AI 비디오 편집기",
+      "en": "Long→Short-form AI Video Editor",
+      "zh": "Long→Short-form AI 视频编辑器"
+    }
+  },
+  {
+    "slug": "buzzni-aiaas-biz",
+    "title": {
+      "ko": "AIaaS 사업부 빌딩 & 리딩",
+      "en": "AIaaS Business Unit — Build & Lead",
+      "zh": "AIaaS 事业部搭建与领导"
+    }
+  },
+  {
+    "slug": "solidware-mlaas",
+    "title": {
+      "ko": "핀테크 MLaaS — 일본 엔터프라이즈",
+      "en": "Fintech MLaaS — Japan Enterprise",
+      "zh": "金融 MLaaS — 日本企业市场"
+    }
+  },
+  {
+    "slug": "buzzni-chatbot",
+    "title": {
+      "ko": "이커머스 쇼핑 어시스턴트 챗봇",
+      "en": "E-commerce Shopping Assistant Chatbot",
+      "zh": "电商购物助手聊天机器人"
+    }
+  },
+  {
+    "slug": "cinev-ai-po-leadership",
+    "title": {
+      "ko": "AI PO Integration Leadership",
+      "en": "AI PO Integration Leadership",
+      "zh": "AI PO 统合领导"
+    }
+  },
+  {
+    "slug": "cinev-a2p",
+    "title": {
+      "ko": "CineV A2P — External Model Routing Integration",
+      "en": "CineV A2P — External Model Routing Integration",
+      "zh": "CineV A2P — 外部模型路由整合"
+    }
+  },
+  {
+    "slug": "buzzni-review-aiaas",
+    "title": {
+      "ko": "이커머스 리뷰분석 AIaaS",
+      "en": "E-commerce Review Analytics AIaaS",
+      "zh": "电商评论分析 AIaaS"
+    }
+  },
+  {
+    "slug": "buzzni-search-aiaas",
+    "title": {
+      "ko": "이커머스 검색 AIaaS",
+      "en": "E-commerce Search AIaaS",
+      "zh": "电商搜索 AIaaS"
+    }
+  },
+  {
+    "slug": "buzzni-branding-marketing",
+    "title": {
+      "ko": "제품 브랜딩&마케팅",
+      "en": "Product Branding & Marketing",
+      "zh": "产品品牌与营销"
+    }
+  },
+  {
+    "slug": "solidware-automl",
+    "title": {
+      "ko": "AutoML 모듈 신규 개발",
+      "en": "AutoML Module Development",
+      "zh": "AutoML 模块开发"
+    }
+  },
+  {
+    "slug": "solidware-product-marketing",
+    "title": {
+      "ko": "제품 마케팅",
+      "en": "Product Marketing",
+      "zh": "产品营销"
+    }
+  },
+  {
+    "slug": "lunit-biomarker",
+    "title": {
+      "ko": "비전 바이오마커 분석 SW 기획",
+      "en": "Vision Biomarker Analysis Software",
+      "zh": "视觉生物标志物分析软件"
+    }
+  }
+]

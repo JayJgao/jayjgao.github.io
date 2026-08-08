@@ -3,9 +3,10 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getEraLabel } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
-import type { Project } from "@/lib/projects";
+import { getProjectDisplayTitle, type Project } from "@/lib/projects";
 import { getLocalizedPath } from "@/lib/routes";
 
 export function CaseStudy({
@@ -24,17 +25,14 @@ export function CaseStudy({
   const { locale } = useLocale();
   const messages = getMessages(locale);
   const copy = messages.projects.caseStudy;
-  const eraByIndex: Record<number, string> = {
-    1: messages.projects.eras.era1,
-    2: messages.projects.eras.era2,
-    3: messages.projects.eras.era3,
-  };
+  const subtitle = project.subtitle[locale];
 
   return (
     <article className="space-y-7 md:space-y-8">
       <header className="panel p-5 md:p-8">
-        <p className="section-kicker">{eraByIndex[project.era] ?? project.eraLabel}</p>
+        <p className="section-kicker">{getEraLabel(project.era, locale)}</p>
         <h1 className="editorial-title mt-3 text-4xl md:text-6xl">{project.title[locale]}</h1>
+        {subtitle ? <p className="mt-2 text-xl font-semibold leading-snug text-white/78 md:text-2xl">{subtitle}</p> : null}
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/86">{project.oneLiner[locale]}</p>
 
         <dl className="mt-6 grid gap-4 border-t border-white/10 pt-5 text-sm md:grid-cols-3 md:gap-6">
@@ -71,7 +69,7 @@ export function CaseStudy({
         <div>
           {prev ? (
             <Link href={getLocalizedPath(locale, `/projects/${prev.slug}/`)} className="text-white/66 hover:text-white">
-              ← {prev.title[locale]}
+              ← {getProjectDisplayTitle(prev, locale)}
             </Link>
           ) : (
             <span className="text-white/56">{copy.firstProject}</span>
@@ -83,7 +81,7 @@ export function CaseStudy({
         <div>
           {next ? (
             <Link href={getLocalizedPath(locale, `/projects/${next.slug}/`)} className="text-white/66 hover:text-white">
-              {next.title[locale]} →
+              {getProjectDisplayTitle(next, locale)} →
             </Link>
           ) : (
             <span className="text-white/56">{copy.lastProject}</span>

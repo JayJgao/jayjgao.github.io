@@ -5,6 +5,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { Project } from "@/lib/projects";
 import { EraFilter } from "@/components/projects/EraFilter";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import type { EraFilterValue } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
 
 export function ProjectsExplorer({
@@ -13,7 +14,7 @@ export function ProjectsExplorer({
   projects: Project[];
 }) {
   const { locale } = useLocale();
-  const [filter, setFilter] = useState<"all" | "1" | "2" | "3">("all");
+  const [filter, setFilter] = useState<EraFilterValue>("all");
   const messages = getMessages(locale);
   const pageCopy = messages.projects.page;
   const copy = messages.projects.explorer;

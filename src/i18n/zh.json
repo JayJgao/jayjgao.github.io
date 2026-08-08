@@ -60,14 +60,12 @@
       "title": "职业时间线",
       "eras": {
         "era1": {
-          "label": "阶段 1 · Classical ML (2018-2022)",
           "items": [
             "Solidware (Ailys) — 拿下 13 家日本企业客户，年营收同比增长 100%",
             "Lunit — 视觉生物标志物分析软件早期产品规划"
           ]
         },
         "era2": {
-          "label": "阶段 2 · LLM Application (2023-2024)",
           "items": [
             "BUZZNI — AIaaS 事业部从 0 到 20 人，MRR 增长 10 倍",
             "BUZZNI — 上线 Long→Short-form AI 视频编辑器与购物助手聊天机器人",
@@ -75,7 +73,6 @@
           ]
         },
         "era3": {
-          "label": "阶段 3 · Generative AI Native (2025~)",
           "items": [
             "Cinamon CineV S2M — 完成 LLM Agent 到 Unreal 的 E2E 集成",
             "Cinamon MOAI — 搭建 Motion AI 评测平台",
@@ -109,20 +106,12 @@
       "emptyArchive": "所选阶段下没有归档项目。"
     },
     "filter": {
-      "all": "全部",
-      "era1": "Classical ML (2018-2022)",
-      "era2": "LLM Application (2023-2024)",
-      "era3": "Generative AI Native (2025~)"
+      "all": "全部"
     },
     "card": {
       "contributionLabel": "贡献度",
       "metricFallbackPrefix": "贡献",
       "thumbnailAltSuffix": "缩略图"
-    },
-    "eras": {
-      "era1": "Classical ML 阶段",
-      "era2": "LLM Application 阶段",
-      "era3": "Generative AI Native 阶段"
     },
     "caseStudy": {
       "role": "角色",

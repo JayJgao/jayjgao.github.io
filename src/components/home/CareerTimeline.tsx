@@ -1,22 +1,35 @@
 "use client";
 
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getAllEras, getEraLabel } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
+import type { EraId, Localized } from "@/types/content";
 
-const eraColors = {
-  era1: "bg-[#f59e0b]",
-  era2: "bg-[#38bdf8]",
-  era3: "bg-[#34d399]",
-} as const;
+const eraColors: Record<EraId, string> = {
+  1: "bg-[#f59e0b]",
+  2: "bg-[#38bdf8]",
+  3: "bg-[#34d399]",
+};
+
+const eraPrefix: Localized<string> = {
+  ko: "Era",
+  en: "Era",
+  zh: "阶段",
+};
 
 export function CareerTimeline() {
   const { locale } = useLocale();
   const copy = getMessages(locale).home.timeline;
-  const timeline = [
-    { key: "era1", color: eraColors.era1, data: copy.eras.era1 },
-    { key: "era2", color: eraColors.era2, data: copy.eras.era2 },
-    { key: "era3", color: eraColors.era3, data: copy.eras.era3 },
-  ] as const;
+  const itemsByEra: Record<EraId, string[]> = {
+    1: copy.eras.era1.items,
+    2: copy.eras.era2.items,
+    3: copy.eras.era3.items,
+  };
+  const timeline = getAllEras().map((era) => ({
+    era,
+    color: eraColors[era.id],
+    items: itemsByEra[era.id],
+  }));
 
   return (
     <section className="space-y-5 md:space-y-6">
@@ -27,13 +40,15 @@ export function CareerTimeline() {
 
       <div className="space-y-3.5 md:space-y-4">
         {timeline.map((era) => (
-          <article key={era.key} className="panel p-4 md:p-5">
+          <article key={era.era.id} className="panel p-4 md:p-5">
             <div className="flex items-center gap-3">
               <span className={`h-2.5 w-2.5 rounded-full ${era.color}`} aria-hidden="true" />
-              <h3 className="text-base font-medium text-white/92 md:text-lg">{era.data.label}</h3>
+              <h3 className="text-base font-medium text-white/92 md:text-lg">
+                {eraPrefix[locale]} {era.era.id} · {getEraLabel(era.era.id, locale)}
+              </h3>
             </div>
             <ul className="mt-3.5 space-y-2 text-sm leading-[1.8] text-white/84">
-              {era.data.items.map((item) => (
+              {era.items.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
             </ul>

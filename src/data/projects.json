@@ -2,13 +2,12 @@
   {
     "slug": "cinev-s2m",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": true,
     "showcaseOrder": 1,
     "title": {
-      "ko": "CineV S2M — LLM Agent → Unreal Pipeline",
-      "en": "CineV S2M — LLM Agent to Unreal Pipeline",
-      "zh": "CineV S2M — LLM Agent 到 Unreal"
+      "ko": "CineV S2M",
+      "en": "CineV S2M",
+      "zh": "CineV S2M"
     },
     "oneLiner": {
       "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
@@ -24,18 +23,22 @@
       "System Architecture"
     ],
     "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
-    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%"
+    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%",
+    "subtitle": {
+      "ko": "LLM Agent → Unreal Pipeline",
+      "en": "LLM Agent to Unreal Pipeline",
+      "zh": "LLM Agent 到 Unreal"
+    }
   },
   {
     "slug": "cinev-moai",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": true,
     "showcaseOrder": 2,
     "title": {
-      "ko": "CineV MOAI — Motion AI 평가 플랫폼",
-      "en": "CineV MOAI — Motion AI Evaluation Platform",
-      "zh": "CineV MOAI — Motion AI 评测平台"
+      "ko": "CineV MOAI",
+      "en": "CineV MOAI",
+      "zh": "CineV MOAI"
     },
     "oneLiner": {
       "ko": "바이브코딩으로 구축, 5개월간 유저스터디 6회 + 모델 2건 통합",
@@ -51,18 +54,22 @@
       "User Study"
     ],
     "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
-    "primaryMetric": "6 USER STUDIES / 5 MONTHS"
+    "primaryMetric": "6 USER STUDIES / 5 MONTHS",
+    "subtitle": {
+      "ko": "Motion AI 평가 플랫폼",
+      "en": "Motion AI Evaluation Platform",
+      "zh": "Motion AI 评测平台"
+    }
   },
   {
     "slug": "chroma-awards",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": true,
     "showcaseOrder": 3,
     "title": {
-      "ko": "Chroma Awards — Fully AI-Generated Short Film",
-      "en": "Chroma Awards — Fully AI-Generated Short Film",
-      "zh": "Chroma Awards — 全AI生成短片"
+      "ko": "Chroma Awards",
+      "en": "Chroma Awards",
+      "zh": "Chroma Awards"
     },
     "oneLiner": {
       "ko": "세계 최대 AI Film Competition Sponsor Award Top 11 Finalist",
@@ -79,12 +86,16 @@
     ],
     "thumbnail": "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
     "primaryMetric": "TOP 11 FINALIST",
-    "demoUrl": "https://vimeo.com/1137973544"
+    "demoUrl": "https://vimeo.com/1137973544",
+    "subtitle": {
+      "ko": "Fully AI-Generated Short Film",
+      "en": "Fully AI-Generated Short Film",
+      "zh": "全AI生成短片"
+    }
   },
   {
     "slug": "buzzni-shortform-ai",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": true,
     "showcaseOrder": 4,
     "title": {
@@ -108,17 +119,21 @@
     ],
     "thumbnail": "/assets/images/projects/buzzni/shortform-shot-02.webp",
     "primaryMetric": "0→1 PRODUCT LAUNCH",
-    "demoUrl": "https://devpost.com/software/mystery-invitation"
+    "demoUrl": "https://devpost.com/software/mystery-invitation",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-aiaas-biz",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": true,
     "showcaseOrder": 5,
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
-      "en": "AIaaS Business Unit — Build & Lead",
+      "en": "AIaaS Business Unit",
       "zh": "AIaaS 事业部搭建与领导"
     },
     "oneLiner": {
@@ -136,18 +151,22 @@
       "Go-to-Market"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
-    "primaryMetric": "MRR 10X"
+    "primaryMetric": "MRR 10X",
+    "subtitle": {
+      "ko": "",
+      "en": "Build & Lead",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-mlaas",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": true,
     "showcaseOrder": 6,
     "title": {
-      "ko": "핀테크 MLaaS — 일본 엔터프라이즈",
-      "en": "Fintech MLaaS — Japan Enterprise",
-      "zh": "金融 MLaaS — 日本企业市场"
+      "ko": "핀테크 MLaaS",
+      "en": "Fintech MLaaS",
+      "zh": "金融 MLaaS"
     },
     "oneLiner": {
       "ko": "Mitsubishi, AEON 등 13개 클라이언트 확보, 연매출 100% 신장",
@@ -165,12 +184,16 @@
     ],
     "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
     "primaryMetric": "13 ENTERPRISE CLIENTS WON",
-    "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e"
+    "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e",
+    "subtitle": {
+      "ko": "일본 엔터프라이즈",
+      "en": "Japan Enterprise",
+      "zh": "日本企业市场"
+    }
   },
   {
     "slug": "buzzni-chatbot",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -192,12 +215,16 @@
       "LLM"
     ],
     "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
-    "primaryMetric": "SHOPPING ASSISTANT LAUNCHED"
+    "primaryMetric": "SHOPPING ASSISTANT LAUNCHED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "cinev-ai-po-leadership",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -219,18 +246,22 @@
       "AI Leadership"
     ],
     "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-    "primaryMetric": "3-WAY SPEC STANDARDIZED"
+    "primaryMetric": "3-WAY SPEC STANDARDIZED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "cinev-a2p",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
-      "ko": "CineV A2P — External Model Routing Integration",
-      "en": "CineV A2P — External Model Routing Integration",
-      "zh": "CineV A2P — 外部模型路由整合"
+      "ko": "CineV A2P",
+      "en": "CineV A2P",
+      "zh": "CineV A2P"
     },
     "oneLiner": {
       "ko": "I2V·I2I·TTS·Music Gen 통합 라우팅 설계로 외부 모델 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축",
@@ -246,12 +277,16 @@
       "API Design"
     ],
     "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
-    "primaryMetric": "WEEKLY → IMMEDIATE DEPLOYMENT"
+    "primaryMetric": "WEEKLY → IMMEDIATE DEPLOYMENT",
+    "subtitle": {
+      "ko": "External Model Routing Integration",
+      "en": "External Model Routing Integration",
+      "zh": "外部模型路由整合"
+    }
   },
   {
     "slug": "buzzni-review-aiaas",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -273,12 +308,16 @@
       "B2B SaaS"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
-    "primaryMetric": "2 CLIENTS · COST OPTIMIZATION"
+    "primaryMetric": "2 CLIENTS · COST OPTIMIZATION",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-search-aiaas",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -300,12 +339,16 @@
       "API Strategy"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
-    "primaryMetric": "3 CLIENTS + 7 POCS"
+    "primaryMetric": "3 CLIENTS + 7 POCS",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-branding-marketing",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -327,12 +370,16 @@
       "Content"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
-    "primaryMetric": "IN-HOUSE BRANDING & PR"
+    "primaryMetric": "IN-HOUSE BRANDING & PR",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-automl",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -353,12 +400,16 @@
       "Product Planning"
     ],
     "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
-    "primaryMetric": "NEW AUTOML MODULE SHIPPED"
+    "primaryMetric": "NEW AUTOML MODULE SHIPPED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-product-marketing",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -380,12 +431,16 @@
       "B2B Sales"
     ],
     "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
-    "primaryMetric": "CONTACT POINTS +256% · 13 NEW CLIENTS"
+    "primaryMetric": "CONTACT POINTS +256% · 13 NEW CLIENTS",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "lunit-biomarker",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -407,6 +462,11 @@
       "PRD"
     ],
     "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
-    "primaryMetric": "INITIAL PRD COMPLETED"
+    "primaryMetric": "INITIAL PRD COMPLETED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   }
 ]
