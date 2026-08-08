@@ -10,7 +10,6 @@ export type DemoStackGroup = {
 export type DemoVideo = {
   provider: "youtube";
   videoId: string | null;
-  poster: string | null;
 };
 
 export type DemoGalleryImage = {

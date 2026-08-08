@@ -210,7 +210,6 @@ test("demos own the exact ordered schema, product states, video IDs, and related
     assert.deepEqual(demo.video, {
       provider: "youtube",
       videoId: expectedVideoIds[demo.order - 1],
-      poster: null,
     });
   }
 

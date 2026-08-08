@@ -20,7 +20,7 @@
 - Modify: `src/data/demos.json`
 - Modify: `src/lib/demos.ts`
 
-- [ ] **Step 1: Write the failing data and URL tests**
+- [x] **Step 1: Write the failing data and URL tests**
 
   Change the exact Demo video assertion to require only:
 
@@ -44,7 +44,7 @@
   );
   ```
 
-- [ ] **Step 2: Run the focused tests and confirm RED**
+- [x] **Step 2: Run the focused tests and confirm RED**
 
   Run:
 
@@ -54,7 +54,7 @@
 
   Expected: failure because `poster` still exists and `getYouTubeThumbnailUrl` is not exported.
 
-- [ ] **Step 3: Implement the minimal data and helper changes**
+- [x] **Step 3: Implement the minimal data and helper changes**
 
   Remove `poster` from `DemoVideo` and all nine Demo records. Add a constrained helper:
 
@@ -69,16 +69,15 @@
   }
   ```
 
-- [ ] **Step 4: Re-run the focused tests and confirm GREEN**
+- [x] **Step 4: Re-run the focused tests and confirm GREEN**
 
   Run the same focused command. Expected: all tests pass.
 
-- [ ] **Step 5: Commit the schema/API slice**
+- [x] **Step 5: Keep the schema/API slice with its consumer update**
 
-  ```bash
-  git add src/types/demo.ts src/data/demos.json src/lib/demos.ts tests/demo-data.test.ts tests/demo-presentation.test.ts
-  git commit -m "refactor: remove Demo poster schema"
-  ```
+  Removing the type before updating `DemoDetail` would create a build-breaking
+  intermediate commit. Keep this verified slice unstaged until Task 2 and commit
+  the complete schema-plus-consumer transition atomically.
 
 ## Task 2: Render the direct thumbnail with one fallback
 
@@ -89,7 +88,7 @@
 - Modify: `src/components/demos/DemoDetail.tsx`
 - Modify: `next.config.ts`
 
-- [ ] **Step 1: Add failing component/config contract tests**
+- [x] **Step 1: Add failing component/config contract tests**
 
   Lock these source-level boundaries:
 
@@ -100,7 +99,7 @@
   - `DemoDetail` passes the canonical `videoId`.
   - `next.config.ts` allowlists only HTTPS `i.ytimg.com` under `/vi/**` for this remote image.
 
-- [ ] **Step 2: Run the presentation test and confirm RED**
+- [x] **Step 2: Run the presentation test and confirm RED**
 
   ```bash
   npx tsx --test tests/demo-presentation.test.ts
@@ -108,7 +107,7 @@
 
   Expected: the new thumbnail/component/config assertions fail against the local-poster implementation.
 
-- [ ] **Step 3: Implement the thumbnail state**
+- [x] **Step 3: Implement the thumbnail state**
 
   Derive `maxresdefault` and `hqdefault` URLs from `videoId`. Initialize the image state with maxres, switch once to hq on failure, then set it to `null` so the existing gradient remains. Continue to render the iframe only when `loaded` is true.
 
@@ -137,7 +136,7 @@
   }
   ```
 
-- [ ] **Step 4: Re-run presentation and type checks**
+- [x] **Step 4: Re-run presentation and type checks**
 
   ```bash
   npx tsx --test tests/demo-presentation.test.ts
@@ -146,10 +145,10 @@
 
   Expected: both commands pass; no `poster` access remains in the Demo path.
 
-- [ ] **Step 5: Commit the presentation slice**
+- [ ] **Step 5: Commit the atomic schema and presentation slice**
 
   ```bash
-  git add next.config.ts src/components/demos/DemoDetail.tsx src/components/demos/DemoVideo.tsx tests/demo-presentation.test.ts
+  git add next.config.ts src/components/demos/DemoDetail.tsx src/components/demos/DemoVideo.tsx src/data/demos.json src/lib/demos.ts src/types/demo.ts tests/demo-data.test.ts tests/demo-presentation.test.ts docs/decisions/2026-08-09-youtube-thumbnail-and-demo-consolidation-plan.md
   git commit -m "feat: show direct YouTube Demo thumbnails"
   ```
 

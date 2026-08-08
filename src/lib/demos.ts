@@ -3,6 +3,7 @@ import type { Demo, DemoGalleryImage } from "@/types/demo";
 
 export type GalleryMode = "none" | "static" | "slider";
 export type DemoVideoMode = "available" | "pending" | "none";
+export type YouTubeThumbnailQuality = "maxresdefault" | "hqdefault";
 export type DemoGroup = {
   id: "productized" | "experiments";
   demos: Demo[];
@@ -46,6 +47,13 @@ export function getDemoVideoMode(demo: Demo): DemoVideoMode {
 
 export function getYouTubeEmbedUrl(videoId: string): string {
   return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+}
+
+export function getYouTubeThumbnailUrl(
+  videoId: string,
+  quality: YouTubeThumbnailQuality,
+): string {
+  return `https://i.ytimg.com/vi/${videoId}/${quality}.jpg`;
 }
 
 export function getDemoGroups(): DemoGroup[] {

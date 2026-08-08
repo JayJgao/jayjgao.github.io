@@ -221,8 +221,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "NLleH-4c5HY",
-      "poster": null
+      "videoId": "NLleH-4c5HY"
     },
     "gallery": [
       {
@@ -485,8 +484,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": null,
-      "poster": null
+      "videoId": null
     },
     "gallery": [],
     "diagram": "/assets/diagrams/demos/prompt-enhance-skills.svg",
@@ -713,8 +711,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "UL02NA57TGw",
-      "poster": null
+      "videoId": "UL02NA57TGw"
     },
     "gallery": [
       {
@@ -956,8 +953,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "IiRKOHz8fxg",
-      "poster": null
+      "videoId": "IiRKOHz8fxg"
     },
     "gallery": [
       {
@@ -1122,8 +1118,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "5oJkxE2Slh0",
-      "poster": null
+      "videoId": "5oJkxE2Slh0"
     },
     "gallery": [],
     "diagram": "/assets/diagrams/demos/reframer.svg",
@@ -1330,8 +1325,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "Yr_kDA-A6JM",
-      "poster": null
+      "videoId": "Yr_kDA-A6JM"
     },
     "gallery": [],
     "diagram": "/assets/diagrams/demos/boundary-deduper.svg",
@@ -1591,8 +1585,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "ywjCfb9ZgDc",
-      "poster": null
+      "videoId": "ywjCfb9ZgDc"
     },
     "gallery": [],
     "diagram": "/assets/diagrams/demos/iro-matcher.svg",
@@ -1883,8 +1876,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": "65j-raKVtik",
-      "poster": null
+      "videoId": "65j-raKVtik"
     },
     "gallery": [],
     "diagram": "/assets/diagrams/demos/loudness-matcher.svg",
@@ -2062,8 +2054,7 @@
     },
     "video": {
       "provider": "youtube",
-      "videoId": null,
-      "poster": null
+      "videoId": null
     },
     "gallery": [
       {

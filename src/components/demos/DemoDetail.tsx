@@ -146,7 +146,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
                 demoName={demo.name}
                 embedUrl={embedUrl}
                 mode={videoMode}
-                poster={demo.video.poster}
+                videoId={demo.video.videoId}
                 labels={detailCopy.video}
               />
             </div>

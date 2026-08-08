@@ -8,6 +8,7 @@ import {
   getDemoVideoMode,
   getGalleryMode,
   getYouTubeEmbedUrl,
+  getYouTubeThumbnailUrl,
 } from "../src/lib/demos";
 import type { DemoGalleryImage } from "../src/types/demo";
 
@@ -50,6 +51,17 @@ test("YouTube embeds use the privacy-enhanced host without autoplay", () => {
     "https://www.youtube-nocookie.com/embed/NLleH-4c5HY?rel=0&modestbranding=1",
   );
   assert.doesNotMatch(url, /autoplay/i);
+});
+
+test("YouTube thumbnails use only the approved max-resolution and fallback URLs", () => {
+  assert.equal(
+    getYouTubeThumbnailUrl("NLleH-4c5HY", "maxresdefault"),
+    "https://i.ytimg.com/vi/NLleH-4c5HY/maxresdefault.jpg",
+  );
+  assert.equal(
+    getYouTubeThumbnailUrl("NLleH-4c5HY", "hqdefault"),
+    "https://i.ytimg.com/vi/NLleH-4c5HY/hqdefault.jpg",
+  );
 });
 
 test("proof-first groups preserve the approved product and experiment order", () => {
@@ -126,6 +138,15 @@ test("video and image gallery keep separate minimal client boundaries", () => {
   assert.match(video, /data-demo-video-state="play"/);
   assert.match(video, /data-demo-video-state="pending"/);
   assert.match(video, /loading="lazy"/);
+  assert.match(video, /referrerPolicy="no-referrer"/);
+  assert.match(video, /alt=""/);
+  assert.match(video, /unoptimized/);
+  assert.match(video, /getYouTubeThumbnailUrl\(videoId, "maxresdefault"\)/);
+  assert.match(video, /getYouTubeThumbnailUrl\(videoId, "hqdefault"\)/);
+  assert.match(video, /setThumbnailSrc\(null\)/);
+  assert.match(video, /onError=/);
+  assert.match(video, /videoId: string \| null/);
+  assert.doesNotMatch(video, /poster/);
   assert.match(video, /allowFullScreen/);
   assert.doesNotMatch(video, /allow=|autoplay|youtube\.com\/embed/i);
 
@@ -134,6 +155,18 @@ test("video and image gallery keep separate minimal client boundaries", () => {
   assert.match(gallery, /aria-current=/);
   assert.match(gallery, /aria-live="polite"/);
   assert.doesNotMatch(gallery, /<video|<iframe|DemoVideo|aria-label=.*play/i);
+});
+
+test("Demo detail passes the canonical video ID and Next only allowlists YouTube thumbnails", () => {
+  const detail = readRepoFile("src/components/demos/DemoDetail.tsx");
+  const nextConfig = readRepoFile("next.config.ts");
+
+  assert.match(detail, /videoId=\{demo\.video\.videoId\}/);
+  assert.doesNotMatch(detail, /poster=/);
+  assert.match(nextConfig, /protocol: "https"/);
+  assert.match(nextConfig, /hostname: "i\.ytimg\.com"/);
+  assert.match(nextConfig, /pathname: "\/vi\/\*\*"/);
+  assert.equal((nextConfig.match(/remotePatterns/g) ?? []).length, 1);
 });
 
 test("localized Demos routes are static, validated, and metadata-aware", () => {

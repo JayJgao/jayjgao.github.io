@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { DemoVideoMode } from "@/lib/demos";
+import {
+  getYouTubeThumbnailUrl,
+  type DemoVideoMode,
+} from "@/lib/demos";
 
 type DemoVideoProps = {
   demoName: string;
   embedUrl: string | null;
   mode: DemoVideoMode;
-  poster: string | null;
+  videoId: string | null;
   labels: {
     playPrefix: string;
     pending: string;
@@ -20,10 +23,26 @@ export function DemoVideo({
   demoName,
   embedUrl,
   mode,
-  poster,
+  videoId,
   labels,
 }: DemoVideoProps) {
+  const primaryThumbnail = videoId
+    ? getYouTubeThumbnailUrl(videoId, "maxresdefault")
+    : null;
+  const fallbackThumbnail = videoId
+    ? getYouTubeThumbnailUrl(videoId, "hqdefault")
+    : null;
   const [loaded, setLoaded] = useState(false);
+  const [thumbnailSrc, setThumbnailSrc] = useState(primaryThumbnail);
+
+  function handleThumbnailError() {
+    if (thumbnailSrc === primaryThumbnail) {
+      setThumbnailSrc(fallbackThumbnail);
+      return;
+    }
+
+    setThumbnailSrc(null);
+  }
 
   if (mode === "none") return null;
 
@@ -65,13 +84,17 @@ export function DemoVideo({
       data-demo-video-state="play"
       className="relative aspect-video overflow-hidden rounded-2xl border border-white/14 bg-[radial-gradient(circle_at_50%_10%,rgba(74,222,128,0.14),transparent_38%),linear-gradient(145deg,#101a2c,#070c17)] shadow-[0_20px_55px_rgba(0,0,0,0.32)]"
     >
-      {poster ? (
+      {thumbnailSrc ? (
         <Image
-          src={poster}
+          src={thumbnailSrc}
           alt=""
           fill
+          unoptimized
+          loading="lazy"
+          referrerPolicy="no-referrer"
           sizes="(max-width: 1120px) 100vw, 1088px"
-          className="object-contain opacity-72"
+          onError={handleThumbnailError}
+          className="object-cover opacity-80"
         />
       ) : (
         <div
