@@ -23,9 +23,10 @@ export function HeroSection() {
           <p className="max-w-2xl text-xl leading-snug text-white/90 md:text-2xl whitespace-pre-line">
             {copy.headline}
           </p>
-          <p className="text-sm text-white/74 md:text-base">
+          <p className="max-w-2xl whitespace-pre-line text-base leading-7 text-white/82 md:text-lg">
             {copy.subheadline}
           </p>
+          <p className="text-sm text-white/74 md:text-base">{copy.supporting}</p>
 
           <div className="grid grid-cols-3 gap-2.5 pt-2 md:gap-3">
             {copy.stats.map((stat) => (

@@ -17,8 +17,9 @@
       "kicker": "AI Product Leader",
       "name": "Jay Ko",
       "alias": "Ko Jaehyun",
-      "headline": "Building and scaling AI products\n—from tabular ML to generative video.",
-      "subheadline": "6+ years leading AI product planning, launch, and scale across domains",
+      "headline": "Tinkering with the latest AI and building it into real-world products.",
+      "subheadline": "Building and scaling AI products\nfrom tabular ML to generative video.",
+      "supporting": "6+ years leading AI product planning, launch, and scale across domains",
       "ctaPortfolio": "View Portfolio",
       "ctaResume": "View Resume",
       "profileAlt": "Jay Ko profile photo",
@@ -42,6 +43,9 @@
       "title": "Notable Projects",
       "viewAll": "View All",
       "metricFallbackPrefix": "Contribution"
+    },
+    "demos": {
+      "viewAll": "View All Demos"
     },
     "spotlight": {
       "kicker": "Creative Spotlight",
@@ -85,6 +89,7 @@
   },
   "about": {
     "motivationKicker": "What Moves Me",
+    "demosCta": "View Demos",
     "images": {
       "opening": "Domain expansion narrative image",
       "markets": "Three languages and three markets image",

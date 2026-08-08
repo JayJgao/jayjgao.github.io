@@ -18,6 +18,10 @@ export function getAllDemos(): Demo[] {
   return [...demos].sort((a, b) => a.order - b.order).map(cloneDemo);
 }
 
+export function getProductizedDemos(): Demo[] {
+  return getAllDemos().filter((demo) => demo.productized).slice(0, 4);
+}
+
 export function getDemoBySlug(slug: string): Demo | undefined {
   const demo = demos.find((candidate) => candidate.slug === slug);
   return demo ? cloneDemo(demo) : undefined;

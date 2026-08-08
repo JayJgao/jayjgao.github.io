@@ -17,8 +17,9 @@
       "kicker": "AI Product Leader",
       "name": "Jay Ko",
       "alias": "高在贤",
-      "headline": "从表格机器学习到生成式视频\n— 持续打造并规模化 AI 产品。",
-      "subheadline": "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
+      "headline": "Tinkering with the latest AI and building it into real-world products.",
+      "subheadline": "从表格机器学习到生成式视频\n持续打造并规模化 AI 产品。",
+      "supporting": "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
       "ctaPortfolio": "查看作品集",
       "ctaResume": "查看简历",
       "profileAlt": "Jay Ko 头像",
@@ -42,6 +43,9 @@
       "title": "代表项目",
       "viewAll": "查看全部",
       "metricFallbackPrefix": "贡献"
+    },
+    "demos": {
+      "viewAll": "View All Demos"
     },
     "spotlight": {
       "kicker": "创作聚焦",
@@ -85,6 +89,7 @@
   },
   "about": {
     "motivationKicker": "驱动我的东西",
+    "demosCta": "View Demos",
     "images": {
       "opening": "领域拓展叙事图像",
       "markets": "三种语言与三大市场图像",

@@ -11,5 +11,6 @@ export type AboutNarrative = {
     kicker: string;
     lead: string;
     principles: string[];
+    demosBridge: string;
   };
 };

@@ -17,8 +17,9 @@
       "kicker": "AI Product Leader",
       "name": "고재현",
       "alias": "Jay Ko",
-      "headline": "Tabular ML에서 생성형 비디오까지\n— AI 제품을 만들고 성장시킵니다.",
-      "subheadline": "6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
+      "headline": "Tinkering with the latest AI and building it into real-world products.",
+      "subheadline": "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
+      "supporting": "6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
       "ctaPortfolio": "View Portfolio",
       "ctaResume": "View Resume",
       "profileAlt": "고재현 프로필 사진",
@@ -42,6 +43,9 @@
       "title": "Notable Projects",
       "viewAll": "전체 보기",
       "metricFallbackPrefix": "기여"
+    },
+    "demos": {
+      "viewAll": "View All Demos"
     },
     "spotlight": {
       "kicker": "Creative Spotlight",
@@ -85,6 +89,7 @@
   },
   "about": {
     "motivationKicker": "저를 움직이는 것",
+    "demosCta": "View Demos",
     "images": {
       "opening": "도메인 확장 내러티브 이미지",
       "markets": "3개 언어 3개 시장 소개 이미지",
