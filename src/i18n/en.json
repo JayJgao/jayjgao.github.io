@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Portfolio",
+    "demos": "Demos",
     "resume": "Resume"
   },
   "common": {
@@ -120,6 +121,67 @@
       "firstProject": "First project",
       "lastProject": "Last project",
       "backToList": "Back to project list"
+    }
+  },
+  "demos": {
+    "page": {
+      "kicker": "Demos",
+      "title": "Tinkering with the latest AI",
+      "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
+    },
+    "groups": {
+      "productized": {
+        "title": "Built into Products",
+        "description": "실제 제품 흐름에 반영되어 사용 맥락을 검증한 작업입니다."
+      },
+      "experiments": {
+        "title": "Experiments and Internal Tools",
+        "description": "가설을 빠르게 검증하고 다음 판단을 만든 실험과 내부 도구입니다."
+      }
+    },
+    "kind": {
+      "service": "Service",
+      "skill": "Skill",
+      "prototype": "Prototype",
+      "workflow": "Workflow"
+    },
+    "status": {
+      "productized": "Productized",
+      "internal": "Internal"
+    },
+    "card": {
+      "outcomeLabel": "Outcome",
+      "openDetail": "Demo 상세 보기"
+    },
+    "detail": {
+      "backToList": "Demos 목록으로",
+      "outcomeLabel": "Outcome",
+      "flowTitle": "From Observation to Hypothesis",
+      "sections": {
+        "observation": "Observation",
+        "problem": "Problem",
+        "hypothesis": "Hypothesis",
+        "highlightMedia": "Highlight Media",
+        "video": "Video",
+        "gallery": "Product Evidence",
+        "howItWorks": "How It Works",
+        "pipeline": "Pipeline",
+        "stack": "Stack",
+        "boundary": "Boundary"
+      },
+      "video": {
+        "playPrefix": "하이라이트 영상 재생",
+        "pending": "하이라이트 영상 준비 중",
+        "titleSuffix": "하이라이트 영상"
+      },
+      "gallery": {
+        "previous": "이전 이미지",
+        "next": "다음 이미지",
+        "selectPrefix": "이미지 선택",
+        "counterLabel": "현재 이미지와 전체 이미지 수"
+      },
+      "relatedDemo": "관련 Demo 보기",
+      "diagramScrollHint": "작은 화면에서는 좌우로 스크롤해 전체 파이프라인을 볼 수 있습니다."
     }
   },
   "resume": {
