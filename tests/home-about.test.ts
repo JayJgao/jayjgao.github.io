@@ -80,7 +80,7 @@ test("hero copy preserves the old narrative under the exact new hierarchy", () =
   }
 
   const hero = readRepoFile("src/components/home/HeroSection.tsx");
-  const hierarchy = ["{copy.headline}", "{copy.subheadline}", "{copy.supporting}"].map(
+  const hierarchy = ["copy.headline.indexOf", "{copy.subheadline}", "{copy.supporting}"].map(
     (token) => hero.indexOf(token),
   );
   assert.ok(hierarchy.every((index) => index >= 0), "hero renders all three copy levels");

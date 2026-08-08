@@ -22,7 +22,7 @@ export function EraFilter({
   ];
 
   return (
-    <div className="flex flex-wrap gap-2.5">
+    <div className="era-filter" aria-label={copy.all}>
       {options.map((option) => {
         const active = option.value === value;
         return (
@@ -30,11 +30,8 @@ export function EraFilter({
             key={option.value}
             type="button"
             onClick={() => onChange(option.value)}
-            className={`inline-flex min-h-11 items-center rounded-full border px-4 py-2 text-sm transition ${
-              active
-                ? "border-white/25 bg-white/16 text-white"
-                : "border-white/12 text-white/76 hover:bg-white/8 hover:text-white"
-            }`}
+            aria-pressed={active}
+            className={`era-filter__button ${active ? "is-active" : ""}`}
           >
             {option.label}
           </button>

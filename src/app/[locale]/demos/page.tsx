@@ -31,7 +31,7 @@ export default async function DemosPage({
   if (!isLocale(locale)) notFound();
 
   return (
-    <main className="page-container py-8 md:py-12">
+    <main id="main-content">
       <DemosExplorer locale={locale} />
     </main>
   );

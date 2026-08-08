@@ -12,28 +12,23 @@ export function DemosPreview({ locale }: { locale: Locale }) {
   const demos = getProductizedDemos();
 
   return (
-    <section className="space-y-5 md:space-y-7" aria-labelledby="home-demos-title">
-      <div className="max-w-2xl space-y-2">
-        <p className="section-kicker">{copy.page.kicker}</p>
-        <h2 id="home-demos-title" className="editorial-title text-3xl md:text-5xl">
-          {copy.groups.productized.title}
-        </h2>
-        <p className="text-sm leading-7 text-white/66 md:text-base">
-          {copy.groups.productized.description}
-        </p>
-      </div>
+    <section className="demo-preview-chapter" aria-labelledby="home-demos-title">
+      <div className="chapter-inner">
+        <header className="chapter-heading chapter-heading--cream">
+          <p className="section-kicker">{copy.page.kicker}</p>
+          <h2 id="home-demos-title" className="section-display">
+            {copy.groups.productized.title}
+          </h2>
+          <p className="chapter-description">{copy.groups.productized.description}</p>
+        </header>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {demos.map((demo) => (
-          <DemoCard key={demo.slug} demo={demo} locale={locale} variant="compact" />
-        ))}
-      </div>
+        <div className="demo-preview-grid">
+          {demos.map((demo) => (
+            <DemoCard key={demo.slug} demo={demo} locale={locale} variant="compact" />
+          ))}
+        </div>
 
-      <div className="flex justify-end">
-        <Link
-          href={getLocalizedPath(locale, "/demos/")}
-          className="btn-secondary w-fit px-4 text-xs tracking-[0.12em] uppercase md:text-sm"
-        >
+        <Link href={getLocalizedPath(locale, "/demos/")} className="btn-on-orange">
           {homeCopy.viewAll}
         </Link>
       </div>

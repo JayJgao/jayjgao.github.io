@@ -68,6 +68,15 @@ export type ExportContract = {
   expectedVideoCounts?: Record<"play" | "pending", number>;
   forbiddenHtmlPatterns: Array<{ label: string; pattern: RegExp }>;
   sourceEvidenceBasenames: string[];
+  forbiddenImagePrefixesByRoute?: Array<{
+    routes: string[];
+    prefixes: string[];
+    scope?: {
+      attribute: string;
+      value: string;
+      endValue?: string;
+    };
+  }>;
 };
 
 export type ExportVerificationResult = {
@@ -535,6 +544,25 @@ export function createProductionExportContract(): ExportContract {
       "n8n_workflow.png",
       "n8n_slack_webhook.png",
     ],
+    forbiddenImagePrefixesByRoute: [
+      {
+        routes: SUPPORTED_LOCALES.map((locale) => `/${locale}/`),
+        prefixes: ["/assets/images/projects/"],
+        scope: {
+          attribute: "data-home-section",
+          value: "featured",
+          endValue: "spotlight",
+        },
+      },
+      {
+        routes: SUPPORTED_LOCALES.map((locale) => `/${locale}/projects/`),
+        prefixes: ["/assets/images/projects/"],
+      },
+      {
+        routes: SUPPORTED_LOCALES.map((locale) => `/${locale}/about/`),
+        prefixes: ["/assets/images/about/"],
+      },
+    ],
   };
 }
 
@@ -656,6 +684,50 @@ export async function verifyExport(
     const html = await readExpectedRoute(expectation.route);
     if (html === null) continue;
     const signals = extractDocumentSignals(html);
+
+    const presentationRules = contract.forbiddenImagePrefixesByRoute?.filter(
+      ({ routes }) => routes.includes(expectation.route),
+    ) ?? [];
+    for (const rule of presentationRules) {
+      let ruleTags = signals.tags;
+      const scope = rule.scope;
+      if (scope) {
+        const scopeStart = signals.tags.find(
+          ({ attributes }) =>
+            attributes[scope.attribute] === scope.value,
+        );
+        const scopeEnd = scopeStart && scope.endValue
+          ? signals.tags.find(
+              ({ start, attributes }) =>
+                start > scopeStart.start &&
+                attributes[scope.attribute] === scope.endValue,
+            )
+          : undefined;
+        if (!scopeStart || (scope.endValue && !scopeEnd)) {
+          errors.push(
+            `${expectation.route}: missing presentation scope ${scope.attribute}=${scope.value}${scope.endValue ? `..${scope.endValue}` : ""}`,
+          );
+          continue;
+        }
+        ruleTags = signals.tags.filter(
+          ({ start }) =>
+            start >= scopeStart.start && (!scopeEnd || start < scopeEnd.start),
+        );
+      }
+
+      const forbiddenImages = ruleTags.filter(
+        ({ name, attributes }) =>
+          name === "img" &&
+          rule.prefixes.some((prefix) =>
+            (attributes.src ?? "").startsWith(prefix),
+          ),
+      );
+      for (const image of forbiddenImages) {
+        errors.push(
+          `${expectation.route}: forbidden image request ${image.attributes.src}`,
+        );
+      }
+    }
 
     if (signals.lang !== expectation.locale) {
       errors.push(`${expectation.route}: expected html lang=${expectation.locale}, found ${signals.lang ?? "missing"}`);

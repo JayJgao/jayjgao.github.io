@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
   const next = index < projectList.length - 1 ? projectList[index + 1] : undefined;
 
   return (
-    <main className="page-container py-10 md:py-14">
+    <main id="main-content">
       <CaseStudy
         project={project}
         content={content}

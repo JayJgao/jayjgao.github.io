@@ -374,6 +374,81 @@ test("verification reports a missing local image asset while anchor assets remai
   );
 });
 
+test("route-specific presentation rules reject index and About image requests", async () => {
+  const cases = [
+    { route: "/en/", prefix: "/assets/images/projects/", src: "/assets/images/projects/example.webp" },
+    { route: "/en/about/", prefix: "/assets/images/about/", src: "/assets/images/about/example.webp" },
+  ];
+
+  for (const { route, prefix, src } of cases) {
+    const { outDir, contract } = await createValidFixture();
+    contract.forbiddenImagePrefixesByRoute = [{ routes: [route], prefixes: [prefix] }];
+    await writeRoute(
+      outDir,
+      route,
+      `${localizedHead("en", route)}<img src="${src}" alt="forbidden fixture"></body></html>`,
+    );
+    await mkdir(path.join(outDir, path.dirname(src)), { recursive: true });
+    await writeFile(path.join(outDir, src), "fixture", "utf8");
+
+    await assert.rejects(
+      () => verifyExport(outDir, contract),
+      /forbidden image request/i,
+    );
+  }
+});
+
+test("route-specific presentation rules allow Project detail evidence", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/en/projects/example/";
+  contract.forbiddenImagePrefixesByRoute = [
+    { routes: ["/en/", "/en/about/"], prefixes: ["/assets/images/projects/", "/assets/images/about/"] },
+  ];
+  contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  const src = "/assets/images/projects/detail-evidence.webp";
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("en", detailRoute)}<img src="${src}" alt="Project evidence"></body></html>`,
+  );
+  await mkdir(path.join(outDir, path.dirname(src)), { recursive: true });
+  await writeFile(path.join(outDir, src), "fixture", "utf8");
+
+  const result = await verifyExport(outDir, contract);
+  assert.equal(result.errors, 0);
+});
+
+test("scoped presentation rules do not reject media in a later Home chapter", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const route = "/en/";
+  const src = "/assets/images/projects/creative-spotlight.webp";
+  contract.forbiddenImagePrefixesByRoute = [
+    {
+      routes: [route],
+      prefixes: ["/assets/images/projects/"],
+      scope: {
+        attribute: "data-home-section",
+        value: "featured",
+        endValue: "spotlight",
+      },
+    },
+  ];
+  await writeRoute(
+    outDir,
+    route,
+    `${localizedHead("en", route)}
+      <div data-home-section="featured"><p>Text-only projects</p></div>
+      <div data-home-section="spotlight"><img src="${src}" alt="creative work"></div>
+    </body></html>`,
+  );
+  await mkdir(path.join(outDir, path.dirname(src)), { recursive: true });
+  await writeFile(path.join(outDir, src), "fixture", "utf8");
+
+  const result = await verifyExport(outDir, contract);
+  assert.equal(result.errors, 0);
+});
+
 test("source-evidence boundary names are rejected without blocking ordinary build artifacts", async () => {
   const { outDir, contract } = await createValidFixture();
   const forbiddenNames = [

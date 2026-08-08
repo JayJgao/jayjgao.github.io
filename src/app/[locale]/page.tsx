@@ -35,7 +35,7 @@ export default async function HomePage({
   if (!isLocale(locale)) notFound();
 
   return (
-    <main className="page-container space-y-10 py-6 md:space-y-14 md:py-12">
+    <main id="main-content" className="home-editorial">
       <div data-home-section="hero">
         <HeroSection />
       </div>

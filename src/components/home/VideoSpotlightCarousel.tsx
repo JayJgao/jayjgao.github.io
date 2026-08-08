@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import spotlights from "@/data/spotlights.json";
 import { getMessages } from "@/lib/i18n";
@@ -33,12 +33,10 @@ function getEmbedUrl(item: Spotlight) {
 
 export function VideoSpotlightCarousel() {
   const { locale } = useLocale();
-  const messages = getMessages(locale);
-  const copy = messages.home.spotlight;
+  const copy = getMessages(locale).home.spotlight;
   const items = spotlights as Spotlight[];
   const [index, setIndex] = useState(0);
   const current = items[index] ?? items[0];
-
   const frameTitle = useMemo(
     () => `${current ? pickText(current.workTitle, locale) : copy.frameFallback} (${index + 1}/${items.length})`,
     [current, copy.frameFallback, index, items.length, locale],
@@ -50,59 +48,55 @@ export function VideoSpotlightCarousel() {
   const next = () => setIndex((value) => (value + 1) % items.length);
 
   return (
-    <section className="space-y-4 md:space-y-5">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="space-y-2">
+    <section className="spotlight-chapter">
+      <header className="spotlight-heading">
+        <div>
           <p className="section-kicker">{copy.kicker}</p>
-          <h2 className="editorial-title text-3xl md:text-5xl">{copy.title}</h2>
-          <p className="text-sm text-white/70 md:text-base">
-            {copy.subtitle}
-          </p>
+          <h2 className="section-display">{copy.title}</h2>
+          <p className="chapter-description">{copy.subtitle}</p>
         </div>
-        <div className="flex items-center gap-2 self-start sm:self-auto">
-          <button type="button" onClick={prev} className="btn-secondary px-3 text-xs md:text-sm" aria-label={copy.prevAria}>
+        <div className="spotlight-controls">
+          <button type="button" onClick={prev} className="btn-secondary" aria-label={copy.prevAria}>
             {copy.prev}
           </button>
-          <button type="button" onClick={next} className="btn-secondary px-3 text-xs md:text-sm" aria-label={copy.nextAria}>
+          <button type="button" onClick={next} className="btn-secondary" aria-label={copy.nextAria}>
             {copy.next}
           </button>
         </div>
-      </div>
+      </header>
 
-      <article className="panel overflow-hidden p-3 md:p-6">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+      <article className="spotlight-stage">
+        <div className="spotlight-frame">
           <iframe
             key={`${current.provider}-${current.videoId}`}
             src={getEmbedUrl(current)}
             title={frameTitle}
-            className="absolute inset-0 h-full w-full"
             loading="lazy"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           />
         </div>
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 md:mt-4">
+        <div className="spotlight-caption">
           <div>
-            <h3 className="text-base font-medium text-white/95 md:text-lg">{pickText(current.workTitle, locale)}</h3>
-            <p className="mt-1 text-sm text-white/72">{pickText(current.caption, locale)}</p>
+            <h3>{pickText(current.workTitle, locale)}</h3>
+            <p>{pickText(current.caption, locale)}</p>
           </div>
-          <Link href={getLocalizedPath(locale, `/projects/${current.slug}/`)} className="btn-primary text-xs md:text-sm">
+          <Link href={getLocalizedPath(locale, `/projects/${current.slug}/`)} className="btn-primary">
             {copy.relatedProject}
           </Link>
         </div>
 
-        <div className="mt-4 flex gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-3">
+        <div className="spotlight-index">
           {items.map((item, itemIndex) => (
             <button
               key={`${item.provider}-${item.videoId}`}
               type="button"
               onClick={() => setIndex(itemIndex)}
-              className={`spotlight-item w-[162px] shrink-0 rounded-xl border text-left md:w-[190px] ${
-                itemIndex === index ? "border-accent/60 bg-accent/10" : "border-white/12 bg-white/5"
-              }`}
+              className={`spotlight-item ${itemIndex === index ? "is-active" : ""}`}
               aria-label={`${copy.selectPrefix} ${pickText(item.title, locale)}`}
+              aria-current={itemIndex === index ? "true" : undefined}
             >
-              <div className="relative h-16 w-full overflow-hidden rounded-t-xl md:h-20">
+              <span className="spotlight-item__image">
                 <Image
                   src={item.poster}
                   alt={`${pickText(item.title, locale)} ${copy.posterAltSuffix}`}
@@ -110,13 +104,8 @@ export function VideoSpotlightCarousel() {
                   className="object-cover"
                   sizes="(max-width: 768px) 45vw, 240px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-              </div>
-              <div className="p-2.5 md:p-3">
-                <p className="line-clamp-2 text-xs font-medium leading-snug text-white/90 md:text-sm whitespace-pre-line">
-                  {pickText(item.title, locale)}
-                </p>
-              </div>
+              </span>
+              <span className="spotlight-item__title">{pickText(item.title, locale)}</span>
             </button>
           ))}
         </div>

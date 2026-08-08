@@ -33,14 +33,12 @@ export default async function ResumePage({
   const copy = getMessages(locale).resume.page;
 
   return (
-    <main className="page-container space-y-6 py-8 md:space-y-8 md:py-12">
-      <header className="space-y-3 md:space-y-4">
+    <main id="main-content" className="resume-page">
+      <header className="resume-page__heading">
         <p className="section-kicker">{copy.kicker}</p>
-        <h1 className="editorial-title text-5xl md:text-6xl">{copy.title}</h1>
-        <p className="max-w-2xl text-base leading-relaxed text-white/72 md:text-lg">
-          {copy.description}
-        </p>
-        <div className="flex flex-wrap gap-2.5 pt-1 md:gap-3">
+        <h1 className="page-display">{copy.title}</h1>
+        <p className="chapter-description">{copy.description}</p>
+        <div className="resume-downloads">
           <a href="/assets/resume/resume_ko.pdf" className="btn-secondary">
             {copy.downloadKo}
           </a>

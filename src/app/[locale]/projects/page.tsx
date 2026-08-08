@@ -27,7 +27,7 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    <main className="page-container py-8 md:py-12">
+    <main id="main-content">
       <ProjectsExplorer projects={projects} />
     </main>
   );

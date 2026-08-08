@@ -8,17 +8,17 @@ export function Footer() {
   const copy = getMessages(locale);
 
   return (
-    <footer className="border-t border-white/10 py-7 md:py-8">
-      <div className="page-container flex flex-col gap-3 text-sm text-white/62 md:flex-row md:items-center md:justify-between">
-        <p className="text-white/56">{copy.footer.brand}</p>
-        <div className="flex items-center gap-4">
-          <a href="https://github.com/JayJgao" className="hover:text-white/92">
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <p>{copy.footer.brand}</p>
+        <div className="site-footer__links">
+          <a href="https://github.com/JayJgao">
             {copy.common.github}
           </a>
-          <a href="mailto:rhwogus0205@gmail.com" className="hover:text-white/92">
+          <a href="mailto:rhwogus0205@gmail.com">
             {copy.common.email}
           </a>
-          <span className="text-white/56">{copy.footer.copyright}</span>
+          <span>{copy.footer.copyright}</span>
         </div>
       </div>
     </footer>

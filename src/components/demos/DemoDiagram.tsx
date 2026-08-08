@@ -22,27 +22,19 @@ export function DemoDiagram({
   scrollHint: string;
 }) {
   const dimensions = diagramDimensions[src];
-
-  if (!dimensions) {
-    throw new Error(`Missing source dimensions for Demo diagram: ${src}`);
-  }
+  if (!dimensions) throw new Error(`Missing source dimensions for Demo diagram: ${src}`);
 
   return (
-    <div className="space-y-2">
-      <p className="text-xs text-white/52 md:hidden">↔ {scrollHint}</p>
-      <div
-        role="region"
-        aria-label={alt}
-        tabIndex={0}
-        className="overflow-x-auto rounded-2xl border border-white/14 bg-white/[0.035] p-3 shadow-[inset_-18px_0_24px_-24px_rgba(255,255,255,0.5)] md:p-5"
-      >
+    <div className="demo-diagram">
+      <p className="demo-diagram__hint">↔ {scrollHint}</p>
+      <div role="region" aria-label={alt} tabIndex={0} className="demo-diagram__viewport">
         <Image
           src={src}
           alt={alt}
           width={dimensions.width}
           height={dimensions.height}
           unoptimized
-          className="h-auto min-w-[48rem] w-full max-w-none md:min-w-0"
+          className="demo-diagram__image"
         />
       </div>
     </div>

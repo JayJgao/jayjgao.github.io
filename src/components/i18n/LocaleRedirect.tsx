@@ -37,13 +37,13 @@ export function LocaleRedirect({ path }: { path: string }) {
   }, [path]);
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-5 px-6 md:px-12">
+    <main id="main-content" className="redirect-page">
       <p className="section-kicker">Jay Ko Portfolio</p>
-      <h1 className="editorial-title text-4xl md:text-5xl">Choose a language</h1>
-      <p className="text-white/70">
+      <h1 className="page-display">Choose a language</h1>
+      <p className="redirect-page__copy">
         언어 설정으로 이동하고 있습니다. 자동 이동이 되지 않으면 아래 링크를 선택해 주세요.
       </p>
-      <nav aria-label="Language fallbacks" className="flex flex-wrap gap-3">
+      <nav aria-label="Language fallbacks" className="redirect-page__links">
         {SUPPORTED_LOCALES.map((locale) => (
           <Link
             key={locale}

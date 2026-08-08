@@ -42,7 +42,7 @@ export default async function DemoDetailPage({
   if (!demo) notFound();
 
   return (
-    <main className="page-container py-8 md:py-12">
+    <main id="main-content">
       <DemoDetail demo={demo} locale={locale} />
     </main>
   );

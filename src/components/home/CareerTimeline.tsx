@@ -5,12 +5,6 @@ import { getAllEras, getEraLabel } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
 import type { EraId, Localized } from "@/types/content";
 
-const eraColors: Record<EraId, string> = {
-  1: "bg-[#f59e0b]",
-  2: "bg-[#38bdf8]",
-  3: "bg-[#34d399]",
-};
-
 const eraPrefix: Localized<string> = {
   ko: "Era",
   en: "Era",
@@ -27,29 +21,26 @@ export function CareerTimeline() {
   };
   const timeline = getAllEras().map((era) => ({
     era,
-    color: eraColors[era.id],
     items: itemsByEra[era.id],
   }));
 
   return (
-    <section className="space-y-5 md:space-y-6">
-      <div>
+    <section className="timeline-chapter">
+      <header className="chapter-heading">
         <p className="section-kicker">{copy.kicker}</p>
-        <h2 className="editorial-title mt-2 text-3xl md:text-5xl">{copy.title}</h2>
-      </div>
+        <h2 className="section-display">{copy.title}</h2>
+      </header>
 
-      <div className="space-y-3.5 md:space-y-4">
-        {timeline.map((era) => (
-          <article key={era.era.id} className="panel p-4 md:p-5">
-            <div className="flex items-center gap-3">
-              <span className={`h-2.5 w-2.5 rounded-full ${era.color}`} aria-hidden="true" />
-              <h3 className="text-base font-medium text-white/92 md:text-lg">
-                {eraPrefix[locale]} {era.era.id} · {getEraLabel(era.era.id, locale)}
-              </h3>
-            </div>
-            <ul className="mt-3.5 space-y-2 text-sm leading-[1.8] text-white/84">
-              {era.items.map((item) => (
-                <li key={item}>• {item}</li>
+      <div className="timeline-ledger">
+        {timeline.map(({ era, items }) => (
+          <article key={era.id} className="timeline-row">
+            <p className="timeline-row__number">0{era.id}</p>
+            <h3 className="timeline-row__title">
+              {eraPrefix[locale]} {era.id}<br />{getEraLabel(era.id, locale)}
+            </h3>
+            <ul className="timeline-row__items">
+              {items.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </article>

@@ -9,12 +9,8 @@ export const metadata: Metadata = {
 
 export default function RedirectLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko" className="dark">
-      <body className="antialiased">
-        <div className="background-grid" aria-hidden="true" />
-        <div className="grain-overlay fixed inset-0 -z-10" aria-hidden="true" />
-        {children}
-      </body>
+    <html lang="ko">
+      <body>{children}</body>
     </html>
   );
 }
