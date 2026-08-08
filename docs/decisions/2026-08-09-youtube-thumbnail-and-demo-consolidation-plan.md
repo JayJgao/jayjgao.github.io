@@ -202,7 +202,7 @@
 
   Expected: focused tests pass; production counts remain 108 HTML / 87 localized / 45 project details / 27 Demo details / 18 legacy documents, with seven playable Demo families across three locales showing the exact initial thumbnail.
 
-- [ ] **Step 5: Commit the verifier slice**
+- [x] **Step 5: Commit the verifier slice**
 
   ```bash
   git add scripts/lib/export-verifier.ts tests/export-verifier.test.ts
@@ -223,11 +223,11 @@
 - Modify: `/Users/vonvon/Documents/jayjgao/README.md`
 - Modify: `.local/handoffs/phase1.md`
 
-- [ ] **Step 1: Replace the superseded poster decision everywhere**
+- [x] **Step 1: Replace the superseded poster decision everywhere**
 
   Record the exact maxres → hq → gradient behavior, lazy/no-referrer attributes, accepted IP/browser disclosure, click-gated `youtube-nocookie.com` iframe, and the absence of a local poster asset pipeline. Remove all remaining-work items for seven custom posters.
 
-- [ ] **Step 2: Add the Phase 3 consolidation interview item**
+- [x] **Step 2: Add the Phase 3 consolidation interview item**
 
   Keep both records and routes in Phase 1. In the Phase 3 prompt, require a user decision that weighs:
 
@@ -236,7 +236,7 @@
   - canonical URL and redirects;
   - merged evidence and the chronology that must survive consolidation.
 
-- [ ] **Step 3: Scan for stale contradictions**
+- [x] **Step 3: Scan for stale contradictions**
 
   ```bash
   rg -n "custom poster|video-poster|poster.*null|외부.*thumbnail.*없|thumbnail.*요청하지" \
@@ -251,7 +251,7 @@
 
 - Verify all changed files and generated `out/` artifacts.
 
-- [ ] **Step 1: Run the complete gate in deployment order**
+- [x] **Step 1: Run the complete gate in deployment order**
 
   ```bash
   npm test
@@ -264,11 +264,11 @@
 
   Expected: tests pass; lint has zero errors; build produces 110 routes; verifier retains the approved inventory and link counts.
 
-- [ ] **Step 2: Inspect static output directly**
+- [x] **Step 2: Inspect static output directly**
 
   Confirm all 21 localized playable Demo pages contain the exact maxres thumbnail, zero initial iframes, lazy loading, and no-referrer. Confirm all three localized `prompt-enhance-skills` pages contain only `pending`, and all three `script-to-bgm` pages contain no video thumbnail or video state.
 
-- [ ] **Step 3: Run companion browser QA**
+- [x] **Step 3: Run companion browser QA**
 
   At desktop and mobile widths, verify:
 

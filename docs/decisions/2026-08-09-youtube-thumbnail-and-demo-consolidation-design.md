@@ -4,7 +4,7 @@
 
 **Branch:** `redesign/2026`
 
-**Status:** Approved for implementation
+**Status:** Implemented and verified on `redesign/2026`
 
 ## Context
 
