@@ -6,6 +6,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
+import {
+  getLocalizedPath,
+  getPathWithoutLocale,
+  normalizeSitePath,
+} from "@/lib/routes";
 
 const localeText: Record<Locale, string> = {
   ko: "한국어",
@@ -21,10 +26,13 @@ const localeOptions: Array<{ value: Locale; label: string }> = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const { locale, setLocale } = useLocale();
+  const { locale } = useLocale();
   const labels = getMessages(locale).nav;
   const [localeOpen, setLocaleOpen] = useState(false);
   const localeMenuRef = useRef<HTMLDivElement | null>(null);
+  const localeTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const localeDisclosureId = "locale-disclosure";
+  const pathWithoutLocale = getPathWithoutLocale(pathname);
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
@@ -34,8 +42,10 @@ export function Navbar() {
     };
 
     const onEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && localeOpen) {
+        event.preventDefault();
         setLocaleOpen(false);
+        localeTriggerRef.current?.focus();
       }
     };
 
@@ -45,7 +55,7 @@ export function Navbar() {
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onEscape);
     };
-  }, []);
+  }, [localeOpen]);
 
   const navItems = useMemo(
     () => [
@@ -60,7 +70,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-background/78 backdrop-blur-2xl">
       <div className="page-container flex h-[4.4rem] items-center gap-2 md:h-[4.6rem]">
-        <Link href="/" className="shrink-0">
+        <Link href={getLocalizedPath(locale, "/")} className="shrink-0">
           <span className="font-mono text-[0.78rem] tracking-[0.22em] text-accent uppercase sm:text-sm">
             Jay Ko
           </span>
@@ -72,14 +82,17 @@ export function Navbar() {
             className="flex max-w-[calc(100vw-8rem)] min-w-0 items-center gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:max-w-none sm:gap-1.5"
           >
             {navItems.map((item) => {
+              const normalizedItemPath = normalizeSitePath(item.href);
               const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
+                normalizedItemPath === "/"
+                  ? pathWithoutLocale === "/"
+                  : pathWithoutLocale === normalizedItemPath ||
+                    pathWithoutLocale.startsWith(normalizedItemPath);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={getLocalizedPath(locale, item.href)}
+                  aria-current={active ? "page" : undefined}
                   className={`inline-flex min-h-11 shrink-0 items-center rounded-full px-3 py-2 text-[0.8rem] transition sm:px-3.5 sm:text-sm ${
                     active
                       ? "bg-white/16 text-white"
@@ -94,12 +107,13 @@ export function Navbar() {
 
           <div ref={localeMenuRef} className="relative shrink-0">
             <button
+              ref={localeTriggerRef}
               type="button"
               onClick={() => setLocaleOpen((value) => !value)}
               className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/18 bg-surface/90 px-3 text-white/88 transition hover:border-white/30 hover:bg-white/8"
               aria-label="Language selector"
-              aria-haspopup="menu"
               aria-expanded={localeOpen}
+              aria-controls={localeDisclosureId}
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[1.02rem] w-[1.02rem]">
                 <path
@@ -113,36 +127,32 @@ export function Navbar() {
               </svg>
             </button>
 
-            {localeOpen ? (
-              <ul
-                role="menu"
-                aria-label="Language options"
-                className="absolute right-0 z-20 mt-2 min-w-[8.4rem] rounded-2xl border border-white/15 bg-surface/95 p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.45)] backdrop-blur"
-              >
-                {localeOptions.map((option) => {
-                  const active = option.value === locale;
-                  return (
-                    <li key={option.value} role="none">
-                      <button
-                        type="button"
-                        role="menuitemradio"
-                        aria-checked={active}
-                        onClick={() => {
-                          setLocale(option.value);
-                          setLocaleOpen(false);
-                        }}
-                        className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm transition ${
-                          active ? "bg-white/14 text-white" : "text-white/78 hover:bg-white/8 hover:text-white"
-                        }`}
-                      >
-                        {option.label}
-                        {active ? <span className="text-accent">•</span> : null}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : null}
+            <ul
+              id={localeDisclosureId}
+              aria-label="Language options"
+              hidden={!localeOpen}
+              className="absolute right-0 z-20 mt-2 min-w-[8.4rem] rounded-2xl border border-white/15 bg-surface/95 p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.45)] backdrop-blur"
+            >
+              {localeOptions.map((option) => {
+                const active = option.value === locale;
+                return (
+                  <li key={option.value}>
+                    <Link
+                      href={getLocalizedPath(option.value, pathWithoutLocale)}
+                      aria-current={active ? "page" : undefined}
+                      hrefLang={option.value}
+                      onClick={() => setLocaleOpen(false)}
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm transition ${
+                        active ? "bg-white/14 text-white" : "text-white/78 hover:bg-white/8 hover:text-white"
+                      }`}
+                    >
+                      {option.label}
+                      {active ? <span className="text-accent">•</span> : null}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

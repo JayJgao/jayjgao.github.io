@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getFeaturedProjects } from "@/lib/projects";
 import { getMessages } from "@/lib/i18n";
+import { getLocalizedPath } from "@/lib/routes";
 
 const eraChipClass: Record<number, string> = {
   1: "project-era-chip--era1",
@@ -30,7 +31,7 @@ export function FeaturedProjects() {
           <p className="section-kicker">{copy.sectionLabel}</p>
           <h2 className="editorial-title text-3xl md:text-5xl">{copy.title}</h2>
         </div>
-        <Link href="/projects" className="btn-secondary w-fit px-4 text-xs tracking-[0.12em] uppercase md:text-sm">
+        <Link href={getLocalizedPath(locale, "/projects/")} className="btn-secondary w-fit px-4 text-xs tracking-[0.12em] uppercase md:text-sm">
           {copy.viewAll}
         </Link>
       </div>
@@ -59,7 +60,7 @@ export function FeaturedProjects() {
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-between space-y-2.5 p-4 md:space-y-3 md:p-5">
-              <Link href={`/projects/${project.slug}`} className="block space-y-2.5 md:space-y-3">
+              <Link href={getLocalizedPath(locale, `/projects/${project.slug}/`)} className="block space-y-2.5 md:space-y-3">
                 <h3 className="line-clamp-2 min-h-[2.7rem] text-base font-semibold leading-snug text-white/95 md:min-h-[3rem] md:text-lg">
                   {project.title[locale]}
                 </h3>

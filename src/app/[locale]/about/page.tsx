@@ -1,8 +1,19 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
-import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getAboutNarrative, getMessages } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import aboutEn from "@/data/about.en.json";
+import aboutKo from "@/data/about.ko.json";
+import aboutZh from "@/data/about.zh.json";
+import { getMessages } from "@/lib/i18n";
+import { isLocale, type Locale } from "@/lib/locale";
+import { createLocalizedMetadata } from "@/lib/metadata";
+import type { AboutNarrative } from "@/types/about";
+
+const aboutByLocale: Record<Locale, AboutNarrative> = {
+  ko: aboutKo as AboutNarrative,
+  en: aboutEn as AboutNarrative,
+  zh: aboutZh as AboutNarrative,
+};
 
 const sectionImages = {
   opening: "/assets/images/about/about-opening.webp",
@@ -11,9 +22,32 @@ const sectionImages = {
   working: "/assets/images/about/about-working.webp",
 } as const;
 
-export default function AboutPage() {
-  const { locale } = useLocale();
-  const narrative = getAboutNarrative(locale);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+
+  const narrative = aboutByLocale[locale];
+  return createLocalizedMetadata({
+    locale,
+    path: "/about/",
+    title: `${narrative.title} | Jay Ko`,
+    description: narrative.opening.quote,
+  });
+}
+
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+
+  const narrative = aboutByLocale[locale];
   const messages = getMessages(locale);
 
   return (

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getMessages } from "@/lib/i18n";
 import type { Project } from "@/lib/projects";
 import type { Locale } from "@/lib/locale";
+import { getLocalizedPath } from "@/lib/routes";
 
 const eraChipClass: Record<number, string> = {
   1: "project-era-chip--era1",
@@ -41,7 +42,7 @@ export function ProjectCard({ project, locale }: { project: Project; locale: Loc
         </div>
       </div>
       <div className="flex flex-1 flex-col justify-between space-y-3 p-4 md:p-5">
-        <Link href={`/projects/${project.slug}`} className="block space-y-3">
+        <Link href={getLocalizedPath(locale, `/projects/${project.slug}/`)} className="block space-y-3">
           <h3 className="line-clamp-2 min-h-[2.7rem] text-base font-semibold leading-snug text-white/95">{project.title[locale]}</h3>
           <p className="line-clamp-2 min-h-[2.45rem] text-sm leading-relaxed text-white/78">{project.oneLiner[locale]}</p>
           <p className="text-xs text-white/66">{project.role}</p>

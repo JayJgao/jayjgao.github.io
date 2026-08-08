@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getMessages } from "@/lib/i18n";
+import { getLocalizedPath } from "@/lib/routes";
 
 export function HeroSection() {
   const { locale } = useLocale();
@@ -40,10 +41,10 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap gap-2.5 pt-2 md:gap-3">
-            <Link href="/projects" className="btn-primary min-w-[8.6rem]">
+            <Link href={getLocalizedPath(locale, "/projects/")} className="btn-primary min-w-[8.6rem]">
               {copy.ctaPortfolio}
             </Link>
-            <Link href="/resume" className="btn-secondary min-w-[8.6rem]">
+            <Link href={getLocalizedPath(locale, "/resume/")} className="btn-secondary min-w-[8.6rem]">
               {copy.ctaResume}
             </Link>
           </div>

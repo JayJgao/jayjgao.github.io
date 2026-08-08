@@ -7,6 +7,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import spotlights from "@/data/home-spotlights.json";
 import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
+import { getLocalizedPath } from "@/lib/routes";
 
 function pickText(value: Record<Locale, string>, locale: Locale) {
   return value[locale] ?? value.ko;
@@ -84,7 +85,7 @@ export function VideoSpotlightCarousel() {
             <h3 className="text-base font-medium text-white/95 md:text-lg">{pickText(current.workTitle, locale)}</h3>
             <p className="mt-1 text-sm text-white/72">{pickText(current.caption, locale)}</p>
           </div>
-          <Link href={`/projects/${current.slug}`} className="btn-primary text-xs md:text-sm">
+          <Link href={getLocalizedPath(locale, `/projects/${current.slug}/`)} className="btn-primary text-xs md:text-sm">
             {copy.relatedProject}
           </Link>
         </div>

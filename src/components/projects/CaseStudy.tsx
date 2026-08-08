@@ -4,16 +4,20 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getMessages } from "@/lib/i18n";
+import type { Locale } from "@/lib/locale";
 import type { Project } from "@/lib/projects";
+import { getLocalizedPath } from "@/lib/routes";
 
 export function CaseStudy({
   project,
   content,
+  contentLocale,
   prev,
   next,
 }: {
   project: Project;
   content: ReactNode;
+  contentLocale: Locale;
   prev?: Project;
   next?: Project;
 }) {
@@ -58,25 +62,27 @@ export function CaseStudy({
       </header>
 
       <section className="panel mdx-content p-5 md:p-8">
-        <div className="mx-auto max-w-[860px]">{content}</div>
+        <div lang={contentLocale} className="mx-auto max-w-[860px]">
+          {content}
+        </div>
       </section>
 
       <nav className="flex flex-col gap-3 border-t border-white/10 pt-6 text-sm md:flex-row md:items-center md:justify-between">
         <div>
           {prev ? (
-            <Link href={`/projects/${prev.slug}`} className="text-white/66 hover:text-white">
+            <Link href={getLocalizedPath(locale, `/projects/${prev.slug}/`)} className="text-white/66 hover:text-white">
               ← {prev.title[locale]}
             </Link>
           ) : (
             <span className="text-white/56">{copy.firstProject}</span>
           )}
         </div>
-        <Link href="/projects" className="text-accent/95 hover:underline">
+        <Link href={getLocalizedPath(locale, "/projects/")} className="text-accent/95 hover:underline">
           {copy.backToList}
         </Link>
         <div>
           {next ? (
-            <Link href={`/projects/${next.slug}`} className="text-white/66 hover:text-white">
+            <Link href={getLocalizedPath(locale, `/projects/${next.slug}/`)} className="text-white/66 hover:text-white">
               {next.title[locale]} →
             </Link>
           ) : (

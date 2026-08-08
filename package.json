@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "npx serve out"
+    "preview": "npx serve out",
+    "test": "tsx --test tests/*.test.ts",
+    "test:watch": "tsx --test --watch tests/*.test.ts",
+    "typecheck": "tsc --noEmit --incremental false"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -30,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.5.12",
     "tailwindcss": "^4",
+    "tsx": "^4.23.11",
     "typescript": "^5"
   }
 }

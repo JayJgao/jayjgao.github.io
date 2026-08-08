@@ -1,11 +1,35 @@
-"use client";
-
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ResumeRenderer } from "@/components/resume/ResumeRenderer";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getMessages } from "@/lib/i18n";
+import { isLocale } from "@/lib/locale";
+import { createLocalizedMetadata } from "@/lib/metadata";
 
-export default function ResumePage() {
-  const { locale } = useLocale();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+
+  const copy = getMessages(locale).resume.page;
+  return createLocalizedMetadata({
+    locale,
+    path: "/resume/",
+    title: `${copy.title} | Jay Ko`,
+    description: copy.description,
+  });
+}
+
+export default async function ResumePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+
   const copy = getMessages(locale).resume.page;
 
   return (
