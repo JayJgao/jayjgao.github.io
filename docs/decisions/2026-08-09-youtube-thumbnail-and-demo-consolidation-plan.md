@@ -278,6 +278,6 @@
   - Prompt Enhance Skills still communicates `pending`.
   - Script to BGM remains gallery-only.
 
-- [ ] **Step 4: Review scope and push**
+- [x] **Step 4: Review scope and push**
 
   Ensure Prompt records, routes, copy, gallery behavior, and grouping are otherwise unchanged. Push `redesign/2026` only after the full gate and browser QA pass.
