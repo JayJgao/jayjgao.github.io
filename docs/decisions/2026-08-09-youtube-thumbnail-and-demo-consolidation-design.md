@@ -4,7 +4,7 @@
 
 **Branch:** `redesign/2026`
 
-**Status:** Approved design; written spec pending user review
+**Status:** Approved for implementation
 
 ## Context
 
