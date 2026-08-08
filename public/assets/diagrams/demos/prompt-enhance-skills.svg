@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="410" viewBox="0 0 1400 410" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Enhance Skills Pipeline</title>
+  <desc id="desc">A compact one-row flow showing how raw Korean creative intent is routed through skill context, visual cue translation, preservation guardrails, and a single model-ready prompt output.</desc>
+  <defs>
+    <style>
+      .display { font-family: Helvetica, Arial, sans-serif; font-weight: 900; letter-spacing: 0; }
+      .heading { font-family: Helvetica, Arial, sans-serif; font-weight: 800; letter-spacing: 0; }
+      .body { font-family: Helvetica, Arial, sans-serif; font-weight: 600; letter-spacing: 0; }
+      .mono { font-family: Menlo, 'Courier New', monospace; font-weight: 700; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="410" fill="#f4e9e1"/>
+
+  <text x="48" y="38" class="mono" font-size="13" fill="#0e0e0e">PROMPT ENHANCE / SKILL PIPELINE</text>
+  <text x="48" y="106" class="display" font-size="52" fill="#0e0e0e">RAW KOREAN INTENT</text>
+  <line x1="600" y1="84" x2="654" y2="84" stroke="#ff3d00" stroke-width="5"/>
+  <path d="M654 75L668 84L654 93Z" fill="#ff3d00"/>
+  <text x="696" y="106" class="display" font-size="52" fill="#ff3d00">MODEL-READY PROMPT</text>
+
+  <g aria-label="One row flow from request input to prompt output">
+    <line x1="272" y1="256" x2="288" y2="256" stroke="#0e0e0e" stroke-width="3"/>
+    <line x1="486" y1="256" x2="502" y2="256" stroke="#0e0e0e" stroke-width="3"/>
+    <line x1="730" y1="256" x2="746" y2="256" stroke="#0e0e0e" stroke-width="3"/>
+    <line x1="1004" y1="256" x2="1020" y2="256" stroke="#0e0e0e" stroke-width="3"/>
+  </g>
+
+  <g aria-label="Step one raw user request">
+    <rect x="48" y="142" width="220" height="232" rx="16" fill="#2835f8"/>
+    <text x="72" y="174" class="mono" font-size="13" fill="#ffffff">01 / REQUEST</text>
+    <text x="72" y="226" class="heading" font-size="28" fill="#ffffff">RAW</text>
+    <text x="72" y="260" class="heading" font-size="28" fill="#ffffff">INTENT</text>
+    <path d="M72 286H244" stroke="#ffffff" stroke-width="2"/>
+    <text x="72" y="318" class="body" font-size="14" fill="#ffffff">KOREAN BRIEF</text>
+    <text x="72" y="340" class="body" font-size="14" fill="#ffffff">REFERENCE ORDER</text>
+    <text x="72" y="362" class="body" font-size="14" fill="#ffffff">EDIT GOALS</text>
+  </g>
+
+  <g aria-label="Step two route to image or video skill">
+    <rect x="292" y="142" width="190" height="232" rx="16" fill="#ff3d00"/>
+    <text x="316" y="174" class="mono" font-size="13" fill="#0e0e0e">02 / ROUTE</text>
+    <text x="316" y="226" class="heading" font-size="27" fill="#0e0e0e">NANOTAPE</text>
+    <text x="316" y="260" class="heading" font-size="27" fill="#0e0e0e">SEEHORSE</text>
+    <path d="M316 286H458" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="316" y="318" class="body" font-size="14" fill="#0e0e0e">IMAGE / VIDEO</text>
+    <text x="316" y="340" class="body" font-size="14" fill="#0e0e0e">MODEL TARGET</text>
+  </g>
+
+  <g aria-label="Step three translate visual cues through context">
+    <rect x="506" y="142" width="220" height="232" rx="16" fill="#5900cc"/>
+    <text x="530" y="174" class="mono" font-size="13" fill="#ffffff">03 / CONTEXT</text>
+    <text x="530" y="226" class="heading" font-size="28" fill="#ffffff">TRANSLATE</text>
+    <text x="530" y="260" class="heading" font-size="28" fill="#ffffff">VISUAL CUES</text>
+    <path d="M530 286H702" stroke="#ffffff" stroke-width="2"/>
+    <text x="530" y="318" class="body" font-size="14" fill="#ffffff">CAMERA LANGUAGE</text>
+    <text x="530" y="340" class="body" font-size="14" fill="#ffffff">FACS EXPRESSION</text>
+    <text x="530" y="362" class="body" font-size="14" fill="#ffffff">LIGHTING TERMS</text>
+  </g>
+
+  <g aria-label="Step four clarify and preserve important constraints">
+    <rect x="750" y="142" width="250" height="232" rx="16" fill="#ffff00"/>
+    <text x="774" y="174" class="mono" font-size="13" fill="#0e0e0e">04 / GUARDRAIL</text>
+    <text x="774" y="226" class="heading" font-size="28" fill="#0e0e0e">CLARIFY</text>
+    <text x="774" y="260" class="heading" font-size="28" fill="#0e0e0e">&amp; PRESERVE</text>
+    <path d="M774 286H976" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="774" y="318" class="body" font-size="14" fill="#0e0e0e">ASK ONLY WHEN NEEDED</text>
+    <text x="774" y="340" class="body" font-size="14" fill="#0e0e0e">LOCK IDENTITY</text>
+    <text x="774" y="362" class="body" font-size="14" fill="#0e0e0e">KEEP EXACT TEXT</text>
+  </g>
+
+  <g aria-label="Step five single model-ready prompt output">
+    <rect x="1024" y="142" width="328" height="232" rx="16" fill="#05ff00"/>
+    <text x="1048" y="174" class="mono" font-size="13" fill="#0e0e0e">05 / OUTPUT</text>
+    <text x="1048" y="226" class="heading" font-size="28" fill="#0e0e0e">MODEL-READY</text>
+    <text x="1048" y="260" class="heading" font-size="28" fill="#0e0e0e">PROMPT</text>
+    <path d="M1048 286H1328" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="1048" y="318" class="body" font-size="14" fill="#0e0e0e">IMAGE N OR @imageN</text>
+    <text x="1048" y="340" class="body" font-size="14" fill="#0e0e0e">TIMED VIDEO SEGMENTS</text>
+    <text x="1048" y="362" class="body" font-size="14" fill="#0e0e0e">JSON ONLY WHEN REQUESTED</text>
+  </g>
+</svg>

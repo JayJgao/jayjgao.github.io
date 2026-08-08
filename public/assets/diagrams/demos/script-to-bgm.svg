@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="620" viewBox="0 0 1520 620" role="img" aria-labelledby="title desc">
+  <title id="title">Script to BGM 내부 PoC 파이프라인</title>
+  <desc id="desc">curl 또는 Slack 트리거로 받은 스크립트 파일을 n8n에서 정리하고, Gemini로 음악 프롬프트를 만든 뒤 MiniMax와 ElevenLabs를 호출해 MP3 결과를 Slack에 올려 청취하는 흐름</desc>
+  <defs>
+    <style>
+      .display { font-family: Helvetica, Arial, sans-serif; font-weight: 900; letter-spacing: -1.8px; }
+      .heading { font-family: Helvetica, Arial, sans-serif; font-weight: 800; letter-spacing: -0.6px; }
+      .body { font-family: Helvetica, Arial, sans-serif; font-weight: 700; }
+      .mono { font-family: Menlo, Monaco, monospace; font-weight: 700; letter-spacing: 0.8px; }
+    </style>
+  </defs>
+
+  <rect width="1520" height="620" fill="#f4e9e1"/>
+
+  <text x="48" y="40" class="mono" font-size="13" fill="#0e0e0e">SCRIPT TO BGM / INTERNAL N8N POC</text>
+  <text x="48" y="116" class="display" font-size="58" fill="#0e0e0e">SCRIPT FILE</text>
+  <line x1="404" y1="94" x2="476" y2="94" stroke="#ff3d00" stroke-width="5"/>
+  <path d="M466 84L478 94L466 104" fill="none" stroke="#ff3d00" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="520" y="116" class="display" font-size="58" fill="#ff3d00">BECOMES LISTENABLE BGM</text>
+
+  <line x1="258" y1="342" x2="282" y2="342" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="492" y1="342" x2="516" y2="342" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="746" y1="342" x2="770" y2="342" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="1120" y1="342" x2="1144" y2="342" stroke="#0e0e0e" stroke-width="3"/>
+
+  <g aria-label="1단계 스크립트 파일 입력">
+    <rect x="48" y="178" width="210" height="326" rx="16" fill="#2835f8"/>
+    <text x="72" y="212" class="mono" font-size="13" fill="#ffffff">01 / INPUT</text>
+    <text x="72" y="270" class="heading" font-size="28" fill="#ffffff">CURL +</text>
+    <text x="72" y="306" class="heading" font-size="28" fill="#ffffff">WEBHOOK</text>
+    <path d="M72 332H234" stroke="#ffffff" stroke-width="2"/>
+    <text x="72" y="370" class="body" font-size="14" fill="#ffffff">SCRIPT FILE</text>
+    <text x="72" y="396" class="body" font-size="14" fill="#ffffff">N8N INTAKE</text>
+    <text x="72" y="468" class="mono" font-size="10" fill="#f4e9e1">SLACK TRIGGER</text>
+  </g>
+
+  <g aria-label="2단계 스크립트 전처리">
+    <rect x="282" y="178" width="210" height="326" rx="16" fill="#5900cc"/>
+    <text x="306" y="212" class="mono" font-size="13" fill="#ffffff">02 / PARSE</text>
+    <text x="306" y="270" class="heading" font-size="28" fill="#ffffff">EXTRACT</text>
+    <text x="306" y="306" class="heading" font-size="28" fill="#ffffff">THE STORY</text>
+    <path d="M306 332H468" stroke="#ffffff" stroke-width="2"/>
+    <text x="306" y="370" class="body" font-size="14" fill="#ffffff">JAVASCRIPT CODE</text>
+    <text x="306" y="396" class="body" font-size="14" fill="#ffffff">ORDERED LINES</text>
+    <text x="306" y="468" class="mono" font-size="10" fill="#f4e9e1">ORDER PRESERVED</text>
+  </g>
+
+  <g aria-label="3단계 LLM 음악 프롬프트 정제">
+    <rect x="516" y="178" width="230" height="326" rx="16" fill="#ffff00"/>
+    <text x="540" y="212" class="mono" font-size="13" fill="#0e0e0e">03 / LLM</text>
+    <text x="540" y="270" class="heading" font-size="28" fill="#0e0e0e">WRITE MUSIC</text>
+    <text x="540" y="306" class="heading" font-size="28" fill="#0e0e0e">PROMPT</text>
+    <path d="M540 332H722" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="540" y="370" class="body" font-size="14" fill="#0e0e0e">SCENARIO · GENRE</text>
+    <text x="540" y="396" class="body" font-size="14" fill="#0e0e0e">GEMINI 2.5 FLASH</text>
+    <text x="540" y="468" class="mono" font-size="10" fill="#0e0e0e">MUSIC DIRECTION</text>
+  </g>
+
+  <g aria-label="4단계 두 외부 음악 API 호출">
+    <rect x="770" y="178" width="350" height="326" rx="16" fill="#ff3d00"/>
+    <text x="794" y="212" class="mono" font-size="13" fill="#0e0e0e">04 / 2 API PATHS</text>
+    <text x="794" y="270" class="heading" font-size="29" fill="#0e0e0e">GENERATE</text>
+    <text x="794" y="306" class="heading" font-size="29" fill="#0e0e0e">TWO TRACKS</text>
+    <path d="M794 332H1096" stroke="#0e0e0e" stroke-width="2"/>
+    <rect x="794" y="349" width="302" height="42" rx="16" fill="#f4e9e1"/>
+    <text x="814" y="375" class="mono" font-size="11" fill="#0e0e0e">MINIMAX / URL</text>
+    <rect x="794" y="401" width="302" height="42" rx="16" fill="#f4e9e1"/>
+    <text x="814" y="427" class="mono" font-size="11" fill="#0e0e0e">ELEVENLABS / BINARY</text>
+    <text x="794" y="477" class="mono" font-size="10" fill="#0e0e0e">COLLECT AS MP3</text>
+  </g>
+
+  <g aria-label="5단계 Slack 업로드와 사용자 청취">
+    <rect x="1144" y="178" width="328" height="326" rx="16" fill="#05ff00"/>
+    <text x="1168" y="212" class="mono" font-size="13" fill="#0e0e0e">05 / INTERNAL REVIEW</text>
+    <text x="1168" y="270" class="heading" font-size="30" fill="#0e0e0e">UPLOAD TO</text>
+    <text x="1168" y="306" class="heading" font-size="30" fill="#0e0e0e">SLACK</text>
+    <path d="M1168 332H1448" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="1168" y="370" class="body" font-size="14" fill="#0e0e0e">MP3 FILES</text>
+    <text x="1168" y="396" class="body" font-size="14" fill="#0e0e0e">LISTEN · COMPARE</text>
+    <text x="1168" y="468" class="mono" font-size="10" fill="#0e0e0e">HYPOTHESIS CHECK</text>
+  </g>
+
+  <text x="48" y="566" class="mono" font-size="11" fill="#0e0e0e">BOUNDARIES / SCRIPT · N8N · LLM · EXTERNAL APIS · SLACK REVIEW</text>
+  <text x="1472" y="566" class="mono" font-size="11" fill="#0e0e0e" text-anchor="end">LIGHTWEIGHT POC · NO FOLLOW-ON IMPLEMENTATION</text>
+  <line x1="48" y1="590" x2="1472" y2="590" stroke="#0e0e0e" stroke-width="2"/>
+</svg>
