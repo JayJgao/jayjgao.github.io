@@ -175,8 +175,53 @@ function addSliderExpectation(contract: ExportContract): void {
     galleryMode: "slider" as const,
     galleryItemCount: 2,
     videoMode: "none" as const,
+    videoId: null,
   };
   contract.demoDetailRoutes = [expectation];
+}
+
+function addVideoExpectation(
+  contract: ExportContract,
+  videoMode: "play" | "pending" | "none",
+  videoId: string | null,
+): void {
+  contract.demoDetailRoutes = [
+    {
+      route: "/en/about/",
+      slug: `fixture-${videoMode}`,
+      galleryMode: "none",
+      galleryItemCount: 0,
+      videoMode,
+      videoId,
+    },
+  ];
+}
+
+function videoDocument({
+  state = "play",
+  thumbnailSrc = "https://i.ytimg.com/vi/NLleH-4c5HY/maxresdefault.jpg",
+  loading = "lazy",
+  referrerPolicy = "no-referrer",
+  iframe = false,
+}: {
+  state?: "play" | "pending" | "none";
+  thumbnailSrc?: string | null;
+  loading?: string | null;
+  referrerPolicy?: string | null;
+  iframe?: boolean;
+} = {}): string {
+  const image = thumbnailSrc
+    ? `<img src="${thumbnailSrc}" alt=""${loading ? ` loading="${loading}"` : ""}${referrerPolicy ? ` referrerpolicy="${referrerPolicy}"` : ""}>`
+    : "";
+  const video = state === "none"
+    ? image
+    : `<div data-demo-video-state="${state}">${image}</div>`;
+
+  return `${localizedHead("en", "/en/about/")}
+    ${video}
+    ${iframe ? '<iframe src="https://www.youtube-nocookie.com/embed/NLleH-4c5HY"></iframe>' : ""}
+    <section data-demo-block="how-it-works"></section>
+  </body></html>`;
 }
 
 function legacyDocument(robotsContents: string[]): string {
@@ -460,6 +505,7 @@ test("static galleries reject every slider control marker", async () => {
       galleryMode: "static",
       galleryItemCount: 1,
       videoMode: "none",
+      videoId: null,
     },
   ];
   await writeRoute(
@@ -474,6 +520,59 @@ test("static galleries reject every slider control marker", async () => {
   await assert.rejects(
     () => verifyExport(outDir, contract),
     /static gallery.*control/i,
+  );
+});
+
+test("playable Demos require the exact lazy no-referrer maxres thumbnail", async () => {
+  const invalidDocuments = [
+    videoDocument({ thumbnailSrc: null }),
+    videoDocument({ thumbnailSrc: "https://example.com/vi/NLleH-4c5HY/maxresdefault.jpg" }),
+    videoDocument({ thumbnailSrc: "https://i.ytimg.com/vi/wrong-video/maxresdefault.jpg" }),
+    videoDocument({ thumbnailSrc: "https://i.ytimg.com/vi/NLleH-4c5HY/hqdefault.jpg" }),
+    videoDocument({ loading: null }),
+    videoDocument({ referrerPolicy: null }),
+  ];
+
+  for (const html of invalidDocuments) {
+    const { outDir, contract } = await createValidFixture();
+    addVideoExpectation(contract, "play", "NLleH-4c5HY");
+    await writeRoute(outDir, "/en/about/", html);
+
+    await assert.rejects(
+      () => verifyExport(outDir, contract),
+      /YouTube thumbnail/i,
+    );
+  }
+});
+
+test("pending and video-free Demos reject YouTube thumbnail requests", async () => {
+  for (const videoMode of ["pending", "none"] as const) {
+    const { outDir, contract } = await createValidFixture();
+    addVideoExpectation(contract, videoMode, null);
+    await writeRoute(outDir, "/en/about/", videoDocument({ state: videoMode }));
+
+    await assert.rejects(
+      () => verifyExport(outDir, contract),
+      /must not request a YouTube thumbnail/i,
+    );
+  }
+});
+
+test("a playable Demo accepts the exact thumbnail and still rejects an initial iframe", async () => {
+  const valid = await createValidFixture();
+  addVideoExpectation(valid.contract, "play", "NLleH-4c5HY");
+  await writeRoute(valid.outDir, "/en/about/", videoDocument());
+
+  const result = await verifyExport(valid.outDir, valid.contract);
+  assert.equal(result.demoDetails, 1);
+
+  const invalid = await createValidFixture();
+  addVideoExpectation(invalid.contract, "play", "NLleH-4c5HY");
+  await writeRoute(invalid.outDir, "/en/about/", videoDocument({ iframe: true }));
+
+  await assert.rejects(
+    () => verifyExport(invalid.outDir, invalid.contract),
+    /must not contain an initial iframe/i,
   );
 });
 

@@ -145,7 +145,7 @@
 
   Expected: both commands pass; no `poster` access remains in the Demo path.
 
-- [ ] **Step 5: Commit the atomic schema and presentation slice**
+- [x] **Step 5: Commit the atomic schema and presentation slice**
 
   ```bash
   git add next.config.ts src/components/demos/DemoDetail.tsx src/components/demos/DemoVideo.tsx src/data/demos.json src/lib/demos.ts src/types/demo.ts tests/demo-data.test.ts tests/demo-presentation.test.ts docs/decisions/2026-08-09-youtube-thumbnail-and-demo-consolidation-plan.md
@@ -159,7 +159,7 @@
 - Modify: `tests/export-verifier.test.ts`
 - Modify: `scripts/lib/export-verifier.ts`
 
-- [ ] **Step 1: Add failing verifier mutations**
+- [x] **Step 1: Add failing verifier mutations**
 
   Extend `DemoRouteExpectation` with `videoId: string | null`. Add fixtures proving that the verifier rejects:
 
@@ -171,7 +171,7 @@
 
   Retain a valid playable fixture that has the exact image and no iframe.
 
-- [ ] **Step 2: Run the verifier test and confirm RED**
+- [x] **Step 2: Run the verifier test and confirm RED**
 
   ```bash
   npx tsx --test tests/export-verifier.test.ts
@@ -179,7 +179,7 @@
 
   Expected: new mutations currently pass unexpectedly because the verifier checks only video state.
 
-- [ ] **Step 3: Implement exact thumbnail verification**
+- [x] **Step 3: Implement exact thumbnail verification**
 
   Populate `videoId` from canonical Demo data. For `videoMode: "play"`, require exactly one initial `<img>` with:
 
@@ -192,7 +192,7 @@
 
   For `pending` and `none`, require zero images whose host is `i.ytimg.com`. Keep the existing zero-initial-iframe and video-state count checks.
 
-- [ ] **Step 4: Run focused and production verification**
+- [x] **Step 4: Run focused and production verification**
 
   ```bash
   npx tsx --test tests/export-verifier.test.ts

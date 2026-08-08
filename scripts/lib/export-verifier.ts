@@ -44,6 +44,7 @@ export type DemoRouteExpectation = {
   galleryMode: "none" | "static" | "slider";
   galleryItemCount: number;
   videoMode: "play" | "pending" | "none";
+  videoId: string | null;
 };
 
 export type ExportContract = {
@@ -477,6 +478,7 @@ export function createProductionExportContract(): ExportContract {
           : slug === "prompt-enhance-skills"
             ? "pending"
             : "none",
+        videoId: demo.video.videoId,
       });
     }
   }
@@ -833,6 +835,14 @@ export async function verifyExport(
     const videoTags = signals.tags.filter(
       ({ attributes }) => attributes["data-demo-video-state"] !== undefined,
     );
+    const youtubeThumbnails = signals.tags.filter(({ name, attributes }) => {
+      if (name !== "img" || !attributes.src) return false;
+      try {
+        return new URL(attributes.src, contract.siteUrl).hostname === "i.ytimg.com";
+      } catch {
+        return false;
+      }
+    });
     const actualVideoStates = videoTags.map(
       ({ attributes }) => attributes["data-demo-video-state"],
     );
@@ -847,6 +857,28 @@ export async function verifyExport(
           `${expectation.route}: expected video state ${expectation.videoMode}, found ${actualVideoStates.join(", ") || "none"}`,
         );
       }
+    }
+
+    if (expectation.videoMode === "play") {
+      const expectedThumbnail = expectation.videoId
+        ? `https://i.ytimg.com/vi/${expectation.videoId}/maxresdefault.jpg`
+        : null;
+      const thumbnail = youtubeThumbnails[0];
+      const thumbnailIsValid =
+        expectedThumbnail !== null &&
+        youtubeThumbnails.length === 1 &&
+        thumbnail.attributes.src === expectedThumbnail &&
+        thumbnail.attributes.loading === "lazy" &&
+        thumbnail.attributes.referrerpolicy === "no-referrer" &&
+        thumbnail.attributes.alt === "";
+
+      if (!thumbnailIsValid) {
+        errors.push(
+          `${expectation.route}: playable Demo must expose exactly one decorative lazy no-referrer YouTube thumbnail at ${expectedThumbnail ?? "its canonical video ID"}`,
+        );
+      }
+    } else if (youtubeThumbnails.length !== 0) {
+      errors.push(`${expectation.route}: ${expectation.videoMode} Demo must not request a YouTube thumbnail`);
     }
 
     if (expectation.slug === "script-to-bgm") {
