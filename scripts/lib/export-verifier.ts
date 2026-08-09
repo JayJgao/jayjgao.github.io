@@ -830,9 +830,9 @@ export async function verifyExport(
       if (noticeTag.attributes.role !== "note") {
         errors.push(`${route}: fallback notice must expose role=note`);
       }
-      if (noticeTag.attributes.lang !== contentLocale) {
+      if (noticeTag.attributes.lang !== signals.lang) {
         errors.push(
-          `${route}: fallback notice lang must match content locale ${contentLocale}`,
+          `${route}: fallback notice lang must match page locale ${signals.lang ?? "missing"}`,
         );
       }
       if (noticeTag.start >= contentTag.start) {

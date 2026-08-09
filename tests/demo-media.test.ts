@@ -344,12 +344,59 @@ test("gallery entries preserve exact order, dimensions, canonical Korean copy, a
       ["/assets/images/demos/script-to-bgm/slack-results.png", 2770, 1656],
     ],
   } as const;
+  const expectedEnglishCopy = {
+    "prompt-enhancer": [
+      [
+        "Product screen with multiple storyboard shots built from a prompt and reference images",
+        "Storyboard editing screen with Prompt Enhancer applied",
+      ],
+    ],
+    "voice-adaptor": [
+      [
+        "Product screen with speech separation selected for a video clip on the storyboard canvas",
+        "Product entry screen for separating speech and background audio in a video clip",
+      ],
+      [
+        "Audio routing screen connecting background audio and speaker tracks to video clips",
+        "Routing screen for reviewing separated background audio and speaker voices by clip",
+      ],
+    ],
+    "reverse-storyboard": [
+      [
+        "Reverse Storyboard screen arranging representative frames and descriptions of a dragon scene under the night sky in chronological order",
+        "Representative frames and timestamps for each shot extracted from a finished video",
+      ],
+      [
+        "Comparison screen showing 9 storyboard shots from the IMAGE ONLY VS USE VIDEO approaches",
+        "Side-by-side comparison of a single-image composition and a video-based continuous sequence",
+      ],
+    ],
+    reframer: [],
+    "boundary-deduper": [],
+    "iro-matcher": [],
+    "loudness-matcher": [],
+    "script-to-bgm": [
+      [
+        "n8n workflow screen connecting a Webhook and Slack Trigger to two music generation APIs and a Slack upload",
+        "n8n workflow connecting a script to a music prompt and two MP3 results",
+      ],
+      [
+        "Slack screen showing prompts and playable MP3 results from two music models",
+        "Slack screen used to listen to MiniMax Music 2 and ElevenLabs Music results",
+      ],
+    ],
+  } as const;
 
   for (const demo of demos) {
     assert.deepEqual(
       demo.gallery.map(({ src, width, height }) => [src, width, height]),
       expectedGallery[demo.slug as keyof typeof expectedGallery],
       `${demo.slug} gallery`,
+    );
+    assert.deepEqual(
+      demo.gallery.map(({ alt, caption }) => [alt.en, caption.en]),
+      expectedEnglishCopy[demo.slug as keyof typeof expectedEnglishCopy],
+      `${demo.slug} approved English gallery copy`,
     );
 
     for (const image of demo.gallery) {

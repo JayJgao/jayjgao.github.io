@@ -441,7 +441,7 @@ test("Project fallback verification requires a notice above mismatched-language 
   );
 });
 
-test("Project fallback verification accepts a semantic notice in the content language", async () => {
+test("Project fallback verification accepts a localized notice in the page language", async () => {
   const { outDir, contract } = await createValidFixture();
   const detailRoute = "/en/projects/example/";
   contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
@@ -450,7 +450,7 @@ test("Project fallback verification accepts a semantic notice in the content lan
     outDir,
     detailRoute,
     `${localizedHead("en", detailRoute)}
-      <p role="note" lang="ko" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <p role="note" lang="en" data-project-fallback-notice="ko">This project is currently available in Korean.</p>
       <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
     </body></html>`,
   );
@@ -468,7 +468,7 @@ test("Project fallback verification rejects a notice without role=note", async (
     outDir,
     detailRoute,
     `${localizedHead("en", detailRoute)}
-      <p lang="ko" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <p lang="en" data-project-fallback-notice="ko">This project is currently available in Korean.</p>
       <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
     </body></html>`,
   );
@@ -479,7 +479,7 @@ test("Project fallback verification rejects a notice without role=note", async (
   );
 });
 
-test("Project fallback verification rejects a notice outside the content language", async () => {
+test("Project fallback verification rejects a notice outside the page language", async () => {
   const { outDir, contract } = await createValidFixture();
   const detailRoute = "/en/projects/example/";
   contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
@@ -488,14 +488,14 @@ test("Project fallback verification rejects a notice outside the content languag
     outDir,
     detailRoute,
     `${localizedHead("en", detailRoute)}
-      <p role="note" lang="en" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <p role="note" lang="ko" data-project-fallback-notice="ko">한국어 원문 안내</p>
       <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
     </body></html>`,
   );
 
   await assert.rejects(
     () => verifyExport(outDir, contract),
-    /fallback notice lang must match content locale ko/i,
+    /fallback notice lang must match page locale en/i,
   );
 });
 
