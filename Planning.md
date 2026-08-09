@@ -41,7 +41,7 @@
 | MLaaS Product Management | `.reference/notion-export/MLaaS_Product_Management_1aba667ac50580e982d9e26c6be90b60.html` | `src/content/projects/ko/solidware-mlaas.mdx` | Published | B2-CONTENT-CORE |
 | AutoML 솔루션 신규 Feature개발 | `.reference/notion-export/AutoML_솔루션_신규_Feature개발_1aba667ac50580fd9687deae5d4d0d37.html` | `src/content/projects/ko/solidware-automl.mdx` | Published | B2-CONTENT-CORE |
 | AI 바이오마커 진단 솔루션 (HER2, ER/PR) | `.reference/notion-export/AI_바이오마커_진단_솔루션__HER2__ER_PR__1aba667ac5058085a86cf1b2ffaa56ed.html` | `src/content/projects/ko/lunit-biomarker.mdx` | Published | B2-CONTENT-CORE |
-| CineV A2P legacy alias | Phase 4 approved routing decision (external); contract in `tests/project-data.test.ts` | `src/lib/project-redirects.ts` | Published | B4-ROUTING |
+| CineV A2P legacy alias | Phase 4 approved routing decision (external); contracts in `tests/locale-routing.test.ts` and `tests/export-verifier.test.ts` | `src/lib/project-redirects.ts` | Published | B4-ROUTING |
 | 프롬프트 모음 | `.reference/notion-export/프롬프트_모음_1aba667ac50580839a11c34cfb99283e.html` | `src/content/archive/ko/prompt-collection.mdx` | Parked | B2-PARKED |
 | 숏폼AI User Manual_Common_VER.1 | `.reference/notion-export/숏폼AI_User_Manual_Common_VER_1_1aba667ac50580e28362c73058327994.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |
 | 프로토타입 유저매뉴얼 | `.reference/notion-export/프로토타입_유저매뉴얼_1aba667ac50580159a7df52e26abac7b.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |
