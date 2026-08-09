@@ -4,7 +4,7 @@ const diagramDimensions: Record<string, { width: number; height: number }> = {
   "/assets/diagrams/demos/boundary-deduper.svg": { width: 1400, height: 580 },
   "/assets/diagrams/demos/iro-matcher.svg": { width: 1400, height: 620 },
   "/assets/diagrams/demos/loudness-matcher.svg": { width: 1600, height: 840 },
-  "/assets/diagrams/demos/prompt-enhance-skills.svg": { width: 1400, height: 410 },
+  "/assets/diagrams/demos/prompt-enhancer-before-api.svg": { width: 1400, height: 500 },
   "/assets/diagrams/demos/prompt-enhancer.svg": { width: 1500, height: 840 },
   "/assets/diagrams/demos/reframer.svg": { width: 1400, height: 540 },
   "/assets/diagrams/demos/reverse-storyboard.svg": { width: 1400, height: 580 },

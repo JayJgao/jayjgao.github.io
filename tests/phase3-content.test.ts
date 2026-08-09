@@ -197,7 +197,10 @@ test("Phase 3 fixes the exact eight-Demo canon and three-card Home preview", asy
   assert.equal(demos.filter(({ productized }) => productized).length, 3);
   assert.ok(demos.every(({ kind }) => kind !== "skill"));
   assert.ok(demos.every((demo) => !Object.hasOwn(demo, "relatedDemo")));
-  assert.ok(demos.every((demo) => getDemoVideoMode(demo as unknown as Demo) !== "pending"));
+  assert.deepEqual(
+    demos.map((demo) => getDemoVideoMode(demo as unknown as Demo)),
+    ["available", "available", "available", "available", "available", "available", "available", "none"],
+  );
 
   const { getProductizedDemos } = await import("../src/lib/demos");
   assert.deepEqual(getProductizedDemos().map(({ slug }) => slug), expectedDemoSlugs.slice(0, 3));
@@ -253,6 +256,11 @@ test("approved Demo corrections and Prompt Enhancer stack boundaries are exact",
 
   const promptStack = bySlug.get("prompt-enhancer")?.stack ?? [];
   const promptCopy = JSON.stringify(bySlug.get("prompt-enhancer"));
+  assert.equal(
+    getKo("prompt-enhancer", "observation"),
+    "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 그래서 조직 내부용 Skill을 만들어 배포했고, 예상보다 빠른 사용 확산이 관측됐다. 프롬프트 작성이 실제 병목이라는 신호였다.",
+  );
+  assert.match(promptCopy, /prompt-enhancer-before-api\.svg/);
   for (const required of ["nanotape", "seehorse", "Organization Skill", "정성 평가", "제품 API"]) {
     assert.match(promptCopy, new RegExp(required));
   }

@@ -11,6 +11,7 @@ import type { Demo } from "../src/types/demo";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 const demoImagesRoot = join(repositoryRoot, "public/assets/images/demos");
+const demoDiagramsRoot = join(repositoryRoot, "public/assets/diagrams/demos");
 const enablementImagesRoot = join(
   repositoryRoot,
   "public/assets/images/projects/cinev/enablement",
@@ -66,10 +67,6 @@ const expectedDiagrams = {
     viewBox: "0 0 1500 840",
     sha256: "4b7aa5bbc9d24f473a179a05c1dbdfae160639aae5286a8f8135f073f0ff9383",
   },
-  "prompt-enhance-skills": {
-    viewBox: "0 0 1400 410",
-    sha256: "a1e1838d13274995e7a41f9c3abfb0ba9ac01f71c65c2630184ededcd643870b",
-  },
   "voice-adaptor": {
     viewBox: "0 0 1600 660",
     sha256: "81a2ea1b10f87481b7624fb42467f77c7d8f8a6d0f3f19ab97e92f9a48a1a548",
@@ -98,6 +95,20 @@ const expectedDiagrams = {
     viewBox: "0 0 1520 620",
     sha256: "42a2a2d9b99d1403a93270fc6c6c07efb1dfd7c4ffbce44ec5600c4ec537e7ce",
   },
+} as const;
+
+const expectedPromptPreludeDiagram = {
+  path: "prompt-enhancer-before-api.svg",
+  width: "1400",
+  height: "500",
+  viewBox: "0 0 1400 500",
+  sha256: "96bcc34169f0d54eeb32a7d8d5b1cd916f13058d17d9980790576df7af48a099",
+  stages: [
+    "개인 프롬프트 노하우",
+    "Organization Skill",
+    "내부 크리에이터 정성 평가",
+    "Prompt Enhancer API 제품화",
+  ],
 } as const;
 
 const expectedEnablementImages = [
@@ -316,7 +327,6 @@ test("gallery entries preserve exact order, slug paths, dimensions, and factual 
     "prompt-enhancer": [
       ["/assets/images/demos/prompt-enhancer/product-overview.webp", 1920, 952],
     ],
-    "prompt-enhance-skills": [],
     "voice-adaptor": [
       ["/assets/images/demos/voice-adaptor/product-canvas.webp", 1920, 967],
       ["/assets/images/demos/voice-adaptor/audio-routing.webp", 1149, 1102],
@@ -361,9 +371,16 @@ test("gallery entries preserve exact order, slug paths, dimensions, and factual 
   assert.match(comparison.alt.ko, /USE VIDEO/);
 });
 
-test("all nine demo diagrams preserve canonical SVG bytes and viewBoxes", () => {
+test("all eight demo diagrams preserve canonical SVG bytes and viewBoxes", () => {
   const demos = demosJson as unknown as Demo[];
-  assert.equal(demos.length, 9);
+  assert.equal(demos.length, 8);
+  assert.deepEqual(
+    listFiles(demoDiagramsRoot).sort(),
+    [
+      ...Object.keys(expectedDiagrams).map((slug) => `${slug}.svg`),
+      expectedPromptPreludeDiagram.path,
+    ].sort(),
+  );
 
   for (const demo of demos) {
     const expected = expectedDiagrams[demo.slug as keyof typeof expectedDiagrams];
@@ -378,4 +395,30 @@ test("all nine demo diagrams preserve canonical SVG bytes and viewBoxes", () => 
     assert.equal(sha256(diagram), expected.sha256, `${demo.slug} SVG must be byte-identical`);
     assert.match(svg, new RegExp(`viewBox=["']${expected.viewBox}["']`));
   }
+});
+
+test("Prompt Enhancer Before the API diagram is public-safe and owns the exact four-stage flow", () => {
+  const promptEnhancer = (demosJson as unknown as Demo[]).find(
+    ({ slug }) => slug === "prompt-enhancer",
+  );
+  assert.ok(promptEnhancer?.prelude);
+  assert.equal(
+    promptEnhancer.prelude.diagram,
+    `/assets/diagrams/demos/${expectedPromptPreludeDiagram.path}`,
+  );
+
+  const diagramPath = join(
+    repositoryRoot,
+    "public",
+    promptEnhancer.prelude.diagram.slice(1),
+  );
+  assert.equal(existsSync(diagramPath), true, "Before the API diagram must exist");
+  const svg = readFileSync(diagramPath, "utf8");
+
+  assert.equal(sha256(readFileSync(diagramPath)), expectedPromptPreludeDiagram.sha256);
+  assert.match(svg, new RegExp(`width=["']${expectedPromptPreludeDiagram.width}["']`));
+  assert.match(svg, new RegExp(`height=["']${expectedPromptPreludeDiagram.height}["']`));
+  assert.match(svg, new RegExp(`viewBox=["']${expectedPromptPreludeDiagram.viewBox}["']`));
+  for (const stage of expectedPromptPreludeDiagram.stages) assert.match(svg, new RegExp(stage));
+  assert.doesNotMatch(svg, /<script|<foreignObject|<image\b|(?:xlink:)?href=|url\(\s*https?:/i);
 });

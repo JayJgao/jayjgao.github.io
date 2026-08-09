@@ -45,7 +45,7 @@ const expectedCoreCopy = [
     summary:
       "개인에게 쌓여 있던 이미지·비디오 프롬프트 작성 감각을 제품 API의 검증 가능한 프롬프트 변환 파이프라인으로 옮긴 작업",
     observation:
-      "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 먼저 nanotape 이미지 스킬과 seehorse 비디오 스킬로 이 노하우를 가볍게 문서화해 공유했고, 창작팀의 실제 반응을 확인한 뒤 제품 탑재를 전제로 API화했다.",
+      "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 그래서 조직 내부용 Skill을 만들어 배포했고, 예상보다 빠른 사용 확산이 관측됐다. 프롬프트 작성이 실제 병목이라는 신호였다.",
     problem:
       "팀원마다 결과 품질이 달라지고, 잘 쓰는 사람의 감각이 조직 전체의 반복 가능한 인터페이스로 전파되지 않았다. 특히 제품 흐름에서는 사용자가 매번 추가 질문에 답할 수 없고, 참조 이미지 순서·역할·비디오 길이 같은 계약이 모호하면 후속 생성 단계가 흔들릴 수 있었다.",
     hypothesis:
@@ -155,6 +155,23 @@ const expectedTopLevelKeys = [
   "video",
 ];
 
+const expectedPromptPrelude = {
+  title: { ko: "Before the API", en: "Before the API", zh: "Before the API" },
+  diagram: "/assets/diagrams/demos/prompt-enhancer-before-api.svg",
+  paragraphs: [
+    {
+      ko: "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
+      en: "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
+      zh: "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
+    },
+    {
+      ko: "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
+      en: "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
+      zh: "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
+    },
+  ],
+};
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -189,7 +206,12 @@ test("demos own the exact ordered schema, product states, and video IDs", () => 
   assert.deepEqual(demos.map(({ video }) => video.videoId), expectedVideoIds);
 
   for (const demo of demos) {
-    assert.deepEqual(Object.keys(demo).sort(), expectedTopLevelKeys);
+    assert.deepEqual(
+      Object.keys(demo).sort(),
+      demo.slug === "prompt-enhancer"
+        ? [...expectedTopLevelKeys, "prelude"].sort()
+        : expectedTopLevelKeys,
+    );
     assert.deepEqual(demo.video, {
       provider: "youtube",
       videoId: expectedVideoIds[demo.order - 1],
@@ -197,7 +219,11 @@ test("demos own the exact ordered schema, product states, and video IDs", () => 
   }
 
   assert.ok(demos.every((demo) => !Object.hasOwn(demo, "relatedDemo")));
-  assert.ok(demos.every(({ kind }) => kind !== "skill"));
+  assert.ok(demos.every(({ kind }) => String(kind) !== "skill"));
+
+  const promptEnhancer = demos[0] as Demo & { prelude?: unknown };
+  assert.deepEqual(promptEnhancer.prelude, expectedPromptPrelude);
+  assert.ok(demos.slice(1).every((demo) => !Object.hasOwn(demo, "prelude")));
 });
 
 test("all localized demo copy is recursively complete", () => {

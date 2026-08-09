@@ -3,7 +3,6 @@ import { DemoDiagram } from "@/components/demos/DemoDiagram";
 import { DemoGallery } from "@/components/demos/DemoGallery";
 import { DemoVideo } from "@/components/demos/DemoVideo";
 import {
-  getDemoBySlug,
   getDemoVideoMode,
   getGalleryMode,
   getYouTubeEmbedUrl,
@@ -26,7 +25,6 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
     width: item.width,
     height: item.height,
   }));
-  const relatedDemo = demo.relatedDemo ? getDemoBySlug(demo.relatedDemo) : undefined;
 
   return (
     <article className="demo-detail">
@@ -126,6 +124,24 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
               </li>
             ))}
           </ol>
+          {demo.prelude ? (
+            <div className="pipeline-section demo-prelude">
+              <h3 className="section-display">{demo.prelude.title[locale]}</h3>
+              {demo.prelude.paragraphs.map((paragraph, index) => (
+                <p
+                  key={`${demo.slug}-prelude-${index}`}
+                  className="boundary-copy demo-prelude__copy"
+                >
+                  {paragraph[locale]}
+                </p>
+              ))}
+              <DemoDiagram
+                src={demo.prelude.diagram}
+                alt={`${demo.name} ${demo.prelude.title[locale]}`}
+                scrollHint={detailCopy.diagramScrollHint}
+              />
+            </div>
+          ) : null}
           <div className="pipeline-section">
             <h3 className="section-display">{detailCopy.sections.pipeline}</h3>
             <DemoDiagram
@@ -163,11 +179,6 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
           <p className="section-kicker">05 / Boundary</p>
           <h2 id="demo-boundary" className="section-display">{detailCopy.sections.boundary}</h2>
           <p className="boundary-copy">{demo.boundary[locale]}</p>
-          {relatedDemo ? (
-            <Link href={getLocalizedPath(locale, `/demos/${relatedDemo.slug}/`)} className="btn-secondary">
-              {detailCopy.relatedDemo}: {relatedDemo.name}<span aria-hidden="true">→</span>
-            </Link>
-          ) : null}
         </div>
       </section>
     </article>

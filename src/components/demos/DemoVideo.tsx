@@ -11,7 +11,6 @@ type DemoVideoProps = {
   videoId: string | null;
   labels: {
     playPrefix: string;
-    pending: string;
     titleSuffix: string;
   };
 };
@@ -31,15 +30,6 @@ export function DemoVideo({ demoName, embedUrl, mode, videoId, labels }: DemoVid
   }
 
   if (mode === "none") return null;
-
-  if (mode === "pending") {
-    return (
-      <div data-demo-video-state="pending" role="status" className="demo-video-pending">
-        <span aria-hidden="true">●</span>
-        <p>{labels.pending}</p>
-      </div>
-    );
-  }
 
   if (loaded && embedUrl) {
     return (

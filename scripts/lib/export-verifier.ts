@@ -43,7 +43,7 @@ export type DemoRouteExpectation = {
   slug: string;
   galleryMode: "none" | "static" | "slider";
   galleryItemCount: number;
-  videoMode: "play" | "pending" | "none";
+  videoMode: "play" | "none";
   videoId: string | null;
 };
 
@@ -65,7 +65,7 @@ export type ExportContract = {
   expectedProjectDetailCount?: number;
   expectedDemoDetailCount?: number;
   expectedGalleryCounts?: Record<"none" | "static" | "slider", number>;
-  expectedVideoCounts?: Record<"play" | "pending", number>;
+  expectedVideoCounts?: Record<"play", number>;
   forbiddenHtmlPatterns: Array<{ label: string; pattern: RegExp }>;
   sourceEvidenceBasenames: string[];
   forbiddenImagePrefixesByRoute?: Array<{
@@ -87,7 +87,7 @@ export type ExportVerificationResult = {
   demoDetails: number;
   internalLinks: number;
   galleryModes: Record<"none" | "static" | "slider", number>;
-  videoStates: Record<"play" | "pending", number>;
+  videoStates: Record<"play", number>;
   errors: 0;
 };
 
@@ -482,11 +482,7 @@ export function createProductionExportContract(): ExportContract {
         slug,
         galleryMode: getGalleryMode(demo.gallery),
         galleryItemCount: demo.gallery.length,
-        videoMode: demo.video.videoId
-          ? "play"
-          : slug === "prompt-enhance-skills"
-            ? "pending"
-            : "none",
+        videoMode: demo.video.videoId ? "play" : "none",
         videoId: demo.video.videoId,
       });
     }
@@ -519,9 +515,9 @@ export function createProductionExportContract(): ExportContract {
     enforceExactHtmlInventory: true,
     expectedLocalizedRouteCount: 87,
     expectedProjectDetailCount: 45,
-    expectedDemoDetailCount: 27,
-    expectedGalleryCounts: { static: 3, slider: 9, none: 15 },
-    expectedVideoCounts: { play: 21, pending: 3 },
+    expectedDemoDetailCount: 24,
+    expectedGalleryCounts: { static: 3, slider: 9, none: 12 },
+    expectedVideoCounts: { play: 21 },
     forbiddenHtmlPatterns: [
       {
         label: "CINEV GitHub URL",
@@ -600,7 +596,7 @@ export async function verifyExport(
   const htmlByFile = new Map<string, string>();
   let internalLinks = 0;
   const galleryModes = { none: 0, static: 0, slider: 0 };
-  const videoStates = { play: 0, pending: 0 };
+  const videoStates = { play: 0 };
 
   if (contract.expectedHtmlFileCount !== undefined) {
     const optional404Index = path.join(root, "404", "index.html");
@@ -920,7 +916,7 @@ export async function verifyExport(
     );
     if (expectation.videoMode === "none") {
       if (videoTags.length !== 0) {
-        errors.push(`${expectation.route}: expected no video surface or pending marker`);
+        errors.push(`${expectation.route}: expected no video surface`);
       }
     } else {
       videoStates[expectation.videoMode] += 1;
@@ -970,7 +966,7 @@ export async function verifyExport(
     }
   }
   if (contract.expectedVideoCounts) {
-    for (const state of ["play", "pending"] as const) {
+    for (const state of ["play"] as const) {
       if (videoStates[state] !== contract.expectedVideoCounts[state]) {
         errors.push(
           `Expected ${contract.expectedVideoCounts[state]} Demo video state=${state} pages, found ${videoStates[state]}`,

@@ -2,7 +2,7 @@ import demosJson from "@/data/demos.json";
 import type { Demo, DemoGalleryImage } from "@/types/demo";
 
 export type GalleryMode = "none" | "static" | "slider";
-export type DemoVideoMode = "available" | "pending" | "none";
+export type DemoVideoMode = "available" | "none";
 export type YouTubeThumbnailQuality = "maxresdefault" | "hqdefault";
 export type DemoGroup = {
   id: "productized" | "experiments";
@@ -20,7 +20,7 @@ export function getAllDemos(): Demo[] {
 }
 
 export function getProductizedDemos(): Demo[] {
-  return getAllDemos().filter((demo) => demo.productized).slice(0, 4);
+  return getAllDemos().filter((demo) => demo.productized);
 }
 
 export function getDemoBySlug(slug: string): Demo | undefined {
@@ -38,11 +38,7 @@ export function getGalleryMode(items: DemoGalleryImage[]): GalleryMode {
 }
 
 export function getDemoVideoMode(demo: Demo): DemoVideoMode {
-  if (demo.video.videoId) return "available";
-  if (demo.slug === "prompt-enhance-skills") return "pending";
-  if (demo.slug === "script-to-bgm") return "none";
-
-  throw new Error(`Demo ${demo.slug} has no approved video presentation mode`);
+  return demo.video.videoId ? "available" : "none";
 }
 
 export function getYouTubeEmbedUrl(videoId: string): string {

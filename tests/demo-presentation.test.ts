@@ -3,7 +3,6 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import {
-  getDemoBySlug,
   getDemoGroups,
   getDemoVideoMode,
   getGalleryMode,
@@ -37,10 +36,14 @@ test("gallery mode follows the empty, single-image, and multi-image contract", (
   assert.equal(getGalleryMode([oneItem, secondItem]), "slider");
 });
 
-test("video mode distinguishes an available highlight, pending skill, and intentional absence", () => {
-  assert.equal(getDemoVideoMode(getDemoBySlug("prompt-enhancer")!), "available");
-  assert.equal(getDemoVideoMode(getDemoBySlug("prompt-enhance-skills")!), "pending");
-  assert.equal(getDemoVideoMode(getDemoBySlug("script-to-bgm")!), "none");
+test("video mode exposes seven available highlights and one intentional absence", () => {
+  const groups = getDemoGroups();
+  const demos = groups.flatMap(({ demos }) => demos);
+
+  assert.deepEqual(
+    demos.map((demo) => getDemoVideoMode(demo)),
+    ["available", "available", "available", "available", "available", "available", "available", "none"],
+  );
 });
 
 test("YouTube embeds use the privacy-enhanced host without autoplay", () => {
@@ -70,7 +73,7 @@ test("proof-first groups preserve the approved product and experiment order", ()
   assert.deepEqual(groups.map(({ id }) => id), ["productized", "experiments"]);
   assert.deepEqual(
     groups[0].demos.map(({ slug }) => slug),
-    ["prompt-enhancer", "prompt-enhance-skills", "voice-adaptor", "reverse-storyboard"],
+    ["prompt-enhancer", "voice-adaptor", "reverse-storyboard"],
   );
   assert.deepEqual(
     groups[1].demos.map(({ slug }) => slug),
@@ -106,6 +109,10 @@ test("all locale dictionaries expose the same Demos UI contract", () => {
     Object.keys(dictionaries[0].demos),
     Object.keys(dictionaries[2].demos),
   );
+  for (const dictionary of dictionaries) {
+    assert.deepEqual(Object.keys(dictionary.demos.kind).sort(), ["prototype", "service", "workflow"]);
+    assert.equal(Object.hasOwn(dictionary.demos.kind, "skill"), false);
+  }
 });
 
 test("list and detail source preserve proof-first markers and the exact six-block flow", () => {
@@ -136,7 +143,7 @@ test("video and image gallery keep separate minimal client boundaries", () => {
 
   assert.match(video, /^"use client";/);
   assert.match(video, /data-demo-video-state="play"/);
-  assert.match(video, /data-demo-video-state="pending"/);
+  assert.doesNotMatch(video, /data-demo-video-state="pending"|mode === "pending"/);
   assert.match(video, /loading="lazy"/);
   assert.match(video, /referrerPolicy="no-referrer"/);
   assert.match(video, /alt=""/);
@@ -155,6 +162,48 @@ test("video and image gallery keep separate minimal client boundaries", () => {
   assert.match(gallery, /aria-current=/);
   assert.match(gallery, /aria-live="polite"/);
   assert.doesNotMatch(gallery, /<video|<iframe|DemoVideo|aria-label=.*play/i);
+});
+
+test("removed related-Demo and pending-video UI resources leave no source residue", () => {
+  for (const path of [
+    "src/i18n/ko.json",
+    "src/i18n/en.json",
+    "src/i18n/zh.json",
+  ]) {
+    const dictionary = readRepoFile(path);
+    assert.doesNotMatch(dictionary, /"relatedDemo"\s*:/);
+    assert.doesNotMatch(dictionary, /"pending"\s*:/);
+  }
+
+  assert.doesNotMatch(readRepoFile("src/styles/globals.css"), /\.demo-video-pending\b/);
+});
+
+test("Prompt Enhancer renders Before the API inside System immediately before the pipeline", () => {
+  const detail = readRepoFile("src/components/demos/DemoDetail.tsx");
+  const diagram = readRepoFile("src/components/demos/DemoDiagram.tsx");
+  const styles = readRepoFile("src/styles/globals.css");
+  const systemIndex = detail.indexOf('data-demo-block="how-it-works"');
+  const preludeIndex = detail.indexOf("demo.prelude");
+  const preludeDiagramIndex = detail.indexOf("src={demo.prelude.diagram}");
+  const pipelineIndex = detail.indexOf("src={demo.diagram}");
+  const stackIndex = detail.indexOf('data-demo-block="stack"');
+
+  assert.ok(systemIndex >= 0 && preludeIndex > systemIndex);
+  assert.ok(preludeDiagramIndex > preludeIndex);
+  assert.ok(pipelineIndex > preludeDiagramIndex);
+  assert.ok(stackIndex > pipelineIndex);
+  assert.equal((detail.match(/data-demo-block=/g) ?? []).length, 6);
+  assert.doesNotMatch(detail, /demo\.prelude\.flow/);
+  assert.doesNotMatch(detail, /<br\s*\/?\s*>/);
+  assert.match(detail, /className="boundary-copy demo-prelude__copy"/);
+  assert.match(
+    styles,
+    /\.demo-prelude__copy\s*\{[^}]*max-width:\s*var\(--prose-width\);[^}]*text-align:\s*left;/,
+  );
+  assert.match(
+    diagram,
+    /"\/assets\/diagrams\/demos\/prompt-enhancer-before-api\.svg": \{ width: 1400, height: 500 \}/,
+  );
 });
 
 test("Demo detail passes the canonical video ID and Next only allowlists YouTube thumbnails", () => {

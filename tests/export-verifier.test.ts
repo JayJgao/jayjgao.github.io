@@ -182,7 +182,7 @@ function addSliderExpectation(contract: ExportContract): void {
 
 function addVideoExpectation(
   contract: ExportContract,
-  videoMode: "play" | "pending" | "none",
+  videoMode: "play" | "none",
   videoId: string | null,
 ): void {
   contract.demoDetailRoutes = [
@@ -204,7 +204,7 @@ function videoDocument({
   referrerPolicy = "no-referrer",
   iframe = false,
 }: {
-  state?: "play" | "pending" | "none";
+  state?: "play" | "none";
   thumbnailSrc?: string | null;
   loading?: string | null;
   referrerPolicy?: string | null;
@@ -620,17 +620,41 @@ test("playable Demos require the exact lazy no-referrer maxres thumbnail", async
   }
 });
 
-test("pending and video-free Demos reject YouTube thumbnail requests", async () => {
-  for (const videoMode of ["pending", "none"] as const) {
-    const { outDir, contract } = await createValidFixture();
-    addVideoExpectation(contract, videoMode, null);
-    await writeRoute(outDir, "/en/about/", videoDocument({ state: videoMode }));
+test("video-free Demos reject YouTube thumbnail requests", async () => {
+  const { outDir, contract } = await createValidFixture();
+  addVideoExpectation(contract, "none", null);
+  await writeRoute(outDir, "/en/about/", videoDocument({ state: "none" }));
 
-    await assert.rejects(
-      () => verifyExport(outDir, contract),
-      /must not request a YouTube thumbnail/i,
-    );
-  }
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /must not request a YouTube thumbnail/i,
+  );
+});
+
+test("the production contract has eight localized Demos and no pending video state", () => {
+  const contract = createProductionExportContract();
+
+  assert.equal(contract.demoDetailRoutes.length, 24);
+  assert.deepEqual(
+    contract.demoDetailRoutes.map(({ slug }) => slug).filter(
+      (slug, index, slugs) => slugs.indexOf(slug) === index,
+    ),
+    [
+      "prompt-enhancer",
+      "voice-adaptor",
+      "reverse-storyboard",
+      "reframer",
+      "boundary-deduper",
+      "iro-matcher",
+      "loudness-matcher",
+      "script-to-bgm",
+    ],
+  );
+  assert.deepEqual(contract.expectedGalleryCounts, { static: 3, slider: 9, none: 12 });
+  assert.deepEqual(contract.expectedVideoCounts, { play: 21 });
+  assert.ok(
+    contract.demoDetailRoutes.every(({ videoMode }) => String(videoMode) !== "pending"),
+  );
 });
 
 test("a playable Demo accepts the exact thumbnail and still rejects an initial iframe", async () => {

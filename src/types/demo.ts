@@ -1,6 +1,6 @@
 import type { Localized } from "@/types/content";
 
-export type DemoKind = "prototype" | "workflow" | "skill" | "service";
+export type DemoKind = "prototype" | "workflow" | "service";
 
 export type DemoStackGroup = {
   label: Localized<string>;
@@ -20,6 +20,12 @@ export type DemoGalleryImage = {
   height: number;
 };
 
+export type DemoPrelude = {
+  title: Localized<string>;
+  diagram: string;
+  paragraphs: Array<Localized<string>>;
+};
+
 export type Demo = {
   slug: string;
   kind: DemoKind;
@@ -37,5 +43,5 @@ export type Demo = {
   video: DemoVideo;
   gallery: DemoGalleryImage[];
   diagram: string;
-  relatedDemo: string | null;
+  prelude?: DemoPrelude;
 };

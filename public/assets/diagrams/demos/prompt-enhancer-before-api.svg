@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Enhancer Before the API</title>
+  <desc id="desc">개인 프롬프트 노하우에서 Organization Skill, 내부 크리에이터 정성 평가, Prompt Enhancer API 제품화로 이어지는 네 단계 흐름</desc>
+  <defs>
+    <style>
+      .display { font-family: "IBM Plex Sans KR", Arial, sans-serif; font-weight: 800; letter-spacing: -1px; }
+      .mono { font-family: "IBM Plex Mono", "Courier New", monospace; font-weight: 700; letter-spacing: 0.4px; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="500" fill="#f4e9e1"/>
+  <rect x="44" y="34" width="18" height="70" fill="#2835f8"/>
+  <text x="84" y="72" class="display" font-size="38" fill="#0e0e0e">BEFORE THE API</text>
+  <text x="86" y="103" class="mono" font-size="14" fill="#0e0e0e">FROM PERSONAL KNOW-HOW TO A REPEATABLE PRODUCT INTERFACE</text>
+  <line x1="44" y1="132" x2="1356" y2="132" stroke="#0e0e0e" stroke-width="3"/>
+
+  <g aria-label="개인 프롬프트 노하우">
+    <rect x="44" y="172" width="292" height="252" rx="14" fill="#ffffff" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="68" y="208" class="mono" font-size="14" fill="#0e0e0e">01 / TACIT SIGNAL</text>
+    <line x1="68" y1="230" x2="312" y2="230" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="68" y="290" class="display" font-size="31" fill="#0e0e0e">
+      <tspan x="68" dy="0">개인 프롬프트</tspan>
+      <tspan x="68" dy="44">노하우</tspan>
+    </text>
+    <circle cx="290" cy="382" r="18" fill="#2835f8"/>
+  </g>
+
+  <g aria-hidden="true">
+    <line x1="348" y1="298" x2="372" y2="298" stroke="#0e0e0e" stroke-width="4"/>
+    <path d="M364 288L376 298L364 308Z" fill="#0e0e0e"/>
+  </g>
+
+  <g aria-label="Organization Skill">
+    <rect x="384" y="172" width="292" height="252" rx="14" fill="#5900cc" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="408" y="208" class="mono" font-size="14" fill="#f4e9e1">02 / STRUCTURE</text>
+    <line x1="408" y1="230" x2="652" y2="230" stroke="#f4e9e1" stroke-width="2"/>
+    <text x="408" y="290" class="display" font-size="31" fill="#f4e9e1">
+      <tspan x="408" dy="0">Organization</tspan>
+      <tspan x="408" dy="44">Skill</tspan>
+    </text>
+    <rect x="610" y="364" width="36" height="36" rx="4" fill="#ffff00"/>
+  </g>
+
+  <g aria-hidden="true">
+    <line x1="688" y1="298" x2="712" y2="298" stroke="#0e0e0e" stroke-width="4"/>
+    <path d="M704 288L716 298L704 308Z" fill="#0e0e0e"/>
+  </g>
+
+  <g aria-label="내부 크리에이터 정성 평가">
+    <rect x="724" y="172" width="292" height="252" rx="14" fill="#ffff00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="748" y="208" class="mono" font-size="14" fill="#0e0e0e">03 / QUALITATIVE</text>
+    <line x1="748" y1="230" x2="992" y2="230" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="748" y="290" class="display" font-size="31" fill="#0e0e0e">
+      <tspan x="748" dy="0">내부 크리에이터</tspan>
+      <tspan x="748" dy="44">정성 평가</tspan>
+    </text>
+    <path d="M950 366L964 394H936Z" fill="#ff3d00" stroke="#0e0e0e" stroke-width="2"/>
+  </g>
+
+  <g aria-hidden="true">
+    <line x1="1028" y1="298" x2="1052" y2="298" stroke="#0e0e0e" stroke-width="4"/>
+    <path d="M1044 288L1056 298L1044 308Z" fill="#0e0e0e"/>
+  </g>
+
+  <g aria-label="Prompt Enhancer API 제품화">
+    <rect x="1064" y="172" width="292" height="252" rx="14" fill="#ff3d00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="1088" y="208" class="mono" font-size="14" fill="#0e0e0e">04 / PRODUCTIZE</text>
+    <line x1="1088" y1="230" x2="1332" y2="230" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="1088" y="290" class="display" font-size="30" fill="#0e0e0e">
+      <tspan x="1088" dy="0">Prompt Enhancer</tspan>
+      <tspan x="1088" dy="44">API 제품화</tspan>
+    </text>
+    <rect x="1286" y="364" width="38" height="38" rx="19" fill="#05ff00" stroke="#0e0e0e" stroke-width="2"/>
+  </g>
+
+  <text x="44" y="466" class="mono" font-size="12" fill="#0e0e0e">KNOW-HOW → INTERNAL TOOL → QUALITATIVE SIGNAL → PRODUCT API</text>
+  <text x="1356" y="466" class="mono" font-size="12" fill="#0e0e0e" text-anchor="end">PROMPT ENHANCER / VALIDATION BEFORE INTEGRATION</text>
+</svg>

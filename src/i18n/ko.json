@@ -143,7 +143,6 @@
     },
     "kind": {
       "service": "Service",
-      "skill": "Skill",
       "prototype": "Prototype",
       "workflow": "Workflow"
     },
@@ -173,7 +172,6 @@
       },
       "video": {
         "playPrefix": "하이라이트 영상 재생",
-        "pending": "하이라이트 영상 준비 중",
         "titleSuffix": "하이라이트 영상"
       },
       "gallery": {
@@ -182,7 +180,6 @@
         "selectPrefix": "이미지 선택",
         "counterLabel": "현재 이미지와 전체 이미지 수"
       },
-      "relatedDemo": "관련 Demo 보기",
       "diagramScrollHint": "작은 화면에서는 좌우로 스크롤해 전체 파이프라인을 볼 수 있습니다."
     }
   },
