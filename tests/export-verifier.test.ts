@@ -410,13 +410,113 @@ test("route-specific presentation rules allow Project detail evidence", async ()
   await writeRoute(
     outDir,
     detailRoute,
-    `${localizedHead("en", detailRoute)}<img src="${src}" alt="Project evidence"></body></html>`,
+    `${localizedHead("en", detailRoute)}
+      <img src="${src}" alt="Project evidence">
+      <div lang="en" data-project-content-locale="en">Project body</div>
+    </body></html>`,
   );
   await mkdir(path.join(outDir, path.dirname(src)), { recursive: true });
   await writeFile(path.join(outDir, src), "fixture", "utf8");
 
   const result = await verifyExport(outDir, contract);
   assert.equal(result.errors, 0);
+});
+
+test("Project fallback verification requires a notice above mismatched-language content", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/en/projects/example/";
+  contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("en", detailRoute)}
+      <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /fallback notice.*content locale/i,
+  );
+});
+
+test("Project fallback verification accepts a semantic notice in the content language", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/en/projects/example/";
+  contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("en", detailRoute)}
+      <p role="note" lang="ko" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
+    </body></html>`,
+  );
+
+  const result = await verifyExport(outDir, contract);
+  assert.equal(result.errors, 0);
+});
+
+test("Project fallback verification rejects a notice without role=note", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/en/projects/example/";
+  contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("en", detailRoute)}
+      <p lang="ko" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /fallback notice must expose role=note/i,
+  );
+});
+
+test("Project fallback verification rejects a notice outside the content language", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/en/projects/example/";
+  contract.localizedRoutes.push(localizedExpectation("en", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("en", detailRoute)}
+      <p role="note" lang="en" data-project-fallback-notice="ko">한국어 원문 안내</p>
+      <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /fallback notice lang must match content locale ko/i,
+  );
+});
+
+test("Project fallback verification rejects a notice on native-language content", async () => {
+  const { outDir, contract } = await createValidFixture();
+  const detailRoute = "/ko/projects/example/";
+  contract.localizedRoutes.push(localizedExpectation("ko", detailRoute));
+  contract.projectDetailRoutes.push(detailRoute);
+  await writeRoute(
+    outDir,
+    detailRoute,
+    `${localizedHead("ko", detailRoute)}
+      <p data-project-fallback-notice="ko">잘못 표시된 안내</p>
+      <div lang="ko" data-project-content-locale="ko">한국어 본문</div>
+    </body></html>`,
+  );
+
+  await assert.rejects(
+    () => verifyExport(outDir, contract),
+    /must not show a fallback notice/i,
+  );
 });
 
 test("scoped presentation rules do not reject media in a later Home chapter", async () => {

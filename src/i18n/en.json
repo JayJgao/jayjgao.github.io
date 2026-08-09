@@ -122,7 +122,8 @@
       "contribution": "Contribution",
       "firstProject": "First project",
       "lastProject": "Last project",
-      "backToList": "Back to project list"
+      "backToList": "Back to project list",
+      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
     }
   },
   "demos": {

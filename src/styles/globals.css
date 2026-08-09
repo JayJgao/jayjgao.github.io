@@ -5,7 +5,8 @@
   --color-paper-white: #ffffff;
   --color-ink: #0e0e0e;
   --color-charcoal: #242320;
-  --color-ember-orange: #ff3d00;
+  --color-ember-orange: #ff5c00;
+  --color-ember-orange-text: #b83c00;
   --color-cobalt-blue: #2835f8;
   --background: var(--color-bone-cream);
   --foreground: var(--color-ink);
@@ -49,6 +50,18 @@ body {
   font-size: 1.125rem;
   line-height: 1.7;
   text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
 }
 
 html[lang="ko"] body {
@@ -463,7 +476,11 @@ html[lang="zh"] .hero-display {
 }
 
 .scroll-progress--demo {
-  color: var(--color-ember-orange);
+  color: var(--color-ember-orange-text);
+}
+
+.scroll-progress--demo .scroll-progress__line {
+  background: var(--color-ember-orange);
 }
 
 .scroll-progress--project {
@@ -530,7 +547,7 @@ html[lang="zh"] .hero-display {
 }
 
 .hero-clause--demo {
-  color: var(--color-ember-orange);
+  color: var(--color-ember-orange-text);
 }
 
 .hero-clause--project {
@@ -1020,6 +1037,13 @@ html[lang="zh"] .hero-display {
   margin: 1.15rem 0 0;
 }
 
+.project-detail-intro,
+.demo-detail-summary,
+.about-lead,
+.about-intro {
+  text-wrap: balance;
+}
+
 .project-detail-ledger {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1058,10 +1082,30 @@ html[lang="zh"] .hero-display {
   padding: var(--section-space) var(--page-gutter);
 }
 
+.project-fallback-notice,
 .mdx-content {
   max-width: 47.5rem;
   margin-inline: auto;
+}
+
+.project-fallback-notice {
+  margin-block: 0 clamp(2.5rem, 6vw, 5rem);
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-ink);
+  border-left: 0.5rem solid var(--color-cobalt-blue);
+  background: var(--color-paper-white);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.mdx-content {
   counter-reset: project-section;
+}
+
+.mdx-content[lang="ko"] {
+  word-break: keep-all;
 }
 
 .mdx-content h2 {
@@ -1076,6 +1120,7 @@ html[lang="zh"] .hero-display {
   line-height: 1.05;
   letter-spacing: -0.03em;
   counter-increment: project-section;
+  text-wrap: balance;
 }
 
 .mdx-content h2::before {
@@ -1091,12 +1136,14 @@ html[lang="zh"] .hero-display {
   font-size: 1.65rem;
   font-weight: 600;
   line-height: 1.3;
+  text-wrap: balance;
 }
 
 .mdx-content p,
 .mdx-content li {
   font-size: 1.04rem;
   line-height: 1.82;
+  text-wrap: pretty;
 }
 
 .mdx-content p {
@@ -1193,6 +1240,7 @@ html[lang="zh"] .hero-display {
 .mdx-content .award-result {
   padding: 1rem;
   background: var(--color-ember-orange);
+  color: var(--color-ink);
   font-weight: 600;
 }
 
@@ -1365,7 +1413,7 @@ html[lang="zh"] .hero-display {
 
 .reasoning-ledger span,
 .how-it-works-list > li > span {
-  color: var(--color-ember-orange);
+  color: var(--color-ember-orange-text);
   font-family: var(--font-plex-mono), monospace;
   font-size: 0.72rem;
 }
@@ -1694,7 +1742,7 @@ html[lang="zh"] .hero-display {
 }
 
 .about-principles span {
-  color: var(--color-ember-orange);
+  color: var(--color-ember-orange-text);
   font-family: var(--font-plex-mono), monospace;
   font-size: 0.72rem;
 }
@@ -1728,6 +1776,7 @@ html[lang="zh"] .hero-display {
   padding: 1.5rem;
   border: 1px solid var(--color-ink);
   background: var(--color-ember-orange);
+  color: var(--color-ink);
   transition: background-color 160ms ease, color 160ms ease;
 }
 
@@ -1760,7 +1809,7 @@ html[lang="zh"] .hero-display {
 }
 
 .about-markets-ledger span {
-  color: var(--color-ember-orange);
+  color: var(--color-ember-orange-text);
   font-family: var(--font-plex-mono), monospace;
   font-size: 0.7rem;
 }
@@ -1837,10 +1886,10 @@ html[lang="zh"] .hero-display {
   margin-top: 1.5rem;
   font-family: var(--font-plex-mono), monospace;
   font-size: 0.68rem;
-  overflow-wrap: anywhere;
 }
 
 .resume-contact a {
+  overflow-wrap: anywhere;
   text-decoration: underline;
   text-underline-offset: 0.22em;
 }
@@ -1977,6 +2026,10 @@ html[lang="zh"] .hero-display {
 
   .page-display {
     font-size: clamp(3.35rem, 17vw, 5rem);
+  }
+
+  .project-detail .page-display {
+    font-size: clamp(3rem, 15.5vw, 4.75rem);
   }
 
   .hero-editorial {
@@ -2141,7 +2194,7 @@ html[lang="zh"] .hero-display {
 
   .about-opening .chapter-inner,
   .about-section .chapter-inner {
-    grid-template-columns: minmax(9rem, 0.55fr) minmax(0, 1.45fr);
+    grid-template-columns: minmax(14rem, 0.8fr) minmax(0, 1.2fr);
   }
 }
 

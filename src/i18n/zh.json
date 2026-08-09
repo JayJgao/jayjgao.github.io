@@ -122,7 +122,8 @@
       "contribution": "贡献度",
       "firstProject": "第一个项目",
       "lastProject": "最后一个项目",
-      "backToList": "返回项目列表"
+      "backToList": "返回项目列表",
+      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
     }
   },
   "demos": {

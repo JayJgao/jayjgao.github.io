@@ -27,6 +27,7 @@ export function CaseStudy({
   const messages = getMessages(locale);
   const copy = messages.projects.caseStudy;
   const subtitle = project.subtitle[locale];
+  const isFallback = contentLocale !== locale;
 
   return (
     <article className="project-detail">
@@ -73,7 +74,21 @@ export function CaseStudy({
       </figure>
 
       <section className="project-content" data-project-section="content">
-        <div lang={contentLocale} className="mdx-content">
+        {isFallback ? (
+          <p
+            className="project-fallback-notice"
+            data-project-fallback-notice={contentLocale}
+            lang={contentLocale}
+            role="note"
+          >
+            {copy.fallbackNotice}
+          </p>
+        ) : null}
+        <div
+          lang={contentLocale}
+          className="mdx-content"
+          data-project-content-locale={contentLocale}
+        >
           {content}
         </div>
       </section>

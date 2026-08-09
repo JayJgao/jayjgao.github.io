@@ -788,7 +788,60 @@ export async function verifyExport(
     }
   }
 
-  for (const route of contract.projectDetailRoutes) await readExpectedRoute(route);
+  for (const route of contract.projectDetailRoutes) {
+    const html = await readExpectedRoute(route);
+    if (html === null) continue;
+    const signals = extractDocumentSignals(html);
+    const contentTags = signals.tags.filter(
+      ({ attributes }) => attributes["data-project-content-locale"] !== undefined,
+    );
+    const noticeTags = signals.tags.filter(
+      ({ attributes }) => attributes["data-project-fallback-notice"] !== undefined,
+    );
+
+    if (contentTags.length !== 1) {
+      errors.push(
+        `${route}: Project detail must expose exactly one content locale marker, found ${contentTags.length}`,
+      );
+      continue;
+    }
+
+    const contentTag = contentTags[0];
+    const contentLocale = contentTag.attributes["data-project-content-locale"];
+    if (contentTag.attributes.lang !== contentLocale) {
+      errors.push(
+        `${route}: Project content lang must match its content locale ${contentLocale}`,
+      );
+    }
+
+    if (contentLocale !== signals.lang) {
+      if (noticeTags.length !== 1) {
+        errors.push(
+          `${route}: one fallback notice is required when content locale ${contentLocale} differs from page locale ${signals.lang ?? "missing"}`,
+        );
+        continue;
+      }
+      const noticeTag = noticeTags[0];
+      if (noticeTag.attributes["data-project-fallback-notice"] !== contentLocale) {
+        errors.push(
+          `${route}: fallback notice must identify content locale ${contentLocale}`,
+        );
+      }
+      if (noticeTag.attributes.role !== "note") {
+        errors.push(`${route}: fallback notice must expose role=note`);
+      }
+      if (noticeTag.attributes.lang !== contentLocale) {
+        errors.push(
+          `${route}: fallback notice lang must match content locale ${contentLocale}`,
+        );
+      }
+      if (noticeTag.start >= contentTag.start) {
+        errors.push(`${route}: fallback notice must appear above Project content`);
+      }
+    } else if (noticeTags.length !== 0) {
+      errors.push(`${route}: native-language Project content must not show a fallback notice`);
+    }
+  }
 
   for (const expectation of contract.demoDetailRoutes) {
     const html = await readExpectedRoute(expectation.route);

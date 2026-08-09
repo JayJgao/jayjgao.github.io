@@ -1,9 +1,31 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { SUPPORTED_LOCALES } from "../src/lib/locale";
 import { readProjectMdx } from "../src/lib/mdx";
 import { getAllProjectSlugs } from "../src/lib/projects";
+
+const repoRoot = new URL("..", import.meta.url);
+
+function readRepoFile(path: string): string {
+  return readFileSync(new URL(path, repoRoot), "utf8");
+}
+
+const fallbackNotice = "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.";
+
+function assertFallbackNoticeContract(detail: string): void {
+  const openingTag = detail.match(
+    /<p(?=[^>]*data-project-fallback-notice=\{contentLocale\})[^>]*>/,
+  )?.[0];
+  assert.ok(openingTag, "fallback notice opening tag must be present");
+  assert.match(openingTag, /role="note"/, "fallback notice must expose role=note");
+  assert.match(
+    openingTag,
+    /lang=\{contentLocale\}/,
+    "fallback notice language must follow contentLocale",
+  );
+}
 
 test("project MDX prefers a locale file and otherwise reports Korean fallback", async () => {
   const localized = await readProjectMdx("en", "cinev-s2m");
@@ -57,4 +79,37 @@ test("a missing Korean canonical MDX propagates its filesystem error", async () 
     readProjectMdx("ko", "__missing-project__"),
     (error: NodeJS.ErrnoException) => error.code === "ENOENT",
   );
+});
+
+test("Project detail exposes a visible localized notice only when MDX falls back", () => {
+  const detail = readRepoFile("src/components/projects/CaseStudy.tsx");
+
+  assert.match(detail, /contentLocale\s*!==\s*locale/);
+  assert.match(detail, /data-project-fallback-notice=\{contentLocale\}/);
+  assert.match(detail, /copy\.fallbackNotice/);
+  assertFallbackNoticeContract(detail);
+  assert.throws(
+    () => assertFallbackNoticeContract(detail.replace('role="note"', "")),
+    /role=note/,
+  );
+  assert.throws(
+    () => assertFallbackNoticeContract(detail.replace("lang={contentLocale}", "")),
+    /language must follow contentLocale/,
+  );
+  assert.ok(
+    detail.indexOf("data-project-fallback-notice") < detail.indexOf('className="mdx-content"'),
+    "fallback notice must render before the MDX body",
+  );
+  assert.match(
+    detail,
+    /lang=\{contentLocale\}[^>]*className="mdx-content"[^>]*data-project-content-locale=\{contentLocale\}/,
+    "the MDX body must retain its real content language",
+  );
+});
+
+test("fallback copy stays an explicit Korean placeholder until translation approval", () => {
+  for (const locale of ["ko", "en", "zh"] as const) {
+    const messages = JSON.parse(readRepoFile(`src/i18n/${locale}.json`));
+    assert.equal(messages.projects.caseStudy.fallbackNotice, fallbackNotice);
+  }
 });
