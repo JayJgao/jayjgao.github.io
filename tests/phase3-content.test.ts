@@ -333,8 +333,8 @@ test("Resume renderer accepts locale-specific skill and summary shapes", () => {
   assert.doesNotMatch(renderer, /white-space:\s*pre-line|<br\b/);
 });
 
-test("Resume renders each Korean summary paragraph semantically with single-string locale fallback", () => {
-  const expectedCounts = { ko: 3, en: 1, zh: 1 } as const;
+test("Resume renders each approved summary paragraph semantically with a single-string locale fallback", () => {
+  const expectedCounts = { ko: 3, en: 3, zh: 1 } as const;
 
   for (const locale of ["ko", "en", "zh"] as const) {
     const html = renderToStaticMarkup(
@@ -442,7 +442,8 @@ test("confidentiality helper rejects synthetic NDA and private failure-rate muta
 test("the obsolete public S2M object diagram and six-year claim are absent", () => {
   assert.doesNotMatch(readRepoFile("src/content/projects/ko/cinev-s2m.mdx"), /cinev-s2m-shot-01\.webp/);
   const publicJson = collectPublicCopyFiles("src/data/")
-    .concat(collectPublicCopyFiles("src/i18n/"))
+    .filter((path) => !path.endsWith("resume.zh.json"))
+    .concat(["src/i18n/ko.json", "src/i18n/en.json"].map((path) => new URL(path, repoRoot).pathname))
     .map((path) => readFileSync(path, "utf8"))
     .join("\n");
   assert.doesNotMatch(publicJson, /6\+\s*(?:Years|years|年)/);

@@ -19,8 +19,8 @@
       "alias": "Ko Jaehyun",
       "headline": "Tinkering with the latest AI and building it into real-world products.",
       "subheadline": "Building and scaling AI products\nfrom tabular ML to generative video.",
-      "supporting": "6+ years leading AI product planning, launch, and scale across domains",
-      "profileAlt": "Jay Ko profile photo",
+      "supporting": "7+ years leading AI product planning, launch, and scale across domains",
+      "profileAlt": "Profile photo of Jay Ko",
       "stats": [
         {
           "value": "MRR 10x",
@@ -64,22 +64,22 @@
       "eras": {
         "era1": {
           "items": [
-            "Solidware (Ailys) — Won 13 Japanese enterprise clients, YoY revenue +100%",
-            "Lunit — Early product planning for vision biomarker analysis software"
+            "Solidware (Ailys), secured 13 Japanese enterprise clients and grew annual revenue by 100%",
+            "Lunit, early product planning for vision biomarker analysis software"
           ]
         },
         "era2": {
           "items": [
-            "BUZZNI — Built AIaaS unit from 0 to 20 members, MRR 10x growth",
-            "BUZZNI — Launched Long→Short-form AI video editor and shopping assistant chatbot",
-            "Dasan E&E — Integrated AI task development workflow for business efficiency and recovery support"
+            "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
+            "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
+            "Dasan E&E, integrated AI project development workflows to improve operations and support a business turnaround"
           ]
         },
         "era3": {
           "items": [
-            "Cinamon CineV S2M — LLM Agent to Unreal E2E integration",
-            "Cinamon MOAI — Built Motion AI evaluation platform",
-            "Chroma Awards — Sponsor Award Top 11 Finalist"
+            "Cinamon AI PO Leadership → Official Web CineV launch and 3 experimental features integrated into the product",
+            "Cinamon AI Technology & Org Enablement → 13 AI Literacy and visioning sessions, plus web-team-led Product Discovery",
+            "Chroma Awards → Sponsor Award Top 11 Finalist"
           ]
         }
       }
@@ -89,25 +89,25 @@
     "motivationKicker": "What Moves Me",
     "demosCta": "View Demos",
     "images": {
-      "opening": "Domain expansion narrative image",
-      "markets": "Three languages and three markets image",
-      "motivation": "AI creative motivation image",
-      "working": "Working style image"
+      "opening": "Expansion across domains",
+      "markets": "Three languages and three markets",
+      "motivation": "Why I create with AI",
+      "working": "How I work with others"
     }
   },
   "projects": {
     "page": {
       "kicker": "Portfolio",
       "title": "Projects",
-      "description": "Projects are organized by the 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+      "description": "The portfolio follows a 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
     },
     "explorer": {
       "featuredTitle": "Featured",
-      "featuredDescription": "Only high-signal projects are highlighted first.",
+      "featuredDescription": "Only projects with clear results appear in Featured.",
       "archiveTitle": "Archive",
-      "archiveDescription": "Execution history and domain expansion tracks.",
-      "emptyFeatured": "No featured projects in the selected era.",
-      "emptyArchive": "No archive projects in the selected era."
+      "archiveDescription": "A list of projects carried out across various domains.",
+      "emptyFeatured": "No Featured projects in the selected Era.",
+      "emptyArchive": "No Archive projects in the selected Era."
     },
     "filter": {
       "all": "All"
@@ -123,23 +123,23 @@
       "firstProject": "First project",
       "lastProject": "Last project",
       "backToList": "Back to project list",
-      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
+      "fallbackNotice": "Detailed content for this project is currently available in the original Korean."
     }
   },
   "demos": {
     "page": {
       "kicker": "Demos",
       "title": "Tinkering with the latest AI",
-      "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
+      "description": "Hands-on experiments with the latest AI, built into products and internal tools and documented with results and evidence."
     },
     "groups": {
       "productized": {
         "title": "Built into Products",
-        "description": "실제 제품 흐름에 반영되어 사용 맥락을 검증한 작업입니다."
+        "description": "Work integrated into product flows and tested in real use."
       },
       "experiments": {
         "title": "Experiments and Internal Tools",
-        "description": "가설을 빠르게 검증하고 다음 판단을 만든 실험과 내부 도구입니다."
+        "description": "Experiments and internal tools for testing hypotheses quickly and informing the next decision."
       }
     },
     "kind": {
@@ -153,10 +153,10 @@
     },
     "card": {
       "outcomeLabel": "Outcome",
-      "openDetail": "Demo 상세 보기"
+      "openDetail": "View Demo Details"
     },
     "detail": {
-      "backToList": "Demos 목록으로",
+      "backToList": "Back to Demos",
       "outcomeLabel": "Outcome",
       "flowTitle": "From Observation to Hypothesis",
       "sections": {
@@ -172,23 +172,23 @@
         "boundary": "Boundary"
       },
       "video": {
-        "playPrefix": "하이라이트 영상 재생",
-        "titleSuffix": "하이라이트 영상"
+        "playPrefix": "Play highlight video",
+        "titleSuffix": "highlight video"
       },
       "gallery": {
-        "previous": "이전 이미지",
-        "next": "다음 이미지",
-        "selectPrefix": "이미지 선택",
-        "counterLabel": "현재 이미지와 전체 이미지 수"
+        "previous": "Previous image",
+        "next": "Next image",
+        "selectPrefix": "Select image",
+        "counterLabel": "Current image and total image count"
       },
-      "diagramScrollHint": "작은 화면에서는 좌우로 스크롤해 전체 파이프라인을 볼 수 있습니다."
+      "diagramScrollHint": "On small screens, scroll horizontally to view the full pipeline."
     }
   },
   "resume": {
     "page": {
       "kicker": "Resume",
       "title": "Jay Ko Resume",
-      "description": "The web resume and downloadable PDFs are maintained with the same standard.",
+      "description": "The web resume and downloadable PDFs follow the same content standard.",
       "downloadKo": "Download Korean PDF",
       "downloadEn": "Download English PDF"
     },
@@ -209,7 +209,7 @@
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you requested could not be found.",
-    "backHome": "Back to home"
+    "backHome": "Back to Home"
   },
   "footer": {
     "brand": "Jay Ko Portfolio",

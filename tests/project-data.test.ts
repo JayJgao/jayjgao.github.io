@@ -85,13 +85,13 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> =
   },
   en: {
     era1: [
-      "Solidware (Ailys) — Won 13 Japanese enterprise clients, YoY revenue +100%",
-      "Lunit — Early product planning for vision biomarker analysis software",
+      "Solidware (Ailys), secured 13 Japanese enterprise clients and grew annual revenue by 100%",
+      "Lunit, early product planning for vision biomarker analysis software",
     ],
     era2: [
-      "BUZZNI — Built AIaaS unit from 0 to 20 members, MRR 10x growth",
-      "BUZZNI — Launched Long→Short-form AI video editor and shopping assistant chatbot",
-      "Dasan E&E — Integrated AI task development workflow for business efficiency and recovery support",
+      "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
+      "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
+      "Dasan E&E, integrated AI project development workflows to improve operations and support a business turnaround",
     ],
   },
   zh: {
@@ -113,6 +113,12 @@ const expectedEra3Ko = [
   "Chroma Awards → Sponsor Award Top 11 Finalist",
 ] as const;
 
+const expectedEra3ZhBeforeApproval = [
+  "Cinamon CineV S2M — 完成 LLM Agent 到 Unreal 的 E2E 集成",
+  "Cinamon MOAI — 搭建 Motion AI 评测平台",
+  "Chroma Awards — Sponsor Award Top 11 Finalist",
+] as const;
+
 const expectedEra3Facts = [
   ["Cinamon", "AI PO Leadership", "CineV", "3"],
   ["Cinamon", "AI Technology & Org Enablement", "13", "Product Discovery"],
@@ -126,13 +132,13 @@ const expectedSpotlights = [
     videoId: "1137973544",
     title: {
       ko: "Chroma Awards Top11 Finalist\nHappyend",
-      en: "Chroma Awards Top11 Finalist\nHappyend",
+      en: "Chroma Awards Top 11 Finalist\nHappyend",
       zh: "Chroma Awards Top11 Finalist\nHappyend",
     },
     workTitle: { ko: "Happyend", en: "Happyend", zh: "Happyend" },
     caption: {
       ko: "Sponsor Award Top 11 Finalist 작품",
-      en: "Sponsor Award Top 11 Finalist selection",
+      en: "Sponsor Award Top 11 Finalist entry",
       zh: "Sponsor Award Top 11 Finalist 入围作品",
     },
     poster: "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
@@ -174,7 +180,7 @@ const expectedSpotlights = [
     },
     caption: {
       ko: "WAIFF 2026 광고부문 출품작",
-      en: "Submitted to WAIFF 2026 Ad category",
+      en: "Submission to the WAIFF 2026 ad category",
       zh: "WAIFF 2026 广告单元参赛作品",
     },
     poster: "/assets/images/projects/chroma/waiff-thumb.webp",
@@ -195,7 +201,7 @@ const expectedSpotlights = [
     },
     caption: {
       ko: "2025APEC AI 영상 공모전 출품작",
-      en: "Submitted to the 2025 APEC AI Video Contest",
+      en: "Submission to the 2025 APEC AI Video Contest",
       zh: "2025 APEC AI 视频大赛参赛作品",
     },
     poster: "/assets/images/projects/chroma/chroma-apec-thumb.webp",
@@ -425,6 +431,8 @@ test("UI dictionaries keep only the all-project filter and localized timeline it
         assert.deepEqual(timelineEra.items, expectedTimelineItems[locale][eraKey]);
       } else if (locale === "ko") {
         assert.deepEqual(timelineEra.items, expectedEra3Ko);
+      } else if (locale === "zh") {
+        assert.deepEqual(timelineEra.items, expectedEra3ZhBeforeApproval);
       } else {
         assert.ok(Array.isArray(timelineEra.items));
         assert.equal(timelineEra.items.length, expectedEra3Facts.length);

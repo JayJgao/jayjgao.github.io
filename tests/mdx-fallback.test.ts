@@ -12,7 +12,11 @@ function readRepoFile(path: string): string {
   return readFileSync(new URL(path, repoRoot), "utf8");
 }
 
-const fallbackNotice = "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.";
+const fallbackNotices = {
+  ko: "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.",
+  en: "Detailed content for this project is currently available in the original Korean.",
+  zh: "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.",
+} as const;
 
 function assertFallbackNoticeContract(detail: string): void {
   const openingTag = detail.match(
@@ -22,8 +26,8 @@ function assertFallbackNoticeContract(detail: string): void {
   assert.match(openingTag, /role="note"/, "fallback notice must expose role=note");
   assert.match(
     openingTag,
-    /lang=\{contentLocale\}/,
-    "fallback notice language must follow contentLocale",
+    /lang=\{locale\}/,
+    "localized fallback notice language must follow the page locale",
   );
 }
 
@@ -93,8 +97,8 @@ test("Project detail exposes a visible localized notice only when MDX falls back
     /role=note/,
   );
   assert.throws(
-    () => assertFallbackNoticeContract(detail.replace("lang={contentLocale}", "")),
-    /language must follow contentLocale/,
+    () => assertFallbackNoticeContract(detail.replace("lang={locale}", "")),
+    /language must follow the page locale/,
   );
   assert.ok(
     detail.indexOf("data-project-fallback-notice") < detail.indexOf('className="mdx-content"'),
@@ -107,9 +111,9 @@ test("Project detail exposes a visible localized notice only when MDX falls back
   );
 });
 
-test("fallback copy stays an explicit Korean placeholder until translation approval", () => {
+test("fallback copy is localized as each structured translation is approved", () => {
   for (const locale of ["ko", "en", "zh"] as const) {
     const messages = JSON.parse(readRepoFile(`src/i18n/${locale}.json`));
-    assert.equal(messages.projects.caseStudy.fallbackNotice, fallbackNotice);
+    assert.equal(messages.projects.caseStudy.fallbackNotice, fallbackNotices[locale]);
   }
 });

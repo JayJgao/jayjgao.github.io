@@ -11,7 +11,7 @@
     },
     "oneLiner": {
       "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
-      "en": "Delivered first LLM-to-Unreal E2E integration in 3 months and cut experiment lead time by 50%",
+      "en": "Within 3 months of joining, completed the first LLM-to-Unreal E2E integration and cut experiment lead time by 50%",
       "zh": "入职3个月完成首个 LLM→Unreal 端到端集成，并将实验周期缩短50%"
     },
     "company": "Cinamon",
@@ -26,7 +26,7 @@
     "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%",
     "subtitle": {
       "ko": "LLM Agent → Unreal Pipeline",
-      "en": "LLM Agent to Unreal Pipeline",
+      "en": "LLM Agent → Unreal Pipeline",
       "zh": "LLM Agent 到 Unreal"
     }
   },
@@ -42,7 +42,7 @@
     },
     "oneLiner": {
       "ko": "바이브코딩으로 구축, 5개월간 유저스터디 6회 + 모델 2건 통합",
-      "en": "Vibe-coded platform; 6 user studies in 5 months and 2 model integrations",
+      "en": "Built through vibe coding; ran 6 user studies and integrated 2 models over 5 months",
       "zh": "从零搭建评测平台，5个月完成6次用户研究并集成2个模型"
     },
     "company": "Cinamon",
@@ -73,7 +73,7 @@
     },
     "oneLiner": {
       "ko": "세계 최대 AI Film Competition Sponsor Award Top 11 Finalist",
-      "en": "Top 11 Finalist, Sponsor Award — World's largest AI Film Competition (ElevenLabs)",
+      "en": "Sponsor Award Top 11 Finalist at the world's largest AI Film Competition",
       "zh": "全球最大 AI 电影赛事赞助奖 Top 11 入围"
     },
     "company": "Side Project",
@@ -105,7 +105,7 @@
     },
     "oneLiner": {
       "ko": "Long→Short-form AI 비디오 편집기, 0→1 기획·출시·운영",
-      "en": "AI video editor, built 0→1 from planning to launch and operation",
+      "en": "Took a Long→Short-form AI video editor from 0→1 through planning, launch, and operations",
       "zh": "AI 视频编辑器，从0到1完成规划、上线与运营"
     },
     "company": "BUZZNI",
@@ -133,12 +133,12 @@
     "showcaseOrder": 5,
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
-      "en": "AIaaS Business Unit",
+      "en": "Building and Leading an AIaaS Business Unit",
       "zh": "AIaaS 事业部搭建与领导"
     },
     "oneLiner": {
       "ko": "제로에서 20명 팀 빌딩, AIaaS 사업부 리딩 — MRR 500만→5,200만 원 (10x 성장)",
-      "en": "Built 20-person team from zero, led AIaaS unit — MRR ₩5M→₩52M (10x growth)",
+      "en": "Built the AIaaS team from 0→20 people, led the business unit, and grew MRR from ₩5 million to ₩52 million, a 10x increase",
       "zh": "从零搭建20人团队，带领 AIaaS 事业部实现 MRR 10倍增长"
     },
     "company": "BUZZNI",
@@ -154,7 +154,7 @@
     "primaryMetric": "MRR 10X",
     "subtitle": {
       "ko": "",
-      "en": "Build & Lead",
+      "en": "",
       "zh": ""
     }
   },
@@ -170,7 +170,7 @@
     },
     "oneLiner": {
       "ko": "Mitsubishi, AEON 등 13개 클라이언트 확보, 연매출 100% 신장",
-      "en": "Acquired 13 clients incl. Mitsubishi, AEON; YoY revenue +100%",
+      "en": "Secured 13 Japanese enterprise clients, including Mitsubishi and AEON; annual revenue grew by 100%",
       "zh": "获得13家企业客户（含三菱、AEON），年营收同比增长100%"
     },
     "company": "Solidware",
@@ -187,7 +187,7 @@
     "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e",
     "subtitle": {
       "ko": "일본 엔터프라이즈",
-      "en": "Japan Enterprise",
+      "en": "Japanese Enterprise Market",
       "zh": "日本企业市场"
     }
   },
@@ -203,7 +203,7 @@
     },
     "oneLiner": {
       "ko": "상품 탐색과 구매 전환을 돕는 대화형 쇼핑 경험 설계",
-      "en": "Designed conversational shopping flow to improve product discovery and conversion",
+      "en": "Designed a conversational shopping experience to help users find products and complete purchases",
       "zh": "设计对话式购物流程，提升商品发现与转化"
     },
     "company": "BUZZNI",
@@ -234,7 +234,7 @@
     },
     "oneLiner": {
       "ko": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십",
-      "en": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십",
+      "en": "Co-led the transition of a 3D product into a generative-model-centered web product, from hypothesis validation through the official Web CineV launch",
       "zh": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십"
     },
     "company": "Cinamon",
@@ -266,7 +266,7 @@
     },
     "oneLiner": {
       "ko": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트",
-      "en": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트",
+      "en": "Expanded 13 AI Literacy and visioning sessions into a web-team-led Product Discovery program for identifying user friction and testing whether AI could address it",
       "zh": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트"
     },
     "company": "Cinamon",
@@ -297,7 +297,7 @@
     },
     "oneLiner": {
       "ko": "2개 고객사 납품 + GPT-4o 워크로드를 4o-mini로 최적화해 비용 절감",
-      "en": "Shipped to 2 clients and optimized GPT-4o workloads to 4o-mini for major cost savings",
+      "en": "Delivered the service to 2 clients and cut costs by moving GPT-4o workloads to 4o-mini",
       "zh": "交付2家客户，并将 GPT-4o 工作负载优化到 4o-mini 以降低成本"
     },
     "company": "BUZZNI",
@@ -328,7 +328,7 @@
     },
     "oneLiner": {
       "ko": "3개 고객사 검색 서비스 납품 + 7개 기업 PoC로 확장 파이프라인 구축",
-      "en": "Delivered search service to 3 clients and ran 7 enterprise PoCs for expansion",
+      "en": "Delivered search services to 3 clients and built an expansion pipeline through 7 enterprise PoCs",
       "zh": "为3家客户交付搜索服务，并完成7家企业 PoC"
     },
     "company": "BUZZNI",
@@ -359,7 +359,7 @@
     },
     "oneLiner": {
       "ko": "홍보 콘텐츠 제작, 외부 강연/부스 운영, 보도자료 운영까지 End-to-End 리드",
-      "en": "Led end-to-end promotion content, speaking events, expo booths, and PR coverage",
+      "en": "Led End-to-End product promotion across content creation, external talks, booth operations, and press releases",
       "zh": "端到端负责内容、演讲、展会展台与媒体宣传"
     },
     "company": "BUZZNI",
@@ -385,12 +385,12 @@
     "showcaseOrder": null,
     "title": {
       "ko": "AutoML 모듈 신규 개발",
-      "en": "AutoML Module Development",
+      "en": "New AutoML Module Development",
       "zh": "AutoML 模块开发"
     },
     "oneLiner": {
       "ko": "금융 도메인용 AutoML 신규 모듈 기획 및 출시",
-      "en": "Planned and launched AutoML module for fintech use-cases",
+      "en": "Planned and launched a new AutoML module for financial services",
       "zh": "为金融场景规划并上线 AutoML 新模块"
     },
     "company": "Solidware",
@@ -420,7 +420,7 @@
     },
     "oneLiner": {
       "ko": "별도 조직 없이 제품 마케팅 체계 구축, 컨택포인트 256% 증가·신규 고객 13개 확보",
-      "en": "Built product marketing operations without a dedicated team: touchpoints +256%, 13 new clients",
+      "en": "Built product marketing operations without a dedicated team, increased touchpoints by 256%, and won 13 new clients",
       "zh": "在无独立团队情况下搭建营销体系：触点 +256%，新增13家客户"
     },
     "company": "Solidware",
@@ -446,12 +446,12 @@
     "showcaseOrder": null,
     "title": {
       "ko": "비전 바이오마커 분석 SW 기획",
-      "en": "Vision Biomarker Analysis Software",
+      "en": "Product Planning for Vision Biomarker Analysis Software",
       "zh": "视觉生物标志物分析软件"
     },
     "oneLiner": {
       "ko": "규제 요건 기반 의료 AI 소프트웨어 초기 PRD 수립",
-      "en": "Defined initial PRD for regulated medical AI software",
+      "en": "Defined the initial PRD for medical AI software based on regulatory requirements",
       "zh": "基于监管要求制定医疗AI软件初期 PRD"
     },
     "company": "Lunit",

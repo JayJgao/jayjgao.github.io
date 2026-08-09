@@ -1,24 +1,28 @@
 {
   "meta": {
-    "name": "Jaehyun Ko (Jay Ko)",
+    "name": "고재현 (Jay Ko)",
     "title": "AI Product Leader",
-    "subtitle": "6+ Years | Tabular ML -> Vision -> LLM Agent -> Motion AI",
+    "subtitle": "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI",
     "location": "Seoul, Korea",
     "email": "rhwogus0205@gmail.com",
     "website": "https://jayjgao.github.io",
     "github": "https://github.com/JayJgao"
   },
-  "summary": "AI Product Leader focused on applying AI to new domains, shipping products, and scaling teams. From strategy to architecture and execution, I run end-to-end product outcomes with measurable business impact.",
+  "summary": [
+    "I am an AI Product Leader who quickly understands how industries and products work, translates problems that have yet to be articulated into technical terms, and connects them to product and business outcomes.",
+    "Across fintech AutoML, healthcare Computer Vision, e-commerce LLM Application, and Generative AI video products, I have built teams, secured enterprise contracts, grown MRR 10x, and taken a web product to official launch.",
+    "When I enter a new domain, I first map the product's infrastructure and systems along with the market. I then use our own products and competing products to find gaps that have not been clearly defined. I put problems tightly coupled to the core system on the organization's agenda. When a point of user friction can be tested independently, I prototype it myself. I work with the team beyond implementation until we see concrete outcomes, such as contracts, paid conversion, or reaching FSO (First Satisfactory Output) without leaving the Golden Path."
+  ],
   "experience": [
     {
       "company": "Cinamon (CineV)",
       "role": "AI Tech Product Owner",
       "period": "2025.04 - Present",
       "highlights": [
-        "Designed a LangChain-based Film Agent and delivered LLM-to-Unreal E2E integration",
-        "Built the MOAI evaluation platform and accelerated model-to-product cycle: 2 integrations in 2 years before adoption -> 2 integrations in 5 months after adoption (Locomotion, Text-to-Motion), with 6 user studies",
-        "Introduced an external model routing platform, cutting integration cycle from weekly cadence to near-instant deployment; designed architecture and APIs for I2V, I2I, TTS, and Music Gen",
-        "Led the AI track in CineV launch strategy (official launch in January 2026)"
+        "Product direction shift that began with Film Agent E2E integration, agreement to clear three years of legacy, and official Web CineV launch in July 2026",
+        "Conditioning and context management, research into narrative and visual consistency, 120+ same-scene validations, and an Asset management system integrated into the product",
+        "3 experimental features integrated into the product; 2 model integrations and 6 user studies through an internal Eval platform; 13 AI Literacy and visioning sessions; design and operation of web-team-led Product Discovery",
+        "7+ areas and 30+ models integrated into the product through external model routing"
       ]
     },
     {
@@ -26,9 +30,9 @@
       "role": "AI PM / Team Lead",
       "period": "2023.04 - 2025.03",
       "highlights": [
-        "Built and led an AIaaS business unit from zero to 20 people",
-        "Scaled MRR from KRW 5M to KRW 52M (10x) and won 12 new enterprise clients",
-        "Launched two services from 0 to 1: Long-to-Short AI video editor and shopping assistant chatbot"
+        "Built and led the AIaaS business unit, growing the team 0→20",
+        "Grew MRR 10x, from ₩5M to ₩52M, and secured 12 new clients",
+        "Launched two services from 0→1: a Long→Short-form AI video editor and a shopping chatbot"
       ]
     },
     {
@@ -36,8 +40,8 @@
       "role": "Business Operations Manager",
       "period": "2022.06 - 2023.03",
       "highlights": [
-        "Improved operations of a family HR consulting business and supported turnaround",
-        "Redesigned operating process and execution framework"
+        "Improved operations and supported the turnaround of a family-run HR consulting business",
+        "Redesigned operating processes and established a framework for executing business strategy"
       ]
     },
     {
@@ -45,7 +49,7 @@
       "role": "AI Product Manager",
       "period": "2022.01 - 2022.04",
       "highlights": [
-        "Defined initial PRD and regulation-driven requirements for vision biomarker analysis software"
+        "Defined the initial PRD and requirements based on regulatory documentation for vision biomarker analysis software"
       ]
     },
     {
@@ -53,29 +57,49 @@
       "role": "AI PM / New Business Team Lead",
       "period": "2018.12 - 2021.12",
       "highlights": [
-        "Won 13 enterprise clients in Japan (including Mitsubishi and AEON)",
-        "Delivered +100% YoY revenue growth and +256% sales touchpoints",
-        "Secured KRW 1.5B in government-funded projects"
+        "Secured 13 Japanese enterprise clients, including Mitsubishi and AEON",
+        "Grew annual revenue by 100% and expanded sales touchpoints by 256%",
+        "Won government projects totaling ₩1.5B"
       ]
     }
   ],
   "skills": {
-    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
-    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
-    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
+    "AI Product Leadership": [
+      "Product Strategy and KPI/OKR",
+      "Product Discovery and Hypothesis Validation",
+      "Cross-functional Leadership and Team Building",
+      "B2B Go-to-Market"
+    ],
+    "AI Systems": [
+      "LLM Applications and Agents",
+      "Context Engineering and AI Evals",
+      "Generative Media and Computer Vision",
+      "Model Routing and Integration"
+    ],
+    "Technical Execution": [
+      "Rapid Prototyping",
+      "System Architecture",
+      "API Design",
+      "Product Analytics"
+    ],
+    "Selected Tools": [
+      "SQL",
+      "Google Analytics",
+      "LangChain / LangGraph"
+    ]
   },
   "education": [
     "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
   ],
   "achievements": [
-    "3 ML patents",
-    "KSC 2023 conference publication",
+    "3 ML Patents",
+    "KSC 2023 Paper Presentation",
     "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
   ],
   "languages": [
     "Korean (Native)",
     "Chinese (Business Fluent, HSK 6)",
-    "English (Professional)",
+    "English (Business Fluent)",
     "Japanese (Basic)",
     "Russian (Elementary)"
   ]

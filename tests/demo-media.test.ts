@@ -321,7 +321,7 @@ test("ships only the five approved Enablement evidence images with fixed bytes a
   assert.equal(hashes.size, expectedEnablementImages.length, "evidence images must be distinct");
 });
 
-test("gallery entries preserve exact order, slug paths, dimensions, and factual Korean copy", () => {
+test("gallery entries preserve exact order, dimensions, canonical Korean copy, and approved English accessibility copy", () => {
   const demos = demosJson as unknown as Demo[];
   const expectedGallery = {
     "prompt-enhancer": [
@@ -355,10 +355,12 @@ test("gallery entries preserve exact order, slug paths, dimensions, and factual 
     for (const image of demo.gallery) {
       assert.ok(image.src.startsWith(`/assets/images/demos/${demo.slug}/`));
       assert.equal(existsSync(join(repositoryRoot, "public", image.src.slice(1))), true);
-      assert.equal(image.alt.en, image.alt.ko);
       assert.equal(image.alt.zh, image.alt.ko);
-      assert.equal(image.caption.en, image.caption.ko);
       assert.equal(image.caption.zh, image.caption.ko);
+      assert.ok(image.alt.en.trim());
+      assert.ok(image.caption.en.trim());
+      assert.doesNotMatch(image.alt.en, /[가-힣]|[—–]|--/);
+      assert.doesNotMatch(image.caption.en, /[가-힣]|[—–]|--/);
     }
   }
 

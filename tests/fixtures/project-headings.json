@@ -3,7 +3,7 @@
     "slug": "cinev-s2m",
     "title": {
       "ko": "CineV S2M — LLM Agent → Unreal Pipeline",
-      "en": "CineV S2M — LLM Agent to Unreal Pipeline",
+      "en": "CineV S2M — LLM Agent → Unreal Pipeline",
       "zh": "CineV S2M — LLM Agent 到 Unreal"
     }
   },
@@ -35,7 +35,7 @@
     "slug": "buzzni-aiaas-biz",
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
-      "en": "AIaaS Business Unit — Build & Lead",
+      "en": "Building and Leading an AIaaS Business Unit",
       "zh": "AIaaS 事业部搭建与领导"
     }
   },
@@ -43,7 +43,7 @@
     "slug": "solidware-mlaas",
     "title": {
       "ko": "핀테크 MLaaS — 일본 엔터프라이즈",
-      "en": "Fintech MLaaS — Japan Enterprise",
+      "en": "Fintech MLaaS — Japanese Enterprise Market",
       "zh": "金融 MLaaS — 日本企业市场"
     }
   },
@@ -99,7 +99,7 @@
     "slug": "solidware-automl",
     "title": {
       "ko": "AutoML 모듈 신규 개발",
-      "en": "AutoML Module Development",
+      "en": "New AutoML Module Development",
       "zh": "AutoML 模块开发"
     }
   },
@@ -115,7 +115,7 @@
     "slug": "lunit-biomarker",
     "title": {
       "ko": "비전 바이오마커 분석 SW 기획",
-      "en": "Vision Biomarker Analysis Software",
+      "en": "Product Planning for Vision Biomarker Analysis Software",
       "zh": "视觉生物标志物分析软件"
     }
   }

@@ -78,7 +78,7 @@ export function CaseStudy({
           <p
             className="project-fallback-notice"
             data-project-fallback-notice={contentLocale}
-            lang={contentLocale}
+            lang={locale}
             role="note"
           >
             {copy.fallbackNotice}

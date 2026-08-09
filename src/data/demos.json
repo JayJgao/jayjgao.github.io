@@ -6,59 +6,59 @@
     "name": "Prompt Enhancer",
     "summary": {
       "ko": "개인에게 쌓여 있던 이미지·비디오 프롬프트 작성 감각을 제품 API의 검증 가능한 프롬프트 변환 파이프라인으로 옮긴 작업",
-      "en": "개인에게 쌓여 있던 이미지·비디오 프롬프트 작성 감각을 제품 API의 검증 가능한 프롬프트 변환 파이프라인으로 옮긴 작업",
+      "en": "Turned one person's image and video prompting expertise into a testable prompt transformation pipeline for a product API",
       "zh": "개인에게 쌓여 있던 이미지·비디오 프롬프트 작성 감각을 제품 API의 검증 가능한 프롬프트 변환 파이프라인으로 옮긴 작업"
     },
     "observation": {
       "ko": "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 그래서 조직 내부용 Skill을 만들어 배포했고, 예상보다 빠른 사용 확산이 관측됐다. 프롬프트 작성이 실제 병목이라는 신호였다.",
-      "en": "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 그래서 조직 내부용 Skill을 만들어 배포했고, 예상보다 빠른 사용 확산이 관측됐다. 프롬프트 작성이 실제 병목이라는 신호였다.",
+      "en": "Image and video generation results varied widely for the same intent depending on how the prompt was written, while the know-how remained locked in individual workflows. An internal Skill was created and distributed, and adoption spread faster than expected. That was evidence that prompt writing was a real bottleneck.",
       "zh": "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 컸고, 그 노하우가 개인의 작업 방식 안에만 쌓여 있었다. 그래서 조직 내부용 Skill을 만들어 배포했고, 예상보다 빠른 사용 확산이 관측됐다. 프롬프트 작성이 실제 병목이라는 신호였다."
     },
     "problem": {
       "ko": "팀원마다 결과 품질이 달라지고, 잘 쓰는 사람의 감각이 조직 전체의 반복 가능한 인터페이스로 전파되지 않았다. 특히 제품 흐름에서는 사용자가 매번 추가 질문에 답할 수 없고, 참조 이미지 순서·역할·비디오 길이 같은 계약이 모호하면 후속 생성 단계가 흔들릴 수 있었다.",
-      "en": "팀원마다 결과 품질이 달라지고, 잘 쓰는 사람의 감각이 조직 전체의 반복 가능한 인터페이스로 전파되지 않았다. 특히 제품 흐름에서는 사용자가 매번 추가 질문에 답할 수 없고, 참조 이미지 순서·역할·비디오 길이 같은 계약이 모호하면 후속 생성 단계가 흔들릴 수 있었다.",
+      "en": "Output quality varied by team member, and the instincts of strong prompt writers had not become a repeatable interface for the organization. In a product flow, users could not answer follow-up questions every time. Ambiguous contracts for reference image order, roles, or video duration could also destabilize downstream generation.",
       "zh": "팀원마다 결과 품질이 달라지고, 잘 쓰는 사람의 감각이 조직 전체의 반복 가능한 인터페이스로 전파되지 않았다. 특히 제품 흐름에서는 사용자가 매번 추가 질문에 답할 수 없고, 참조 이미지 순서·역할·비디오 길이 같은 계약이 모호하면 후속 생성 단계가 흔들릴 수 있었다."
     },
     "hypothesis": {
       "ko": "스킬이 참조하던 카메라, 표정, 조명, 모델별 핸들 규칙, 프롬프트 패턴을 제품 API의 정책으로 흡수하되, 요청 스키마·검증·실패 처리·진단 노출 경계를 명확히 하면 막 쓴 문장도 모델용 프롬프트로 안정적으로 변환할 수 있다.",
-      "en": "스킬이 참조하던 카메라, 표정, 조명, 모델별 핸들 규칙, 프롬프트 패턴을 제품 API의 정책으로 흡수하되, 요청 스키마·검증·실패 처리·진단 노출 경계를 명확히 하면 막 쓴 문장도 모델용 프롬프트로 안정적으로 변환할 수 있다.",
+      "en": "Moving the Skill's camera, expression, lighting, model-specific handle rules, and prompt patterns into product API policy, with clear boundaries for request schema, validation, failure handling, and diagnostic exposure, could reliably transform rough sentences into model-ready prompts.",
       "zh": "스킬이 참조하던 카메라, 표정, 조명, 모델별 핸들 규칙, 프롬프트 패턴을 제품 API의 정책으로 흡수하되, 요청 스키마·검증·실패 처리·진단 노출 경계를 명확히 하면 막 쓴 문장도 모델용 프롬프트로 안정적으로 변환할 수 있다."
     },
     "outcome": {
       "ko": "FastAPI Gateway의 Prompt Transform 기능으로 구현되어 API 문서, Gradio 데모, 자동화 테스트가 함께 반영된 상태",
-      "en": "FastAPI Gateway의 Prompt Transform 기능으로 구현되어 API 문서, Gradio 데모, 자동화 테스트가 함께 반영된 상태",
+      "en": "Implemented as Prompt Transform in the FastAPI Gateway, with API documentation, a Gradio demo, and automated tests",
       "zh": "FastAPI Gateway의 Prompt Transform 기능으로 구현되어 API 문서, Gradio 데모, 자동화 테스트가 함께 반영된 상태"
     },
     "productized": true,
     "howItWorks": [
       {
         "ko": "호출자는 이미지 또는 비디오 변환 엔드포인트에 원문 프롬프트와 선택적 참조 이미지를 보낸다. 참조 이미지는 최대 9개이며 지정된 순서로 정렬된다. 이미지 요청은 선택적 스타일을 받을 수 있고, 비디오 요청은 4초부터 15초 사이의 길이를 반드시 받는다.",
-        "en": "호출자는 이미지 또는 비디오 변환 엔드포인트에 원문 프롬프트와 선택적 참조 이미지를 보낸다. 참조 이미지는 최대 9개이며 지정된 순서로 정렬된다. 이미지 요청은 선택적 스타일을 받을 수 있고, 비디오 요청은 4초부터 15초 사이의 길이를 반드시 받는다.",
+        "en": "The caller sends the original prompt and optional reference images to an image or video transformation endpoint. Reference images are limited to 9 and ordered as specified. Image requests may include an optional style, while video requests must include a duration from 4 to 15 seconds.",
         "zh": "호출자는 이미지 또는 비디오 변환 엔드포인트에 원문 프롬프트와 선택적 참조 이미지를 보낸다. 참조 이미지는 최대 9개이며 지정된 순서로 정렬된다. 이미지 요청은 선택적 스타일을 받을 수 있고, 비디오 요청은 4초부터 15초 사이의 길이를 반드시 받는다."
       },
       {
         "ko": "사전 검증은 참조 순서의 누락·중복, 첨부만 있고 지칭이 없는 다중 참조, 존재하지 않는 Image N 또는 @imageN, 비디오 길이 충돌을 먼저 확인한다. 단일 참조는 암묵 사용을 허용하지만 최종 프롬프트에는 핸들이 들어가야 한다.",
-        "en": "사전 검증은 참조 순서의 누락·중복, 첨부만 있고 지칭이 없는 다중 참조, 존재하지 않는 Image N 또는 @imageN, 비디오 길이 충돌을 먼저 확인한다. 단일 참조는 암묵 사용을 허용하지만 최종 프롬프트에는 핸들이 들어가야 한다.",
+        "en": "Pre-validation first checks for missing or duplicate reference positions, multiple attachments that are never referenced, nonexistent Image N or @imageN handles, and conflicting video durations. A single reference may be used implicitly, but the final prompt must include its handle.",
         "zh": "사전 검증은 참조 순서의 누락·중복, 첨부만 있고 지칭이 없는 다중 참조, 존재하지 않는 Image N 또는 @imageN, 비디오 길이 충돌을 먼저 확인한다. 단일 참조는 암묵 사용을 허용하지만 최종 프롬프트에는 핸들이 들어가야 한다."
       },
       {
         "ko": "참조 역할 해석 단계는 원문, 역할, 메모, 이전 추가 질문 답변만 사용해 참조 이미지의 역할과 핸들을 정렬한다. 픽셀에서 새로운 외형 묘사를 만들어내지 않고, 역할이 명확하지 않으면 미확정 상태 또는 질문으로 남긴다.",
-        "en": "참조 역할 해석 단계는 원문, 역할, 메모, 이전 추가 질문 답변만 사용해 참조 이미지의 역할과 핸들을 정렬한다. 픽셀에서 새로운 외형 묘사를 만들어내지 않고, 역할이 명확하지 않으면 미확정 상태 또는 질문으로 남긴다.",
+        "en": "Reference role interpretation uses only the original text, roles, notes, and earlier answers to follow-up questions to align each reference image with its role and handle. It does not invent appearance details from pixels. An unclear role remains unresolved or becomes a question.",
         "zh": "참조 역할 해석 단계는 원문, 역할, 메모, 이전 추가 질문 답변만 사용해 참조 이미지의 역할과 핸들을 정렬한다. 픽셀에서 새로운 외형 묘사를 만들어내지 않고, 역할이 명확하지 않으면 미확정 상태 또는 질문으로 남긴다."
       },
       {
         "ko": "정책 기반 작성 단계는 nanotape 또는 seehorse를 사용해 영어 프롬프트를 만든다. nanotape는 GPT Image 2와 nano banana 호환 이미지 프롬프트를 위해 Image N 핸들, 편집 시 변경·보존 분리, 텍스트 보존, 선택적 스타일 요구사항을 다룬다. seehorse는 Seedance 2.0과 HappyHorse 호환 비디오 프롬프트를 위해 소문자 @imageN, 샷별 시간 범위, 대사·자막 보존, 캐릭터·환경·소품 연속성을 다룬다.",
-        "en": "정책 기반 작성 단계는 nanotape 또는 seehorse를 사용해 영어 프롬프트를 만든다. nanotape는 GPT Image 2와 nano banana 호환 이미지 프롬프트를 위해 Image N 핸들, 편집 시 변경·보존 분리, 텍스트 보존, 선택적 스타일 요구사항을 다룬다. seehorse는 Seedance 2.0과 HappyHorse 호환 비디오 프롬프트를 위해 소문자 @imageN, 샷별 시간 범위, 대사·자막 보존, 캐릭터·환경·소품 연속성을 다룬다.",
+        "en": "The policy-based writing step uses nanotape or seehorse to produce an English prompt. For image prompts compatible with GPT Image 2 and nano banana, nanotape handles Image N references, separates changes from preserved elements during editing, preserves text, and applies optional style requirements. For video prompts compatible with Seedance 2.0 and HappyHorse, seehorse handles lowercase @imageN references, per-shot time ranges, dialogue and subtitle preservation, and continuity across characters, environments, and props.",
         "zh": "정책 기반 작성 단계는 nanotape 또는 seehorse를 사용해 영어 프롬프트를 만든다. nanotape는 GPT Image 2와 nano banana 호환 이미지 프롬프트를 위해 Image N 핸들, 편집 시 변경·보존 분리, 텍스트 보존, 선택적 스타일 요구사항을 다룬다. seehorse는 Seedance 2.0과 HappyHorse 호환 비디오 프롬프트를 위해 소문자 @imageN, 샷별 시간 범위, 대사·자막 보존, 캐릭터·환경·소품 연속성을 다룬다."
       },
       {
         "ko": "검증 단계는 마크다운 fence, 로컬 경로, 내부 구현 용어, 잘못된 핸들 표기, 필수 핸들 누락을 확인한다. 실패하면 한 번 복구를 시도하며, 비대화형 호출자는 400 오류와 표시 가능한 질문을 받는다.",
-        "en": "검증 단계는 마크다운 fence, 로컬 경로, 내부 구현 용어, 잘못된 핸들 표기, 필수 핸들 누락을 확인한다. 실패하면 한 번 복구를 시도하며, 비대화형 호출자는 400 오류와 표시 가능한 질문을 받는다.",
+        "en": "Validation checks for Markdown fences, local paths, internal implementation terms, malformed handles, and missing required handles. If it fails, the system makes one recovery attempt. Non-interactive callers receive a 400 error and questions suitable for display.",
         "zh": "검증 단계는 마크다운 fence, 로컬 경로, 내부 구현 용어, 잘못된 핸들 표기, 필수 핸들 누락을 확인한다. 실패하면 한 번 복구를 시도하며, 비대화형 호출자는 400 오류와 표시 가능한 질문을 받는다."
       },
       {
         "ko": "응답은 준비된 프롬프트, 추가 질문, 구조화된 경고, 사용자가 요청한 진단 정보 중 필요한 것만 반환한다. 이 API는 이미지나 비디오를 직접 생성하지 않고, 후속 생성 파이프라인에 넘길 프롬프트만 만든다.",
-        "en": "응답은 준비된 프롬프트, 추가 질문, 구조화된 경고, 사용자가 요청한 진단 정보 중 필요한 것만 반환한다. 이 API는 이미지나 비디오를 직접 생성하지 않고, 후속 생성 파이프라인에 넘길 프롬프트만 만든다.",
+        "en": "The response returns only the necessary parts of the prepared prompt, follow-up questions, structured warnings, and user-requested diagnostics. This API does not generate images or videos. It only prepares a prompt for the downstream generation pipeline.",
         "zh": "응답은 준비된 프롬프트, 추가 질문, 구조화된 경고, 사용자가 요청한 진단 정보 중 필요한 것만 반환한다. 이 API는 이미지나 비디오를 직접 생성하지 않고, 후속 생성 파이프라인에 넘길 프롬프트만 만든다."
       }
     ],
@@ -66,7 +66,7 @@
       {
         "label": {
           "ko": "API와 서비스 경계",
-          "en": "API와 서비스 경계",
+          "en": "API and service boundary",
           "zh": "API와 서비스 경계"
         },
         "items": [
@@ -85,33 +85,33 @@
       {
         "label": {
           "ko": "오케스트레이션",
-          "en": "오케스트레이션",
+          "en": "Orchestration",
           "zh": "오케스트레이션"
         },
         "items": [
           {
             "ko": "사전 검증",
-            "en": "사전 검증",
+            "en": "Pre-validation",
             "zh": "사전 검증"
           },
           {
             "ko": "참조 역할 해석",
-            "en": "참조 역할 해석",
+            "en": "Reference role interpretation",
             "zh": "참조 역할 해석"
           },
           {
             "ko": "정책 기반 프롬프트 작성",
-            "en": "정책 기반 프롬프트 작성",
+            "en": "Policy-based prompt writing",
             "zh": "정책 기반 프롬프트 작성"
           },
           {
             "ko": "검증",
-            "en": "검증",
+            "en": "Validation",
             "zh": "검증"
           },
           {
             "ko": "1회 복구",
-            "en": "1회 복구",
+            "en": "One recovery attempt",
             "zh": "1회 복구"
           }
         ]
@@ -119,7 +119,7 @@
       {
         "label": {
           "ko": "원천 스킬 정책",
-          "en": "원천 스킬 정책",
+          "en": "Source Skill policies",
           "zh": "원천 스킬 정책"
         },
         "items": [
@@ -135,17 +135,17 @@
           },
           {
             "ko": "카메라·표정/FACS·조명 언어",
-            "en": "카메라·표정/FACS·조명 언어",
+            "en": "Camera, expression/FACS, and lighting language",
             "zh": "카메라·표정/FACS·조명 언어"
           },
           {
             "ko": "모델별 프롬프트 가이드",
-            "en": "모델별 프롬프트 가이드",
+            "en": "Model-specific prompt guides",
             "zh": "모델별 프롬프트 가이드"
           },
           {
             "ko": "프롬프트 패턴과 출력 스키마",
-            "en": "프롬프트 패턴과 출력 스키마",
+            "en": "Prompt patterns and output schema",
             "zh": "프롬프트 패턴과 출력 스키마"
           }
         ]
@@ -153,7 +153,7 @@
       {
         "label": {
           "ko": "변환 API",
-          "en": "변환 API",
+          "en": "Transformation API",
           "zh": "변환 API"
         },
         "items": [
@@ -167,7 +167,7 @@
       {
         "label": {
           "ko": "프롬프트 대상 생성 모델",
-          "en": "프롬프트 대상 생성 모델",
+          "en": "Prompt target generation models",
           "zh": "프롬프트 대상 생성 모델"
         },
         "items": [
@@ -196,7 +196,7 @@
       {
         "label": {
           "ko": "데모와 검증",
-          "en": "데모와 검증",
+          "en": "Demo and validation",
           "zh": "데모와 검증"
         },
         "items": [
@@ -225,7 +225,7 @@
     ],
     "boundary": {
       "ko": "Gradio 데모는 제품 API의 정성 검수와 요청 조립 확인을 위한 로컬 인터페이스이며, 최종 이미지·비디오 생성 품질을 보장하지 않는다. Prompt Transform은 화면 비율, 해상도, 후속 모델의 처리 용량을 추론하지 않고 참조 이미지의 픽셀 특징을 새로 설명하지 않으며, 필요한 경우 호출자가 추가 질문 또는 400 오류를 사용자에게 보여줘야 한다. 원문·최종 프롬프트, 이미지 URL·data URL, 외부 응답 payload는 로그에 남기지 않으며 진단 정보는 사용자가 요청한 경우에만 반환한다.",
-      "en": "Gradio 데모는 제품 API의 정성 검수와 요청 조립 확인을 위한 로컬 인터페이스이며, 최종 이미지·비디오 생성 품질을 보장하지 않는다. Prompt Transform은 화면 비율, 해상도, 후속 모델의 처리 용량을 추론하지 않고 참조 이미지의 픽셀 특징을 새로 설명하지 않으며, 필요한 경우 호출자가 추가 질문 또는 400 오류를 사용자에게 보여줘야 한다. 원문·최종 프롬프트, 이미지 URL·data URL, 외부 응답 payload는 로그에 남기지 않으며 진단 정보는 사용자가 요청한 경우에만 반환한다.",
+      "en": "The Gradio demo is a local interface for qualitative review of the product API and verification of request assembly. It does not guarantee the quality of final image or video generation. Prompt Transform does not infer aspect ratio, resolution, or downstream model capacity, and it does not create new descriptions of pixel features in reference images. When needed, the caller must show the user follow-up questions or a 400 error. Original and final prompts, image URLs and data URLs, and external response payloads are not logged. Diagnostics are returned only when requested by the user.",
       "zh": "Gradio 데모는 제품 API의 정성 검수와 요청 조립 확인을 위한 로컬 인터페이스이며, 최종 이미지·비디오 생성 품질을 보장하지 않는다. Prompt Transform은 화면 비율, 해상도, 후속 모델의 처리 용량을 추론하지 않고 참조 이미지의 픽셀 특징을 새로 설명하지 않으며, 필요한 경우 호출자가 추가 질문 또는 400 오류를 사용자에게 보여줘야 한다. 원문·최종 프롬프트, 이미지 URL·data URL, 외부 응답 payload는 로그에 남기지 않으며 진단 정보는 사용자가 요청한 경우에만 반환한다."
     },
     "video": {
@@ -237,12 +237,12 @@
         "src": "/assets/images/demos/prompt-enhancer/product-overview.webp",
         "alt": {
           "ko": "프롬프트와 참조 이미지를 바탕으로 여러 스토리보드 샷을 구성한 제품 화면",
-          "en": "프롬프트와 참조 이미지를 바탕으로 여러 스토리보드 샷을 구성한 제품 화면",
+          "en": "Product screen with multiple storyboard shots built from a prompt and reference images",
           "zh": "프롬프트와 참조 이미지를 바탕으로 여러 스토리보드 샷을 구성한 제품 화면"
         },
         "caption": {
           "ko": "Prompt Enhancer가 적용된 스토리보드 편집 화면",
-          "en": "Prompt Enhancer가 적용된 스토리보드 편집 화면",
+          "en": "Storyboard editing screen with Prompt Enhancer applied",
           "zh": "Prompt Enhancer가 적용된 스토리보드 편집 화면"
         },
         "width": 1920,
@@ -260,12 +260,12 @@
       "paragraphs": [
         {
           "ko": "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
-          "en": "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
+          "en": "Prompt Enhancer began by structuring one person's image and video prompting expertise into the Organization Skills nanotape and seehorse. In qualitative evaluations, internal creators reached satisfactory results faster with the Skills. The product flow still caused friction when users spent credits on repeated generations or switched to an external LLM.",
           "zh": "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다."
         },
         {
           "ko": "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
-          "en": "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
+          "en": "That evidence informed product API policies for camera, expression, lighting, reference image roles, and model-specific prompting. The Organization Skill remains an internal tool. In this public portfolio, it appears as the validation step that preceded Prompt Enhancer productization, not as a standalone product.",
           "zh": "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다."
         }
       ]
@@ -278,54 +278,54 @@
     "name": "Voice Adaptor",
     "summary": {
       "ko": "완성된 생성형 MP4의 음성을 화자별 클립으로 분해하고, 동일한 저장 음성의 TTS·음성 변환 후보를 검토해 선택된 오디오로 다시 구성하는 도구",
-      "en": "완성된 생성형 MP4의 음성을 화자별 클립으로 분해하고, 동일한 저장 음성의 TTS·음성 변환 후보를 검토해 선택된 오디오로 다시 구성하는 도구",
+      "en": "Splits speech in a finished generated MP4 into speaker clips, lets users review TTS and voice conversion candidates from the same saved voice, then rebuilds the audio with the selected takes",
       "zh": "완성된 생성형 MP4의 음성을 화자별 클립으로 분해하고, 동일한 저장 음성의 TTS·음성 변환 후보를 검토해 선택된 오디오로 다시 구성하는 도구"
     },
     "observation": {
       "ko": "비디오 모델이 생성한 네이티브 오디오는 여러 클립에 걸쳐 같은 화자의 목소리와 발화 품질을 일관되게 유지하지 못한다.",
-      "en": "비디오 모델이 생성한 네이티브 오디오는 여러 클립에 걸쳐 같은 화자의 목소리와 발화 품질을 일관되게 유지하지 못한다.",
+      "en": "Native audio generated by video models does not keep the same speaker's voice and delivery quality consistent across multiple clips.",
       "zh": "비디오 모델이 생성한 네이티브 오디오는 여러 클립에 걸쳐 같은 화자의 목소리와 발화 품질을 일관되게 유지하지 못한다."
     },
     "problem": {
       "ko": "동일한 캐릭터의 목소리가 컷마다 달라지면 캐릭터 정체성과 영상의 연속성이 무너지고 후반 작업 비용이 커진다.",
-      "en": "동일한 캐릭터의 목소리가 컷마다 달라지면 캐릭터 정체성과 영상의 연속성이 무너지고 후반 작업 비용이 커진다.",
+      "en": "When the same character's voice changes from cut to cut, character identity and video continuity break down, increasing post-production cost.",
       "zh": "동일한 캐릭터의 목소리가 컷마다 달라지면 캐릭터 정체성과 영상의 연속성이 무너지고 후반 작업 비용이 커진다."
     },
     "hypothesis": {
       "ko": "원본 오디오에서 화자를 분리하고 동일한 TTS 음성으로 다시 구성하면 여러 클립에 걸쳐 목소리의 일관성을 높일 수 있다.",
-      "en": "원본 오디오에서 화자를 분리하고 동일한 TTS 음성으로 다시 구성하면 여러 클립에 걸쳐 목소리의 일관성을 높일 수 있다.",
+      "en": "Separating speakers from the original audio and rebuilding it with the same TTS voice could improve voice consistency across clips.",
       "zh": "원본 오디오에서 화자를 분리하고 동일한 TTS 음성으로 다시 구성하면 여러 클립에 걸쳐 목소리의 일관성을 높일 수 있다."
     },
     "outcome": {
       "ko": "음성과 배경음 분리 기능을 제품에 통합했습니다. 기존 TTS 기능은 유지했으며, 화자별 후보 생성과 검토 흐름은 프로토타입 검증 범위로 남았습니다.",
-      "en": "음성과 배경음 분리 기능을 제품에 통합했습니다. 기존 TTS 기능은 유지했으며, 화자별 후보 생성과 검토 흐름은 프로토타입 검증 범위로 남았습니다.",
+      "en": "The speech and background audio separation feature was integrated into the product. The existing TTS feature remained, while per-speaker candidate generation and review stayed within the scope of prototype validation.",
       "zh": "음성과 배경음 분리 기능을 제품에 통합했습니다. 기존 TTS 기능은 유지했으며, 화자별 후보 생성과 검토 흐름은 프로토타입 검증 범위로 남았습니다."
     },
     "productized": true,
     "howItWorks": [
       {
         "ko": "완성된 MP4를 업로드하면 확장자와 크기를 확인하고, ffprobe와 FFmpeg로 재생 시간을 읽어 mono WAV를 추출한다.",
-        "en": "완성된 MP4를 업로드하면 확장자와 크기를 확인하고, ffprobe와 FFmpeg로 재생 시간을 읽어 mono WAV를 추출한다.",
+        "en": "After a finished MP4 is uploaded, the system checks its extension and size, reads its duration with ffprobe and FFmpeg, and extracts a mono WAV.",
         "zh": "완성된 MP4를 업로드하면 확장자와 크기를 확인하고, ffprobe와 FFmpeg로 재생 시간을 읽어 mono WAV를 추출한다."
       },
       {
         "ko": "fal.ai Demucs로 음성과 배경음을 나눈 뒤, 음성 트랙만 ElevenLabs STT에 보내 단어 타임스탬프와 화자 ID를 얻고 화자별 클립을 만든다. 분리·음성 인식·클립 생성 실패는 실제 파이프라인 실패로 기록한다.",
-        "en": "fal.ai Demucs로 음성과 배경음을 나눈 뒤, 음성 트랙만 ElevenLabs STT에 보내 단어 타임스탬프와 화자 ID를 얻고 화자별 클립을 만든다. 분리·음성 인식·클립 생성 실패는 실제 파이프라인 실패로 기록한다.",
+        "en": "fal.ai Demucs separates speech from background audio. Only the speech track goes to ElevenLabs STT to obtain word timestamps and speaker IDs, which are used to create per-speaker clips. Separation, transcription, and clip creation failures are recorded as actual pipeline failures.",
         "zh": "fal.ai Demucs로 음성과 배경음을 나눈 뒤, 음성 트랙만 ElevenLabs STT에 보내 단어 타임스탬프와 화자 ID를 얻고 화자별 클립을 만든다. 분리·음성 인식·클립 생성 실패는 실제 파이프라인 실패로 기록한다."
       },
       {
         "ko": "사용자가 저장된 음성을 선택해 고정된 transcript로 TTS 후보를 만들거나 원본 클립을 음성 변환한다. TTS는 앞뒤 무음을 정리하고 짧으면 padding, 제한 범위 안에서 길면 time-fit을 적용한다.",
-        "en": "사용자가 저장된 음성을 선택해 고정된 transcript로 TTS 후보를 만들거나 원본 클립을 음성 변환한다. TTS는 앞뒤 무음을 정리하고 짧으면 padding, 제한 범위 안에서 길면 time-fit을 적용한다.",
+        "en": "The user selects a saved voice to create TTS candidates from a fixed transcript or applies voice conversion to the original clip. TTS removes leading and trailing silence, adds padding when short, and applies time-fit when the result is long but within the permitted range.",
         "zh": "사용자가 저장된 음성을 선택해 고정된 transcript로 TTS 후보를 만들거나 원본 클립을 음성 변환한다. TTS는 앞뒤 무음을 정리하고 짧으면 padding, 제한 범위 안에서 길면 time-fit을 적용한다."
       },
       {
         "ko": "후보는 자동 적용하지 않는다. 사용자가 원본·TTS·음성 변환 결과를 들어보고 타임라인 위치를 조정한 뒤 활성화하며, 슬롯보다 15% 넘게 긴 TTS는 활성화를 막는다. 음성 변환 실패 시 원본 복사본은 대체 후보임을 명시한다.",
-        "en": "후보는 자동 적용하지 않는다. 사용자가 원본·TTS·음성 변환 결과를 들어보고 타임라인 위치를 조정한 뒤 활성화하며, 슬롯보다 15% 넘게 긴 TTS는 활성화를 막는다. 음성 변환 실패 시 원본 복사본은 대체 후보임을 명시한다.",
+        "en": "Candidates are never applied automatically. The user listens to the original, TTS, and voice conversion results, adjusts their timeline position, and then activates a choice. TTS that is more than 15% longer than its slot cannot be activated. If voice conversion fails, a copy of the original is clearly identified as the fallback candidate.",
         "zh": "후보는 자동 적용하지 않는다. 사용자가 원본·TTS·음성 변환 결과를 들어보고 타임라인 위치를 조정한 뒤 활성화하며, 슬롯보다 15% 넘게 긴 TTS는 활성화를 막는다. 음성 변환 실패 시 원본 복사본은 대체 후보임을 명시한다."
       },
       {
         "ko": "활성화된 take와 분리된 배경음을 서버에서 합성해 원본 영상 트랙에 mux하고, MP4와 transcript·오디오·작업 메타데이터를 로컬 작업 산출물로 남긴다.",
-        "en": "활성화된 take와 분리된 배경음을 서버에서 합성해 원본 영상 트랙에 mux하고, MP4와 transcript·오디오·작업 메타데이터를 로컬 작업 산출물로 남긴다.",
+        "en": "The server mixes the active takes with the separated background audio, muxes the result onto the original video track, and saves the MP4, transcript, audio, and job metadata as local job artifacts.",
         "zh": "활성화된 take와 분리된 배경음을 서버에서 합성해 원본 영상 트랙에 mux하고, MP4와 transcript·오디오·작업 메타데이터를 로컬 작업 산출물로 남긴다."
       }
     ],
@@ -333,7 +333,7 @@
       {
         "label": {
           "ko": "미디어 처리",
-          "en": "미디어 처리",
+          "en": "Media processing",
           "zh": "미디어 처리"
         },
         "items": [
@@ -352,7 +352,7 @@
       {
         "label": {
           "ko": "외부 모델/API",
-          "en": "외부 모델/API",
+          "en": "External models/API",
           "zh": "외부 모델/API"
         },
         "items": [
@@ -381,7 +381,7 @@
       {
         "label": {
           "ko": "백엔드와 작업 처리",
-          "en": "백엔드와 작업 처리",
+          "en": "Backend and job processing",
           "zh": "백엔드와 작업 처리"
         },
         "items": [
@@ -402,7 +402,7 @@
           },
           {
             "ko": "단일 in-process background worker",
-            "en": "단일 in-process background worker",
+            "en": "Single in-process background worker",
             "zh": "단일 in-process background worker"
           }
         ]
@@ -410,23 +410,23 @@
       {
         "label": {
           "ko": "저장과 출력",
-          "en": "저장과 출력",
+          "en": "Storage and output",
           "zh": "저장과 출력"
         },
         "items": [
           {
             "ko": "로컬 파일시스템 job storage",
-            "en": "로컬 파일시스템 job storage",
+            "en": "Local filesystem job storage",
             "zh": "로컬 파일시스템 job storage"
           },
           {
             "ko": "allowlist 기반 artifact route",
-            "en": "allowlist 기반 artifact route",
+            "en": "allowlist-based artifact route",
             "zh": "allowlist 기반 artifact route"
           },
           {
             "ko": "서버 측 FFmpeg mix·mux",
-            "en": "서버 측 FFmpeg mix·mux",
+            "en": "Server-side FFmpeg mix and mux",
             "zh": "서버 측 FFmpeg mix·mux"
           }
         ]
@@ -434,7 +434,7 @@
       {
         "label": {
           "ko": "검토 UI",
-          "en": "검토 UI",
+          "en": "Review UI",
           "zh": "검토 UI"
         },
         "items": [
@@ -458,7 +458,7 @@
       {
         "label": {
           "ko": "검증",
-          "en": "검증",
+          "en": "Validation",
           "zh": "검증"
         },
         "items": [
@@ -479,7 +479,7 @@
           },
           {
             "ko": "짧은 MP4를 사용한 수동 smoke 경로",
-            "en": "짧은 MP4를 사용한 수동 smoke 경로",
+            "en": "Manual smoke path using a short MP4",
             "zh": "짧은 MP4를 사용한 수동 smoke 경로"
           }
         ]
@@ -487,7 +487,7 @@
     ],
     "boundary": {
       "ko": "15–30초 대화 중심 MP4를 대상으로 한 내부 데모이며 한 작업에서 최대 8개 speech clip만 만든다. 음성·배경 분리, 화자 구분, TTS·음성 변환 품질이나 클립 간 음성 일관성을 보장하지 않고 이를 수치로 입증하는 비교 benchmark도 없다. 외부 API 자격 증명과 네트워크가 필요하며, 슬롯보다 15% 긴 TTS 차단과 음성 변환 실패 시 원본 복사본인 대체 후보를 포함해 최종 판단은 사용자가 해야 한다. 로컬·임시 파일과 한 번에 하나씩 처리하는 worker를 사용하므로 인증, 영속 저장, 다중 사용자 운영, 전문 오디오 편집 수준의 waveform·trim·volume 편집은 범위 밖이다.",
-      "en": "15–30초 대화 중심 MP4를 대상으로 한 내부 데모이며 한 작업에서 최대 8개 speech clip만 만든다. 음성·배경 분리, 화자 구분, TTS·음성 변환 품질이나 클립 간 음성 일관성을 보장하지 않고 이를 수치로 입증하는 비교 benchmark도 없다. 외부 API 자격 증명과 네트워크가 필요하며, 슬롯보다 15% 긴 TTS 차단과 음성 변환 실패 시 원본 복사본인 대체 후보를 포함해 최종 판단은 사용자가 해야 한다. 로컬·임시 파일과 한 번에 하나씩 처리하는 worker를 사용하므로 인증, 영속 저장, 다중 사용자 운영, 전문 오디오 편집 수준의 waveform·trim·volume 편집은 범위 밖이다.",
+      "en": "This internal demo targets dialogue-focused MP4 files from 15 to 30 seconds and creates no more than 8 speech clips per job. It does not guarantee speech and background separation, speaker identification, TTS or voice conversion quality, or voice consistency across clips. There is no comparative benchmark that quantifies those qualities. It requires external API credentials and network access. Users must make the final decision, including when TTS more than 15% longer than its slot is blocked or a copy of the original is offered as the fallback after voice conversion failure. Because it uses local and temporary files and a worker that processes one job at a time, authentication, persistent storage, multi-user operation, and professional audio editing controls for waveform, trim, and volume are out of scope.",
       "zh": "15–30초 대화 중심 MP4를 대상으로 한 내부 데모이며 한 작업에서 최대 8개 speech clip만 만든다. 음성·배경 분리, 화자 구분, TTS·음성 변환 품질이나 클립 간 음성 일관성을 보장하지 않고 이를 수치로 입증하는 비교 benchmark도 없다. 외부 API 자격 증명과 네트워크가 필요하며, 슬롯보다 15% 긴 TTS 차단과 음성 변환 실패 시 원본 복사본인 대체 후보를 포함해 최종 판단은 사용자가 해야 한다. 로컬·임시 파일과 한 번에 하나씩 처리하는 worker를 사용하므로 인증, 영속 저장, 다중 사용자 운영, 전문 오디오 편집 수준의 waveform·trim·volume 편집은 범위 밖이다."
     },
     "video": {
@@ -499,12 +499,12 @@
         "src": "/assets/images/demos/voice-adaptor/product-canvas.webp",
         "alt": {
           "ko": "스토리보드 캔버스에서 영상 클립의 음성 분리 기능을 선택한 제품 화면",
-          "en": "스토리보드 캔버스에서 영상 클립의 음성 분리 기능을 선택한 제품 화면",
+          "en": "Product screen with speech separation selected for a video clip on the storyboard canvas",
           "zh": "스토리보드 캔버스에서 영상 클립의 음성 분리 기능을 선택한 제품 화면"
         },
         "caption": {
           "ko": "영상 클립에서 음성과 배경음을 분리하는 제품 진입 화면",
-          "en": "영상 클립에서 음성과 배경음을 분리하는 제품 진입 화면",
+          "en": "Product entry screen for separating speech and background audio in a video clip",
           "zh": "영상 클립에서 음성과 배경음을 분리하는 제품 진입 화면"
         },
         "width": 1920,
@@ -514,12 +514,12 @@
         "src": "/assets/images/demos/voice-adaptor/audio-routing.webp",
         "alt": {
           "ko": "배경음과 화자 음성 트랙이 영상 클립으로 연결된 오디오 라우팅 화면",
-          "en": "배경음과 화자 음성 트랙이 영상 클립으로 연결된 오디오 라우팅 화면",
+          "en": "Audio routing screen connecting background audio and speaker tracks to video clips",
           "zh": "배경음과 화자 음성 트랙이 영상 클립으로 연결된 오디오 라우팅 화면"
         },
         "caption": {
           "ko": "분리된 배경음과 화자 음성을 클립별로 검토하는 라우팅 화면",
-          "en": "분리된 배경음과 화자 음성을 클립별로 검토하는 라우팅 화면",
+          "en": "Routing screen for reviewing separated background audio and speaker voices by clip",
           "zh": "분리된 배경음과 화자 음성을 클립별로 검토하는 라우팅 화면"
         },
         "width": 1149,
@@ -535,54 +535,54 @@
     "name": "Reverse Storyboard",
     "summary": {
       "ko": "완성된 비디오를 샷 순서가 보이는 대표 프레임과 메타데이터로 펼치는 내부 데모",
-      "en": "완성된 비디오를 샷 순서가 보이는 대표 프레임과 메타데이터로 펼치는 내부 데모",
+      "en": "An internal demo that lays out a finished video as representative frames and metadata in shot order",
       "zh": "완성된 비디오를 샷 순서가 보이는 대표 프레임과 메타데이터로 펼치는 내부 데모"
     },
     "observation": {
       "ko": "이미지 모델은 단일 이미지 안에 요청한 요소를 빠짐없이 담기 위해 인물을 과도하게 중앙과 정면에 배치하는 경향이 있다.",
-      "en": "이미지 모델은 단일 이미지 안에 요청한 요소를 빠짐없이 담기 위해 인물을 과도하게 중앙과 정면에 배치하는 경향이 있다.",
+      "en": "Image models tend to place people too centrally and frontally to fit every requested element into a single image.",
       "zh": "이미지 모델은 단일 이미지 안에 요청한 요소를 빠짐없이 담기 위해 인물을 과도하게 중앙과 정면에 배치하는 경향이 있다."
     },
     "problem": {
       "ko": "이렇게 생성된 이미지는 샷 간 연속성과 다양한 구도가 필요한 스토리보드나 콘티에 곧바로 활용하기 어렵다.",
-      "en": "이렇게 생성된 이미지는 샷 간 연속성과 다양한 구도가 필요한 스토리보드나 콘티에 곧바로 활용하기 어렵다.",
+      "en": "Images generated this way are difficult to use directly in storyboards or shot plans that require continuity and varied compositions.",
       "zh": "이렇게 생성된 이미지는 샷 간 연속성과 다양한 구도가 필요한 스토리보드나 콘티에 곧바로 활용하기 어렵다."
     },
     "hypothesis": {
       "ko": "먼저 저사양 비디오 모델로 시간적 연속성을 가진 시퀀스를 생성한 뒤 이를 프레임 단위로 펼치면, 스토리보드에 더 적합한 연속 장면을 얻을 수 있다.",
-      "en": "먼저 저사양 비디오 모델로 시간적 연속성을 가진 시퀀스를 생성한 뒤 이를 프레임 단위로 펼치면, 스토리보드에 더 적합한 연속 장면을 얻을 수 있다.",
+      "en": "Generating a temporally continuous sequence with a lower-spec video model first, then unfolding it frame by frame, could produce continuous scenes better suited to storyboards.",
       "zh": "먼저 저사양 비디오 모델로 시간적 연속성을 가진 시퀀스를 생성한 뒤 이를 프레임 단위로 펼치면, 스토리보드에 더 적합한 연속 장면을 얻을 수 있다."
     },
     "outcome": {
       "ko": "프로토타입으로 내부 테스트 진행 후 제품 탑재(엔지니어에게 이관)",
-      "en": "프로토타입으로 내부 테스트 진행 후 제품 탑재(엔지니어에게 이관)",
+      "en": "Tested internally as a prototype, then handed off to engineering and integrated into the product",
       "zh": "프로토타입으로 내부 테스트 진행 후 제품 탑재(엔지니어에게 이관)"
     },
     "productized": true,
     "howItWorks": [
       {
         "ko": "로컬 비디오 1개를 받고 ffprobe로 확장자, 비디오 스트림, 길이, 해상도, 프레임레이트를 검증한다.",
-        "en": "로컬 비디오 1개를 받고 ffprobe로 확장자, 비디오 스트림, 길이, 해상도, 프레임레이트를 검증한다.",
+        "en": "The system accepts 1 local video and uses ffprobe to validate the extension, video stream, duration, resolution, and frame rate.",
         "zh": "로컬 비디오 1개를 받고 ffprobe로 확장자, 비디오 스트림, 길이, 해상도, 프레임레이트를 검증한다."
       },
       {
         "ko": "긴 소스는 사용자가 최대 30초의 분석 구간과 샷 감도, 클립 포함 여부를 정한다. 클립 생성은 기본적으로 꺼져 있다.",
-        "en": "긴 소스는 사용자가 최대 30초의 분석 구간과 샷 감도, 클립 포함 여부를 정한다. 클립 생성은 기본적으로 꺼져 있다.",
+        "en": "For a long source, the user chooses an analysis segment of up to 30 seconds, the shot sensitivity, and whether to include clips. Clip generation is off by default.",
         "zh": "긴 소스는 사용자가 최대 30초의 분석 구간과 샷 감도, 클립 포함 여부를 정한다. 클립 생성은 기본적으로 꺼져 있다."
       },
       {
         "ko": "필요한 구간만 FFmpeg로 준비한 뒤 PySceneDetect로 샷을 나눈다. 40개를 넘으면 중단하고, 전환이 없으면 분석 구간 전체를 한 샷으로 처리한다.",
-        "en": "필요한 구간만 FFmpeg로 준비한 뒤 PySceneDetect로 샷을 나눈다. 40개를 넘으면 중단하고, 전환이 없으면 분석 구간 전체를 한 샷으로 처리한다.",
+        "en": "FFmpeg prepares only the required segment, then PySceneDetect splits it into shots. Processing stops if the count exceeds 40. If no transition is found, the entire analysis segment is treated as 1 shot.",
         "zh": "필요한 구간만 FFmpeg로 준비한 뒤 PySceneDetect로 샷을 나눈다. 40개를 넘으면 중단하고, 전환이 없으면 분석 구간 전체를 한 샷으로 처리한다."
       },
       {
         "ko": "각 샷의 가장자리를 피해 후보 프레임을 읽고 노출 조건을 통과한 후보 중 선명도가 가장 높은 프레임을 고른다. 모두 노출 조건을 벗어나면 가장 선명한 후보를 대신 사용한다.",
-        "en": "각 샷의 가장자리를 피해 후보 프레임을 읽고 노출 조건을 통과한 후보 중 선명도가 가장 높은 프레임을 고른다. 모두 노출 조건을 벗어나면 가장 선명한 후보를 대신 사용한다.",
+        "en": "Candidate frames are read away from each shot's edges. The sharpest candidate that passes the exposure criteria is selected. If every candidate falls outside those criteria, the sharpest one is used instead.",
         "zh": "각 샷의 가장자리를 피해 후보 프레임을 읽고 노출 조건을 통과한 후보 중 선명도가 가장 높은 프레임을 고른다. 모두 노출 조건을 벗어나면 가장 선명한 후보를 대신 사용한다."
       },
       {
         "ko": "사용자는 Gradio 갤러리에서 순서와 경고를 검토하고 JPG 프레임, 메타데이터, 선택적 샷 클립이 담긴 ZIP을 받는다. 실패한 작업 디렉터리는 즉시 제거하고, 성공한 임시 결과는 기본 15분 뒤 정리한다.",
-        "en": "사용자는 Gradio 갤러리에서 순서와 경고를 검토하고 JPG 프레임, 메타데이터, 선택적 샷 클립이 담긴 ZIP을 받는다. 실패한 작업 디렉터리는 즉시 제거하고, 성공한 임시 결과는 기본 15분 뒤 정리한다.",
+        "en": "The user reviews the order and warnings in a Gradio gallery, then downloads a ZIP containing JPG frames, metadata, and optional shot clips. Failed job directories are removed immediately, while successful temporary results are cleaned up after 15 minutes by default.",
         "zh": "사용자는 Gradio 갤러리에서 순서와 경고를 검토하고 JPG 프레임, 메타데이터, 선택적 샷 클립이 담긴 ZIP을 받는다. 실패한 작업 디렉터리는 즉시 제거하고, 성공한 임시 결과는 기본 15분 뒤 정리한다."
       }
     ],
@@ -590,7 +590,7 @@
       {
         "label": {
           "ko": "UI와 실행 경계",
-          "en": "UI와 실행 경계",
+          "en": "UI and execution boundary",
           "zh": "UI와 실행 경계"
         },
         "items": [
@@ -609,7 +609,7 @@
       {
         "label": {
           "ko": "입력 검증과 구간 처리",
-          "en": "입력 검증과 구간 처리",
+          "en": "Input validation and segment processing",
           "zh": "입력 검증과 구간 처리"
         },
         "items": [
@@ -628,7 +628,7 @@
       {
         "label": {
           "ko": "샷 탐지",
-          "en": "샷 탐지",
+          "en": "Shot detection",
           "zh": "샷 탐지"
         },
         "items": [
@@ -642,7 +642,7 @@
       {
         "label": {
           "ko": "대표 프레임 평가",
-          "en": "대표 프레임 평가",
+          "en": "Representative frame evaluation",
           "zh": "대표 프레임 평가"
         },
         "items": [
@@ -661,7 +661,7 @@
       {
         "label": {
           "ko": "산출물과 수명 주기",
-          "en": "산출물과 수명 주기",
+          "en": "Artifacts and lifecycle",
           "zh": "산출물과 수명 주기"
         },
         "items": [
@@ -677,7 +677,7 @@
           },
           {
             "ko": "임시 디렉터리",
-            "en": "임시 디렉터리",
+            "en": "Temporary directory",
             "zh": "임시 디렉터리"
           },
           {
@@ -690,7 +690,7 @@
       {
         "label": {
           "ko": "검증",
-          "en": "검증",
+          "en": "Validation",
           "zh": "검증"
         },
         "items": [
@@ -701,7 +701,7 @@
           },
           {
             "ko": "합성 MP4 기반 end-to-end smoke test",
-            "en": "합성 MP4 기반 end-to-end smoke test",
+            "en": "end-to-end smoke test using a synthetic MP4",
             "zh": "합성 MP4 기반 end-to-end smoke test"
           }
         ]
@@ -709,18 +709,18 @@
       {
         "label": {
           "ko": "외부 모델/API",
-          "en": "외부 모델/API",
+          "en": "External models/API",
           "zh": "외부 모델/API"
         },
         "items": [
           {
             "ko": "없음",
-            "en": "없음",
+            "en": "None",
             "zh": "없음"
           },
           {
             "ko": "완성된 비디오를 입력으로 받으며 생성 단계는 범위 밖이다.",
-            "en": "완성된 비디오를 입력으로 받으며 생성 단계는 범위 밖이다.",
+            "en": "It accepts a finished video as input; generation is out of scope.",
             "zh": "완성된 비디오를 입력으로 받으며 생성 단계는 범위 밖이다."
           }
         ]
@@ -728,7 +728,7 @@
     ],
     "boundary": {
       "ko": "이 MVP는 가설 중 완성된 비디오를 연속 프레임으로 변환하는 부분만 구현하며, 저품질 비디오 생성이나 직접 생성 이미지와의 비교 실측은 포함하지 않는다. 샷 경계와 대표 프레임은 움직임·조명 변화에 영향을 받는 휴리스틱이므로 사람의 콘티 판단을 보장하지 않는다. 제품 탑재 과정에서는 이 휴리스틱의 한계를 비전 언어 모델을 활용해 해소했다. 한 번에 파일 1개와 최대 30초 구간, 최대 40샷만 처리하고 프로젝트 저장·히스토리·수동 경계 편집도 제공하지 않는다.",
-      "en": "이 MVP는 가설 중 완성된 비디오를 연속 프레임으로 변환하는 부분만 구현하며, 저품질 비디오 생성이나 직접 생성 이미지와의 비교 실측은 포함하지 않는다. 샷 경계와 대표 프레임은 움직임·조명 변화에 영향을 받는 휴리스틱이므로 사람의 콘티 판단을 보장하지 않는다. 제품 탑재 과정에서는 이 휴리스틱의 한계를 비전 언어 모델을 활용해 해소했다. 한 번에 파일 1개와 최대 30초 구간, 최대 40샷만 처리하고 프로젝트 저장·히스토리·수동 경계 편집도 제공하지 않는다.",
+      "en": "This MVP implements only the part of the hypothesis that converts a finished video into a sequence of frames. It does not include low-quality video generation or direct measurement against images generated independently. Shot boundaries and representative frames are heuristics affected by motion and lighting changes, so they cannot guarantee human storyboard judgment. During product integration, a vision language model was used to address the limitations of these heuristics. The MVP handles 1 file at a time, an analysis segment of up to 30 seconds, and no more than 40 shots. It does not provide project saving, history, or manual boundary editing.",
       "zh": "이 MVP는 가설 중 완성된 비디오를 연속 프레임으로 변환하는 부분만 구현하며, 저품질 비디오 생성이나 직접 생성 이미지와의 비교 실측은 포함하지 않는다. 샷 경계와 대표 프레임은 움직임·조명 변화에 영향을 받는 휴리스틱이므로 사람의 콘티 판단을 보장하지 않는다. 제품 탑재 과정에서는 이 휴리스틱의 한계를 비전 언어 모델을 활용해 해소했다. 한 번에 파일 1개와 최대 30초 구간, 최대 40샷만 처리하고 프로젝트 저장·히스토리·수동 경계 편집도 제공하지 않는다."
     },
     "video": {
@@ -740,12 +740,12 @@
         "src": "/assets/images/demos/reverse-storyboard/product-overview.webp",
         "alt": {
           "ko": "밤하늘의 용 장면을 시간순 대표 프레임과 설명으로 배열한 Reverse Storyboard 화면",
-          "en": "밤하늘의 용 장면을 시간순 대표 프레임과 설명으로 배열한 Reverse Storyboard 화면",
+          "en": "Reverse Storyboard screen arranging representative frames and descriptions of a dragon scene under the night sky in chronological order",
           "zh": "밤하늘의 용 장면을 시간순 대표 프레임과 설명으로 배열한 Reverse Storyboard 화면"
         },
         "caption": {
           "ko": "완성된 비디오에서 추출한 샷별 대표 프레임과 타임스탬프",
-          "en": "완성된 비디오에서 추출한 샷별 대표 프레임과 타임스탬프",
+          "en": "Representative frames and timestamps for each shot extracted from a finished video",
           "zh": "완성된 비디오에서 추출한 샷별 대표 프레임과 타임스탬프"
         },
         "width": 1800,
@@ -755,12 +755,12 @@
         "src": "/assets/images/demos/reverse-storyboard/image-only-vs-use-video.webp",
         "alt": {
           "ko": "IMAGE ONLY VS USE VIDEO 방식의 9개 스토리보드 샷 비교 화면",
-          "en": "IMAGE ONLY VS USE VIDEO 방식의 9개 스토리보드 샷 비교 화면",
+          "en": "Comparison screen showing 9 storyboard shots from the IMAGE ONLY VS USE VIDEO approaches",
           "zh": "IMAGE ONLY VS USE VIDEO 방식의 9개 스토리보드 샷 비교 화면"
         },
         "caption": {
           "ko": "단일 이미지 기반 구성과 비디오 기반 연속 장면을 나란히 비교한 결과",
-          "en": "단일 이미지 기반 구성과 비디오 기반 연속 장면을 나란히 비교한 결과",
+          "en": "Side-by-side comparison of a single-image composition and a video-based continuous sequence",
           "zh": "단일 이미지 기반 구성과 비디오 기반 연속 장면을 나란히 비교한 결과"
         },
         "width": 2744,
@@ -776,54 +776,54 @@
     "name": "Reframer",
     "summary": {
       "ko": "완성된 가로 영상을 검토 가능한 9:16 세로 초안으로 바꾸는 도구",
-      "en": "완성된 가로 영상을 검토 가능한 9:16 세로 초안으로 바꾸는 도구",
+      "en": "Turns a finished horizontal video into a reviewable 9:16 vertical draft",
       "zh": "완성된 가로 영상을 검토 가능한 9:16 세로 초안으로 바꾸는 도구"
     },
     "observation": {
       "ko": "상업 애니메이션은 주로 가로 비율로 제작되지만, 실제 홍보와 소비 환경에서는 버티컬 영상에 대한 수요가 계속 커지고 있다.",
-      "en": "상업 애니메이션은 주로 가로 비율로 제작되지만, 실제 홍보와 소비 환경에서는 버티컬 영상에 대한 수요가 계속 커지고 있다.",
+      "en": "Commercial animation is usually produced in a horizontal format, but demand for vertical video keeps growing in real promotional and viewing contexts.",
       "zh": "상업 애니메이션은 주로 가로 비율로 제작되지만, 실제 홍보와 소비 환경에서는 버티컬 영상에 대한 수요가 계속 커지고 있다."
     },
     "problem": {
       "ko": "완성된 가로 영상을 세로 영상으로 전환하려면 샷마다 주요 대상을 추적하고 프레이밍을 다시 결정해야 하므로 편집 비용이 크다.",
-      "en": "완성된 가로 영상을 세로 영상으로 전환하려면 샷마다 주요 대상을 추적하고 프레이밍을 다시 결정해야 하므로 편집 비용이 크다.",
+      "en": "Converting a finished horizontal video to vertical requires tracking the main subject and making new framing decisions for every shot, which makes editing costly.",
       "zh": "완성된 가로 영상을 세로 영상으로 전환하려면 샷마다 주요 대상을 추적하고 프레이밍을 다시 결정해야 하므로 편집 비용이 크다."
     },
     "hypothesis": {
       "ko": "텍스트 프롬프트와 SAM 3.1로 대상을 추적한 뒤 편집자가 샷별 결과를 검토하고 수정하게 하면, 실무의 출발점으로 쓸 수 있는 9:16 초안을 빠르게 만들 수 있다.",
-      "en": "텍스트 프롬프트와 SAM 3.1로 대상을 추적한 뒤 편집자가 샷별 결과를 검토하고 수정하게 하면, 실무의 출발점으로 쓸 수 있는 9:16 초안을 빠르게 만들 수 있다.",
+      "en": "Tracking the subject with a text prompt and SAM 3.1, then letting an editor review and revise each shot, could quickly produce a 9:16 draft suitable as a practical starting point.",
       "zh": "텍스트 프롬프트와 SAM 3.1로 대상을 추적한 뒤 편집자가 샷별 결과를 검토하고 수정하게 하면, 실무의 출발점으로 쓸 수 있는 9:16 초안을 빠르게 만들 수 있다."
     },
     "outcome": {
       "ko": "사내 배포",
-      "en": "사내 배포",
+      "en": "Deployed internally",
       "zh": "사내 배포"
     },
     "productized": false,
     "howItWorks": [
       {
         "ko": "입력 영상을 검증하고 컷 경계를 검출해 샷 단위로 나눈다.",
-        "en": "입력 영상을 검증하고 컷 경계를 검출해 샷 단위로 나눈다.",
+        "en": "The system validates the input video, detects cut boundaries, and divides it into shots.",
         "zh": "입력 영상을 검증하고 컷 경계를 검출해 샷 단위로 나눈다."
       },
       {
         "ko": "외부 분석 호출 전에 예상 비용을 사용자에게 먼저 확인받는다.",
-        "en": "외부 분석 호출 전에 예상 비용을 사용자에게 먼저 확인받는다.",
+        "en": "The user confirms the estimated cost before any external analysis call.",
         "zh": "외부 분석 호출 전에 예상 비용을 사용자에게 먼저 확인받는다."
       },
       {
         "ko": "샷마다 대상을 추적해 크롭 후보를 제안한다.",
-        "en": "샷마다 대상을 추적해 크롭 후보를 제안한다.",
+        "en": "The system tracks the subject in each shot and proposes crop candidates.",
         "zh": "샷마다 대상을 추적해 크롭 후보를 제안한다."
       },
       {
         "ko": "편집자가 샷별로 추천안, 중앙, 고정점, 후보 중 하나를 선택한다.",
-        "en": "편집자가 샷별로 추천안, 중앙, 고정점, 후보 중 하나를 선택한다.",
+        "en": "For each shot, the editor chooses the recommended option, center, anchor point, or a candidate.",
         "zh": "편집자가 샷별로 추천안, 중앙, 고정점, 후보 중 하나를 선택한다."
       },
       {
         "ko": "승인된 계획만 세로 영상으로 렌더링하고 결정 기록을 함께 남긴다.",
-        "en": "승인된 계획만 세로 영상으로 렌더링하고 결정 기록을 함께 남긴다.",
+        "en": "Only the approved plan is rendered as a vertical video, with a record of the decisions.",
         "zh": "승인된 계획만 세로 영상으로 렌더링하고 결정 기록을 함께 남긴다."
       }
     ],
@@ -831,7 +831,7 @@
       {
         "label": {
           "ko": "미디어 처리",
-          "en": "미디어 처리",
+          "en": "Media processing",
           "zh": "미디어 처리"
         },
         "items": [
@@ -850,7 +850,7 @@
       {
         "label": {
           "ko": "외부 분석 모델",
-          "en": "외부 분석 모델",
+          "en": "External analysis model",
           "zh": "외부 분석 모델"
         },
         "items": [
@@ -864,7 +864,7 @@
       {
         "label": {
           "ko": "서비스",
-          "en": "서비스",
+          "en": "Service",
           "zh": "서비스"
         },
         "items": [
@@ -878,7 +878,7 @@
       {
         "label": {
           "ko": "검토 UI",
-          "en": "검토 UI",
+          "en": "Review UI",
           "zh": "검토 UI"
         },
         "items": [
@@ -892,7 +892,7 @@
     ],
     "boundary": {
       "ko": "운영용 미디어 인프라가 아니며 스타일화된 인물 검출을 보장하지 않는다. 여러 인물은 샷 내부 후보로만 다루며, 크롭 제안은 편집자의 판단을 대체하지 않는다.",
-      "en": "운영용 미디어 인프라가 아니며 스타일화된 인물 검출을 보장하지 않는다. 여러 인물은 샷 내부 후보로만 다루며, 크롭 제안은 편집자의 판단을 대체하지 않는다.",
+      "en": "This is not production media infrastructure and does not guarantee detection of stylized people. Multiple people are treated only as candidates within a shot, and crop suggestions do not replace editorial judgment.",
       "zh": "운영용 미디어 인프라가 아니며 스타일화된 인물 검출을 보장하지 않는다. 여러 인물은 샷 내부 후보로만 다루며, 크롭 제안은 편집자의 판단을 대체하지 않는다."
     },
     "video": {
@@ -909,54 +909,54 @@
     "name": "Boundary Deduper",
     "summary": {
       "ko": "짧은 MP4의 시작 프리즈와 인접 경계 중복을 찾아, 사람이 승인한 prefix만 프레임 단위로 잘라내는 검토 도구",
-      "en": "짧은 MP4의 시작 프리즈와 인접 경계 중복을 찾아, 사람이 승인한 prefix만 프레임 단위로 잘라내는 검토 도구",
+      "en": "Finds opening freezes and duplicates at adjacent boundaries in short MP4 files, then trims only the human-approved prefix at frame level",
       "zh": "짧은 MP4의 시작 프리즈와 인접 경계 중복을 찾아, 사람이 승인한 prefix만 프레임 단위로 잘라내는 검토 도구"
     },
     "observation": {
       "ko": "짧은 생성 영상을 이어 붙이면 다음 클립의 시작이 잠시 멈추거나, 앞 클립의 끝과 다음 클립의 시작에서 같은 프레임이 반복된다.",
-      "en": "짧은 생성 영상을 이어 붙이면 다음 클립의 시작이 잠시 멈추거나, 앞 클립의 끝과 다음 클립의 시작에서 같은 프레임이 반복된다.",
+      "en": "When short generated videos are joined, the next clip may briefly freeze at the start or repeat the same frames found at the end of the previous clip.",
       "zh": "짧은 생성 영상을 이어 붙이면 다음 클립의 시작이 잠시 멈추거나, 앞 클립의 끝과 다음 클립의 시작에서 같은 프레임이 반복된다."
     },
     "problem": {
       "ko": "이런 구간은 연결 흐름을 어색하게 만들지만 기존 편집 도구에서 프레임 단위로 찾아 잘라내기 번거롭다.",
-      "en": "이런 구간은 연결 흐름을 어색하게 만들지만 기존 편집 도구에서 프레임 단위로 찾아 잘라내기 번거롭다.",
+      "en": "These sections make transitions feel awkward, but finding and trimming them frame by frame in conventional editing tools is tedious.",
       "zh": "이런 구간은 연결 흐름을 어색하게 만들지만 기존 편집 도구에서 프레임 단위로 찾아 잘라내기 번거롭다."
     },
     "hypothesis": {
       "ko": "시작 프리즈와 경계 중복을 자동 검출하고, 사용자가 확인하고 승인한 구간만 정밀하게 트리밍하면 연결감을 개선할 수 있다.",
-      "en": "시작 프리즈와 경계 중복을 자동 검출하고, 사용자가 확인하고 승인한 구간만 정밀하게 트리밍하면 연결감을 개선할 수 있다.",
+      "en": "Automatically detecting opening freezes and boundary duplicates, then precisely trimming only the sections a user reviews and approves, could improve continuity.",
       "zh": "시작 프리즈와 경계 중복을 자동 검출하고, 사용자가 확인하고 승인한 구간만 정밀하게 트리밍하면 연결감을 개선할 수 있다."
     },
     "outcome": {
       "ko": "내부 검토용 데모 구현 및 배포 구성 포함",
-      "en": "내부 검토용 데모 구현 및 배포 구성 포함",
+      "en": "Implemented an internal review demo, including deployment configuration",
       "zh": "내부 검토용 데모 구현 및 배포 구성 포함"
     },
     "productized": false,
     "howItWorks": [
       {
         "ko": "사용자가 순서를 정한 MP4 2–12개를 받아 ffprobe로 스트림, 코덱, 일정 프레임레이트, 오디오·비디오 타이밍을 검증한다.",
-        "en": "사용자가 순서를 정한 MP4 2–12개를 받아 ffprobe로 스트림, 코덱, 일정 프레임레이트, 오디오·비디오 타이밍을 검증한다.",
+        "en": "The system accepts 2 to 12 MP4 files in the user's chosen order and uses ffprobe to validate streams, codecs, constant frame rate, and audio/video timing.",
         "zh": "사용자가 순서를 정한 MP4 2–12개를 받아 ffprobe로 스트림, 코덱, 일정 프레임레이트, 오디오·비디오 타이밍을 검증한다."
       },
       {
         "ko": "모든 클립의 시작은 휘도 평균 절대 차이와 조건부 FFmpeg 대체 경로로 분석하고, 인접 경계는 시작 프리즈 뒤의 유효 시작점부터 휘도·윤곽선 유사도로 비교한다.",
-        "en": "모든 클립의 시작은 휘도 평균 절대 차이와 조건부 FFmpeg 대체 경로로 분석하고, 인접 경계는 시작 프리즈 뒤의 유효 시작점부터 휘도·윤곽선 유사도로 비교한다.",
+        "en": "Every clip opening is analyzed using mean absolute luminance difference and a conditional FFmpeg fallback. Adjacent boundaries are compared by luminance and edge similarity, starting from the valid point after any opening freeze.",
         "zh": "모든 클립의 시작은 휘도 평균 절대 차이와 조건부 FFmpeg 대체 경로로 분석하고, 인접 경계는 시작 프리즈 뒤의 유효 시작점부터 휘도·윤곽선 유사도로 비교한다."
       },
       {
         "ko": "시작 프리즈와 경계 중복을 합친 트리밍 길이를 근거 이미지·미리보기와 함께 제안하되, 정적·모호·검색 한계·쌍 속성 불일치에서는 값을 추측하지 않는다.",
-        "en": "시작 프리즈와 경계 중복을 합친 트리밍 길이를 근거 이미지·미리보기와 함께 제안하되, 정적·모호·검색 한계·쌍 속성 불일치에서는 값을 추측하지 않는다.",
+        "en": "The system proposes a combined trim length for opening freezes and boundary duplicates, with evidence images and previews. It does not guess a value when the content is static or ambiguous, the search limit is reached, or paired properties do not match.",
         "zh": "시작 프리즈와 경계 중복을 합친 트리밍 길이를 근거 이미지·미리보기와 함께 제안하되, 정적·모호·검색 한계·쌍 속성 불일치에서는 값을 추측하지 않는다."
       },
       {
         "ko": "모든 검토 대상에 사용자가 건너뛰기 또는 적용을 확정하고, 분석한 prefix와 클립 길이 안에 묶인 계획만 한 번의 일괄 적용으로 넘긴다.",
-        "en": "모든 검토 대상에 사용자가 건너뛰기 또는 적용을 확정하고, 분석한 prefix와 클립 길이 안에 묶인 계획만 한 번의 일괄 적용으로 넘긴다.",
+        "en": "The user confirms skip or apply for every review item. Only plans constrained to the analyzed prefix and clip duration proceed to a single batch application.",
         "zh": "모든 검토 대상에 사용자가 건너뛰기 또는 적용을 확정하고, 분석한 prefix와 클립 길이 안에 묶인 계획만 한 번의 일괄 적용으로 넘긴다."
       },
       {
         "ko": "무변경 클립은 원본 바이트를 복사하고 변경 클립만 frame-accurate H.264/AAC로 처리한 뒤, 출력 검증을 통과한 MP4·ZIP·JSON 보고서를 제공한다.",
-        "en": "무변경 클립은 원본 바이트를 복사하고 변경 클립만 frame-accurate H.264/AAC로 처리한 뒤, 출력 검증을 통과한 MP4·ZIP·JSON 보고서를 제공한다.",
+        "en": "Unchanged clips are copied byte for byte. Only changed clips are processed with frame-accurate H.264/AAC, after which the system provides MP4, ZIP, and JSON reports that pass output validation.",
         "zh": "무변경 클립은 원본 바이트를 복사하고 변경 클립만 frame-accurate H.264/AAC로 처리한 뒤, 출력 검증을 통과한 MP4·ZIP·JSON 보고서를 제공한다."
       }
     ],
@@ -964,7 +964,7 @@
       {
         "label": {
           "ko": "미디어 검사·변환",
-          "en": "미디어 검사·변환",
+          "en": "Media inspection and conversion",
           "zh": "미디어 검사·변환"
         },
         "items": [
@@ -988,7 +988,7 @@
       {
         "label": {
           "ko": "프레임 분석",
-          "en": "프레임 분석",
+          "en": "Frame analysis",
           "zh": "프레임 분석"
         },
         "items": [
@@ -1007,7 +1007,7 @@
       {
         "label": {
           "ko": "계약·판단·보고서",
-          "en": "계약·판단·보고서",
+          "en": "Contracts, decisions, and reports",
           "zh": "계약·판단·보고서"
         },
         "items": [
@@ -1018,7 +1018,7 @@
           },
           {
             "ko": "고정 calibration profile",
-            "en": "고정 calibration profile",
+            "en": "Fixed calibration profile",
             "zh": "고정 calibration profile"
           },
           {
@@ -1031,7 +1031,7 @@
       {
         "label": {
           "ko": "서비스·검토 UI",
-          "en": "서비스·검토 UI",
+          "en": "Service and review UI",
           "zh": "서비스·검토 UI"
         },
         "items": [
@@ -1055,13 +1055,13 @@
       {
         "label": {
           "ko": "검증",
-          "en": "검증",
+          "en": "Validation",
           "zh": "검증"
         },
         "items": [
           {
             "ko": "pytest 단위·통합·아키텍처 테스트",
-            "en": "pytest 단위·통합·아키텍처 테스트",
+            "en": "pytest unit, integration, and architecture tests",
             "zh": "pytest 단위·통합·아키텍처 테스트"
           },
           {
@@ -1084,13 +1084,13 @@
       {
         "label": {
           "ko": "외부 모델/API",
-          "en": "외부 모델/API",
+          "en": "External models/API",
           "zh": "외부 모델/API"
         },
         "items": [
           {
             "ko": "없음",
-            "en": "없음",
+            "en": "None",
             "zh": "없음"
           }
         ]
@@ -1098,7 +1098,7 @@
     ],
     "boundary": {
       "ko": "검출기는 시각적·시간적 유사도만 다루므로 의도적인 정지 연출이나 장면의 의미를 판단하지 않으며, 제안은 편집자의 승인을 대체하지 않는다. 입력 형식과 길이가 제한되고 threshold는 deterministic fixture에 맞춘 데모 값이며 비교 성능 benchmark는 없다. 작업 상태는 단일 프로세스의 메모리와 임시 저장소에 머물고, 변경 클립은 손실 재인코딩된다.",
-      "en": "검출기는 시각적·시간적 유사도만 다루므로 의도적인 정지 연출이나 장면의 의미를 판단하지 않으며, 제안은 편집자의 승인을 대체하지 않는다. 입력 형식과 길이가 제한되고 threshold는 deterministic fixture에 맞춘 데모 값이며 비교 성능 benchmark는 없다. 작업 상태는 단일 프로세스의 메모리와 임시 저장소에 머물고, 변경 클립은 손실 재인코딩된다.",
+      "en": "The detector considers only visual and temporal similarity. It cannot judge intentional stillness or scene meaning, and its suggestions do not replace an editor's approval. Input format and duration are limited, the threshold is a demo value calibrated to a deterministic fixture, and there is no comparative performance benchmark. Job state remains in single-process memory and temporary storage, and changed clips are re-encoded with loss.",
       "zh": "검출기는 시각적·시간적 유사도만 다루므로 의도적인 정지 연출이나 장면의 의미를 판단하지 않으며, 제안은 편집자의 승인을 대체하지 않는다. 입력 형식과 길이가 제한되고 threshold는 deterministic fixture에 맞춘 데모 값이며 비교 성능 benchmark는 없다. 작업 상태는 단일 프로세스의 메모리와 임시 저장소에 머물고, 변경 클립은 손실 재인코딩된다."
     },
     "video": {
@@ -1115,54 +1115,54 @@
     "name": "IRO Matcher",
     "summary": {
       "ko": "서로 다른 생성 영상 클립의 컬러 톤을 하나의 레퍼런스에 맞춰 검토·조정 가능한 LUT와 영상으로 변환하는 도구",
-      "en": "서로 다른 생성 영상 클립의 컬러 톤을 하나의 레퍼런스에 맞춰 검토·조정 가능한 LUT와 영상으로 변환하는 도구",
+      "en": "Matches the color tones of generated video clips to one reference and produces LUTs and videos for review and adjustment",
       "zh": "서로 다른 생성 영상 클립의 컬러 톤을 하나의 레퍼런스에 맞춰 검토·조정 가능한 LUT와 영상으로 변환하는 도구"
     },
     "observation": {
       "ko": "서로 다른 생성 영상 클립을 하나의 타임라인에 배치하면 클립마다 색감과 컬러 톤이 달라 보인다.",
-      "en": "서로 다른 생성 영상 클립을 하나의 타임라인에 배치하면 클립마다 색감과 컬러 톤이 달라 보인다.",
+      "en": "When different generated video clips are placed on one timeline, their color and tone vary from clip to clip.",
       "zh": "서로 다른 생성 영상 클립을 하나의 타임라인에 배치하면 클립마다 색감과 컬러 톤이 달라 보인다."
     },
     "problem": {
       "ko": "이 차이가 컷 사이의 시각적 연속성을 해치고 반복적인 수동 색보정을 요구한다.",
-      "en": "이 차이가 컷 사이의 시각적 연속성을 해치고 반복적인 수동 색보정을 요구한다.",
+      "en": "These differences disrupt visual continuity between cuts and require repeated manual color correction.",
       "zh": "이 차이가 컷 사이의 시각적 연속성을 해치고 반복적인 수동 색보정을 요구한다."
     },
     "hypothesis": {
       "ko": "하나의 클립을 레퍼런스로 선택하고 LUT 기반 방식으로 나머지 클립의 컬러 톤을 자동 보정하면 전체 영상의 일관성을 높일 수 있다.",
-      "en": "하나의 클립을 레퍼런스로 선택하고 LUT 기반 방식으로 나머지 클립의 컬러 톤을 자동 보정하면 전체 영상의 일관성을 높일 수 있다.",
+      "en": "Selecting one clip as the reference and automatically correcting the others with a LUT-based method could improve consistency across the full video.",
       "zh": "하나의 클립을 레퍼런스로 선택하고 LUT 기반 방식으로 나머지 클립의 컬러 톤을 자동 보정하면 전체 영상의 일관성을 높일 수 있다."
     },
     "outcome": {
       "ko": "사내 검증용 MVP",
-      "en": "사내 검증용 MVP",
+      "en": "MVP for internal validation",
       "zh": "사내 검증용 MVP"
     },
     "productized": false,
     "howItWorks": [
       {
         "ko": "번들 샘플 또는 로컬 업로드 클립을 불러오고, 사용자가 레퍼런스 1개와 보정할 대상을 정한다.",
-        "en": "번들 샘플 또는 로컬 업로드 클립을 불러오고, 사용자가 레퍼런스 1개와 보정할 대상을 정한다.",
+        "en": "The user loads bundled samples or locally uploaded clips, then chooses 1 reference and the targets to correct.",
         "zh": "번들 샘플 또는 로컬 업로드 클립을 불러오고, 사용자가 레퍼런스 1개와 보정할 대상을 정한다."
       },
       {
         "ko": "레퍼런스는 선택 프레임 또는 중간 프레임을, 보정 대상은 중간 프레임 또는 10·30·50·70·90% 지점의 5개 프레임을 추출한다.",
-        "en": "레퍼런스는 선택 프레임 또는 중간 프레임을, 보정 대상은 중간 프레임 또는 10·30·50·70·90% 지점의 5개 프레임을 추출한다.",
+        "en": "For the reference, the system extracts a selected frame or the midpoint. For each target, it extracts the midpoint or 5 frames at 10%, 30%, 50%, 70%, and 90%.",
         "zh": "레퍼런스는 선택 프레임 또는 중간 프레임을, 보정 대상은 중간 프레임 또는 10·30·50·70·90% 지점의 5개 프레임을 추출한다."
       },
       {
         "ko": "보정 대상의 색 분포를 레퍼런스에 맞추는 선형 변환을 계산하고, Match Strength를 반영해 대상별 17³/33³ .cube LUT를 만든다.",
-        "en": "보정 대상의 색 분포를 레퍼런스에 맞추는 선형 변환을 계산하고, Match Strength를 반영해 대상별 17³/33³ .cube LUT를 만든다.",
+        "en": "The system calculates a linear transform that aligns each target's color distribution with the reference, then applies Match Strength to create a 17³/33³ .cube LUT for each target.",
         "zh": "보정 대상의 색 분포를 레퍼런스에 맞추는 선형 변환을 계산하고, Match Strength를 반영해 대상별 17³/33³ .cube LUT를 만든다."
       },
       {
         "ko": "clipping·채널 초과·대비 변화 등의 경고와 팔레트 요약, original/applied WebGL preview를 함께 보여준다. 경고는 결과를 차단하지 않으며 사용자가 강도를 낮추거나 레퍼런스 프레임을 다시 고를 수 있다.",
-        "en": "clipping·채널 초과·대비 변화 등의 경고와 팔레트 요약, original/applied WebGL preview를 함께 보여준다. 경고는 결과를 차단하지 않으며 사용자가 강도를 낮추거나 레퍼런스 프레임을 다시 고를 수 있다.",
+        "en": "The UI shows warnings for clipping, channel overshoot, contrast changes, and similar issues alongside a palette summary and original/applied WebGL preview. Warnings do not block the result; the user can lower the strength or choose a different reference frame.",
         "zh": "clipping·채널 초과·대비 변화 등의 경고와 팔레트 요약, original/applied WebGL preview를 함께 보여준다. 경고는 결과를 차단하지 않으며 사용자가 강도를 낮추거나 레퍼런스 프레임을 다시 고를 수 있다."
       },
       {
         "ko": "검토가 끝난 결과만 사용자가 대상별로 요청해 FFmpeg lut3d가 적용된 MP4로 내보낸다. 한 대상의 실패는 다른 대상 결과와 분리해 반환한다.",
-        "en": "검토가 끝난 결과만 사용자가 대상별로 요청해 FFmpeg lut3d가 적용된 MP4로 내보낸다. 한 대상의 실패는 다른 대상 결과와 분리해 반환한다.",
+        "en": "After review, the user requests export for each approved target as an MP4 with FFmpeg lut3d applied. A failure for one target is returned separately from results for the others.",
         "zh": "검토가 끝난 결과만 사용자가 대상별로 요청해 FFmpeg lut3d가 적용된 MP4로 내보낸다. 한 대상의 실패는 다른 대상 결과와 분리해 반환한다."
       }
     ],
@@ -1170,13 +1170,13 @@
       {
         "label": {
           "ko": "미디어 입력·프레임 추출",
-          "en": "미디어 입력·프레임 추출",
+          "en": "Media input and frame extraction",
           "zh": "미디어 입력·프레임 추출"
         },
         "items": [
           {
             "ko": "manifest 기반 clip registry",
-            "en": "manifest 기반 clip registry",
+            "en": "manifest-based clip registry",
             "zh": "manifest 기반 clip registry"
           },
           {
@@ -1186,7 +1186,7 @@
           },
           {
             "ko": "로컬 파일 업로드",
-            "en": "로컬 파일 업로드",
+            "en": "Local file upload",
             "zh": "로컬 파일 업로드"
           }
         ]
@@ -1194,7 +1194,7 @@
       {
         "label": {
           "ko": "컬러 매칭·LUT 생성",
-          "en": "컬러 매칭·LUT 생성",
+          "en": "Color matching and LUT generation",
           "zh": "컬러 매칭·LUT 생성"
         },
         "items": [
@@ -1218,7 +1218,7 @@
       {
         "label": {
           "ko": "품질 경계",
-          "en": "품질 경계",
+          "en": "Quality boundaries",
           "zh": "품질 경계"
         },
         "items": [
@@ -1229,12 +1229,12 @@
           },
           {
             "ko": "clipping·overshoot·transform·contrast 진단",
-            "en": "clipping·overshoot·transform·contrast 진단",
+            "en": "clipping, overshoot, transform, and contrast diagnostics",
             "zh": "clipping·overshoot·transform·contrast 진단"
           },
           {
             "ko": "대상별 부분 실패",
-            "en": "대상별 부분 실패",
+            "en": "Per-target partial failure",
             "zh": "대상별 부분 실패"
           }
         ]
@@ -1242,7 +1242,7 @@
       {
         "label": {
           "ko": "서비스·캐시",
-          "en": "서비스·캐시",
+          "en": "Service and cache",
           "zh": "서비스·캐시"
         },
         "items": [
@@ -1258,7 +1258,7 @@
           },
           {
             "ko": "파일 변경 시각과 설정을 포함한 digest 기반 로컬 캐시",
-            "en": "파일 변경 시각과 설정을 포함한 digest 기반 로컬 캐시",
+            "en": "digest-based local cache including file modification time and settings",
             "zh": "파일 변경 시각과 설정을 포함한 digest 기반 로컬 캐시"
           }
         ]
@@ -1266,7 +1266,7 @@
       {
         "label": {
           "ko": "검토 UI",
-          "en": "검토 UI",
+          "en": "Review UI",
           "zh": "검토 UI"
         },
         "items": [
@@ -1282,12 +1282,12 @@
           },
           {
             "ko": "팔레트·thumbnail 요약",
-            "en": "팔레트·thumbnail 요약",
+            "en": "Palette and thumbnail summary",
             "zh": "팔레트·thumbnail 요약"
           },
           {
             "ko": "세션 run log",
-            "en": "세션 run log",
+            "en": "Session run log",
             "zh": "세션 run log"
           }
         ]
@@ -1295,7 +1295,7 @@
       {
         "label": {
           "ko": "영상 출력",
-          "en": "영상 출력",
+          "en": "Video output",
           "zh": "영상 출력"
         },
         "items": [
@@ -1306,7 +1306,7 @@
           },
           {
             "ko": "대상별 H.264 MP4",
-            "en": "대상별 H.264 MP4",
+            "en": "Per-target H.264 MP4",
             "zh": "대상별 H.264 MP4"
           }
         ]
@@ -1314,7 +1314,7 @@
       {
         "label": {
           "ko": "검증",
-          "en": "검증",
+          "en": "Validation",
           "zh": "검증"
         },
         "items": [
@@ -1338,18 +1338,18 @@
       {
         "label": {
           "ko": "외부 모델/API",
-          "en": "외부 모델/API",
+          "en": "External models/API",
           "zh": "외부 모델/API"
         },
         "items": [
           {
             "ko": "없음",
-            "en": "없음",
+            "en": "None",
             "zh": "없음"
           },
           {
             "ko": "color-matcher는 로컬에서 실행하는 오픈소스 라이브러리다.",
-            "en": "color-matcher는 로컬에서 실행하는 오픈소스 라이브러리다.",
+            "en": "color-matcher is an open-source library that runs locally.",
             "zh": "color-matcher는 로컬에서 실행하는 오픈소스 라이브러리다."
           }
         ]
@@ -1357,7 +1357,7 @@
     ],
     "boundary": {
       "ko": "정량 품질 점수나 비교 benchmark가 없는 사내 검증용 MVP이며, 진단 경고는 휴리스틱이라 컬러 일관성이나 미학적 적합성을 보장하지 않는다. 레퍼런스는 한 프레임, 보정 대상은 중간 프레임 또는 고정된 5개 지점만 분석하므로 최종 판단과 강도 조정에는 사람이 필요하다. 인증·사용자 격리·영속 스토리지·background export queue·batch export가 없고 업로드와 생성 파일, 세션 기록은 영속성을 전제로 하지 않는다.",
-      "en": "정량 품질 점수나 비교 benchmark가 없는 사내 검증용 MVP이며, 진단 경고는 휴리스틱이라 컬러 일관성이나 미학적 적합성을 보장하지 않는다. 레퍼런스는 한 프레임, 보정 대상은 중간 프레임 또는 고정된 5개 지점만 분석하므로 최종 판단과 강도 조정에는 사람이 필요하다. 인증·사용자 격리·영속 스토리지·background export queue·batch export가 없고 업로드와 생성 파일, 세션 기록은 영속성을 전제로 하지 않는다.",
+      "en": "This internal validation MVP has no quantitative quality score or comparative benchmark. Its diagnostic warnings are heuristic and do not guarantee color consistency or aesthetic fit. It analyzes 1 reference frame and either the midpoint or 5 fixed positions for each target, so a person must make the final judgment and adjust the strength. It has no authentication, user isolation, persistent storage, background export queue, or batch export. Uploads, generated files, and session logs are not designed for persistence.",
       "zh": "정량 품질 점수나 비교 benchmark가 없는 사내 검증용 MVP이며, 진단 경고는 휴리스틱이라 컬러 일관성이나 미학적 적합성을 보장하지 않는다. 레퍼런스는 한 프레임, 보정 대상은 중간 프레임 또는 고정된 5개 지점만 분석하므로 최종 판단과 강도 조정에는 사람이 필요하다. 인증·사용자 격리·영속 스토리지·background export queue·batch export가 없고 업로드와 생성 파일, 세션 기록은 영속성을 전제로 하지 않는다."
     },
     "video": {
@@ -1374,54 +1374,54 @@
     "name": "Loudness Matcher",
     "summary": {
       "ko": "사용자가 고른 레퍼런스 영상의 체감 음량에 생성 영상 클립의 네이티브 오디오를 맞춰 컷 사이 볼륨 점프를 줄이는 웹 도구",
-      "en": "사용자가 고른 레퍼런스 영상의 체감 음량에 생성 영상 클립의 네이티브 오디오를 맞춰 컷 사이 볼륨 점프를 줄이는 웹 도구",
+      "en": "Matches the native audio of generated video clips to the perceived loudness of a user-selected reference, reducing volume jumps between cuts",
       "zh": "사용자가 고른 레퍼런스 영상의 체감 음량에 생성 영상 클립의 네이티브 오디오를 맞춰 컷 사이 볼륨 점프를 줄이는 웹 도구"
     },
     "observation": {
       "ko": "비디오 모델이 생성한 네이티브 오디오는 클립마다 체감 음량이 다르다.",
-      "en": "비디오 모델이 생성한 네이티브 오디오는 클립마다 체감 음량이 다르다.",
+      "en": "Native audio generated by video models has different perceived loudness from clip to clip.",
       "zh": "비디오 모델이 생성한 네이티브 오디오는 클립마다 체감 음량이 다르다."
     },
     "problem": {
       "ko": "여러 클립을 이어 붙이면 컷마다 볼륨이 튀어 시청 흐름을 방해하고 수동 조절 비용이 발생한다.",
-      "en": "여러 클립을 이어 붙이면 컷마다 볼륨이 튀어 시청 흐름을 방해하고 수동 조절 비용이 발생한다.",
+      "en": "When several clips are joined, volume jumps at each cut interrupt viewing and create manual adjustment work.",
       "zh": "여러 클립을 이어 붙이면 컷마다 볼륨이 튀어 시청 흐름을 방해하고 수동 조절 비용이 발생한다."
     },
     "hypothesis": {
       "ko": "하나의 레퍼런스 영상이 가진 체감 음량을 기준으로 나머지 클립의 LUFS를 자동 보정하면 볼륨 편차를 줄일 수 있다.",
-      "en": "하나의 레퍼런스 영상이 가진 체감 음량을 기준으로 나머지 클립의 LUFS를 자동 보정하면 볼륨 편차를 줄일 수 있다.",
+      "en": "Automatically adjusting the other clips' LUFS against the perceived loudness of one reference video could reduce volume variation.",
       "zh": "하나의 레퍼런스 영상이 가진 체감 음량을 기준으로 나머지 클립의 LUFS를 자동 보정하면 볼륨 편차를 줄일 수 있다."
     },
     "outcome": {
       "ko": "사내 배포용 웹 데모",
-      "en": "사내 배포용 웹 데모",
+      "en": "Web demo for internal deployment",
       "zh": "사내 배포용 웹 데모"
     },
     "productized": false,
     "howItWorks": [
       {
         "ko": "MP4/MOV 클립 2–8개를 받고 ffprobe로 컨테이너, 스트림, 길이와 지원 범위를 검사한다.",
-        "en": "MP4/MOV 클립 2–8개를 받고 ffprobe로 컨테이너, 스트림, 길이와 지원 범위를 검사한다.",
+        "en": "The system accepts 2 to 8 MP4/MOV clips and uses ffprobe to inspect the container, streams, duration, and supported limits.",
         "zh": "MP4/MOV 클립 2–8개를 받고 ffprobe로 컨테이너, 스트림, 길이와 지원 범위를 검사한다."
       },
       {
         "ko": "사용자가 소리를 듣고 레퍼런스 한 개를 고르면, FFmpeg loudnorm이 각 클립의 integrated LUFS, LRA, true peak와 threshold를 측정한다. 레퍼런스 파일은 바이트 단위로 유지한다.",
-        "en": "사용자가 소리를 듣고 레퍼런스 한 개를 고르면, FFmpeg loudnorm이 각 클립의 integrated LUFS, LRA, true peak와 threshold를 측정한다. 레퍼런스 파일은 바이트 단위로 유지한다.",
+        "en": "After the user listens and chooses 1 reference, FFmpeg loudnorm measures integrated LUFS, LRA, true peak, and threshold for each clip. The reference file is preserved byte for byte.",
         "zh": "사용자가 소리를 듣고 레퍼런스 한 개를 고르면, FFmpeg loudnorm이 각 클립의 integrated LUFS, LRA, true peak와 threshold를 측정한다. 레퍼런스 파일은 바이트 단위로 유지한다."
       },
       {
         "ko": "레퍼런스와 소스의 integrated LUFS 차이로 gain을 계산하고 예상 true peak가 -1.5 dBTP 이하이면 고정 gain, 초과하면 측정값을 넣은 dynamic loudnorm 2-pass를 선택한다. 지원하지 않는 입력과 사실상 무음은 임의 처리하지 않고 사유 코드와 함께 제외한다.",
-        "en": "레퍼런스와 소스의 integrated LUFS 차이로 gain을 계산하고 예상 true peak가 -1.5 dBTP 이하이면 고정 gain, 초과하면 측정값을 넣은 dynamic loudnorm 2-pass를 선택한다. 지원하지 않는 입력과 사실상 무음은 임의 처리하지 않고 사유 코드와 함께 제외한다.",
+        "en": "Gain is calculated from the difference in integrated LUFS between the reference and source. If the estimated true peak is at or below -1.5 dBTP, the system chooses fixed gain; otherwise it chooses dynamic loudnorm 2-pass with measured values. Unsupported inputs and effectively silent audio are excluded with reason codes instead of being handled arbitrarily.",
         "zh": "레퍼런스와 소스의 integrated LUFS 차이로 gain을 계산하고 예상 true peak가 -1.5 dBTP 이하이면 고정 gain, 초과하면 측정값을 넣은 dynamic loudnorm 2-pass를 선택한다. 지원하지 않는 입력과 사실상 무음은 임의 처리하지 않고 사유 코드와 함께 제외한다."
       },
       {
         "ko": "비디오는 stream copy하고 오디오만 AAC LC로 렌더한 뒤, 레퍼런스 대비 ±0.5 LU, true peak -1.0 dBTP 이하, 영상 packet 동일성, 오디오·컨테이너·길이를 다시 검증한다. 고정 gain 결과의 유일한 실패가 true peak 초과일 때만 원본에서 dynamic 2-pass로 한 번 재시도한다.",
-        "en": "비디오는 stream copy하고 오디오만 AAC LC로 렌더한 뒤, 레퍼런스 대비 ±0.5 LU, true peak -1.0 dBTP 이하, 영상 packet 동일성, 오디오·컨테이너·길이를 다시 검증한다. 고정 gain 결과의 유일한 실패가 true peak 초과일 때만 원본에서 dynamic 2-pass로 한 번 재시도한다.",
+        "en": "The video uses stream copy while only the audio is rendered as AAC LC. The output is then revalidated for ±0.5 LU relative to the reference, true peak at or below -1.0 dBTP, identical video packets, audio, container, and duration. The system retries once from the original with dynamic 2-pass only when excessive true peak is the sole failure of a fixed-gain result.",
         "zh": "비디오는 stream copy하고 오디오만 AAC LC로 렌더한 뒤, 레퍼런스 대비 ±0.5 LU, true peak -1.0 dBTP 이하, 영상 packet 동일성, 오디오·컨테이너·길이를 다시 검증한다. 고정 gain 결과의 유일한 실패가 true peak 초과일 때만 원본에서 dynamic 2-pass로 한 번 재시도한다."
       },
       {
         "ko": "사용자가 Original/Matched를 A/B로 확인한다. 검증된 개별 영상만 제공하며, 처리 대기 클립이 남아 있으면 패키징을 막고 최종 JSON·CSV·ZIP에 측정, 처리 방식, 대체 처리와 검증 결과를 기록한다.",
-        "en": "사용자가 Original/Matched를 A/B로 확인한다. 검증된 개별 영상만 제공하며, 처리 대기 클립이 남아 있으면 패키징을 막고 최종 JSON·CSV·ZIP에 측정, 처리 방식, 대체 처리와 검증 결과를 기록한다.",
+        "en": "The user compares Original and Matched in an A/B test. Only individually validated videos are provided. Packaging is blocked while any clip is still pending, and the final JSON, CSV, and ZIP record measurements, processing method, fallback handling, and validation results.",
         "zh": "사용자가 Original/Matched를 A/B로 확인한다. 검증된 개별 영상만 제공하며, 처리 대기 클립이 남아 있으면 패키징을 막고 최종 JSON·CSV·ZIP에 측정, 처리 방식, 대체 처리와 검증 결과를 기록한다."
       }
     ],
@@ -1429,7 +1429,7 @@
       {
         "label": {
           "ko": "미디어 분석·변환",
-          "en": "미디어 분석·변환",
+          "en": "Media analysis and conversion",
           "zh": "미디어 분석·변환"
         },
         "items": [
@@ -1450,7 +1450,7 @@
           },
           {
             "ko": "AAC LC 인코딩",
-            "en": "AAC LC 인코딩",
+            "en": "AAC LC encoding",
             "zh": "AAC LC 인코딩"
           }
         ]
@@ -1458,7 +1458,7 @@
       {
         "label": {
           "ko": "정책·파이프라인",
-          "en": "정책·파이프라인",
+          "en": "Policy and pipeline",
           "zh": "정책·파이프라인"
         },
         "items": [
@@ -1469,27 +1469,27 @@
           },
           {
             "ko": "입력 지원 여부",
-            "en": "입력 지원 여부",
+            "en": "Input support status",
             "zh": "입력 지원 여부"
           },
           {
             "ko": "처리 모드",
-            "en": "처리 모드",
+            "en": "Processing mode",
             "zh": "처리 모드"
           },
           {
             "ko": "대체 처리",
-            "en": "대체 처리",
+            "en": "Fallback handling",
             "zh": "대체 처리"
           },
           {
             "ko": "재검증",
-            "en": "재검증",
+            "en": "Revalidation",
             "zh": "재검증"
           },
           {
             "ko": "결정론적 리포트",
-            "en": "결정론적 리포트",
+            "en": "Deterministic report",
             "zh": "결정론적 리포트"
           }
         ]
@@ -1497,7 +1497,7 @@
       {
         "label": {
           "ko": "API·세션",
-          "en": "API·세션",
+          "en": "API and session",
           "zh": "API·세션"
         },
         "items": [
@@ -1523,12 +1523,12 @@
           },
           {
             "ko": "동기식 JSON API",
-            "en": "동기식 JSON API",
+            "en": "Synchronous JSON API",
             "zh": "동기식 JSON API"
           },
           {
             "ko": "로컬 임시 세션·미디어 스트리밍",
-            "en": "로컬 임시 세션·미디어 스트리밍",
+            "en": "Local temporary sessions and media streaming",
             "zh": "로컬 임시 세션·미디어 스트리밍"
           }
         ]
@@ -1536,7 +1536,7 @@
       {
         "label": {
           "ko": "사용자 인터페이스",
-          "en": "사용자 인터페이스",
+          "en": "User interface",
           "zh": "사용자 인터페이스"
         },
         "items": [
@@ -1557,7 +1557,7 @@
           },
           {
             "ko": "업로드·레퍼런스 선택·분석·A/B 비교·다운로드",
-            "en": "업로드·레퍼런스 선택·분석·A/B 비교·다운로드",
+            "en": "Upload, reference selection, analysis, A/B comparison, and download",
             "zh": "업로드·레퍼런스 선택·분석·A/B 비교·다운로드"
           }
         ]
@@ -1565,13 +1565,13 @@
       {
         "label": {
           "ko": "검증",
-          "en": "검증",
+          "en": "Validation",
           "zh": "검증"
         },
         "items": [
           {
             "ko": "Pytest 단위·API·FFmpeg 통합·로컬 샘플 smoke",
-            "en": "Pytest 단위·API·FFmpeg 통합·로컬 샘플 smoke",
+            "en": "Pytest unit, API, FFmpeg integration, and local sample smoke tests",
             "zh": "Pytest 단위·API·FFmpeg 통합·로컬 샘플 smoke"
           },
           {
@@ -1599,7 +1599,7 @@
       {
         "label": {
           "ko": "패키징·실행",
-          "en": "패키징·실행",
+          "en": "Packaging and runtime",
           "zh": "패키징·실행"
         },
         "items": [
@@ -1615,12 +1615,12 @@
           },
           {
             "ko": "멀티스테이지 Docker 이미지",
-            "en": "멀티스테이지 Docker 이미지",
+            "en": "Multi-stage Docker image",
             "zh": "멀티스테이지 Docker 이미지"
           },
           {
             "ko": "non-root 단일 서비스",
-            "en": "non-root 단일 서비스",
+            "en": "Single non-root service",
             "zh": "non-root 단일 서비스"
           }
         ]
@@ -1628,18 +1628,18 @@
       {
         "label": {
           "ko": "외부 모델/API",
-          "en": "외부 모델/API",
+          "en": "External models/API",
           "zh": "외부 모델/API"
         },
         "items": [
           {
             "ko": "없음",
-            "en": "없음",
+            "en": "None",
             "zh": "없음"
           },
           {
             "ko": "pyloudnorm과 ffmpeg-normalize는 비교 참고자료이며 런타임 의존성이 아니다.",
-            "en": "pyloudnorm과 ffmpeg-normalize는 비교 참고자료이며 런타임 의존성이 아니다.",
+            "en": "pyloudnorm and ffmpeg-normalize are comparison references, not runtime dependencies.",
             "zh": "pyloudnorm과 ffmpeg-normalize는 비교 참고자료이며 런타임 의존성이 아니다."
           }
         ]
@@ -1647,7 +1647,7 @@
     ],
     "boundary": {
       "ko": "MP4/MOV, 15초 이하, video 1개와 mono/stereo audio 1개, 44.1/48 kHz인 클립 2–8개만 다루는 동기식 단일 처리 슬롯 데모다. 계정, 영구 저장, 작업 큐, 다중 worker, 재시작 복구를 제공하지 않으며 세션은 로컬 임시 디렉터리에서 만료된다. 방송 납품 규격이나 음악 마스터링 품질을 보장하지 않으며 최종 체감 품질은 사용자의 A/B 청취 판단이 필요하다.",
-      "en": "MP4/MOV, 15초 이하, video 1개와 mono/stereo audio 1개, 44.1/48 kHz인 클립 2–8개만 다루는 동기식 단일 처리 슬롯 데모다. 계정, 영구 저장, 작업 큐, 다중 worker, 재시작 복구를 제공하지 않으며 세션은 로컬 임시 디렉터리에서 만료된다. 방송 납품 규격이나 음악 마스터링 품질을 보장하지 않으며 최종 체감 품질은 사용자의 A/B 청취 판단이 필요하다.",
+      "en": "This synchronous, single-slot demo handles only 2 to 8 MP4/MOV clips, each 15 seconds or shorter, with 1 video stream, 1 mono or stereo audio stream, and a 44.1 or 48 kHz sample rate. It provides no accounts, persistent storage, job queue, multiple workers, or restart recovery, and sessions expire in local temporary directories. It does not guarantee broadcast delivery standards or music mastering quality. The user must make the final judgment through A/B listening.",
       "zh": "MP4/MOV, 15초 이하, video 1개와 mono/stereo audio 1개, 44.1/48 kHz인 클립 2–8개만 다루는 동기식 단일 처리 슬롯 데모다. 계정, 영구 저장, 작업 큐, 다중 worker, 재시작 복구를 제공하지 않으며 세션은 로컬 임시 디렉터리에서 만료된다. 방송 납품 규격이나 음악 마스터링 품질을 보장하지 않으며 최종 체감 품질은 사용자의 A/B 청취 판단이 필요하다."
     },
     "video": {
@@ -1664,54 +1664,54 @@
     "name": "Script to BGM",
     "summary": {
       "ko": "스크립트 파일을 음악 생성 프롬프트로 정제하고, 두 음악 API가 만든 MP3를 Slack에서 들어보게 한 내부 PoC",
-      "en": "스크립트 파일을 음악 생성 프롬프트로 정제하고, 두 음악 API가 만든 MP3를 Slack에서 들어보게 한 내부 PoC",
+      "en": "An internal PoC that refines a script into a music generation prompt and delivers MP3 files from two music APIs for listening in Slack",
       "zh": "스크립트 파일을 음악 생성 프롬프트로 정제하고, 두 음악 API가 만든 MP3를 Slack에서 들어보게 한 내부 PoC"
     },
     "observation": {
       "ko": "짧은 AI 클립에서는 장면의 흐름과 정서를 연결하기 위해 영상에 어울리는 BGM을 별도로 탐색해야 했습니다.",
-      "en": "짧은 AI 클립에서는 장면의 흐름과 정서를 연결하기 위해 영상에 어울리는 BGM을 별도로 탐색해야 했습니다.",
+      "en": "For short AI clips, suitable BGM had to be found separately to connect the flow and emotion of the scenes.",
       "zh": "짧은 AI 클립에서는 장면의 흐름과 정서를 연결하기 위해 영상에 어울리는 BGM을 별도로 탐색해야 했습니다."
     },
     "problem": {
       "ko": "그런데 BGM을 구하려면 영상에 어울리는 음악이 무엇인지 먼저 정의하고 음악 생성용 프롬프트를 따로 작성해야 한다.",
-      "en": "그런데 BGM을 구하려면 영상에 어울리는 음악이 무엇인지 먼저 정의하고 음악 생성용 프롬프트를 따로 작성해야 한다.",
+      "en": "Finding BGM requires first defining what music fits the video, then writing a separate prompt for music generation.",
       "zh": "그런데 BGM을 구하려면 영상에 어울리는 음악이 무엇인지 먼저 정의하고 음악 생성용 프롬프트를 따로 작성해야 한다."
     },
     "hypothesis": {
       "ko": "스토리를 담은 스크립트가 이미 있다면, LLM으로 이를 정제해 BGM 생성 프롬프트를 자동으로 만들 수 있다.",
-      "en": "스토리를 담은 스크립트가 이미 있다면, LLM으로 이를 정제해 BGM 생성 프롬프트를 자동으로 만들 수 있다.",
+      "en": "If a story script already exists, an LLM could refine it into a BGM generation prompt automatically.",
       "zh": "스토리를 담은 스크립트가 이미 있다면, LLM으로 이를 정제해 BGM 생성 프롬프트를 자동으로 만들 수 있다."
     },
     "outcome": {
       "ko": "내부 PoC 완료. 후속 구현 없음",
-      "en": "내부 PoC 완료. 후속 구현 없음",
+      "en": "Internal PoC completed. No follow-up implementation",
       "zh": "내부 PoC 완료. 후속 구현 없음"
     },
     "productized": false,
     "howItWorks": [
       {
         "ko": "curl로 스크립트 파일을 n8n Webhook에 보내 워크플로를 시작한다. 내부 테스트에서는 Slack Trigger도 같은 처리 흐름에 연결했다.",
-        "en": "curl로 스크립트 파일을 n8n Webhook에 보내 워크플로를 시작한다. 내부 테스트에서는 Slack Trigger도 같은 처리 흐름에 연결했다.",
+        "en": "The workflow starts when curl sends a script file to an n8n Webhook. Internal tests also connected a Slack Trigger to the same processing flow.",
         "zh": "curl로 스크립트 파일을 n8n Webhook에 보내 워크플로를 시작한다. 내부 테스트에서는 Slack Trigger도 같은 처리 흐름에 연결했다."
       },
       {
         "ko": "JavaScript Code 노드가 스크립트에서 이야기의 순서를 유지하며 장면 설명, 액션, 대사를 정리한다.",
-        "en": "JavaScript Code 노드가 스크립트에서 이야기의 순서를 유지하며 장면 설명, 액션, 대사를 정리한다.",
+        "en": "A JavaScript Code node organizes scene descriptions, action, and dialogue while preserving the story order in the script.",
         "zh": "JavaScript Code 노드가 스크립트에서 이야기의 순서를 유지하며 장면 설명, 액션, 대사를 정리한다."
       },
       {
         "ko": "Gemini 2.5 Flash가 시나리오와 장르를 요약하고 음악 생성용 프롬프트로 정제한다.",
-        "en": "Gemini 2.5 Flash가 시나리오와 장르를 요약하고 음악 생성용 프롬프트로 정제한다.",
+        "en": "Gemini 2.5 Flash summarizes the scenario and genre, then refines them into a music generation prompt.",
         "zh": "Gemini 2.5 Flash가 시나리오와 장르를 요약하고 음악 생성용 프롬프트로 정제한다."
       },
       {
         "ko": "n8n이 MiniMax Music 2 via fal.ai와 ElevenLabs Music을 각각 호출한다. MiniMax의 URL 응답과 ElevenLabs의 바이너리 응답을 후속 노드에서 MP3로 다룰 수 있게 정리한다.",
-        "en": "n8n이 MiniMax Music 2 via fal.ai와 ElevenLabs Music을 각각 호출한다. MiniMax의 URL 응답과 ElevenLabs의 바이너리 응답을 후속 노드에서 MP3로 다룰 수 있게 정리한다.",
+        "en": "n8n calls MiniMax Music 2 via fal.ai and ElevenLabs Music separately. Downstream nodes normalize MiniMax's URL response and ElevenLabs' binary response so both can be handled as MP3 files.",
         "zh": "n8n이 MiniMax Music 2 via fal.ai와 ElevenLabs Music을 각각 호출한다. MiniMax의 URL 응답과 ElevenLabs의 바이너리 응답을 후속 노드에서 MP3로 다룰 수 있게 정리한다."
       },
       {
         "ko": "두 API 응답을 Merge 노드에서 모아 Slack에 파일로 올리고, 사용자가 실제 음원을 들어보며 가설을 정성적으로 확인한다.",
-        "en": "두 API 응답을 Merge 노드에서 모아 Slack에 파일로 올리고, 사용자가 실제 음원을 들어보며 가설을 정성적으로 확인한다.",
+        "en": "A Merge node collects both API responses and uploads the files to Slack, where users listen to the generated audio and evaluate the hypothesis qualitatively.",
         "zh": "두 API 응답을 Merge 노드에서 모아 Slack에 파일로 올리고, 사용자가 실제 음원을 들어보며 가설을 정성적으로 확인한다."
       }
     ],
@@ -1719,7 +1719,7 @@
       {
         "label": {
           "ko": "실험 오케스트레이션",
-          "en": "실험 오케스트레이션",
+          "en": "Experiment orchestration",
           "zh": "실험 오케스트레이션"
         },
         "items": [
@@ -1733,7 +1733,7 @@
       {
         "label": {
           "ko": "입력·전처리",
-          "en": "입력·전처리",
+          "en": "Input and preprocessing",
           "zh": "입력·전처리"
         },
         "items": [
@@ -1762,7 +1762,7 @@
       {
         "label": {
           "ko": "프롬프트 정제(외부 모델)",
-          "en": "프롬프트 정제(외부 모델)",
+          "en": "Prompt refinement (external model)",
           "zh": "프롬프트 정제(외부 모델)"
         },
         "items": [
@@ -1776,7 +1776,7 @@
       {
         "label": {
           "ko": "음악 생성(외부 API)",
-          "en": "음악 생성(외부 API)",
+          "en": "Music generation (external API)",
           "zh": "음악 생성(외부 API)"
         },
         "items": [
@@ -1795,28 +1795,28 @@
       {
         "label": {
           "ko": "결과 전달·검토",
-          "en": "결과 전달·검토",
+          "en": "Result delivery and review",
           "zh": "결과 전달·검토"
         },
         "items": [
           {
             "ko": "API 응답 수집",
-            "en": "API 응답 수집",
+            "en": "API response collection",
             "zh": "API 응답 수집"
           },
           {
             "ko": "MP3 파일 처리",
-            "en": "MP3 파일 처리",
+            "en": "MP3 file handling",
             "zh": "MP3 파일 처리"
           },
           {
             "ko": "Slack 파일 업로드",
-            "en": "Slack 파일 업로드",
+            "en": "Slack file upload",
             "zh": "Slack 파일 업로드"
           },
           {
             "ko": "사용자 청취",
-            "en": "사용자 청취",
+            "en": "User listening review",
             "zh": "사용자 청취"
           }
         ]
@@ -1824,7 +1824,7 @@
     ],
     "boundary": {
       "ko": "이 프로젝트는 n8n으로 가설을 빠르게 확인하기 위한 내부 PoC다. 두 음악 API를 실제 호출해 생성된 MP3를 사용자가 들어보는 데까지만 구현했으며, 제품 UI·운영 API·자동 평가나 별도의 후속 구현으로 이어지지 않았다.",
-      "en": "이 프로젝트는 n8n으로 가설을 빠르게 확인하기 위한 내부 PoC다. 두 음악 API를 실제 호출해 생성된 MP3를 사용자가 들어보는 데까지만 구현했으며, 제품 UI·운영 API·자동 평가나 별도의 후속 구현으로 이어지지 않았다.",
+      "en": "This internal PoC used n8n to test the hypothesis quickly. It called two music APIs and let users listen to the generated MP3 files. It did not lead to a product UI, production API, automated evaluation, or separate follow-up implementation.",
       "zh": "이 프로젝트는 n8n으로 가설을 빠르게 확인하기 위한 내부 PoC다. 두 음악 API를 실제 호출해 생성된 MP3를 사용자가 들어보는 데까지만 구현했으며, 제품 UI·운영 API·자동 평가나 별도의 후속 구현으로 이어지지 않았다."
     },
     "video": {
@@ -1836,12 +1836,12 @@
         "src": "/assets/images/demos/script-to-bgm/workflow-overview.png",
         "alt": {
           "ko": "Webhook과 Slack Trigger에서 두 음악 생성 API와 Slack 업로드로 이어지는 n8n 워크플로 화면",
-          "en": "Webhook과 Slack Trigger에서 두 음악 생성 API와 Slack 업로드로 이어지는 n8n 워크플로 화면",
+          "en": "n8n workflow screen connecting a Webhook and Slack Trigger to two music generation APIs and a Slack upload",
           "zh": "Webhook과 Slack Trigger에서 두 음악 생성 API와 Slack 업로드로 이어지는 n8n 워크플로 화면"
         },
         "caption": {
           "ko": "스크립트를 음악 프롬프트와 두 MP3 결과로 연결하는 n8n 워크플로",
-          "en": "스크립트를 음악 프롬프트와 두 MP3 결과로 연결하는 n8n 워크플로",
+          "en": "n8n workflow connecting a script to a music prompt and two MP3 results",
           "zh": "스크립트를 음악 프롬프트와 두 MP3 결과로 연결하는 n8n 워크플로"
         },
         "width": 3274,
@@ -1851,12 +1851,12 @@
         "src": "/assets/images/demos/script-to-bgm/slack-results.png",
         "alt": {
           "ko": "두 음악 모델의 프롬프트와 MP3 재생 결과가 표시된 Slack 화면",
-          "en": "두 음악 모델의 프롬프트와 MP3 재생 결과가 표시된 Slack 화면",
+          "en": "Slack screen showing prompts and playable MP3 results from two music models",
           "zh": "두 음악 모델의 프롬프트와 MP3 재생 결과가 표시된 Slack 화면"
         },
         "caption": {
           "ko": "MiniMax Music 2와 ElevenLabs Music 결과를 Slack에서 청취한 화면",
-          "en": "MiniMax Music 2와 ElevenLabs Music 결과를 Slack에서 청취한 화면",
+          "en": "Slack screen used to listen to MiniMax Music 2 and ElevenLabs Music results",
           "zh": "MiniMax Music 2와 ElevenLabs Music 결과를 Slack에서 청취한 화면"
         },
         "width": 2770,
