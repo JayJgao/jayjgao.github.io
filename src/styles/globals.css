@@ -1699,6 +1699,26 @@ html[lang="zh"] .hero-display {
   font-size: 0.72rem;
 }
 
+.about-principle-copy {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.about-principle-copy h3,
+.about-principle-copy p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.about-principle-copy h3 {
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.about-principle-copy p {
+  color: var(--muted);
+}
+
 .about-demos-bridge {
   display: flex;
   align-items: center;

@@ -55,7 +55,7 @@ const expectedHero = {
   ko: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
     subheadline: "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
-    supporting: "7+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
+    supporting: "7+ years, AI 제품을 기획하고 출시해 스케일링까지 리드한 Product 운영 이력",
   },
   en: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
@@ -201,6 +201,24 @@ test("About data keeps the approved two-principle structure and Demos bridge", (
   assert.deepEqual(shapeOf(messages[0].about), shapeOf(messages[2].about));
 });
 
+test("About subsection headings stay language-invariant English across all locales", () => {
+  for (const locale of locales) {
+    const narrative = JSON.parse(
+      readRepoFile(`src/data/about.${locale}.json`),
+    ) as {
+      markets: { kicker: string };
+      workingWithMe: { kicker: string };
+    };
+    const messages = JSON.parse(
+      readRepoFile(`src/i18n/${locale}.json`),
+    ) as { about: { motivationKicker: string } };
+
+    assert.equal(narrative.workingWithMe.kicker, "Working with Me");
+    assert.equal(narrative.markets.kicker, "Three Languages, Three Markets");
+    assert.equal(messages.about.motivationKicker, "What Moves Me");
+  }
+});
+
 test("About renders the exact approved order, markers, and locale-aware Demos bridge", () => {
   const about = readRepoFile("src/app/[locale]/about/page.tsx");
   const markers = ["opening", "how-i-work", "markets", "why-ai"];
@@ -215,6 +233,23 @@ test("About renders the exact approved order, markers, and locale-aware Demos br
   assert.match(about, /getLocalizedPath\(locale, "\/demos\/"\)/);
   assert.match(about, /messages\.about\.demosCta/);
   assert.doesNotMatch(about, /바이브코딩으로 프로토타입을 먼저 만들고 설득합니다/);
+});
+
+test("About renders structured Korean principles with a string fallback for untranslated locales", () => {
+  const about = readRepoFile("src/app/[locale]/about/page.tsx");
+  const aboutTypes = readRepoFile("src/types/about.ts");
+  const styles = readRepoFile("src/styles/globals.css");
+
+  assert.match(about, /typeof item === "string"/);
+  assert.match(about, /item\.title/);
+  assert.match(about, /item\.body/);
+  assert.match(about, /className="about-principle-copy"/);
+  assert.doesNotMatch(about, /<p>\{item\}<\/p>/);
+  assert.match(aboutTypes, /Array<string \| \{ title: string; body: string \}>/);
+  assert.match(styles, /\.about-principle-copy/);
+  assert.match(styles, /text-wrap:\s*pretty/);
+  assert.match(styles, /\.about-principle-copy p \{[\s\S]*?color:\s*var\(--muted\)/);
+  assert.doesNotMatch(styles, /var\(--color-ink-muted\)/);
 });
 
 test("About exposes three post-opening section headings through its accessible outline", () => {

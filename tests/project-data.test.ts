@@ -67,20 +67,20 @@ const expectedEras = [
       en: "Generative AI Native",
       zh: "Generative AI Native",
     },
-    period: "2025~",
+    period: "2025–",
   },
 ] as const;
 
 const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> = {
   ko: {
     era1: [
-      "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
-      "Lunit — 비전 바이오마커 분석 SW 초기 기획",
+      "Solidware (Ailys)에서 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
+      "Lunit에서 비전 바이오마커 분석 SW 초기 기획",
     ],
     era2: [
-      "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-      "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
-      "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
+      "BUZZNI에서 AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
+      "BUZZNI에서 Long→Short-form AI 비디오 편집기와 쇼핑 어시스턴트 챗봇 출시",
+      "Dasan E&E에서 AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
     ],
   },
   en: {
@@ -435,6 +435,21 @@ test("UI dictionaries keep only the all-project filter and localized timeline it
       }
     }
   }
+});
+
+test("Korean Projects Archive presents the user-approved description", () => {
+  const messages = readJson(messagesUrl("ko"));
+  assert.ok(isRecord(messages));
+  assert.ok(isRecord(messages.projects));
+  assert.ok(isRecord(messages.projects.explorer));
+  assert.equal(
+    messages.projects.explorer.archiveDescription,
+    "다양한 도메인에서 진행했던 프로젝트들의 목록입니다.",
+  );
+  assert.notEqual(
+    messages.projects.explorer.archiveDescription,
+    "축적된 실행 이력과 도메인 확장 트랙입니다.",
+  );
 });
 
 test("spotlights move to the canonical filename without changing any record", () => {

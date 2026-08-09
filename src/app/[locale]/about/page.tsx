@@ -65,12 +65,20 @@ export default async function AboutPage({
           <h2 id="about-how-i-work-title" className="section-kicker">{narrative.workingWithMe.kicker}</h2>
           <p className="about-lead">{narrative.workingWithMe.lead}</p>
           <ol className="about-principles">
-            {narrative.workingWithMe.principles.map((item, index) => (
-              <li key={item}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{item}</p>
-              </li>
-            ))}
+            {narrative.workingWithMe.principles.map((item, index) => {
+              const title = typeof item === "string" ? item : item.title;
+              const body = typeof item === "string" ? null : item.body;
+
+              return (
+                <li key={title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div className="about-principle-copy">
+                    <h3>{title}</h3>
+                    {body ? <p>{body}</p> : null}
+                  </div>
+                </li>
+              );
+            })}
           </ol>
           <Link href={getLocalizedPath(locale, "/demos/")} className="about-demos-bridge">
             <span>{narrative.workingWithMe.demosBridge}</span>

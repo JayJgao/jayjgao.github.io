@@ -3,17 +3,24 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { extname, join } from "node:path";
 import test from "node:test";
+import * as React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
+import { LocaleProvider } from "../src/components/i18n/LocaleProvider";
+import { ResumeRenderer } from "../src/components/resume/ResumeRenderer";
 import aboutKo from "../src/data/about.ko.json";
 import demosJson from "../src/data/demos.json";
 import eras from "../src/data/eras.json";
 import projects from "../src/data/projects.json";
 import resumeKo from "../src/data/resume.ko.json";
+import spotlights from "../src/data/spotlights.json";
 import messagesKo from "../src/i18n/ko.json";
 import { getDemoVideoMode } from "../src/lib/demos";
 import type { Demo } from "../src/types/demo";
 
 const repoRoot = new URL("..", import.meta.url);
+
+Object.assign(globalThis, { React });
 
 type LocalizedCopy = Record<"ko" | "en" | "zh", string>;
 type ContractDemo = {
@@ -110,7 +117,7 @@ const expectedAboutKo = {
     ],
   },
   markets: {
-    kicker: "3개의 언어, 3개의 시장",
+    kicker: "Three Languages, Three Markets",
     intro: "세 언어로 서로 다른 시장의 제품과 사업을 직접 다뤄왔습니다.",
     items: [
       { language: "중국어", detail: "네이티브 수준. 칭화대 최우수 졸업논문 수상." },
@@ -164,6 +171,57 @@ const expectedResumeSkills = {
   "Selected Tools": ["SQL", "Google Analytics", "LangChain / LangGraph"],
 } as const;
 
+const expectedCinamonHighlights = [
+  "Film Agent E2E 통합에서 시작한 방향 전환, 3년 레거시 정리 합의, 2026년 7월 웹 CineV 공식 출시.",
+  "conditioning과 컨텍스트 관리, 서사와 비주얼 일관성 연구, 120+ 동일 장면 검증, Asset 관리 시스템 제품 통합.",
+  "실험 기능 3건 제품 통합, 내부 Eval 플랫폼을 통한 모델 2건 통합과 유저스터디 6회 운영, AI Literacy와 비저닝 세션 13회 진행, 웹팀 주도 Product Discovery 프로그램 설계와 운영.",
+  "외부 모델 라우팅을 통한 7개 이상 영역과 모델 30종 이상 제품 통합.",
+] as const;
+
+const expectedResumeSummaryParagraphs = [
+  "산업과 제품의 구조를 빠르게 파악하고, 아직 언어로서 규명되지 않은 문제를 기술의 언어로 번역해 제품과 사업 성과로 연결하는 AI Product Leader입니다.",
+  "핀테크 AutoML, 의료 Computer Vision, 이커머스 LLM Application, 생성형 AI 영상 제품을 거치며 팀 빌딩, 엔터프라이즈 계약, MRR 10배 성장, 웹 제품 공식 출시까지 일관된 성과를 만들어왔습니다.",
+  "새로운 도메인에서는 제품의 인프라와 시스템, 시장을 먼저 구조화한 뒤 직접 자사와 경쟁사 제품을 사용하며 정의되지 않은 빈틈을 찾습니다. 코어 시스템과 강하게 맞물린 문제는 조직의 화두로 만들고, 독립적으로 검증할 수 있는 사용자 마찰은 직접 프로토타이핑합니다. 구현에 머물지 않고 계약과 결제 전환, Golden Path를 이탈하지 않은 채 FSO (First Satisfactory Output)에 도달하는 것처럼 실제 성과가 나올 때까지 팀과 함께 실행합니다.",
+] as const;
+
+const expectedUnchangedResumeExperience = [
+  {
+    company: "BUZZNI",
+    role: "AI PM / Team Lead",
+    period: "2023.04 - 2025.03",
+    highlights: [
+      "AIaaS 사업부를 제로에서 20명 규모로 빌딩 및 리딩",
+      "MRR 500만 원에서 5,200만 원으로 10배 성장, 신규 고객사 12개 확보",
+      "Long→Short-form AI 비디오 편집기와 쇼핑 챗봇 2개 서비스 0→1 출시",
+    ],
+  },
+  {
+    company: "Dasan E&E",
+    role: "Business Operations Manager",
+    period: "2022.06 - 2023.03",
+    highlights: [
+      "가업(HR 컨설팅) 사업운영 고도화 및 경영정상화 지원",
+      "운영 프로세스 재정비와 사업 전략 실행 체계 수립",
+    ],
+  },
+  {
+    company: "Lunit",
+    role: "AI Product Manager",
+    period: "2022.01 - 2022.04",
+    highlights: ["비전 바이오마커 분석 SW 초기 PRD 및 규제 문서 기반 요구사항 정의"],
+  },
+  {
+    company: "Solidware (Ailys)",
+    role: "AI PM / New Business Team Lead",
+    period: "2018.12 - 2021.12",
+    highlights: [
+      "일본 엔터프라이즈 13개 고객 확보 (Mitsubishi, AEON 등)",
+      "연매출 100% 성장 및 영업 접점 256% 확대",
+      "정부과제 총 15억 원 규모 수주",
+    ],
+  },
+] as const;
+
 test("Phase 3 fixes the exact 15-project composition and Featured order", () => {
   assert.equal(projects.length, 15);
   assert.equal(new Set(projects.map(({ slug }) => slug)).size, 15);
@@ -211,26 +269,109 @@ test("Korean Era 3, About, and Resume copy exactly match the approved canon", ()
   assert.deepEqual(era3, {
     id: 3,
     name: { ko: "Generative AI Native", en: "Generative AI Native", zh: "Generative AI Native" },
-    period: "2025~",
+    period: "2025–",
   });
   assert.deepEqual(messagesKo.home.timeline.eras.era3.items, expectedEra3Items);
   assert.deepEqual(aboutKo, expectedAboutKo);
 
   assert.equal(resumeKo.meta.subtitle, "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI");
-  assert.equal(
-    resumeKo.summary,
-    [
-      "산업과 제품의 구조를 빠르게 파악하고, 아직 언어로서 규명되지 않은 문제를 기술의 언어로 번역해 제품과 사업 성과로 연결하는 AI Product Leader입니다.",
-      "핀테크 AutoML, 의료 Computer Vision, 이커머스 LLM Application, 생성형 AI 영상 제품을 거치며 팀 빌딩, 엔터프라이즈 계약, MRR 10배 성장, 웹 제품 공식 출시까지 일관된 성과를 만들어왔습니다.",
-      "새로운 도메인에서는 제품의 인프라와 시스템, 시장을 먼저 구조화한 뒤 직접 자사와 경쟁사 제품을 사용하며 정의되지 않은 빈틈을 찾습니다. 코어 시스템과 강하게 맞물린 문제는 조직의 화두로 만들고, 독립적으로 검증할 수 있는 사용자 마찰은 직접 프로토타이핑합니다. 구현에 머물지 않고 계약과 결제 전환, Golden Path를 이탈하지 않은 채 FSO(First Satisfactory Output)에 도달하는 것처럼 실제 성과가 나올 때까지 팀과 함께 실행합니다.",
-    ].join("\n\n"),
-  );
+  assert.deepEqual(resumeKo.summary, expectedResumeSummaryParagraphs);
+  assert.doesNotMatch(JSON.stringify(resumeKo.summary), /\\n\\n/);
   assert.equal(
     resumeKo.experience.find(({ company }) => company === "BUZZNI")?.period,
     "2023.04 - 2025.03",
   );
+  const summaryText = Array.isArray(resumeKo.summary)
+    ? resumeKo.summary.join(" ")
+    : resumeKo.summary;
+  assert.match(summaryText, /FSO \(First Satisfactory Output\)/);
+  assert.doesNotMatch(summaryText, /FSO\(First Satisfactory Output\)/);
+  assert.deepEqual(
+    resumeKo.experience.find(({ company }) => company === "Cinamon (CineV)")?.highlights,
+    expectedCinamonHighlights,
+  );
+  assert.deepEqual(
+    resumeKo.experience.filter(({ company }) => company !== "Cinamon (CineV)"),
+    expectedUnchangedResumeExperience,
+  );
   assert.deepEqual(resumeKo.skills, expectedResumeSkills);
   assert.equal(Object.keys(resumeKo.skills).length, 4);
+  assert.deepEqual(resumeKo.achievements, [
+    "ML 특허 3건",
+    "KSC 2023 논문 발표",
+    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist",
+  ]);
+  assert.doesNotMatch(JSON.stringify(resumeKo), /출원 진행중|컨소시엄/);
+});
+
+test("approved Korean copy remains wrapping-safe without manual line breaks", () => {
+  const strings = [
+    aboutKo.opening.quote,
+    ...aboutKo.opening.body,
+    aboutKo.markets.intro,
+    ...aboutKo.markets.items.flatMap(({ language, detail }) => [language, detail]),
+    ...aboutKo.motivation.body,
+    aboutKo.motivation.belief,
+    ...aboutKo.workingWithMe.principles.flatMap(({ title, body }) => [title, body]),
+    aboutKo.workingWithMe.demosBridge,
+    ...expectedResumeSummaryParagraphs,
+    ...expectedCinamonHighlights,
+    ...messagesKo.home.timeline.eras.era3.items,
+    messagesKo.projects.explorer.archiveDescription,
+  ];
+
+  for (const copy of strings) assert.doesNotMatch(copy, /\r|\n/);
+});
+
+test("Resume renderer accepts locale-specific skill and summary shapes", () => {
+  const renderer = readRepoFile("src/components/resume/ResumeRenderer.tsx");
+  assert.match(renderer, /Omit<typeof resumeKo, "skills" \| "summary">/);
+  assert.match(renderer, /summary:\s*string \| string\[\]/);
+  assert.match(renderer, /skills:\s*Record<string, string\[\]>/);
+  assert.match(renderer, /Array\.isArray\(data\.summary\)/);
+  assert.doesNotMatch(renderer, /type ResumeData = typeof resumeKo;/);
+  assert.doesNotMatch(renderer, /white-space:\s*pre-line|<br\b/);
+});
+
+test("Resume renders each Korean summary paragraph semantically with single-string locale fallback", () => {
+  const expectedCounts = { ko: 3, en: 1, zh: 1 } as const;
+
+  for (const locale of ["ko", "en", "zh"] as const) {
+    const html = renderToStaticMarkup(
+      React.createElement(
+        LocaleProvider as React.ComponentType<{ locale: typeof locale }>,
+        { locale },
+        React.createElement(ResumeRenderer),
+      ),
+    );
+    const summarySection = html.match(
+      /<section class="resume-section" data-resume-section="summary">[\s\S]*?<\/section>/,
+    )?.[0];
+
+    assert.ok(summarySection, `${locale} summary section renders`);
+    assert.equal(
+      (summarySection.match(/<p class="resume-summary">/g) ?? []).length,
+      expectedCounts[locale],
+    );
+    assert.doesNotMatch(summarySection, /<br\b|\n\n/);
+  }
+});
+
+test("Korean i18n and spotlight prose avoid em-dash and middle-dot connectors", () => {
+  const spotlightCopy = spotlights.flatMap(({ title, workTitle, caption }) => [
+    title.ko,
+    workTitle.ko,
+    caption.ko,
+  ]);
+  const auditedCopy = [
+    messagesKo.home.hero.supporting,
+    ...messagesKo.home.timeline.eras.era1.items,
+    ...messagesKo.home.timeline.eras.era2.items,
+    ...messagesKo.home.timeline.eras.era3.items,
+    ...spotlightCopy,
+  ];
+
+  for (const copy of auditedCopy) assert.doesNotMatch(copy, /[—·]/);
 });
 
 test("approved Demo corrections and Prompt Enhancer stack boundaries are exact", () => {

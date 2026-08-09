@@ -7,7 +7,10 @@ import resumeZh from "@/data/resume.zh.json";
 import { getMessages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 
-type ResumeData = typeof resumeKo;
+type ResumeData = Omit<typeof resumeKo, "skills" | "summary"> & {
+  summary: string | string[];
+  skills: Record<string, string[]>;
+};
 
 const resumeByLocale: Record<Locale, ResumeData> = {
   ko: resumeKo,
@@ -23,6 +26,7 @@ export function ResumeRenderer() {
   const { locale } = useLocale();
   const data = resumeByLocale[locale] as ResumeData;
   const copy = getMessages(locale).resume.renderer;
+  const summaryParagraphs = Array.isArray(data.summary) ? data.summary : [data.summary];
 
   return (
     <article className="resume-document">
@@ -52,7 +56,9 @@ export function ResumeRenderer() {
 
       <section className="resume-section" data-resume-section="summary">
         <SectionTitle>{copy.summary}</SectionTitle>
-        <p className="resume-summary">{data.summary}</p>
+        {summaryParagraphs.map((paragraph, index) => (
+          <p key={`summary-${index}`} className="resume-summary">{paragraph}</p>
+        ))}
       </section>
 
       <section className="resume-section" data-resume-section="experience">
