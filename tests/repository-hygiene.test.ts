@@ -62,3 +62,25 @@ test("every asset-manifest path is referenced by production source", async () =>
     assert.ok(corpus.includes(assetPath), `unused manifest asset: ${assetPath}`);
   }
 });
+
+test("removed frontend packages are not direct dependencies", async () => {
+  const packageJson = JSON.parse(await readFile("package.json", "utf8")) as {
+    dependencies?: Record<string, string>;
+    devDependencies?: Record<string, string>;
+  };
+
+  for (const packageName of [
+    "@react-three/drei",
+    "@react-three/fiber",
+    "@swc/helpers",
+    "next-intl",
+    "three",
+    "@types/three",
+  ]) {
+    assert.equal(
+      packageJson.dependencies?.[packageName] ?? packageJson.devDependencies?.[packageName],
+      undefined,
+      `${packageName} should not remain a direct dependency`,
+    );
+  }
+});
