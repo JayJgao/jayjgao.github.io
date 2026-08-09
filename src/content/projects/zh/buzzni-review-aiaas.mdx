@@ -1,0 +1,33 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">经验与反思</p>
+  <h3 className="highlight-callout__title">比起最强的模型，更需要适合其职责的模型</h3>
+  <div className="highlight-callout__body">
+    如果整条流程都依赖单一的最新模型，很容易只看到质量，忽略成本和运营复杂度。这让我认识到，模型选型本身就是产品设计的一部分。
+  </div>
+  <ul className="highlight-callout__list">
+    <li>先明确每个处理环节对质量、成本和速度的要求，才能选对模型。</li>
+    <li>不能只看公开基准和文档，还要用真实产品负载验证性能是否够用。</li>
+    <li>更换模型还不够。提示词和处理步骤也要一起简化，才能同时降低成本和运营复杂度。</li>
+  </ul>
+</div>
+
+## 问题
+不同客户采用不同的评论数据采集规范，带来了较高的运营成本；摘要流水线的 LLM API 调用成本也较高。
+
+## 方法
+我们把 EP（Engine Paper）规范和 API Schema 固定为通用契约，并重新设计提示词结构，优先提高成本效益。
+
+## 执行
+- 定义评论和商品数据的通用 EP 格式，并编写客户接入指南
+- 根据客户的使用场景重新梳理 API Schema，简化运营规则
+- 将摘要工作负载从以 GPT-4o 为主转为以 4o-mini 为主
+- 把包含 2 条提示词的处理链路合并为 1 条，进一步降低 token 成本
+
+![电商评论分析 AIaaS 商品与评论摘要界面](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-02.webp)
+
+![电商评论分析 AIaaS 界面](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp)
+
+## 结果
+- 已向 2 家客户完成交付（현대홈쇼핑、쇼핑엔티）
+- 将原有基于 GPT-4o 的摘要迁移到 4o-mini，优化成本结构
+- 把请求步骤缩减为单条提示词，同时降低运营复杂度和成本

@@ -1,0 +1,48 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">经验与反思</p>
+  <h3 className="highlight-callout__title">模型会过时，角色和契约会留下</h3>
+  <div className="highlight-callout__body">
+    这段经历让我意识到，产品工作流一旦过度贴合某个模型当下的能力，新一代模型出现后，原来的实现就可能变成工程债务。
+  </div>
+  <ul className="highlight-callout__list">
+    <li>Agent 和图节点应该按它们在产品中的实际职责来定义，而不是围绕某个模型的特定技巧来设计。</li>
+    <li>把编排与执行分开，并明确数据契约，能让模型替换和失败排查更简单。</li>
+    <li>短期 E2E 打通后暴露出的结构性局限，也为后来的方向调整提供了依据。</li>
+  </ul>
+</div>
+
+## CineV 亮点
+
+<div className="video-embed">
+  <iframe
+    src="https://www.youtube.com/embed/P1nohI-uHOI"
+    title="CineV Highlight"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
+
+## 问题
+
+从自然语言脚本到 Unreal 输出的链路存在明显瓶颈。模块间的契约又不够明确，实验失败的代价也很高。
+
+## 方法
+
+- 我们把编排层与执行层拆开，由 S2M 负责前者。
+- 明确模块间的输入输出 Schema，建立产品流水线。
+
+## 执行
+
+- 根据流水线失败日志，先梳理出三个瓶颈环节
+- 以 JSON Schema 为核心，重写 Scene、Action、Camera、Map 和 Character 契约
+- 设计 LLM 评估集和 E2E 检查清单，使其能够固定纳入运行流程
+- 参与基于 LangChain 和 LangGraph 的 Film Agent 编排层设计
+
+![S2M 镜头 03](/assets/images/projects/cinev/cinev-s2m-shot-03.webp)
+
+## 结果
+
+- 加入团队三个月内完成首次 LLM-to-Unreal E2E 集成
+- 将实验周期缩短约 50%
+- 梳理状态和上下文管理及模块间数据契约，为后续网页版 CineV 继承这些能力打下基础
+- 识别出以 3D 渲染为中心的流水线存在结构性局限，并将其作为后来方向调整的判断依据
