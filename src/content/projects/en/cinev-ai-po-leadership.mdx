@@ -1,0 +1,46 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <h3 className="highlight-callout__title">A good pivot means knowing what to keep and what to change</h3>
+  <div className="highlight-callout__body">
+    I learned to separate the problem from the assets when a technology shift invalidates an existing solution, rather than defend earlier investment.
+  </div>
+  <ul className="highlight-callout__list">
+    <li>Even if rendering loses its competitive edge, the state and context management capabilities built in 3D could still form the foundation of a new generative pipeline.</li>
+    <li>Comparing 120+ same-scene results turned one person's conviction into evidence the organization could discuss.</li>
+    <li>A change in direction only becomes strategy when it moves beyond documents and agreement into product integration and an official launch.</li>
+  </ul>
+</div>
+
+## Problem
+
+CineV was strong at keeping state consistent in 3D worlds and structuring scene context for LLMs. In 2026, however, video generation models improved rapidly in expressive range and physical consistency. Unreal-centered rendering no longer offered enough of an advantage to compensate for its limited expressive range.
+
+This was more than an engine replacement. We had to clear three years of accumulated legacy while carrying forward our state and context management assets. We also had to rebuild a product that external users had found difficult to access directly as a web product centered on image and video generation models.
+
+## Approach
+
+We decided to let image and video generation models handle rendering while carrying the state and context management capabilities built in 3D into the new product. Our hypothesis was that web-based 3D could act as controllable conditioning, helping complex conditions that were difficult to express through text alone carry through to the output more reliably.
+
+To give the organization evidence it could use to make a decision, I worked with the AI development lead to compare text prompt and 3D conditioning results across 120+ same-scene cases. Five people reviewed the results together and reached consensus judgments. We used that evidence to agree on the direction of the product shift with the CPO, CTO, and technical organizations.
+
+## Execution
+
+### Direction and Validation
+
+From early February 2026, I began making the case for a product shift and building internal agreement. I worked with the CPO and CTO to define the product scope and priorities, and shared responsibility with the AI development lead for the hypothesis, experiment design, result interpretation, and communication across the organization. Development began on March 16, and web-based CineV officially launched on July 10.
+
+### Product Integration
+
+I redefined the user journey from logline input through script, assets, storyboard, video generation, cut editing, and final Export. Along the way, I identified context-bundle assembly and inconsistencies between generated clips as major sources of friction. I then prototyped Prompt Enhancer, Voice Adaptor, and Reverse Storyboard. After internal creators completed a qualitative evaluation, I handed the three features and their validation results to the development organization, which integrated them into the product.
+
+### Technology and Organization
+
+I tracked new models and technologies through reliable official announcements, assessed whether the existing product API could accommodate them or whether they needed a separate implementation, and shared those assessments with the web and AI teams. Through external model routing, we integrated 30+ models across 7+ areas into the product. A separate Enablement project gave the organization a basis for assessing and validating new technologies directly.
+
+## Results
+
+- **WEB CINEV LAUNCH**: We transitioned a product centered on three years of legacy into a generative AI-based web product and officially launched it on July 10, 2026.
+- **3 EXPERIMENTAL FEATURES**: We handed Prompt Enhancer, Voice Adaptor, and Reverse Storyboard to the development organization with their validation results, and the three features were integrated into the product.
+- **7+ AREAS, 30+ MODELS**: We introduced an external model routing system and integrated 30+ models across 7+ areas, including R2V, I2V, I2I, TTS, Music Generation, Upscaler, and 3D Reconstruction.
+
+[View Live Product](https://cinev.com/)
