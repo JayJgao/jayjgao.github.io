@@ -2,8 +2,8 @@
   {
     "slug": "cinev-s2m",
     "era": 3,
-    "featured": true,
-    "showcaseOrder": 1,
+    "featured": false,
+    "showcaseOrder": null,
     "company": "Cinamon",
     "role": "AI Tech PO",
     "contribution": 50,
@@ -24,8 +24,8 @@
   {
     "slug": "cinev-moai",
     "era": 3,
-    "featured": true,
-    "showcaseOrder": 2,
+    "featured": false,
+    "showcaseOrder": null,
     "company": "Cinamon",
     "role": "AI Tech PO",
     "contribution": 50,
@@ -159,45 +159,41 @@
   {
     "slug": "cinev-ai-po-leadership",
     "era": 3,
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 1,
     "company": "Cinamon",
-    "role": "AI Tech PO",
-    "contribution": 100,
+    "role": "AI Tech Product Owner",
+    "contribution": 60,
     "tags": [
-      "System Integration",
-      "Architecture",
-      "AI Leadership"
+      "Product Strategy",
+      "Hypothesis Validation",
+      "Generative AI"
     ],
-    "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-    "primaryMetric": "3-WAY SPEC STANDARDIZED",
-    "demoUrl": null,
+    "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
+    "primaryMetric": "PIVOT → WEB LAUNCH",
+    "demoUrl": "https://cinev.com/",
     "oneLiner": {
-      "ko": "Unreal·Web·LLM 3자 표준 통신 스펙 정의, 조직 AI Literacy 정렬 가속",
-      "en": "Defined 3-way Unreal-Web-LLM interface standards and accelerated AI literacy alignment",
-      "zh": "制定 Unreal/Web/LLM 三方通信标准并加速组织 AI 认知对齐"
+      "ko": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십"
     }
   },
   {
-    "slug": "cinev-a2p",
+    "slug": "cinev-ai-enablement",
     "era": 3,
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 2,
     "company": "Cinamon",
-    "role": "AI Tech PO",
-    "contribution": 50,
+    "role": "AI Tech Product Owner / Facilitator",
+    "contribution": 90,
     "tags": [
-      "A2P",
-      "Model Routing",
-      "API Design"
+      "AI Literacy",
+      "Product Discovery",
+      "Team Enablement"
     ],
-    "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
-    "primaryMetric": "WEEKLY → IMMEDIATE DEPLOYMENT",
+    "thumbnail": "/assets/images/projects/cinev/enablement/r2v-developer-checklist.webp",
+    "primaryMetric": "SHARED LANGUAGE → INDEPENDENT EXECUTION",
     "demoUrl": null,
     "oneLiner": {
-      "ko": "I2V·I2I·TTS·Music Gen 통합 라우팅 설계로 외부 모델 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축",
-      "en": "Unified I2V, I2I, TTS, and Music Gen routing to reduce model integration cycles from weekly to near-immediate deployment",
-      "zh": "通过统一 I2V、I2I、TTS、Music Gen 路由，将外部模型接入周期从按周缩短到接近即时部署"
+      "ko": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트"
     }
   },
   {

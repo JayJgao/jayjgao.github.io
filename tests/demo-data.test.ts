@@ -8,7 +8,6 @@ import type { Demo } from "../src/types/demo";
 
 const expectedSlugs = [
   "prompt-enhancer",
-  "prompt-enhance-skills",
   "voice-adaptor",
   "reverse-storyboard",
   "reframer",
@@ -20,7 +19,6 @@ const expectedSlugs = [
 
 const expectedKinds = [
   "service",
-  "skill",
   "prototype",
   "prototype",
   "prototype",
@@ -32,7 +30,6 @@ const expectedKinds = [
 
 const expectedVideoIds = [
   "NLleH-4c5HY",
-  null,
   "UL02NA57TGw",
   "IiRKOHz8fxg",
   "5oJkxE2Slh0",
@@ -57,16 +54,6 @@ const expectedCoreCopy = [
       "FastAPI Gateway의 Prompt Transform 기능으로 구현되어 API 문서, Gradio 데모, 자동화 테스트가 함께 반영된 상태",
   },
   {
-    name: "Prompt Enhance Skills",
-    summary: "한국어로 작성된 모호한 이미지·영상 생성 요청을 모델별 영어 프롬프트로 정제하는 스킬 묶음",
-    observation:
-      "이미지와 비디오 생성 모델은 같은 의도라도 프롬프트를 어떻게 쓰느냐에 따라 결과 편차가 크고, 그 노하우가 개인에게만 쌓여 있었다.",
-    problem: "팀원마다 결과 품질이 달라지고, 잘 쓰는 사람의 감각이 조직에 전파되지 않는다.",
-    hypothesis:
-      "프롬프트 작성 노하우를 스킬과 참조 컨텍스트로 구조화해 배포하면, 막 쓴 문장도 모델이 해석하기 좋은 프롬프트로 끌어올릴 수 있다.",
-    outcome: "스킬 반응 검증 후 제품용 API 구성에 반영",
-  },
-  {
     name: "Voice Adaptor",
     summary:
       "완성된 생성형 MP4의 음성을 화자별 클립으로 분해하고, 동일한 저장 음성의 TTS·음성 변환 후보를 검토해 선택된 오디오로 다시 구성하는 도구",
@@ -76,7 +63,8 @@ const expectedCoreCopy = [
       "동일한 캐릭터의 목소리가 컷마다 달라지면 캐릭터 정체성과 영상의 연속성이 무너지고 후반 작업 비용이 커진다.",
     hypothesis:
       "원본 오디오에서 화자를 분리하고 동일한 TTS 음성으로 다시 구성하면 여러 클립에 걸쳐 목소리의 일관성을 높일 수 있다.",
-    outcome: "프로토타입을 토대로 내부 테스트 진행 후 제품에 탑재(엔지니어에게 이관)",
+    outcome:
+      "음성과 배경음 분리 기능을 제품에 통합했습니다. 기존 TTS 기능은 유지했으며, 화자별 후보 생성과 검토 흐름은 프로토타입 검증 범위로 남았습니다.",
   },
   {
     name: "Reverse Storyboard",
@@ -86,7 +74,7 @@ const expectedCoreCopy = [
     problem:
       "이렇게 생성된 이미지는 샷 간 연속성과 다양한 구도가 필요한 스토리보드나 콘티에 곧바로 활용하기 어렵다.",
     hypothesis:
-      "먼저 저품질 비디오 모델로 시간적 연속성을 가진 시퀀스를 생성한 뒤 이를 프레임 단위로 펼치면, 스토리보드에 더 적합한 연속 장면을 얻을 수 있다.",
+      "먼저 저사양 비디오 모델로 시간적 연속성을 가진 시퀀스를 생성한 뒤 이를 프레임 단위로 펼치면, 스토리보드에 더 적합한 연속 장면을 얻을 수 있다.",
     outcome: "프로토타입으로 내부 테스트 진행 후 제품 탑재(엔지니어에게 이관)",
   },
   {
@@ -120,7 +108,7 @@ const expectedCoreCopy = [
       "서로 다른 생성 영상 클립을 하나의 타임라인에 배치하면 클립마다 색감과 컬러 톤이 달라 보인다.",
     problem: "이 차이가 컷 사이의 시각적 연속성을 해치고 반복적인 수동 색보정을 요구한다.",
     hypothesis:
-      "하나의 클립을 레퍼런스로 선택하고 LUT와 유사한 방식으로 나머지 클립의 컬러 톤을 자동 보정하면 전체 영상의 일관성을 높일 수 있다.",
+      "하나의 클립을 레퍼런스로 선택하고 LUT 기반 방식으로 나머지 클립의 컬러 톤을 자동 보정하면 전체 영상의 일관성을 높일 수 있다.",
     outcome: "사내 검증용 MVP",
   },
   {
@@ -139,7 +127,7 @@ const expectedCoreCopy = [
     summary:
       "스크립트 파일을 음악 생성 프롬프트로 정제하고, 두 음악 API가 만든 MP3를 Slack에서 들어보게 한 내부 PoC",
     observation:
-      "짧은 AI 클립을 만들 때 사용자들은 빈약한 스토리성이나 부족한 정합성을 가리기 위해 BGM을 찾는다.",
+      "짧은 AI 클립에서는 장면의 흐름과 정서를 연결하기 위해 영상에 어울리는 BGM을 별도로 탐색해야 했습니다.",
     problem:
       "그런데 BGM을 구하려면 영상에 어울리는 음악이 무엇인지 먼저 정의하고 음악 생성용 프롬프트를 따로 작성해야 한다.",
     hypothesis:
@@ -161,7 +149,6 @@ const expectedTopLevelKeys = [
   "outcome",
   "problem",
   "productized",
-  "relatedDemo",
   "slug",
   "stack",
   "summary",
@@ -180,20 +167,16 @@ function assertLocalizedText(value: unknown, context: string): asserts value is 
     assert.equal(typeof value[locale], "string", `${context}.${locale} must be text`);
     assert.ok((value[locale] as string).trim().length > 0, `${context}.${locale} must not be blank`);
   }
-
-  assert.equal(value.en, value.ko, `${context} Phase 1 en copy must equal Korean`);
-  assert.equal(value.zh, value.ko, `${context} Phase 1 zh copy must equal Korean`);
 }
 
-test("demos own the exact ordered schema, product states, video IDs, and related pair", () => {
+test("demos own the exact ordered schema, product states, and video IDs", () => {
   const demos = demosJson as unknown as Demo[];
-  assert.equal(demos.length, 9);
+  assert.equal(demos.length, 8);
   assert.deepEqual(demos.map(({ slug }) => slug), expectedSlugs);
-  assert.equal(new Set(demos.map(({ slug }) => slug)).size, 9);
-  assert.deepEqual(demos.map(({ order }) => order), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  assert.equal(new Set(demos.map(({ slug }) => slug)).size, 8);
+  assert.deepEqual(demos.map(({ order }) => order), [1, 2, 3, 4, 5, 6, 7, 8]);
   assert.deepEqual(demos.map(({ kind }) => kind), expectedKinds);
   assert.deepEqual(demos.map(({ productized }) => productized), [
-    true,
     true,
     true,
     true,
@@ -213,12 +196,11 @@ test("demos own the exact ordered schema, product states, video IDs, and related
     });
   }
 
-  assert.equal(demos[0].relatedDemo, "prompt-enhance-skills");
-  assert.equal(demos[1].relatedDemo, "prompt-enhancer");
-  assert.ok(demos.slice(2).every(({ relatedDemo }) => relatedDemo === null));
+  assert.ok(demos.every((demo) => !Object.hasOwn(demo, "relatedDemo")));
+  assert.ok(demos.every(({ kind }) => kind !== "skill"));
 });
 
-test("all localized demo copy is recursively complete and Korean-identical for Phase 1", () => {
+test("all localized demo copy is recursively complete", () => {
   const demos = demosJson as unknown as Demo[];
 
   for (const demo of demos) {
@@ -258,17 +240,12 @@ test("all localized demo copy is recursively complete and Korean-identical for P
 
 test("core demo copy maps to the canonical README sections", () => {
   const demos = demosJson as unknown as Demo[];
+  const byName = new Map(demos.map((demo) => [demo.name, demo]));
 
-  demos.forEach((demo, index) => {
-    const expected = expectedCoreCopy[index];
-    assert.equal(demo.name, expected.name, `${demo.slug}.name`);
-    for (const field of [
-      "summary",
-      "observation",
-      "problem",
-      "hypothesis",
-      "outcome",
-    ] as const) {
+  expectedCoreCopy.forEach((expected) => {
+    const demo = byName.get(expected.name);
+    assert.ok(demo, `${expected.name} must exist`);
+    for (const field of ["summary", "observation", "problem", "hypothesis", "outcome"] as const) {
       assert.equal(demo[field].ko, expected[field], `${demo.slug}.${field}`);
     }
   });
@@ -310,7 +287,9 @@ test("canonical measurements, validation stacks, and no-external-model signals a
 });
 
 test("demo content excludes private implementation and distribution residue", () => {
-  const contentOnly = (demosJson as unknown as Demo[]).map(({ diagram, gallery, ...demo }) => demo);
+  const contentOnly = (demosJson as unknown as Demo[]).map((demo) =>
+    Object.fromEntries(Object.entries(demo).filter(([key]) => !["diagram", "gallery"].includes(key))),
+  );
   const serialized = JSON.stringify(contentOnly);
 
   assert.doesNotMatch(serialized, /https?:\/\//i);
@@ -329,7 +308,7 @@ test("demo content excludes private implementation and distribution residue", ()
 test("demo accessors expose canonical order and slug lookup", () => {
   assert.deepEqual(getAllDemoSlugs(), expectedSlugs);
   assert.deepEqual(getAllDemos().map(({ slug }) => slug), expectedSlugs);
-  assert.equal(getDemoBySlug("iro-matcher")?.order, 7);
+  assert.equal(getDemoBySlug("iro-matcher")?.order, 6);
   assert.equal(getDemoBySlug("missing-demo"), undefined);
 });
 

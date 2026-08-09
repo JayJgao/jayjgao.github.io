@@ -58,17 +58,17 @@
   {
     "slug": "cinev-ai-po-leadership",
     "title": {
-      "ko": "AI PO Integration Leadership",
-      "en": "AI PO Integration Leadership",
-      "zh": "AI PO 统合领导"
+      "ko": "AI PO Leadership",
+      "en": "AI PO Leadership",
+      "zh": "AI PO Leadership"
     }
   },
   {
-    "slug": "cinev-a2p",
+    "slug": "cinev-ai-enablement",
     "title": {
-      "ko": "CineV A2P — External Model Routing Integration",
-      "en": "CineV A2P — External Model Routing Integration",
-      "zh": "CineV A2P — 外部模型路由整合"
+      "ko": "AI Technology & Org Enablement",
+      "en": "AI Technology & Org Enablement",
+      "zh": "AI Technology & Org Enablement"
     }
   },
   {

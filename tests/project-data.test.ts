@@ -29,6 +29,10 @@ function assertLocalizedText(value: unknown, context: string): asserts value is 
 }
 
 function freezeProject(project: (typeof projects)[number]) {
+  const oneLiner = ["cinev-ai-po-leadership", "cinev-ai-enablement"].includes(project.slug)
+    ? { ko: project.oneLiner.ko }
+    : project.oneLiner;
+
   return {
     slug: project.slug,
     era: project.era,
@@ -41,7 +45,7 @@ function freezeProject(project: (typeof projects)[number]) {
     thumbnail: project.thumbnail,
     primaryMetric: project.primaryMetric,
     demoUrl: project.demoUrl ?? null,
-    oneLiner: project.oneLiner,
+    oneLiner,
   };
 }
 
@@ -67,7 +71,7 @@ const expectedEras = [
   },
 ] as const;
 
-const expectedTimelineItems: Record<Locale, Record<"era1" | "era2" | "era3", string[]>> = {
+const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> = {
   ko: {
     era1: [
       "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
@@ -77,11 +81,6 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2" | "era3", str
       "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
       "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
       "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
-    ],
-    era3: [
-      "Cinamon CineV S2M — LLM Agent to Unreal E2E 통합",
-      "Cinamon MOAI — 모션 AI 평가 플랫폼 구축",
-      "Chroma Awards — Sponsor Award Top 11 Finalist",
     ],
   },
   en: {
@@ -94,11 +93,6 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2" | "era3", str
       "BUZZNI — Launched Long→Short-form AI video editor and shopping assistant chatbot",
       "Dasan E&E — Integrated AI task development workflow for business efficiency and recovery support",
     ],
-    era3: [
-      "Cinamon CineV S2M — LLM Agent to Unreal E2E integration",
-      "Cinamon MOAI — Built Motion AI evaluation platform",
-      "Chroma Awards — Sponsor Award Top 11 Finalist",
-    ],
   },
   zh: {
     era1: [
@@ -110,13 +104,20 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2" | "era3", str
       "BUZZNI — 上线 Long→Short-form AI 视频编辑器与购物助手聊天机器人",
       "Dasan E&E — 整合 AI 课题开发流程，提升业务效率并支持经营恢复",
     ],
-    era3: [
-      "Cinamon CineV S2M — 完成 LLM Agent 到 Unreal 的 E2E 集成",
-      "Cinamon MOAI — 搭建 Motion AI 评测平台",
-      "Chroma Awards — Sponsor Award Top 11 Finalist",
-    ],
   },
 };
+
+const expectedEra3Ko = [
+  "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
+  "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
+  "Chroma Awards → Sponsor Award Top 11 Finalist",
+] as const;
+
+const expectedEra3Facts = [
+  ["Cinamon", "AI PO Leadership", "CineV", "3"],
+  ["Cinamon", "AI Technology & Org Enablement", "13", "Product Discovery"],
+  ["Chroma Awards", "Sponsor Award", "Top 11 Finalist"],
+] as const;
 
 const expectedSpotlights = [
   {
@@ -357,7 +358,18 @@ test("UI dictionaries keep only the all-project filter and localized timeline it
       const timelineEra: unknown = messages.home.timeline.eras[eraKey];
       assert.ok(isRecord(timelineEra));
       assert.deepEqual(Object.keys(timelineEra), ["items"]);
-      assert.deepEqual(timelineEra.items, expectedTimelineItems[locale][eraKey]);
+      if (eraKey !== "era3") {
+        assert.deepEqual(timelineEra.items, expectedTimelineItems[locale][eraKey]);
+      } else if (locale === "ko") {
+        assert.deepEqual(timelineEra.items, expectedEra3Ko);
+      } else {
+        assert.ok(Array.isArray(timelineEra.items));
+        assert.equal(timelineEra.items.length, expectedEra3Facts.length);
+        timelineEra.items.forEach((item, index) => {
+          assert.equal(typeof item, "string");
+          for (const fact of expectedEra3Facts[index]) assert.match(item, new RegExp(fact));
+        });
+      }
     }
   }
 });

@@ -29,7 +29,7 @@ type PortfolioJson = {
     [key: string]: unknown;
   };
   workingWithMe: {
-    principles: string[];
+    principles: Array<{ title: string; body: string }>;
     demosBridge: string;
   };
   [key: string]: unknown;
@@ -55,17 +55,17 @@ const expectedHero = {
   ko: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
     subheadline: "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
-    supporting: "6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
+    supporting: "7+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
   },
   en: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
     subheadline: "Building and scaling AI products\nfrom tabular ML to generative video.",
-    supporting: "6+ years leading AI product planning, launch, and scale across domains",
+    supporting: "7+ years leading AI product planning, launch, and scale across domains",
   },
   zh: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
     subheadline: "从表格机器学习到生成式视频\n持续打造并规模化 AI 产品。",
-    supporting: "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
+    supporting: "7+ 年 AI 产品从规划、发布到增长的全周期实战经验",
   },
 } as const;
 
@@ -87,7 +87,7 @@ test("hero copy preserves the old narrative under the exact new hierarchy", () =
   assert.deepEqual([...hierarchy].sort((a, b) => a - b), hierarchy);
 });
 
-test("productized preview accessor returns the first four records as deep copies", () => {
+test("productized preview accessor returns the exact three productized records as deep copies", () => {
   const getProductizedDemos = (
     demosModule as unknown as {
       getProductizedDemos?: () => ReturnType<typeof demosModule.getAllDemos>;
@@ -98,18 +98,17 @@ test("productized preview accessor returns the first four records as deep copies
   const first = getProductizedDemos!();
   assert.deepEqual(first.map(({ slug }) => slug), [
     "prompt-enhancer",
-    "prompt-enhance-skills",
     "voice-adaptor",
     "reverse-storyboard",
   ]);
-  assert.equal(first.length, 4);
+  assert.equal(first.length, 3);
   assert.ok(first.every(({ productized }) => productized));
 
   first[0].summary.ko = "mutated";
   assert.notEqual(getProductizedDemos!()[0].summary.ko, "mutated");
 });
 
-test("home Demos preview is a server-only compact four-card proof section", () => {
+test("home Demos preview is a server-only compact three-card proof section", () => {
   assert.ok(
     existsSync(new URL("src/components/home/DemosPreview.tsx", repoRoot)),
     "DemosPreview server component must exist",
@@ -127,7 +126,7 @@ test("home Demos preview is a server-only compact four-card proof section", () =
   assert.doesNotMatch(preview, /iframe|video|gallery|DemoVideo|DemoGallery/i);
   assert.ok(
     preview.indexOf("<DemoCard") < preview.indexOf("{homeCopy.viewAll}"),
-    "the all-Demos link follows the four compact cards",
+    "the all-Demos link follows the three compact cards",
   );
 
   const card = readRepoFile("src/components/demos/DemoCard.tsx");
@@ -168,30 +167,27 @@ test("localized Home uses the exact approved section order and markers", () => {
   assert.match(home, /description:\s*`\$\{copy\.headline\} \$\{copy\.subheadline\} \$\{copy\.supporting\}`/);
 });
 
-test("About data keeps two principles and replaces the third with the exact Demos bridge", () => {
+test("About data keeps the approved two-principle structure and Demos bridge", () => {
   const aboutNarratives = locales.map((locale) => readJson(`src/data/about.${locale}.json`));
   const messages = locales.map((locale) => readJson(`src/i18n/${locale}.json`));
   const expectedBridge = "프로토타입 검증 사례는 Demos에서 확인할 수 있습니다.";
-  const expectedPrinciples = {
-    ko: [
-      "시장과 제품에 대한 이해가 최우선입니다. 모호한 채로 실행하지 않습니다.",
-      "영역이 어디든 막힌 곳에 개입해 사이클을 돌립니다. 제품부터 영업·조직까지.",
-    ],
-    en: [
-      "I prioritize understanding market and product context first. I do not execute under ambiguity.",
-      "Wherever bottlenecks appear, I step in and move cycles forward, across product, sales, and team operations.",
-    ],
-    zh: [
-      "我优先对齐市场与产品理解，不在模糊状态下推进执行。",
-      "无论瓶颈出现在何处，我都会介入并推动循环，从产品到销售再到组织协作。",
-    ],
-  } as const;
+  const expectedKoreanPrinciples = [
+    {
+      title: "먼저 문제와 성공 기준을 선명하게 만듭니다.",
+      body: "제품의 인프라와 시스템, 시장을 구조화하고 C-level의 비전을 KPI, OKR, 제품 성공 기준으로 번역합니다. 직접 자사와 경쟁사 제품을 사용하며 아직 정의되지 않은 빈틈을 찾습니다.",
+    },
+    {
+      title: "문제의 성격에 맞는 검증 방식을 선택합니다.",
+      body: "코어 시스템과 맞물린 문제는 팀이 함께 풀 수 있는 화두로 만들고, 독립적으로 검증할 수 있는 사용자 마찰은 직접 프로토타이핑합니다. 결과가 가설을 지지하지 않으면 빠르게 멈추고, 증명된 과제에 실행을 집중합니다.",
+    },
+  ] as const;
 
-  for (const [index, narrative] of aboutNarratives.entries()) {
+  for (const narrative of aboutNarratives) {
     assert.equal(narrative.workingWithMe.principles.length, 2);
-    assert.deepEqual(narrative.workingWithMe.principles, expectedPrinciples[locales[index]]);
-    assert.equal(narrative.workingWithMe.demosBridge, expectedBridge);
+    assert.ok(narrative.workingWithMe.demosBridge.trim());
   }
+  assert.deepEqual(aboutNarratives[0].workingWithMe.principles, expectedKoreanPrinciples);
+  assert.equal(aboutNarratives[0].workingWithMe.demosBridge, expectedBridge);
   for (const dictionary of messages) {
     assert.equal(dictionary.about.demosCta, "View Demos");
     assert.equal(dictionary.home.demos.viewAll, "View All Demos");
