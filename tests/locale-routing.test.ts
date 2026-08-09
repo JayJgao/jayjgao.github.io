@@ -13,6 +13,11 @@ import {
   getPathWithoutLocale,
   normalizeSitePath,
 } from "../src/lib/routes";
+import {
+  getCanonicalProjectPath,
+  getLegacyProjectTarget,
+  LEGACY_PROJECT_REDIRECTS,
+} from "../src/lib/project-redirects";
 
 test("a supported stored locale takes precedence over browser languages", () => {
   assert.equal(selectPreferredLocale("zh", ["en-US", "ko-KR"]), "zh");
@@ -51,4 +56,34 @@ test("locale replacement preserves the complete non-locale suffix", () => {
 test("only a supported first path segment is removed as a locale", () => {
   assert.equal(getPathWithoutLocale("/fr/projects/"), "/fr/projects/");
   assert.equal(getPathWithoutLocale("/ko/about"), "/about/");
+});
+
+test("the retired A2P slug resolves only to the canonical AI PO Leadership project", () => {
+  assert.deepEqual(LEGACY_PROJECT_REDIRECTS, {
+    "cinev-a2p": "cinev-ai-po-leadership",
+  });
+  assert.equal(getLegacyProjectTarget("cinev-a2p"), "cinev-ai-po-leadership");
+  assert.equal(getLegacyProjectTarget("cinev-ai-enablement"), undefined);
+});
+
+test("the nonlocalized Project compatibility route includes aliases and targets canonical metadata", async () => {
+  const route = await import("../src/app/(redirect)/projects/[slug]/page");
+  const params = route.generateStaticParams();
+
+  assert.ok(params.some(({ slug }) => slug === "cinev-a2p"));
+  assert.ok(params.some(({ slug }) => slug === "cinev-ai-enablement"));
+  assert.equal(new Set(params.map(({ slug }) => slug)).size, params.length);
+
+  const metadata = await route.generateMetadata({
+    params: Promise.resolve({ slug: "cinev-a2p" }),
+  });
+  assert.equal(
+    metadata.alternates?.canonical,
+    "https://jayjgao.github.io/ko/projects/cinev-ai-po-leadership/",
+  );
+  assert.equal(getCanonicalProjectPath("cinev-a2p"), "/projects/cinev-ai-po-leadership/");
+  assert.equal(
+    getCanonicalProjectPath("cinev-ai-enablement"),
+    "/projects/cinev-ai-enablement/",
+  );
 });

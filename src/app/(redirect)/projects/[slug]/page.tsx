@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { LocaleRedirect } from "@/components/i18n/LocaleRedirect";
 import { createLegacyMetadata } from "@/lib/metadata";
+import { getCanonicalProjectPath, getLegacyProjectSlugs } from "@/lib/project-redirects";
 import { getAllProjectSlugs } from "@/lib/projects";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getAllProjectSlugs().map((slug) => ({ slug }));
+  return [...new Set([...getAllProjectSlugs(), ...getLegacyProjectSlugs()])].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -15,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  return createLegacyMetadata(`/projects/${slug}/`);
+  return createLegacyMetadata(getCanonicalProjectPath(slug));
 }
 
 export default async function LegacyProjectPage({
@@ -24,5 +25,5 @@ export default async function LegacyProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <LocaleRedirect path={`/projects/${slug}/`} />;
+  return <LocaleRedirect path={getCanonicalProjectPath(slug)} />;
 }

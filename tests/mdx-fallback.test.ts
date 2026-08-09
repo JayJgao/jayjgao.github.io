@@ -21,6 +21,8 @@ test("project MDX prefers a locale file and otherwise reports Korean fallback", 
 test("all projects have readable content for every generated locale route", async () => {
   const slugs = getAllProjectSlugs();
   assert.equal(slugs.length, 15);
+  assert.ok(slugs.includes("cinev-ai-enablement"));
+  assert.equal(slugs.includes("cinev-a2p"), false);
 
   for (const slug of slugs) {
     const korean = await readProjectMdx("ko", slug);
@@ -36,6 +38,18 @@ test("all projects have readable content for every generated locale route", asyn
       );
     }
   }
+});
+
+test("Korean canonical MDX exists only for current Project slugs, not the A2P alias", async () => {
+  const currentSlugs = getAllProjectSlugs();
+  assert.ok(currentSlugs.includes("cinev-ai-po-leadership"));
+  assert.ok(currentSlugs.includes("cinev-ai-enablement"));
+  assert.equal(currentSlugs.includes("cinev-a2p"), false);
+
+  await assert.rejects(
+    readProjectMdx("ko", "cinev-a2p"),
+    (error: NodeJS.ErrnoException) => error.code === "ENOENT",
+  );
 });
 
 test("a missing Korean canonical MDX propagates its filesystem error", async () => {

@@ -10,7 +10,7 @@
     {
       "slug": "cinev-s2m",
       "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
-      "shot": "/assets/images/projects/cinev/cinev-s2m-shot-01.webp",
+      "shot": "/assets/images/projects/cinev/cinev-s2m-shot-03.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/cinev/s2m"
     },
     {
@@ -33,8 +33,7 @@
     },
     {
       "slug": "buzzni-aiaas-biz",
-      "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+      "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
     },
     {
@@ -63,7 +62,7 @@
     },
     {
       "slug": "buzzni-branding-marketing",
-      "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
+      "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
       "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
       "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
     },
@@ -81,15 +80,15 @@
     },
     {
       "slug": "cinev-ai-po-leadership",
-      "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
+      "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
+      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
+      "rawSource": "approved Phase 3 public diagram"
     },
     {
-      "slug": "cinev-a2p",
-      "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
-      "shot": "/assets/images/projects/cinev/a2p-shot-01.png",
-      "rawSource": ".reference/notion-export/public-assets-raw/archive/aipo_tasks"
+      "slug": "cinev-ai-enablement",
+      "thumbnail": "/assets/images/projects/cinev/enablement/r2v-developer-checklist.webp",
+      "shot": "/assets/images/projects/cinev/enablement/r2v-user-purpose.webp",
+      "rawSource": "approved Phase 3 public evidence derivatives"
     },
     {
       "slug": "lunit-biomarker",

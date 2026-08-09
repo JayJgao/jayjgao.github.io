@@ -102,7 +102,7 @@
       "AIaaS",
       "Go-to-Market"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+    "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
     "primaryMetric": "MRR 10X",
     "demoUrl": null,
     "oneLiner": {
@@ -253,7 +253,7 @@
       "PR",
       "Content"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
     "primaryMetric": "IN-HOUSE BRANDING & PR",
     "demoUrl": null,
     "oneLiner": {
@@ -288,7 +288,7 @@
     "era": 1,
     "featured": false,
     "showcaseOrder": null,
-    "company": "Ailys (Solidware)",
+    "company": "Solidware",
     "role": "PMO / Product Marketing",
     "contribution": 100,
     "tags": [

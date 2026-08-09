@@ -287,6 +287,69 @@ test("required single-string project consumers use the canonical display title h
   assert.doesNotMatch(projectCardSource, /\.join\(" — "\)/);
 });
 
+test("BUZZNI AIaaS and branding media have distinct highlight and Execution roles", () => {
+  const aiaas = projects.find((project) => project.slug === "buzzni-aiaas-biz");
+  const branding = projects.find((project) => project.slug === "buzzni-branding-marketing");
+  assert.ok(aiaas);
+  assert.ok(branding);
+
+  assert.equal(aiaas.thumbnail, "/assets/images/projects/buzzni/aiaas-thumb.webp");
+  assert.equal(
+    branding.thumbnail,
+    "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+  );
+
+  const aiaasMdx = readFileSync(
+    new URL("../src/content/projects/ko/buzzni-aiaas-biz.mdx", import.meta.url),
+    "utf8",
+  );
+  const brandingMdx = readFileSync(
+    new URL("../src/content/projects/ko/buzzni-branding-marketing.mdx", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(aiaasMdx, /buzzni-aiaas-biz-thumb\.webp/);
+  assert.equal(
+    brandingMdx.match(/buzzni-branding-marketing-shot-02\.jpg/g)?.length,
+    1,
+    "the former branding highlight must appear once at the end of Execution",
+  );
+  const brandingExecution = brandingMdx.indexOf("## Execution");
+  const brandingEvidence = brandingMdx.indexOf("buzzni-branding-marketing-shot-02.jpg");
+  const brandingResults = brandingMdx.indexOf("## Results");
+  assert.ok(brandingExecution < brandingEvidence && brandingEvidence < brandingResults);
+
+  const assetManifest = readJson(dataUrl("asset-manifest.json"));
+  assert.ok(isRecord(assetManifest));
+  assert.ok(Array.isArray(assetManifest.projects));
+  const aiaasAssets = assetManifest.projects.find(
+    (entry) => isRecord(entry) && entry.slug === "buzzni-aiaas-biz",
+  );
+  const brandingAssets = assetManifest.projects.find(
+    (entry) => isRecord(entry) && entry.slug === "buzzni-branding-marketing",
+  );
+  assert.ok(isRecord(aiaasAssets));
+  assert.ok(isRecord(brandingAssets));
+  assert.equal(aiaasAssets.thumbnail, "/assets/images/projects/buzzni/aiaas-thumb.webp");
+  assert.equal(Object.hasOwn(aiaasAssets, "shot"), false);
+  assert.equal(
+    brandingAssets.thumbnail,
+    "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+  );
+  assert.equal(
+    brandingAssets.shot,
+    "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
+  );
+});
+
+test("Solidware Archive cards use the current company name consistently", () => {
+  for (const slug of ["solidware-automl", "solidware-product-marketing"]) {
+    const project = projects.find((candidate) => candidate.slug === slug);
+    assert.ok(project);
+    assert.equal(project.company, "Solidware");
+  }
+});
+
 test("every project era resolves through the canonical localized Era data", async () => {
   const erasPath = dataUrl("eras.json");
   const erasModulePath = new URL("../src/lib/eras.ts", import.meta.url);
