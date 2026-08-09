@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-02-17",
+  "updatedAt": "2026-08-10",
   "policy": {
     "naming": "lowercase-kebab-case",
-    "thumbnail": "1200x675 webp",
-    "shot": "max-1600 webp",
+    "thumbnail": "default 1200x675 webp; approved Phase 3 entries preserve canonical SVG or source-derived dimensions",
+    "shot": "default max-1600 webp; approved Phase 3 evidence derivatives preserve canonical source dimensions",
     "rawStorage": ".reference/notion-export/public-assets-raw"
   },
   "projects": [

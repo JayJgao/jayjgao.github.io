@@ -344,6 +344,21 @@ test("BUZZNI AIaaS and branding media have distinct highlight and Execution role
   );
 });
 
+test("asset policy distinguishes default derivatives from approved Phase 3 exceptions", () => {
+  const assetManifest = readJson(dataUrl("asset-manifest.json"));
+  assert.ok(isRecord(assetManifest));
+  assert.equal(assetManifest.updatedAt, "2026-08-10");
+  assert.ok(isRecord(assetManifest.policy));
+  assert.equal(
+    assetManifest.policy.thumbnail,
+    "default 1200x675 webp; approved Phase 3 entries preserve canonical SVG or source-derived dimensions",
+  );
+  assert.equal(
+    assetManifest.policy.shot,
+    "default max-1600 webp; approved Phase 3 evidence derivatives preserve canonical source dimensions",
+  );
+});
+
 test("Solidware Archive cards use the current company name consistently", () => {
   for (const slug of ["solidware-automl", "solidware-product-marketing"]) {
     const project = projects.find((candidate) => candidate.slug === slug);

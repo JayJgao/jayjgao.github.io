@@ -16,9 +16,10 @@
   - Staged(MDX 작성 완료, 비노출): 없음
   - Parked: `프롬프트 모음`, `팀 리드`, `숏폼AI User Manual`, `프로토타입 유저매뉴얼`, `정부지원과제 총괄`, `하나은행 On-site 프로젝트`, `시나리오`, `캐릭터 빌드`
 - 에셋 계약:
-  - 썸네일: `1200x675 WebP`
-  - 상세 샷: `max-1600 WebP`
+  - 썸네일 기본값: `1200x675 WebP`; 승인된 Phase 3 항목은 canonical SVG 또는 공개 원본에서 파생한 비율과 치수를 유지
+  - 상세 샷 기본값: `max-1600 WebP`; 승인된 Phase 3 증거 파생본은 canonical 원본 치수를 유지
   - 매핑 파일: `src/data/asset-manifest.json`
+  - manifest 갱신일: `2026-08-10`
   - raw 보관: `.reference/notion-export/public-assets-raw`
 
 ## 3. Notion Curated Mapping
@@ -53,7 +54,7 @@
 ## 4. Execution Board (Now/Next/Later)
 ### Completed
 - `B4-I18N-01`: 한국어 정본을 기준으로 영어·중국어 구조화 데이터와 Project MDX 재작성 완료
-- `B4-COPY-01`: Humanizer 승인본, fact audit, production 파일의 byte-level 일치 검증 완료
+- `B4-COPY-01`: Humanizer 승인본과 production target의 locale projection 단위 byte-level 일치 및 fact audit 완료
 - `B4-EXPORT-01`: 106 HTML / 84 localized / 45 Project detail / 24 Demo detail / 19 legacy exact inventory 검증 완료
 - `B4-QA-01`: ko/en/zh 핵심 페이지의 1440/1024/768/390px 브라우저 검수 완료
 
@@ -62,7 +63,6 @@
 
 ### Later
 - `B3-INTERACT-01`: Hero/Career 인터랙션(3D 포함) 성능 검증
-- `B4-I18N-01`: locale 라우팅 + 번역 리소스 정합성 점검
 - `B5-POLISH-01`: Lighthouse/SEO 접근성 자동 점검 파이프라인
 
 ## 5. Definition of Done
