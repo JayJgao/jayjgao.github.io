@@ -1,0 +1,48 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <h3 className="highlight-callout__title">Models age, but roles and contracts last</h3>
+  <div className="highlight-callout__body">
+    I learned that overfitting a product workflow to a specific model's current capabilities leaves engineering debt behind when the next generation of models arrives.
+  </div>
+  <ul className="highlight-callout__list">
+    <li>Define agents and graph nodes by the core role they play in the product, not by techniques tied to a particular model.</li>
+    <li>Separating orchestration from execution and making data contracts explicit makes it easier to replace models and diagnose failures.</li>
+    <li>Structural limits uncovered through a short-term E2E success can still provide evidence for a later change in direction.</li>
+  </ul>
+</div>
+
+## CineV Highlight
+
+<div className="video-embed">
+  <iframe
+    src="https://www.youtube.com/embed/P1nohI-uHOI"
+    title="CineV Highlight"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
+
+## Problem
+
+The path from a natural-language script to an Unreal output had major bottlenecks. Loose module contracts also made failed experiments costly.
+
+## Approach
+
+- We separated orchestration from execution. S2M owned the orchestration layer.
+- We finalized input and output schemas between modules to establish the product pipeline.
+
+## Execution
+
+- Prioritized the three bottleneck segments identified from pipeline failure logs
+- Rewrote the Scene, Action, Camera, Map, and Character contracts around JSON Schema
+- Designed the LLM evaluation set and E2E checklist as fixed parts of the operating loop
+- Participated in designing the Film Agent orchestration layer with LangChain and LangGraph
+
+![S2M shot 03](/assets/images/projects/cinev/cinev-s2m-shot-03.webp)
+
+## Results
+
+- The first LLM-to-Unreal E2E integration was completed within three months of joining
+- Reduced experiment lead time by approximately 50%
+- Established state and context management and inter-module data contracts as a foundation for the later web CineV
+- Identified the structural limits of the pipeline centered on 3D rendering and used them as evidence for a later change in direction

@@ -1,0 +1,33 @@
+<div className="highlight-callout">
+  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <h3 className="highlight-callout__title">The right model for the job matters more than the strongest one</h3>
+  <div className="highlight-callout__body">
+    Relying on the latest model for every part of the process makes it easy to overlook costs and operational complexity beyond quality. I learned that model choice is itself part of product design.
+  </div>
+  <ul className="highlight-callout__list">
+    <li>Define the quality, cost, and speed requirements for each processing stage before choosing a model.</li>
+    <li>Test the model against the actual product workload, not just public benchmarks and documentation, to confirm that its performance is sufficient.</li>
+    <li>Changing models is not enough. Simplifying the prompts and processing stages reduces both cost and operational complexity.</li>
+  </ul>
+</div>
+
+## Problem
+Each client used a different specification for collecting review data, which drove up operating costs. LLM API costs for the summarization pipeline were also high.
+
+## Approach
+We established the EP (Engine Paper) specification and API schema as a shared contract, then redesigned the prompt structure with cost efficiency as the priority.
+
+## Execution
+- Defined a shared EP format for review and product data and documented the client onboarding guide
+- Reworked the API schema around client usage scenarios to simplify operating policies
+- Shifted the summarization workload from primarily GPT-4o to primarily 4o-mini
+- Consolidated the 2-prompt processing path into 1 prompt to reduce token costs further
+
+![Product and review summary screen for E-commerce Review Analytics AIaaS](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-02.webp)
+
+![E-commerce Review Analytics AIaaS screen](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp)
+
+## Results
+- Completed delivery to 2 clients (현대홈쇼핑 and 쇼핑엔티)
+- Moved the existing summarization workload from primarily GPT-4o to primarily 4o-mini to optimize its cost structure
+- Consolidating the request flow into 1 prompt reduced both operating complexity and cost
