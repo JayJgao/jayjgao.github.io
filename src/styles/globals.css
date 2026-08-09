@@ -594,16 +594,11 @@ html[lang="zh"] .hero-display {
   text-transform: uppercase;
 }
 
-.hero-actions,
 .resume-downloads,
 .spotlight-controls {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-}
-
-.hero-actions {
-  margin-top: 1rem;
 }
 
 .hero-portrait {

@@ -121,6 +121,22 @@ test("Home is an evidence-first sequence with text-only project and Demo indexes
   assert.doesNotMatch(timeline, /eraColors|rounded-full/);
 });
 
+test("Home Hero delegates navigation without Portfolio or Resume shortcut CTAs", () => {
+  const hero = readRepoFile("src/components/home/HeroSection.tsx");
+  const css = readRepoFile("src/styles/globals.css");
+  const localeMessages = ["ko", "en", "zh"].map((locale) =>
+    JSON.parse(readRepoFile(`src/i18n/${locale}.json`)),
+  );
+
+  assert.doesNotMatch(hero, /hero-actions|ctaPortfolio|ctaResume/);
+  assert.doesNotMatch(hero, /from "next\/link"|getLocalizedPath/);
+  assert.doesNotMatch(css, /\.hero-actions/);
+  for (const messages of localeMessages) {
+    assert.equal("ctaPortfolio" in messages.home.hero, false);
+    assert.equal("ctaResume" in messages.home.hero, false);
+  }
+});
+
 test("Projects separate white Featured cards from one-line Archive rows and retain detail media", () => {
   const explorer = readRepoFile("src/components/projects/ProjectsExplorer.tsx");
   const card = readRepoFile("src/components/projects/ProjectCard.tsx");

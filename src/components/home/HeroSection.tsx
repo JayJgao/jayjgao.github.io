@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import resumeEn from "@/data/resume.en.json";
 import resumeKo from "@/data/resume.ko.json";
 import resumeZh from "@/data/resume.zh.json";
 import { getMessages } from "@/lib/i18n";
-import { getLocalizedPath } from "@/lib/routes";
 
 const locationByLocale = {
   ko: resumeKo.meta.location,
@@ -47,15 +45,6 @@ export function HeroSection() {
                 <p className="hero-stat__label">{stat.label}</p>
               </div>
             ))}
-          </div>
-
-          <div className="hero-actions">
-            <Link href={getLocalizedPath(locale, "/projects/")} className="btn-primary">
-              {copy.ctaPortfolio}
-            </Link>
-            <Link href={getLocalizedPath(locale, "/resume/")} className="btn-secondary">
-              {copy.ctaResume}
-            </Link>
           </div>
         </div>
 
