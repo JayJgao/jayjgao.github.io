@@ -6,7 +6,7 @@
     "title": {
       "ko": "Chroma Awards Top11 Finalist\nHappyend",
       "en": "Chroma Awards Top 11 Finalist\nHappyend",
-      "zh": "Chroma Awards Top11 Finalist\nHappyend"
+      "zh": "Chroma Awards Top 11 入围作品\nHappyend"
     },
     "workTitle": {
       "ko": "Happyend",
@@ -16,7 +16,7 @@
     "caption": {
       "ko": "Sponsor Award Top 11 Finalist 작품",
       "en": "Sponsor Award Top 11 Finalist entry",
-      "zh": "Sponsor Award Top 11 Finalist 入围作品"
+      "zh": "Sponsor Award Top 11 入围作品"
     },
     "poster": "/assets/images/projects/chroma/chroma-happyend-thumb.webp"
   },
@@ -37,7 +37,7 @@
     "caption": {
       "ko": "Chroma Awards Romance 트랙 본선 진출작",
       "en": "Finalist entry in the Chroma Awards Romance track",
-      "zh": "Chroma Awards Romance 赛道入围作品"
+      "zh": "Chroma Awards Romance 赛道决赛入围作品"
     },
     "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
   },
@@ -58,7 +58,7 @@
     "caption": {
       "ko": "WAIFF 2026 광고부문 출품작",
       "en": "Submission to the WAIFF 2026 ad category",
-      "zh": "WAIFF 2026 广告单元参赛作品"
+      "zh": "WAIFF 2026 广告类别投稿作品"
     },
     "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
   },
@@ -79,7 +79,7 @@
     "caption": {
       "ko": "2025APEC AI 영상 공모전 출품작",
       "en": "Submission to the 2025 APEC AI Video Contest",
-      "zh": "2025 APEC AI 视频大赛参赛作品"
+      "zh": "2025 APEC AI 视频大赛投稿作品"
     },
     "poster": "/assets/images/projects/chroma/chroma-apec-thumb.webp"
   }

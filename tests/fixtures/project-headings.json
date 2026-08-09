@@ -4,7 +4,7 @@
     "title": {
       "ko": "CineV S2M — LLM Agent → Unreal Pipeline",
       "en": "CineV S2M — LLM Agent → Unreal Pipeline",
-      "zh": "CineV S2M — LLM Agent 到 Unreal"
+      "zh": "CineV S2M — LLM Agent → Unreal 管线"
     }
   },
   {
@@ -12,7 +12,7 @@
     "title": {
       "ko": "CineV MOAI — Motion AI 평가 플랫폼",
       "en": "CineV MOAI — Motion AI Evaluation Platform",
-      "zh": "CineV MOAI — Motion AI 评测平台"
+      "zh": "CineV MOAI — Motion AI 评估平台"
     }
   },
   {
@@ -20,7 +20,7 @@
     "title": {
       "ko": "Chroma Awards — Fully AI-Generated Short Film",
       "en": "Chroma Awards — Fully AI-Generated Short Film",
-      "zh": "Chroma Awards — 全AI生成短片"
+      "zh": "Chroma Awards — 全 AI 生成短片"
     }
   },
   {
@@ -36,7 +36,7 @@
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
       "en": "Building and Leading an AIaaS Business Unit",
-      "zh": "AIaaS 事业部搭建与领导"
+      "zh": "组建并带领 AIaaS 事业部"
     }
   },
   {
@@ -44,7 +44,7 @@
     "title": {
       "ko": "핀테크 MLaaS — 일본 엔터프라이즈",
       "en": "Fintech MLaaS — Japanese Enterprise Market",
-      "zh": "金融 MLaaS — 日本企业市场"
+      "zh": "金融科技 MLaaS — 日本企业业务"
     }
   },
   {
@@ -100,7 +100,7 @@
     "title": {
       "ko": "AutoML 모듈 신규 개발",
       "en": "New AutoML Module Development",
-      "zh": "AutoML 模块开发"
+      "zh": "AutoML 新模块开发"
     }
   },
   {
@@ -116,7 +116,7 @@
     "title": {
       "ko": "비전 바이오마커 분석 SW 기획",
       "en": "Product Planning for Vision Biomarker Analysis Software",
-      "zh": "视觉生物标志物分析软件"
+      "zh": "视觉生物标志物分析软件规划"
     }
   }
 ]

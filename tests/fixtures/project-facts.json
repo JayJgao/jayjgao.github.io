@@ -18,7 +18,7 @@
     "oneLiner": {
       "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
       "en": "Within 3 months of joining, completed the first LLM-to-Unreal E2E integration and cut experiment lead time by 50%",
-      "zh": "入职3个月完成首个 LLM→Unreal 端到端集成，并将实验周期缩短50%"
+      "zh": "入职3个月内完成首个 LLM-to-Unreal E2E 集成，并将实验周期缩短50%"
     }
   },
   {
@@ -40,7 +40,7 @@
     "oneLiner": {
       "ko": "바이브코딩으로 구축, 5개월간 유저스터디 6회 + 모델 2건 통합",
       "en": "Built through vibe coding; ran 6 user studies and integrated 2 models over 5 months",
-      "zh": "从零搭建评测平台，5个月完成6次用户研究并集成2个模型"
+      "zh": "用 Vibe Coding 搭建平台，5个月完成6次用户研究和2个模型集成"
     }
   },
   {
@@ -62,7 +62,7 @@
     "oneLiner": {
       "ko": "세계 최대 AI Film Competition Sponsor Award Top 11 Finalist",
       "en": "Sponsor Award Top 11 Finalist at the world's largest AI Film Competition",
-      "zh": "全球最大 AI 电影赛事赞助奖 Top 11 入围"
+      "zh": "获选全球最大 AI Film Competition 的 Sponsor Award Top 11 Finalist"
     }
   },
   {
@@ -85,7 +85,7 @@
     "oneLiner": {
       "ko": "Long→Short-form AI 비디오 편집기, 0→1 기획·출시·운영",
       "en": "Took a Long→Short-form AI video editor from 0→1 through planning, launch, and operations",
-      "zh": "AI 视频编辑器，从0到1完成规划、上线与运营"
+      "zh": "Long→Short-form AI 视频编辑器，从0→1完成策划、上线和运营"
     }
   },
   {
@@ -108,7 +108,7 @@
     "oneLiner": {
       "ko": "제로에서 20명 팀 빌딩, AIaaS 사업부 리딩 — MRR 500만→5,200만 원 (10x 성장)",
       "en": "Built the AIaaS team from 0→20 people, led the business unit, and grew MRR from ₩5 million to ₩52 million, a 10x increase",
-      "zh": "从零搭建20人团队，带领 AIaaS 事业部实现 MRR 10倍增长"
+      "zh": "从零组建20人团队并带领 AIaaS 事业部，MRR 500万→5,200万韩元，实现10x增长"
     }
   },
   {
@@ -131,7 +131,7 @@
     "oneLiner": {
       "ko": "Mitsubishi, AEON 등 13개 클라이언트 확보, 연매출 100% 신장",
       "en": "Secured 13 Japanese enterprise clients, including Mitsubishi and AEON; annual revenue grew by 100%",
-      "zh": "获得13家企业客户（含三菱、AEON），年营收同比增长100%"
+      "zh": "拿下 Mitsubishi、AEON 等13家日本企业客户，年营收增长100%"
     }
   },
   {
@@ -153,7 +153,7 @@
     "oneLiner": {
       "ko": "상품 탐색과 구매 전환을 돕는 대화형 쇼핑 경험 설계",
       "en": "Designed a conversational shopping experience to help users find products and complete purchases",
-      "zh": "设计对话式购物流程，提升商品发现与转化"
+      "zh": "设计对话式购物体验，帮助用户发现商品并提升购买转化"
     }
   },
   {
@@ -215,7 +215,7 @@
     "oneLiner": {
       "ko": "2개 고객사 납품 + GPT-4o 워크로드를 4o-mini로 최적화해 비용 절감",
       "en": "Delivered the service to 2 clients and cut costs by moving GPT-4o workloads to 4o-mini",
-      "zh": "交付2家客户，并将 GPT-4o 工作负载优化到 4o-mini 以降低成本"
+      "zh": "向2家客户交付，并将 GPT-4o 工作负载优化为 4o-mini，降低成本"
     }
   },
   {
@@ -237,7 +237,7 @@
     "oneLiner": {
       "ko": "3개 고객사 검색 서비스 납품 + 7개 기업 PoC로 확장 파이프라인 구축",
       "en": "Delivered search services to 3 clients and built an expansion pipeline through 7 enterprise PoCs",
-      "zh": "为3家客户交付搜索服务，并完成7家企业 PoC"
+      "zh": "向3家客户交付搜索服务，并以7家企业 PoC 搭建业务拓展管线"
     }
   },
   {
@@ -259,7 +259,7 @@
     "oneLiner": {
       "ko": "홍보 콘텐츠 제작, 외부 강연/부스 운영, 보도자료 운영까지 End-to-End 리드",
       "en": "Led End-to-End product promotion across content creation, external talks, booth operations, and press releases",
-      "zh": "端到端负责内容、演讲、展会展台与媒体宣传"
+      "zh": "End-to-End 主导宣传内容制作、外部演讲与展位运营，以及新闻稿管理"
     }
   },
   {
@@ -280,7 +280,7 @@
     "oneLiner": {
       "ko": "금융 도메인용 AutoML 신규 모듈 기획 및 출시",
       "en": "Planned and launched a new AutoML module for financial services",
-      "zh": "为金融场景规划并上线 AutoML 新模块"
+      "zh": "规划并上线面向金融领域的 AutoML 新模块"
     }
   },
   {
@@ -302,7 +302,7 @@
     "oneLiner": {
       "ko": "별도 조직 없이 제품 마케팅 체계 구축, 컨택포인트 256% 증가·신규 고객 13개 확보",
       "en": "Built product marketing operations without a dedicated team, increased touchpoints by 256%, and won 13 new clients",
-      "zh": "在无独立团队情况下搭建营销体系：触点 +256%，新增13家客户"
+      "zh": "在没有独立团队的情况下搭建产品营销体系，触点增长256%，新增13家客户"
     }
   },
   {
@@ -324,7 +324,7 @@
     "oneLiner": {
       "ko": "규제 요건 기반 의료 AI 소프트웨어 초기 PRD 수립",
       "en": "Defined the initial PRD for medical AI software based on regulatory requirements",
-      "zh": "基于监管要求制定医疗AI软件初期 PRD"
+      "zh": "基于监管要求制定医疗 AI 软件的初始 PRD"
     }
   }
 ]

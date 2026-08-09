@@ -162,12 +162,12 @@ const expectedPromptPrelude = {
     {
       ko: "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
       en: "Prompt Enhancer began by structuring one person's image and video prompting expertise into the Organization Skills nanotape and seehorse. In qualitative evaluations, internal creators reached satisfactory results faster with the Skills. The product flow still caused friction when users spent credits on repeated generations or switched to an external LLM.",
-      zh: "Prompt Enhancer는 개인에게 축적된 이미지와 비디오 프롬프트 작성 노하우를 nanotape와 seehorse라는 Organization Skill로 구조화하는 데서 시작했습니다. 내부 크리에이터 정성 평가에서 Skill을 사용할 때 더 빠르게 만족스러운 결과에 도달하는 반면, 제품 안에서는 반복 생성으로 크레딧을 소진하거나 외부 LLM으로 이탈하는 마찰이 확인되었습니다.",
+      zh: "Prompt Enhancer 最初把个人积累的图像和视频提示词经验整理成名为 nanotape 和 seehorse 的 Organization Skill。内部创作者定性评估显示，使用 Skill 能更快得到满意结果。与此同时，产品内也发现了反复生成会消耗额度、用户转向外部 LLM 等摩擦。",
     },
     {
       ko: "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
       en: "That evidence informed product API policies for camera, expression, lighting, reference image roles, and model-specific prompting. The Organization Skill remains an internal tool. In this public portfolio, it appears as the validation step that preceded Prompt Enhancer productization, not as a standalone product.",
-      zh: "이를 바탕으로 카메라, 표정, 조명, 참조 이미지 역할, 모델별 프롬프트 규칙을 제품 API의 정책으로 옮겼습니다. Organization Skill은 현재도 내부 도구로 유지되지만, 공개 포트폴리오에서는 독립 제품이 아니라 Prompt Enhancer 제품화의 선행 검증 단계로 다룹니다.",
+      zh: "根据这些结果，相机、表情、灯光、引用图像角色和各模型提示词规则被纳入产品 API 策略。Organization Skill 至今仍作为内部工具保留，但在公开作品集中，它不作为独立产品展示，而被视为 Prompt Enhancer API 产品化之前的验证阶段。",
     },
   ],
 };

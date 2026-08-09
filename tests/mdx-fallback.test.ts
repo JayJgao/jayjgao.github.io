@@ -15,7 +15,7 @@ function readRepoFile(path: string): string {
 const fallbackNotices = {
   ko: "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.",
   en: "Detailed content for this project is currently available in the original Korean.",
-  zh: "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.",
+  zh: "该项目的详细内容目前以韩文原文提供。",
 } as const;
 
 function assertFallbackNoticeContract(detail: string): void {

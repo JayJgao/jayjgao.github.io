@@ -321,7 +321,7 @@ test("ships only the five approved Enablement evidence images with fixed bytes a
   assert.equal(hashes.size, expectedEnablementImages.length, "evidence images must be distinct");
 });
 
-test("gallery entries preserve exact order, dimensions, canonical Korean copy, and approved English accessibility copy", () => {
+test("gallery entries preserve exact order, dimensions, and approved localized accessibility copy", () => {
   const demos = demosJson as unknown as Demo[];
   const expectedGallery = {
     "prompt-enhancer": [
@@ -386,6 +386,48 @@ test("gallery entries preserve exact order, dimensions, canonical Korean copy, a
       ],
     ],
   } as const;
+  const expectedChineseCopy = {
+    "prompt-enhancer": [
+      [
+        "基于提示词和引用图像编排多个故事板镜头的产品界面",
+        "应用 Prompt Enhancer 的故事板编辑界面",
+      ],
+    ],
+    "voice-adaptor": [
+      [
+        "在故事板画布中选择视频片段人声分离功能的产品界面",
+        "从视频片段中分离人声与背景音乐的产品入口界面",
+      ],
+      [
+        "背景音乐轨和说话人语音轨连接到视频片段的音频路由界面",
+        "逐片段检查已分离背景音乐和说话人语音的路由界面",
+      ],
+    ],
+    "reverse-storyboard": [
+      [
+        "Reverse Storyboard 界面将夜空中的龙场景按时间排列为代表帧和说明",
+        "从完成视频中提取的逐镜头代表帧与时间戳",
+      ],
+      [
+        "IMAGE ONLY VS USE VIDEO 模式下 9 个故事板镜头的对比界面",
+        "单图构图与基于视频的连续场景并排对比结果",
+      ],
+    ],
+    reframer: [],
+    "boundary-deduper": [],
+    "iro-matcher": [],
+    "loudness-matcher": [],
+    "script-to-bgm": [
+      [
+        "从 Webhook 和 Slack Trigger 连接到两个音乐生成 API，再到 Slack 上传的 n8n 工作流界面",
+        "把脚本连接到音乐提示词和两个 MP3 结果的 n8n 工作流",
+      ],
+      [
+        "Slack 界面显示两个音乐模型的提示词和 MP3 播放结果",
+        "在 Slack 中试听 MiniMax Music 2 与 ElevenLabs Music 结果的界面",
+      ],
+    ],
+  } as const;
 
   for (const demo of demos) {
     assert.deepEqual(
@@ -398,16 +440,23 @@ test("gallery entries preserve exact order, dimensions, canonical Korean copy, a
       expectedEnglishCopy[demo.slug as keyof typeof expectedEnglishCopy],
       `${demo.slug} approved English gallery copy`,
     );
+    assert.deepEqual(
+      demo.gallery.map(({ alt, caption }) => [alt.zh, caption.zh]),
+      expectedChineseCopy[demo.slug as keyof typeof expectedChineseCopy],
+      `${demo.slug} approved Chinese gallery copy`,
+    );
 
     for (const image of demo.gallery) {
       assert.ok(image.src.startsWith(`/assets/images/demos/${demo.slug}/`));
       assert.equal(existsSync(join(repositoryRoot, "public", image.src.slice(1))), true);
-      assert.equal(image.alt.zh, image.alt.ko);
-      assert.equal(image.caption.zh, image.caption.ko);
       assert.ok(image.alt.en.trim());
       assert.ok(image.caption.en.trim());
+      assert.ok(image.alt.zh.trim());
+      assert.ok(image.caption.zh.trim());
       assert.doesNotMatch(image.alt.en, /[가-힣]|[—–]|--/);
       assert.doesNotMatch(image.caption.en, /[가-힣]|[—–]|--/);
+      assert.doesNotMatch(image.alt.zh, /[가-힣]|[—–]|--/);
+      assert.doesNotMatch(image.caption.zh, /[가-힣]|[—–]|--/);
     }
   }
 

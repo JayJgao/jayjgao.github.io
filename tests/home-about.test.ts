@@ -65,7 +65,7 @@ const expectedHero = {
   zh: {
     headline: "Tinkering with the latest AI and building it into real-world products.",
     subheadline: "从表格机器学习到生成式视频\n持续打造并规模化 AI 产品。",
-    supporting: "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
+    supporting: "7+ 年 AI 产品运营经验，主导从规划、发布到规模化增长的全过程",
   },
 } as const;
 

@@ -15,12 +15,12 @@
   "home": {
     "hero": {
       "kicker": "AI Product Leader",
-      "name": "Jay Ko",
-      "alias": "高在贤",
+      "name": "고재현",
+      "alias": "Jay Ko",
       "headline": "Tinkering with the latest AI and building it into real-world products.",
       "subheadline": "从表格机器学习到生成式视频\n持续打造并规模化 AI 产品。",
-      "supporting": "6+ 年 AI 产品从规划、发布到增长的全周期实战经验",
-      "profileAlt": "Jay Ko 头像",
+      "supporting": "7+ 年 AI 产品运营经验，主导从规划、发布到规模化增长的全过程",
+      "profileAlt": "Jay Ko 的个人照片",
       "stats": [
         {
           "value": "MRR 10x",
@@ -28,16 +28,16 @@
         },
         {
           "value": "25+ B2B Clients",
-          "label": "企业交付"
+          "label": "企业级交付"
         },
         {
           "value": "3 Patents",
-          "label": "知识产权"
+          "label": "知识产权资产"
         }
       ]
     },
     "featured": {
-      "sectionLabel": "精选展示",
+      "sectionLabel": "Featured Showcase",
       "title": "代表项目",
       "viewAll": "查看全部",
       "metricFallbackPrefix": "贡献"
@@ -46,40 +46,40 @@
       "viewAll": "View All Demos"
     },
     "spotlight": {
-      "kicker": "创作聚焦",
-      "title": "先看这个",
-      "subtitle": "AI 电影创作展示。",
+      "kicker": "创作精选",
+      "title": "先看作品",
+      "subtitle": "AI 影视创作作品。",
       "prev": "上一个",
       "next": "下一个",
-      "prevAria": "上一个精选视频",
-      "nextAria": "下一个精选视频",
+      "prevAria": "上一个精选作品",
+      "nextAria": "下一个精选作品",
       "relatedProject": "查看相关项目",
       "selectPrefix": "选择",
-      "frameFallback": "精选",
+      "frameFallback": "精选作品",
       "posterAltSuffix": "海报"
     },
     "timeline": {
       "kicker": "三阶段叙事",
-      "title": "职业时间线",
+      "title": "职业历程",
       "eras": {
         "era1": {
           "items": [
-            "Solidware (Ailys) — 拿下 13 家日本企业客户，年营收同比增长 100%",
-            "Lunit — 视觉生物标志物分析软件早期产品规划"
+            "在 Solidware (Ailys) 赢得 13 家日本企业客户，年营收增长 100%",
+            "在 Lunit 进行视觉生物标志物分析软件的早期规划"
           ]
         },
         "era2": {
           "items": [
-            "BUZZNI — AIaaS 事业部从 0 到 20 人，MRR 增长 10 倍",
-            "BUZZNI — 上线 Long→Short-form AI 视频编辑器与购物助手聊天机器人",
-            "Dasan E&E — 整合 AI 课题开发流程，提升业务效率并支持经营恢复"
+            "在 BUZZNI 从 0→20 人搭建 AIaaS 事业部，实现 MRR 10x 增长",
+            "在 BUZZNI 发布 Long→Short-form AI 视频编辑器和购物助手聊天机器人两款产品",
+            "在 Dasan E&E 整合 AI 课题开发工作流，提升业务效率并支持经营恢复"
           ]
         },
         "era3": {
           "items": [
-            "Cinamon CineV S2M — 完成 LLM Agent 到 Unreal 的 E2E 集成",
-            "Cinamon MOAI — 搭建 Motion AI 评测平台",
-            "Chroma Awards — Sponsor Award Top 11 Finalist"
+            "Cinamon AI PO Leadership → Web CineV 正式上线，将 3 项实验功能集成到产品中",
+            "Cinamon AI Technology & Org Enablement → 开展 13 场 AI Literacy 与愿景研讨，由 Web 团队主导 Product Discovery",
+            "Chroma Awards → Sponsor Award Top 11 Finalist"
           ]
         }
       }
@@ -89,25 +89,25 @@
     "motivationKicker": "What Moves Me",
     "demosCta": "View Demos",
     "images": {
-      "opening": "领域拓展叙事图像",
-      "markets": "三种语言与三大市场图像",
-      "motivation": "AI 创作动机图像",
-      "working": "协作方式图像"
+      "opening": "领域拓展叙事配图",
+      "markets": "三种语言与三个市场的介绍图",
+      "motivation": "AI 创作动机配图",
+      "working": "协作方式配图"
     }
   },
   "projects": {
     "page": {
-      "kicker": "作品集",
+      "kicker": "Portfolio",
       "title": "项目",
-      "description": "项目基于三阶段叙事进行组织。\n阶段 1: Classical ML，阶段 2: LLM Application，阶段 3: Generative AI Native。"
+      "description": "作品集围绕三阶段经历展开。\nEra 1: Classical ML，Era 2: LLM Application，Era 3: Generative AI Native。"
     },
     "explorer": {
-      "featuredTitle": "精选",
-      "featuredDescription": "优先展示核心成果最清晰的项目。",
-      "archiveTitle": "归档",
-      "archiveDescription": "累计执行记录与领域扩展轨迹。",
-      "emptyFeatured": "所选阶段下没有精选项目。",
-      "emptyArchive": "所选阶段下没有归档项目。"
+      "featuredTitle": "Featured",
+      "featuredDescription": "优先呈现核心成果清晰的项目。",
+      "archiveTitle": "Archive",
+      "archiveDescription": "这里汇总了在不同领域开展过的项目。",
+      "emptyFeatured": "所选 Era 下没有 Featured 项目。",
+      "emptyArchive": "所选 Era 下没有 Archive 项目。"
     },
     "filter": {
       "all": "全部"
@@ -123,23 +123,23 @@
       "firstProject": "第一个项目",
       "lastProject": "最后一个项目",
       "backToList": "返回项目列表",
-      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
+      "fallbackNotice": "该项目的详细内容目前以韩文原文提供。"
     }
   },
   "demos": {
     "page": {
       "kicker": "Demos",
       "title": "Tinkering with the latest AI",
-      "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
+      "description": "这里汇总了亲自上手最新 AI，并将实验用于产品和内部工具的案例，重点呈现结果和依据。"
     },
     "groups": {
       "productized": {
         "title": "Built into Products",
-        "description": "실제 제품 흐름에 반영되어 사용 맥락을 검증한 작업입니다."
+        "description": "这些工作已进入实际产品流程，并通过使用场景验证。"
       },
       "experiments": {
         "title": "Experiments and Internal Tools",
-        "description": "가설을 빠르게 검증하고 다음 판단을 만든 실험과 내부 도구입니다."
+        "description": "用实验和内部工具快速验证假设，为下一步判断提供依据。"
       }
     },
     "kind": {
@@ -153,10 +153,10 @@
     },
     "card": {
       "outcomeLabel": "Outcome",
-      "openDetail": "Demo 상세 보기"
+      "openDetail": "查看 Demo 详情"
     },
     "detail": {
-      "backToList": "Demos 목록으로",
+      "backToList": "返回 Demos 列表",
       "outcomeLabel": "Outcome",
       "flowTitle": "From Observation to Hypothesis",
       "sections": {
@@ -172,25 +172,25 @@
         "boundary": "Boundary"
       },
       "video": {
-        "playPrefix": "하이라이트 영상 재생",
-        "titleSuffix": "하이라이트 영상"
+        "playPrefix": "播放亮点视频",
+        "titleSuffix": "亮点视频"
       },
       "gallery": {
-        "previous": "이전 이미지",
-        "next": "다음 이미지",
-        "selectPrefix": "이미지 선택",
-        "counterLabel": "현재 이미지와 전체 이미지 수"
+        "previous": "上一张图片",
+        "next": "下一张图片",
+        "selectPrefix": "选择图片",
+        "counterLabel": "当前图片序号及图片总数"
       },
-      "diagramScrollHint": "작은 화면에서는 좌우로 스크롤해 전체 파이프라인을 볼 수 있습니다."
+      "diagramScrollHint": "在小屏幕上可左右滚动，查看完整流程。"
     }
   },
   "resume": {
     "page": {
-      "kicker": "简历",
+      "kicker": "Resume",
       "title": "Jay Ko Resume",
-      "description": "网页简历与可下载 PDF 采用同一标准维护。",
+      "description": "网页简历与可下载的 PDF 按同一标准维护。",
       "downloadKo": "下载韩文 PDF",
-      "downloadEn": "Download English PDF"
+      "downloadEn": "下载英文 PDF"
     },
     "renderer": {
       "website": "网站",
@@ -201,14 +201,14 @@
       "summary": "概述",
       "experience": "经历",
       "skills": "技能",
-      "education": "教育",
-      "achievements": "成就",
+      "education": "教育经历",
+      "achievements": "成果",
       "languages": "语言"
     }
   },
   "notFound": {
     "title": "页面未找到",
-    "description": "未找到你请求的页面。",
+    "description": "无法找到你请求的页面。",
     "backHome": "返回首页"
   },
   "footer": {
