@@ -6,12 +6,13 @@
 - 원칙: 모든 항목은 `Source HTML -> Target Output Path -> Status -> Batch`로 추적 가능해야 한다.
 
 ## 2. Ground Truth Snapshot
-- 기준 시각: 2026-02-17
+- 기준 시각: 2026-08-10
 - 노션 원본 개수:
   - root HTML: 18
   - raw export HTML: 14
 - 공개 상태(`src/data/projects.json`):
-  - Published: `cinev-s2m`, `cinev-moai`, `chroma-awards`, `buzzni-shortform-ai`, `buzzni-aiaas-biz`, `solidware-mlaas`, `buzzni-chatbot`, `solidware-automl`, `lunit-biomarker`, `cinev-ai-po-leadership`, `cinev-a2p`, `buzzni-review-aiaas`, `buzzni-search-aiaas`, `solidware-product-marketing`, `buzzni-branding-marketing`
+  - Published: `cinev-ai-po-leadership`, `cinev-ai-enablement`, `chroma-awards`, `buzzni-shortform-ai`, `buzzni-aiaas-biz`, `solidware-mlaas`, `cinev-s2m`, `cinev-moai`, `lunit-biomarker`, `buzzni-chatbot`, `buzzni-review-aiaas`, `buzzni-search-aiaas`, `buzzni-branding-marketing`, `solidware-automl`, `solidware-product-marketing`
+  - Legacy alias: `/projects/cinev-a2p/` → `/projects/cinev-ai-po-leadership/`
   - Staged(MDX 작성 완료, 비노출): 없음
   - Parked: `프롬프트 모음`, `팀 리드`, `숏폼AI User Manual`, `프로토타입 유저매뉴얼`, `정부지원과제 총괄`, `하나은행 On-site 프로젝트`, `시나리오`, `캐릭터 빌드`
 - 에셋 계약:
@@ -33,12 +34,13 @@
 | 이커머스 리뷰분석 AIaaS | `.reference/notion-export/이커머스_리뷰분석_AIaaS_1aba667ac50580cba7a5e295e25aba66.html` | `src/content/projects/ko/buzzni-review-aiaas.mdx` | Published | B2-PHASE2-2 |
 | 이커머스 검색 AIaaS | `.reference/notion-export/이커머스_검색_AIaaS_1aba667ac505806ea845c9be7fecace9.html` | `src/content/projects/ko/buzzni-search-aiaas.mdx` | Published | B2-PHASE2-2 |
 | Archive) AI PO Job | `.reference/notion-export/public-assets-raw/archive/aipo_tasks/Archive) AI PO Job 30aa667ac50580258e45c48bc3dbee11.html` | `src/content/projects/ko/cinev-ai-po-leadership.mdx` | Published | B2-PHASE2-2 |
+| AI Technology & Org Enablement | `/Users/vonvon/Documents/jayjgao/04-content-updates.md` | `src/content/projects/ko/cinev-ai-enablement.mdx` | Published | B4-CONTENT |
 | 제품 마케팅 | `.reference/notion-export/제품_마케팅_1aba667ac5058022a4c3f8e63cc2b377.html` | `src/content/projects/ko/solidware-product-marketing.mdx` | Published | B2-PHASE2-2 |
 | 제품 브랜딩&마케팅 | `.reference/notion-export/제품_브랜딩_마케팅_1aba667ac505808aaebcd92753f75241.html` | `src/content/projects/ko/buzzni-branding-marketing.mdx` | Published | B2-PHASE2-2 |
 | MLaaS Product Management | `.reference/notion-export/MLaaS_Product_Management_1aba667ac50580e982d9e26c6be90b60.html` | `src/content/projects/ko/solidware-mlaas.mdx` | Published | B2-CONTENT-CORE |
 | AutoML 솔루션 신규 Feature개발 | `.reference/notion-export/AutoML_솔루션_신규_Feature개발_1aba667ac50580fd9687deae5d4d0d37.html` | `src/content/projects/ko/solidware-automl.mdx` | Published | B2-CONTENT-CORE |
 | AI 바이오마커 진단 솔루션 (HER2, ER/PR) | `.reference/notion-export/AI_바이오마커_진단_솔루션__HER2__ER_PR__1aba667ac5058085a86cf1b2ffaa56ed.html` | `src/content/projects/ko/lunit-biomarker.mdx` | Published | B2-CONTENT-CORE |
-| CineV A2P | `.reference/notion-export/public-assets-raw/archive/aipo_tasks/Archive) AI PO Job 30aa667ac50580258e45c48bc3dbee11.html` | `src/content/projects/ko/cinev-a2p.mdx` | Published | B2-PHASE2-3 |
+| CineV A2P legacy alias | `/Users/vonvon/Documents/jayjgao/04-content-updates.md` | `src/lib/project-redirects.ts` | Published | B4-ROUTING |
 | 프롬프트 모음 | `.reference/notion-export/프롬프트_모음_1aba667ac50580839a11c34cfb99283e.html` | `src/content/archive/ko/prompt-collection.mdx` | Parked | B2-PARKED |
 | 숏폼AI User Manual_Common_VER.1 | `.reference/notion-export/숏폼AI_User_Manual_Common_VER_1_1aba667ac50580e28362c73058327994.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |
 | 프로토타입 유저매뉴얼 | `.reference/notion-export/프로토타입_유저매뉴얼_1aba667ac50580159a7df52e26abac7b.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |
@@ -49,15 +51,14 @@
 | 캐릭터 빌드 | `.reference/notion-export/캐릭터_빌드_1aba667ac50580f4b0c4c0fa10855779.html` | `src/content/archive/ko/meta-llama-idea.mdx` | Parked | B2-PARKED |
 
 ## 4. Execution Board (Now/Next/Later)
-### Now
-- `B2-IA-01`: GNB를 `Home / About / Portfolio / Resume`로 고정하고 `/contact` 제거 유지
-- `B2-ARCHIVE-05`: Archive 5개 카드/상세/에셋 매핑 회귀 테스트
-- `B2-IMG-FIRST-01`: 프로젝트 다이어그램 렌더 방식을 정적 이미지 중심으로 유지
-- `B2-I18N-01`: 모바일 우선 Language 드롭다운 활성화 + locale 쿠키 기반 렌더 동기화
+### Completed
+- `B4-I18N-01`: 한국어 정본을 기준으로 영어·중국어 구조화 데이터와 Project MDX 재작성 완료
+- `B4-COPY-01`: Humanizer 승인본, fact audit, production 파일의 byte-level 일치 검증 완료
+- `B4-EXPORT-01`: 106 HTML / 84 localized / 45 Project detail / 24 Demo detail / 19 legacy exact inventory 검증 완료
+- `B4-QA-01`: ko/en/zh 핵심 페이지의 1440/1024/768/390px 브라우저 검수 완료
 
 ### Next
-- `B2-CONTENT-TRIM`: Published 프로젝트의 텍스트 밀도 2차 압축
-- `B2-I18N-02`: About/MDX 본문 다국어 분리 전략(ko 우선 -> en/zh 확장)
+- `B4-PR-01`: 최종 clean gate 후 `redesign/2026` Draft PR 생성
 
 ### Later
 - `B3-INTERACT-01`: Hero/Career 인터랙션(3D 포함) 성능 검증
@@ -70,7 +71,7 @@
 - `src/data/projects.json`와 MDX/에셋 실파일 경로가 1:1 일치
 - Chroma 포스터 경로가 `waiff-thumb.webp`, `chroma-happyend-thumb.webp` 기준으로 정상 동작
 - Mermaid 런타임 의존성/코드블록 미사용
-- `npm run build` 성공
+- `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run verify:export` 성공
 
 ## 6. Open Risks
 - Archive 프로젝트 증가로 카드 밀도가 높아져 모바일 스캔 피로가 재발할 수 있음
@@ -78,6 +79,7 @@
 - 영상 썸네일 교체 시 `spotlights.json` 동기화 누락 위험
 
 ## 7. Changelog
+- 2026-08-10: Phase 4 반영 — 8개 Demo, 15개 Project, 3개 locale 카피 재작성과 A2P legacy alias 계약 갱신
 - 2026-02-17: Phase 2.2 반영 — Archive 5개 Published 승격 및 MDX/에셋 추가
 - 2026-02-17: GNB를 Home/About/Portfolio/Resume로 정렬하고 `/contact` 라우트 제거
 - 2026-02-17: Mermaid 런타임 렌더 철회, 정적 이미지 전환
