@@ -46,4 +46,4 @@ next-env.d.ts
 docs/superpowers/
 .cursorindexingignore
 .specstory/
-.reference/notion-export/public-assets-raw/
+.reference/
