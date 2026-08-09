@@ -7,7 +7,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { VideoSpotlightCarousel } from "@/components/home/VideoSpotlightCarousel";
 import { getMessages } from "@/lib/i18n";
 import { isLocale } from "@/lib/locale";
-import { createLocalizedMetadata } from "@/lib/metadata";
+import { createHomeDescription, createLocalizedMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -22,7 +22,7 @@ export async function generateMetadata({
     locale,
     path: "/",
     title: `${copy.name} | AI Product Leader`,
-    description: `${copy.headline} ${copy.subheadline} ${copy.supporting}`,
+    description: createHomeDescription(locale, copy),
   });
 }
 

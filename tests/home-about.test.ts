@@ -164,7 +164,7 @@ test("localized Home uses the exact approved section order and markers", () => {
   assert.match(home, /params:\s*Promise<\{ locale: string \}>/);
   assert.match(home, /isLocale\(locale\)/);
   assert.match(home, /<DemosPreview locale=\{locale\}/);
-  assert.match(home, /description:\s*`\$\{copy\.headline\} \$\{copy\.subheadline\} \$\{copy\.supporting\}`/);
+  assert.match(home, /description:\s*createHomeDescription\(locale, copy\)/);
 });
 
 test("About data keeps the approved two-principle structure and Demos bridge", () => {
