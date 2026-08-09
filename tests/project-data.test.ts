@@ -87,7 +87,7 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> =
     era2: [
       "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
       "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
-      "Dasan E&E, integrated AI project development workflows to improve operations and support a business turnaround",
+      "Dasan E&E, integrated AI into Assessment Center task development workflows to improve operations and support a business turnaround",
     ],
   },
   zh: {
@@ -98,7 +98,7 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> =
     era2: [
       "在 BUZZNI 从 0→20 人搭建 AIaaS 事业部，实现 MRR 10x 增长",
       "在 BUZZNI 发布 Long→Short-form AI 视频编辑器和购物助手聊天机器人两款产品",
-      "在 Dasan E&E 整合 AI 课题开发工作流，提升业务效率并支持经营恢复",
+      "在 Dasan E&E 将 AI 整合到 Assessment Center 测评任务开发工作流中，提升业务效率并支持经营恢复",
     ],
   },
 };
