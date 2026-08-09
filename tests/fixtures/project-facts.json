@@ -173,7 +173,9 @@
     "primaryMetric": "PIVOT → WEB LAUNCH",
     "demoUrl": "https://cinev.com/",
     "oneLiner": {
-      "ko": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십"
+      "ko": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십",
+      "en": "Co-led the transition of a 3D product into a generative-model-centered web product, from hypothesis validation through the official Web CineV launch",
+      "zh": "作为 AI PO，与团队共同推动3D产品转型为以生成模型为核心的 Web 产品，完成从假设验证到正式上线"
     }
   },
   {
@@ -193,7 +195,9 @@
     "primaryMetric": "SHARED LANGUAGE → INDEPENDENT EXECUTION",
     "demoUrl": null,
     "oneLiner": {
-      "ko": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트"
+      "ko": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트",
+      "en": "Expanded 13 AI Literacy and visioning sessions into a web-team-led Product Discovery program for identifying user friction and testing whether AI could address it",
+      "zh": "这项组织 Enablement 工作从13场 AI Literacy 与愿景研讨会起步，后来扩展为由 Web 团队主导的 Product Discovery 项目，让团队直接发现用户摩擦点并用 AI 验证"
     }
   },
   {

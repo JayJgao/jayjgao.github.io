@@ -29,10 +29,6 @@ function assertLocalizedText(value: unknown, context: string): asserts value is 
 }
 
 function freezeProject(project: (typeof projects)[number]) {
-  const oneLiner = ["cinev-ai-po-leadership", "cinev-ai-enablement"].includes(project.slug)
-    ? { ko: project.oneLiner.ko }
-    : project.oneLiner;
-
   return {
     slug: project.slug,
     era: project.era,
@@ -45,7 +41,7 @@ function freezeProject(project: (typeof projects)[number]) {
     thumbnail: project.thumbnail,
     primaryMetric: project.primaryMetric,
     demoUrl: project.demoUrl ?? null,
-    oneLiner,
+    oneLiner: project.oneLiner,
   };
 }
 
@@ -107,17 +103,23 @@ const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> =
   },
 };
 
-const expectedEra3Ko = [
-  "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
-  "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
-  "Chroma Awards → Sponsor Award Top 11 Finalist",
-] as const;
-
-const expectedEra3Facts = [
-  ["Cinamon", "AI PO Leadership", "CineV", "3"],
-  ["Cinamon", "AI Technology & Org Enablement", "13", "Product Discovery"],
-  ["Chroma Awards", "Sponsor Award", "Top 11 Finalist"],
-] as const;
+const expectedEra3Items: Record<Locale, readonly string[]> = {
+  ko: [
+    "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
+    "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
+    "Chroma Awards → Sponsor Award Top 11 Finalist",
+  ],
+  en: [
+    "Cinamon AI PO Leadership → Official Web CineV launch and 3 experimental features integrated into the product",
+    "Cinamon AI Technology & Org Enablement → 13 AI Literacy and visioning sessions, plus web-team-led Product Discovery",
+    "Chroma Awards → Sponsor Award Top 11 Finalist",
+  ],
+  zh: [
+    "Cinamon AI PO Leadership → Web CineV 正式上线，将 3 项实验功能集成到产品中",
+    "Cinamon AI Technology & Org Enablement → 开展 13 场 AI Literacy 与愿景研讨，由 Web 团队主导 Product Discovery",
+    "Chroma Awards → Sponsor Award Top 11 Finalist",
+  ],
+};
 
 const expectedSpotlights = [
   {
@@ -423,15 +425,8 @@ test("UI dictionaries keep only the all-project filter and localized timeline it
       assert.deepEqual(Object.keys(timelineEra), ["items"]);
       if (eraKey !== "era3") {
         assert.deepEqual(timelineEra.items, expectedTimelineItems[locale][eraKey]);
-      } else if (locale === "ko") {
-        assert.deepEqual(timelineEra.items, expectedEra3Ko);
       } else {
-        assert.ok(Array.isArray(timelineEra.items));
-        assert.equal(timelineEra.items.length, expectedEra3Facts.length);
-        timelineEra.items.forEach((item, index) => {
-          assert.equal(typeof item, "string");
-          for (const fact of expectedEra3Facts[index]) assert.match(item, new RegExp(fact));
-        });
+        assert.deepEqual(timelineEra.items, expectedEra3Items[locale]);
       }
     }
   }

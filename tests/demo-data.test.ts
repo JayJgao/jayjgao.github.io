@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 import demosJson from "../src/data/demos.json";
@@ -186,6 +187,26 @@ function assertLocalizedText(value: unknown, context: string): asserts value is 
   }
 }
 
+function localizedLeafDigest(locale: Locale): string {
+  const leaves: string[] = [];
+
+  function visit(value: unknown): void {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (!isRecord(value)) return;
+    if (SUPPORTED_LOCALES.every((supported) => typeof value[supported] === "string")) {
+      leaves.push(value[locale] as string);
+      return;
+    }
+    Object.values(value).forEach(visit);
+  }
+
+  visit(demosJson);
+  return createHash("sha256").update(JSON.stringify(leaves)).digest("hex");
+}
+
 test("demos own the exact ordered schema, product states, and video IDs", () => {
   const demos = demosJson as unknown as Demo[];
   assert.equal(demos.length, 8);
@@ -261,6 +282,18 @@ test("all localized demo copy is recursively complete", () => {
       assertLocalizedText(image.alt, `${demo.slug}.gallery[${imageIndex}].alt`);
       assertLocalizedText(image.caption, `${demo.slug}.gallery[${imageIndex}].caption`);
     });
+  }
+});
+
+test("approved Demo copy is frozen independently for every locale", () => {
+  const expected = {
+    ko: "3590e9b34c9dd3697d5208bec73a6310c16119dcbaf97e41079561d59e5f5464",
+    en: "7d5a54382c642a4cae56e30b23c45f1ddcefc1e19565191da040ca96ca413c5f",
+    zh: "c797551927ee7af81de87397dc0e5c37ae565c76858bdffffe30e1db6fc045f6",
+  } as const;
+
+  for (const locale of SUPPORTED_LOCALES) {
+    assert.equal(localizedLeafDigest(locale), expected[locale], `${locale} Demo copy digest`);
   }
 });
 
