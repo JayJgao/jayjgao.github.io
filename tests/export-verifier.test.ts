@@ -374,6 +374,40 @@ test("verification reports a missing local image asset while anchor assets remai
   );
 });
 
+test("verification rejects unreferenced public assets and accepts linked downloads", async () => {
+  const invalid = await createValidFixture();
+  const unusedAsset = path.join(invalid.outDir, "assets", "images", "unused.webp");
+  await mkdir(path.dirname(unusedAsset), { recursive: true });
+  await writeFile(unusedAsset, "unused", "utf8");
+
+  await assert.rejects(
+    () => verifyExport(invalid.outDir, {
+      ...invalid.contract,
+      enforceReferencedPublicAssets: true,
+    }),
+    /unreferenced public asset.*unused\.webp/i,
+  );
+
+  const valid = await createValidFixture();
+  const resumeAsset = path.join(valid.outDir, "assets", "resume", "resume.pdf");
+  await mkdir(path.dirname(resumeAsset), { recursive: true });
+  await writeFile(resumeAsset, "resume", "utf8");
+  await writeRoute(
+    valid.outDir,
+    "/en/about/",
+    `${localizedHead("en", "/en/about/")}
+      <a href="/assets/resume/resume.pdf">Download resume</a>
+      <a href="../">Home</a>
+    </body></html>`,
+  );
+
+  const result = await verifyExport(valid.outDir, {
+    ...valid.contract,
+    enforceReferencedPublicAssets: true,
+  });
+  assert.equal(result.errors, 0);
+});
+
 test("route-specific presentation rules reject index and About image requests", async () => {
   const cases = [
     { route: "/en/", prefix: "/assets/images/projects/", src: "/assets/images/projects/example.webp" },

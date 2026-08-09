@@ -62,6 +62,7 @@ export type ExportContract = {
   require404: boolean;
   expectedHtmlFileCount?: number;
   enforceExactHtmlInventory?: boolean;
+  enforceReferencedPublicAssets?: boolean;
   expectedLocalizedRouteCount?: number;
   expectedProjectDetailCount?: number;
   expectedDemoDetailCount?: number;
@@ -525,6 +526,7 @@ export function createProductionExportContract(): ExportContract {
     require404: true,
     expectedHtmlFileCount: 106,
     enforceExactHtmlInventory: true,
+    enforceReferencedPublicAssets: true,
     expectedLocalizedRouteCount: 84,
     expectedProjectDetailCount: 45,
     expectedDemoDetailCount: 24,
@@ -1138,6 +1140,33 @@ export async function verifyExport(
         errors.push(`${route}: local image escapes export directory: ${src}`);
       } else if (!fileSet.has(assetFile)) {
         errors.push(`${route}: missing local image ${assetHref}`);
+      }
+    }
+  }
+
+  if (contract.enforceReferencedPublicAssets) {
+    const searchableFiles = files.filter((filename) => {
+      const extension = path.extname(filename).toLowerCase();
+      return extension === ".html" || extension === ".css" || extension === ".js";
+    });
+    const searchableExport = normalizeEscapedUrlText(
+      (await Promise.all(searchableFiles.map((filename) => readFile(filename, "utf8")))).join("\n"),
+    );
+
+    for (const filename of files) {
+      const relative = path.relative(root, filename).split(path.sep).join("/");
+      const extension = path.extname(relative).toLowerCase();
+      if (
+        relative.startsWith("_next/") ||
+        extension === ".html" ||
+        extension === ".txt"
+      ) {
+        continue;
+      }
+
+      const assetHref = `/${relative}`;
+      if (!searchableExport.includes(assetHref)) {
+        errors.push(`Unreferenced public asset: ${relative}`);
       }
     }
   }

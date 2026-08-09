@@ -3,105 +3,79 @@
   "policy": {
     "naming": "lowercase-kebab-case",
     "thumbnail": "default 1200x675 webp; approved Phase 3 entries preserve canonical SVG or source-derived dimensions",
-    "shot": "default max-1600 webp; approved Phase 3 evidence derivatives preserve canonical source dimensions",
-    "rawStorage": ".reference/notion-export/public-assets-raw"
+    "shot": "default max-1600 webp; approved Phase 3 evidence derivatives preserve canonical source dimensions"
   },
   "projects": [
     {
       "slug": "cinev-s2m",
       "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
-      "shot": "/assets/images/projects/cinev/cinev-s2m-shot-03.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/cinev/s2m"
+      "shot": "/assets/images/projects/cinev/cinev-s2m-shot-03.webp"
     },
     {
       "slug": "cinev-moai",
       "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
-      "shot": "/assets/images/projects/cinev/cinev-moai-shot-02.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/cinev/moai"
+      "shot": "/assets/images/projects/cinev/cinev-moai-shot-02.webp"
     },
     {
       "slug": "chroma-awards",
       "thumbnail": "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
-      "shot": "/assets/images/projects/chroma/chroma-mystery-thumb.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/chroma"
+      "shot": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
     },
     {
       "slug": "buzzni-shortform-ai",
       "thumbnail": "/assets/images/projects/buzzni/shortform-shot-02.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-shortform-ai-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/featured/shortfrom_buzzni"
+      "shot": "/assets/images/projects/buzzni/buzzni-shortform-ai-shot-01.webp"
     },
     {
       "slug": "buzzni-aiaas-biz",
-      "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
+      "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp"
     },
     {
       "slug": "solidware-mlaas",
-      "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
-      "shot": "/assets/images/projects/solidware/solidware-mlaas-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_mlaas"
+      "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp"
     },
     {
       "slug": "buzzni-chatbot",
       "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_chatbot"
+      "shot": "/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp"
     },
     {
       "slug": "buzzni-review-aiaas",
       "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_review_aiaas"
+      "shot": "/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp"
     },
     {
       "slug": "buzzni-search-aiaas",
       "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-search-aiaas-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/buzzni/buzzni_search"
+      "shot": "/assets/images/projects/buzzni/buzzni-search-aiaas-shot-01.webp"
     },
     {
       "slug": "buzzni-branding-marketing",
       "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
-      "rawSource": ".reference/notion-export/public-assets-raw/archive/buzzni_branding_marketing"
+      "shot": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg"
     },
     {
       "slug": "solidware-automl",
-      "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
-      "shot": "/assets/images/projects/solidware/solidware-automl-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_automl"
+      "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp"
     },
     {
       "slug": "solidware-product-marketing",
       "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
-      "shot": "/assets/images/projects/solidware/solidware-product-marketing-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/solidware/solidware_marketing"
+      "shot": "/assets/images/projects/solidware/solidware-product-marketing-shot-01.webp"
     },
     {
       "slug": "cinev-ai-po-leadership",
       "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
-      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
-      "rawSource": "approved Phase 3 public diagram"
+      "shot": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg"
     },
     {
       "slug": "cinev-ai-enablement",
       "thumbnail": "/assets/images/projects/cinev/enablement/r2v-developer-checklist.webp",
-      "shot": "/assets/images/projects/cinev/enablement/r2v-user-purpose.webp",
-      "rawSource": "approved Phase 3 public evidence derivatives"
+      "shot": "/assets/images/projects/cinev/enablement/r2v-user-purpose.webp"
     },
     {
       "slug": "lunit-biomarker",
-      "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
-      "shot": "/assets/images/projects/lunit/lunit-biomarker-shot-01.webp",
-      "rawSource": ".reference/notion-export/public-assets-raw/lunit/lunit_biomarker"
-    }
-  ],
-  "media": [
-    {
-      "slug": "solidware-marketing",
-      "file": "/assets/media/projects/solidware/solidware-marketing-demo-01.mp4",
-      "source": ".reference/notion-export/public-assets-raw/solidware/solidware_marketing"
+      "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp"
     }
   ]
 }
