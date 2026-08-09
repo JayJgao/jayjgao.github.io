@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="660" viewBox="0 0 1600 660" role="img" aria-labelledby="title desc">
+  <title id="title">Voice Adaptor 처리 파이프라인</title>
+  <desc id="desc">완성된 MP4에서 음성과 배경을 분리하고 화자별 클립과 동일 음성 후보를 만든 뒤, 길이 안전장치와 사용자 활성화 단계를 거쳐 선택된 take와 배경음을 영상으로 출력하는 5단계 흐름</desc>
+  <defs>
+    <style>
+      .display { font-family: Helvetica, sans-serif; font-weight: 900; letter-spacing: -1.8px; }
+      .heading { font-family: Helvetica, sans-serif; font-weight: 800; letter-spacing: -0.6px; }
+      .body { font-family: Helvetica, sans-serif; font-weight: 600; }
+      .mono { font-family: Menlo, Consolas, monospace; font-weight: 700; letter-spacing: 0.8px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="660" fill="#f4e9e1"/>
+
+  <text x="56" y="38" class="mono" font-size="13" fill="#0e0e0e">VOICE ADAPTOR / REVIEWABLE RE-VOICING PIPELINE</text>
+  <text x="56" y="112" class="display" font-size="54" fill="#0e0e0e">NATIVE AUDIO</text>
+  <line x1="480" y1="91" x2="556" y2="91" stroke="#0e0e0e" stroke-width="2"/>
+  <text x="620" y="112" class="display" font-size="54" fill="#ff3d00">REVIEWABLE VOICE TAKES</text>
+  <text x="56" y="154" class="mono" font-size="12" fill="#0e0e0e">INGEST / SEPARATE / GENERATE / REVIEW / EXPORT</text>
+
+  <line x1="306" y1="371" x2="324" y2="371" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="584" y1="371" x2="602" y2="371" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="902" y1="371" x2="920" y2="371" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="1262" y1="371" x2="1280" y2="371" stroke="#0e0e0e" stroke-width="3"/>
+
+  <g aria-label="1단계 MP4 입력 검증과 오디오 추출">
+    <rect x="56" y="190" width="250" height="370" rx="16" fill="#2835f8"/>
+    <text x="80" y="226" class="mono" font-size="13" fill="#ffffff">01 / INPUT</text>
+    <text x="80" y="282" class="heading" font-size="30" fill="#ffffff">INGEST</text>
+    <text x="80" y="318" class="heading" font-size="30" fill="#ffffff">FINISHED MP4</text>
+    <path d="M80 344H282" stroke="#ffffff" stroke-width="2"/>
+    <text x="80" y="380" class="body" font-size="14" fill="#ffffff">UPLOAD · VALIDATE</text>
+    <text x="80" y="404" class="body" font-size="14" fill="#ffffff">PROBE · MONO WAV</text>
+    <text x="80" y="486" class="mono" font-size="11" fill="#f4e9e1">FFPROBE</text>
+    <text x="80" y="508" class="mono" font-size="11" fill="#f4e9e1">FFMPEG</text>
+    <text x="80" y="536" class="mono" font-size="10" fill="#f4e9e1">LOCAL MEDIA</text>
+  </g>
+
+  <g aria-label="2단계 외부 모델로 음성과 배경을 분리하고 화자별 클립 생성">
+    <rect x="324" y="190" width="260" height="370" rx="16" fill="#ff3d00"/>
+    <text x="348" y="226" class="mono" font-size="13" fill="#0e0e0e">02 / MODEL</text>
+    <text x="348" y="282" class="heading" font-size="30" fill="#0e0e0e">SEPARATE</text>
+    <text x="348" y="318" class="heading" font-size="30" fill="#0e0e0e">&amp; DIARIZE</text>
+    <path d="M348 344H560" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="348" y="380" class="body" font-size="13" fill="#0e0e0e">SPEECH / BACKGROUND</text>
+    <text x="348" y="404" class="body" font-size="13" fill="#0e0e0e">WORD TIME · SPEAKER ID</text>
+    <text x="348" y="428" class="body" font-size="13" fill="#0e0e0e">BUILD SPEECH CLIPS</text>
+    <text x="348" y="486" class="mono" font-size="10" fill="#0e0e0e">FAL.AI DEMUCS</text>
+    <text x="348" y="508" class="mono" font-size="10" fill="#0e0e0e">ELEVENLABS STT</text>
+    <text x="348" y="536" class="mono" font-size="10" fill="#0e0e0e">CORE FAILURE STOPS</text>
+  </g>
+
+  <g aria-label="3단계 동일한 저장 음성으로 TTS 또는 S2S 후보 생성">
+    <rect x="602" y="190" width="300" height="370" rx="16" fill="#5900cc"/>
+    <text x="626" y="226" class="mono" font-size="13" fill="#ffffff">03 / TAKES</text>
+    <text x="626" y="282" class="heading" font-size="30" fill="#ffffff">CREATE VOICE</text>
+    <text x="626" y="318" class="heading" font-size="30" fill="#ffffff">CANDIDATES</text>
+    <path d="M626 344H878" stroke="#ffffff" stroke-width="2"/>
+    <text x="626" y="380" class="body" font-size="14" fill="#ffffff">SAME SAVED VOICE</text>
+    <text x="626" y="404" class="body" font-size="14" fill="#ffffff">TTS V3 · S2S</text>
+    <text x="626" y="428" class="body" font-size="14" fill="#ffffff">TRIM · PAD · TIME-FIT</text>
+    <text x="626" y="486" class="mono" font-size="10" fill="#f4e9e1">CANDIDATE ONLY</text>
+    <text x="626" y="508" class="mono" font-size="10" fill="#f4e9e1">NO AUTO-APPLY</text>
+    <text x="626" y="536" class="mono" font-size="10" fill="#f4e9e1">MOCK S2S IS LABELED</text>
+  </g>
+
+  <g aria-label="4단계 사용자가 후보를 검토하고 안전한 take를 활성화">
+    <rect x="920" y="190" width="342" height="370" rx="16" fill="#ffff00"/>
+    <text x="944" y="226" class="mono" font-size="13" fill="#0e0e0e">04 / USER GATE</text>
+    <text x="944" y="282" class="heading" font-size="31" fill="#0e0e0e">AUDITION</text>
+    <text x="944" y="318" class="heading" font-size="31" fill="#0e0e0e">&amp; ACTIVATE</text>
+    <path d="M944 344H1238" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="944" y="380" class="body" font-size="14" fill="#0e0e0e">PREVIEW ORIGINAL / TAKES</text>
+    <text x="944" y="404" class="body" font-size="14" fill="#0e0e0e">MOVE CLIP ON TIMELINE</text>
+    <text x="944" y="428" class="body" font-size="14" fill="#0e0e0e">EXPLICIT “USE THIS”</text>
+    <text x="944" y="486" class="mono" font-size="10" fill="#0e0e0e">TIMING GUARD</text>
+    <text x="944" y="508" class="mono" font-size="10" fill="#0e0e0e">MISMATCH TTS BLOCKED</text>
+    <text x="944" y="536" class="mono" font-size="10" fill="#0e0e0e">HUMAN DECISION</text>
+  </g>
+
+  <g aria-label="5단계 활성 take와 배경음을 합성해 MP4와 작업 기록 출력">
+    <rect x="1280" y="190" width="264" height="370" rx="16" fill="#05ff00"/>
+    <text x="1304" y="226" class="mono" font-size="13" fill="#0e0e0e">05 / OUTPUT</text>
+    <text x="1304" y="282" class="heading" font-size="30" fill="#0e0e0e">MIX</text>
+    <text x="1304" y="318" class="heading" font-size="30" fill="#0e0e0e">&amp; EXPORT</text>
+    <path d="M1304 344H1520" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="1304" y="380" class="body" font-size="13" fill="#0e0e0e">ACTIVE TAKES ONLY</text>
+    <text x="1304" y="404" class="body" font-size="13" fill="#0e0e0e">+ BACKGROUND STEM</text>
+    <text x="1304" y="428" class="body" font-size="13" fill="#0e0e0e">SERVER-SIDE MUX</text>
+    <text x="1304" y="486" class="mono" font-size="10" fill="#0e0e0e">EXPORTED MP4</text>
+    <text x="1304" y="508" class="mono" font-size="10" fill="#0e0e0e">TRANSCRIPT · AUDIO</text>
+    <text x="1304" y="536" class="mono" font-size="10" fill="#0e0e0e">JOB METADATA</text>
+  </g>
+
+  <text x="56" y="622" class="mono" font-size="11" fill="#0e0e0e">BOUNDARIES / EXTERNAL INFERENCE · TIMING GUARD · HUMAN ACTIVATION</text>
+  <text x="1544" y="622" class="mono" font-size="11" fill="#0e0e0e" text-anchor="end">FASTAPI · NEXT.JS · LOCAL JOB STORAGE</text>
+</svg>

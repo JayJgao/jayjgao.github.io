@@ -1,24 +1,28 @@
 {
   "meta": {
-    "name": "高在贤 (Jay Ko)",
+    "name": "고재현 (Jay Ko)",
     "title": "AI Product Leader",
-    "subtitle": "6+ Years | Tabular ML -> Vision -> LLM Agent -> Motion AI",
-    "location": "Seoul, Korea",
+    "subtitle": "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI",
+    "location": "韩国首尔",
     "email": "rhwogus0205@gmail.com",
     "website": "https://jayjgao.github.io",
     "github": "https://github.com/JayJgao"
   },
-  "summary": "专注于将 AI 应用到新行业并实现产品化与规模化增长的 AI Product Leader。具备从战略、系统架构到落地执行的端到端能力，并持续交付可量化的业务结果。",
+  "summary": [
+    "我是一名 AI Product Leader，能快速梳理行业和产品结构，把尚未被清晰定义的问题转化为技术语言，并落实为产品和业务成果。",
+    "我的职业经历涵盖金融科技 AutoML、医疗 Computer Vision、电商 LLM Application 和生成式 AI 视频产品，成果包括团队建设、企业客户签约、MRR 增长 10 倍和 Web 产品正式上线。",
+    "进入新领域时，我会先梳理产品的基础设施、系统和市场，再亲自使用本公司及竞品，找出尚未被定义的缺口。与核心系统紧密相关的问题，我会将其转化为组织共同讨论的议题；可以独立验证的用户摩擦，则直接制作原型。我会和团队把工作推进到实际成果，包括签约、付费转化，以及让用户不偏离 Golden Path 就能达到 FSO (First Satisfactory Output)。"
+  ],
   "experience": [
     {
       "company": "Cinamon (CineV)",
       "role": "AI Tech Product Owner",
-      "period": "2025.04 - Present",
+      "period": "2025.04 - 至今",
       "highlights": [
-        "设计基于 LangChain 的 Film Agent，达成 LLM-to-Unreal 端到端集成",
-        "搭建 MOAI 评测平台并加速 model-to-product 周期：导入前 2 年仅 2 次集成 -> 导入后 5 个月完成 2 次集成（Locomotion, Text-to-Motion），并运营 6 次用户研究",
-        "引入外部模型路由平台，将模型接入周期从按周推进缩短到接近即时部署；完成 I2V、I2I、TTS、Music Gen 的架构与 API 设计",
-        "主导 CineV 上线策略中的 AI 方向（2026 年 1 月正式上线）"
+        "方向转变始于 Film Agent E2E 集成，就清理 3 年遗留内容达成共识，Web CineV 于 2026 年 7 月正式上线",
+        "推进 Conditioning 与上下文管理，研究叙事和视觉一致性，完成 120+ 次同场景验证，并将 Asset 管理系统集成到产品中",
+        "完成 3 项实验功能的产品集成，通过内部 Eval 平台完成 2 项模型集成并开展 6 次用户研究，开展 13 场 AI Literacy 与愿景规划会议，设计并运营由 Web 团队主导的 Product Discovery 计划",
+        "通过外部模型路由，将 7+ 个领域和 30+ 个模型集成到产品中"
       ]
     },
     {
@@ -26,9 +30,9 @@
       "role": "AI PM / Team Lead",
       "period": "2023.04 - 2025.03",
       "highlights": [
-        "从零搭建并带领 AIaaS 业务团队至 20 人规模",
-        "MRR 从 500 万韩元增长到 5,200 万韩元（10 倍），新增 12 家企业客户",
-        "完成两款产品从 0 到 1 上线：Long-to-Short AI 视频编辑器与电商购物助手聊天机器人"
+        "从零搭建 AIaaS 业务部门，并带领团队扩至 20 人",
+        "MRR 从 500 万韩元增至 5,200 万韩元，增长 10 倍，并获得 12 家新客户",
+        "从 0 到 1 上线 Long→Short-form AI 视频编辑器和购物聊天机器人两项服务"
       ]
     },
     {
@@ -36,8 +40,8 @@
       "role": "Business Operations Manager",
       "period": "2022.06 - 2023.03",
       "highlights": [
-        "优化家族 HR 咨询业务运营并支持经营恢复",
-        "重构运营流程与执行机制"
+        "协助家族企业（HR 咨询）提升业务运营并恢复正常经营",
+        "重整运营流程并建立业务战略执行体系"
       ]
     },
     {
@@ -45,7 +49,7 @@
       "role": "AI Product Manager",
       "period": "2022.01 - 2022.04",
       "highlights": [
-        "基于监管要求定义视觉生物标志物分析软件初版 PRD 与需求"
+        "根据监管文件定义视觉生物标志物分析 SW 的早期 PRD 和需求"
       ]
     },
     {
@@ -53,30 +57,50 @@
       "role": "AI PM / New Business Team Lead",
       "period": "2018.12 - 2021.12",
       "highlights": [
-        "获得 13 家日本企业客户（包括 Mitsubishi、AEON）",
-        "实现年营收同比增长 100%，销售触点增长 256%",
-        "累计获得 15 亿韩元政府课题经费"
+        "获得 13 家日本企业客户（Mitsubishi、AEON 等）",
+        "年营收增长 100%，销售触点扩大 256%",
+        "承接总额 15 亿韩元的政府项目"
       ]
     }
   ],
   "skills": {
-    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
-    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
-    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
+    "AI Product Leadership": [
+      "产品战略与 KPI/OKR",
+      "Product Discovery 与假设验证",
+      "跨职能领导与团队建设",
+      "B2B 市场进入策略"
+    ],
+    "AI Systems": [
+      "LLM Applications 与 Agents",
+      "上下文工程与 AI Evals",
+      "生成式媒体与 Computer Vision",
+      "模型路由与集成"
+    ],
+    "Technical Execution": [
+      "快速原型设计",
+      "系统架构",
+      "API 设计",
+      "产品分析"
+    ],
+    "Selected Tools": [
+      "SQL",
+      "Google Analytics",
+      "LangChain / LangGraph"
+    ]
   },
   "education": [
-    "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
+    "清华大学，新闻学学士（媒体统计），GPA 3.78/4.0"
   ],
   "achievements": [
     "3 项 ML 专利",
-    "KSC 2023 论文发表",
+    "在 KSC 2023 发表论文",
     "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
   ],
   "languages": [
-    "Korean (Native)",
-    "Chinese (Business Fluent, HSK 6)",
-    "English (Professional)",
-    "Japanese (Basic)",
-    "Russian (Elementary)"
+    "韩语（母语）",
+    "中文（商务流利，HSK 6）",
+    "英语（商务流利）",
+    "日语（基础）",
+    "俄语（初级）"
   ]
 }

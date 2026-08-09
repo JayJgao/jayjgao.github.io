@@ -1,23 +1,23 @@
 <div className="highlight-callout">
   <p className="highlight-callout__eyebrow">Lessons & Learned</p>
-  <h3 className="highlight-callout__title">Proprietary LLMs, Right Model for Right Task가 중요하다</h3>
-  <p className="highlight-callout__body">
-    knowledge cutoff에만 신경을 썼던 내가 <strong>LLM의 벤치마크</strong>에 관심을 두게 된 계기. <strong>SOTA가 만능을 뜻하는 것이 아님</strong>.
-  </p>
+  <h3 className="highlight-callout__title">가장 강한 모델보다, 역할에 맞는 모델이 필요하다</h3>
+  <div className="highlight-callout__body">
+    전체 프로세스를 하나의 최신 모델에 의존하면 품질 외의 비용과 운영 복잡성을 놓치기 쉽고, 모델 선택 자체가 제품 설계의 일부임을 배웠습니다.
+  </div>
   <ul className="highlight-callout__list">
-    <li>GPT-4o 의 등장과 함께 LLM application의 capability가 기하급수적으로 상승함. 하나의 모델에 대한 <strong>프로세스 dependency 증가</strong>가 크게 나타남.</li>
-    <li>그러나, 전체 프로세스에서 특정 노드의 작업은 <strong>불필요한 토큰 낭비</strong>가 관측됨. Model documentation과 benchmark를 다시 살펴보고 적절한 저수준 모델로 변경.</li>
-    <li>이 때부터 Agentic한 LLM활용의 중요성과 그 의미, 즉 <strong>Right Model for Right Task</strong>를 체감하기 시작함.</li>
+    <li>각 처리 단계가 요구하는 품질, 비용, 속도를 먼저 정의해야 적절한 모델을 선택할 수 있습니다.</li>
+    <li>공개 벤치마크와 문서만 따르기보다 실제 제품 워크로드에서 충분한 성능인지 검증해야 합니다.</li>
+    <li>모델을 바꾸는 것에 그치지 않고 프롬프트와 처리 단계까지 단순화해야 비용과 운영 복잡도를 함께 낮출 수 있습니다.</li>
   </ul>
 </div>
 
-## 🚧 Problem
+## Problem
 리뷰 데이터 수집 규격이 고객사마다 달라 운영 비용이 컸고, 요약 파이프라인의 LLM API 단가도 높았습니다.
 
-## 💡 Approach
+## Approach
 EP(Engine Paper) 규격과 API 스키마를 공용 계약으로 고정하고, 프롬프트 구조를 재설계해 비용 효율을 먼저 확보했습니다.
 
-## ⚙️ Execution
+## Execution
 - 리뷰/상품 데이터 공통 EP 포맷 정의 및 고객사 온보딩 가이드 문서화
 - 고객 사용 시나리오 기준으로 API 스키마를 재정리해 운영 정책 단순화
 - 요약 워크로드를 GPT-4o 중심에서 4o-mini 중심으로 전환
@@ -27,7 +27,7 @@ EP(Engine Paper) 규격과 API 스키마를 공용 계약으로 고정하고, �
 
 ![이커머스 리뷰분석 AIaaS 화면](/assets/images/projects/buzzni/buzzni-review-aiaas-shot-01.webp)
 
-## ✅ Results
+## Results
 - 2개 고객사 납품 완료 (현대홈쇼핑, 쇼핑엔티)
 - 기존 GPT-4o 기반 요약을 4o-mini로 전환해 비용 구조 최적화
 - 요청 단계를 단일 프롬프트로 축소해 운영 복잡도와 비용 동시 절감

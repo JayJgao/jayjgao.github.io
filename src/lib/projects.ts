@@ -1,24 +1,30 @@
 import projectsJson from "@/data/projects.json";
 import type { Locale } from "@/lib/locale";
+import type { EraId, Localized } from "@/types/content";
 
 export type Project = {
   slug: string;
-  era: 1 | 2 | 3;
-  eraLabel: string;
+  era: EraId;
   featured: boolean;
   showcaseOrder: number | null;
-  title: Record<Locale, string>;
-  oneLiner: Record<Locale, string>;
+  title: Localized<string>;
+  subtitle: Localized<string>;
+  oneLiner: Localized<string>;
   company: string;
   role: string;
   contribution: number;
   tags: string[];
   thumbnail: string;
   primaryMetric?: string | null;
-  demoUrl?: string;
+  demoUrl?: string | null;
 };
 
 const projects = projectsJson as Project[];
+
+export function getProjectDisplayTitle(project: Project, locale: Locale): string {
+  const subtitle = project.subtitle[locale];
+  return subtitle ? `${project.title[locale]} — ${subtitle}` : project.title[locale];
+}
 
 export function getAllProjects() {
   return [...projects].sort((a, b) => {

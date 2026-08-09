@@ -6,30 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "preview": "npx serve out"
+    "lint": "eslint .",
+    "preview": "npx serve out",
+    "test": "tsx --test tests/*.test.ts",
+    "test:watch": "tsx --test --watch tests/*.test.ts",
+    "typecheck": "tsc --noEmit --incremental false",
+    "verify:export": "tsx scripts/verify-export.ts"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.5.0",
-    "@swc/helpers": "^0.5.18",
     "framer-motion": "^12.34.0",
     "next": "^15.5.12",
-    "next-intl": "^4.8.2",
     "next-mdx-remote": "^6.0.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "three": "^0.182.0"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "3.3.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/three": "^0.182.0",
     "eslint": "^9",
     "eslint-config-next": "^15.5.12",
     "tailwindcss": "^4",
+    "tsx": "^4.23.11",
     "typescript": "^5"
   }
 }

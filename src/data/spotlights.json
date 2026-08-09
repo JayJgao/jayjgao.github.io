@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "chroma-awards",
+    "provider": "vimeo",
+    "videoId": "1137973544",
+    "title": {
+      "ko": "Chroma Awards Top11 Finalist\nHappyend",
+      "en": "Chroma Awards Top 11 Finalist\nHappyend",
+      "zh": "Chroma Awards Top 11 入围作品\nHappyend"
+    },
+    "workTitle": {
+      "ko": "Happyend",
+      "en": "Happyend",
+      "zh": "Happyend"
+    },
+    "caption": {
+      "ko": "Sponsor Award Top 11 Finalist 작품",
+      "en": "Sponsor Award Top 11 Finalist entry",
+      "zh": "Sponsor Award Top 11 入围作品"
+    },
+    "poster": "/assets/images/projects/chroma/chroma-happyend-thumb.webp"
+  },
+  {
+    "slug": "chroma-awards",
+    "provider": "vimeo",
+    "videoId": "1137947360",
+    "title": {
+      "ko": "Chroma Awards\nMystery Invitation",
+      "en": "Chroma Awards\nMystery Invitation",
+      "zh": "Chroma Awards\nMystery Invitation"
+    },
+    "workTitle": {
+      "ko": "Mystery Invitation",
+      "en": "Mystery Invitation",
+      "zh": "Mystery Invitation"
+    },
+    "caption": {
+      "ko": "Chroma Awards Romance 트랙 본선 진출작",
+      "en": "Finalist entry in the Chroma Awards Romance track",
+      "zh": "Chroma Awards Romance 赛道决赛入围作品"
+    },
+    "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
+  },
+  {
+    "slug": "chroma-awards",
+    "provider": "youtube",
+    "videoId": "4ngeQ9EJew4",
+    "title": {
+      "ko": "WAIFF\nGUHO Advertisement",
+      "en": "WAIFF\nGUHO Advertisement",
+      "zh": "WAIFF\nGUHO Advertisement"
+    },
+    "workTitle": {
+      "ko": "GUHO Advertisement",
+      "en": "GUHO Advertisement",
+      "zh": "GUHO Advertisement"
+    },
+    "caption": {
+      "ko": "WAIFF 2026 광고부문 출품작",
+      "en": "Submission to the WAIFF 2026 ad category",
+      "zh": "WAIFF 2026 广告类别投稿作品"
+    },
+    "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
+  },
+  {
+    "slug": "chroma-awards",
+    "provider": "youtube",
+    "videoId": "hB03aGbuG04",
+    "title": {
+      "ko": "APEC AI 영상 공모전\n다시 여기, 경주",
+      "en": "APEC AI Video Contest\nBack Here, Gyeongju",
+      "zh": "APEC AI 视频大赛\n再次来到庆州"
+    },
+    "workTitle": {
+      "ko": "다시 여기, 경주",
+      "en": "Back Here, Gyeongju",
+      "zh": "再次来到庆州"
+    },
+    "caption": {
+      "ko": "2025APEC AI 영상 공모전 출품작",
+      "en": "Submission to the 2025 APEC AI Video Contest",
+      "zh": "2025 APEC AI 视频大赛投稿作品"
+    },
+    "poster": "/assets/images/projects/chroma/chroma-apec-thumb.webp"
+  }
+]

@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Portfolio",
+    "demos": "Demos",
     "resume": "Resume"
   },
   "common": {
@@ -16,11 +17,10 @@
       "kicker": "AI Product Leader",
       "name": "Jay Ko",
       "alias": "Ko Jaehyun",
-      "headline": "Building and scaling AI products\n—from tabular ML to generative video.",
-      "subheadline": "6+ years leading AI product planning, launch, and scale across domains",
-      "ctaPortfolio": "View Portfolio",
-      "ctaResume": "View Resume",
-      "profileAlt": "Jay Ko profile photo",
+      "headline": "Tinkering with the latest AI and building it into real-world products.",
+      "subheadline": "Building and scaling AI products\nfrom tabular ML to generative video.",
+      "supporting": "7+ years leading AI product planning, launch, and scale across domains",
+      "profileAlt": "Profile photo of Jay Ko",
       "stats": [
         {
           "value": "MRR 10x",
@@ -42,6 +42,9 @@
       "viewAll": "View All",
       "metricFallbackPrefix": "Contribution"
     },
+    "demos": {
+      "viewAll": "View All Demos"
+    },
     "spotlight": {
       "kicker": "Creative Spotlight",
       "title": "Watch First",
@@ -60,26 +63,23 @@
       "title": "Career Timeline",
       "eras": {
         "era1": {
-          "label": "Era 1 · Classical ML (2018-2022)",
           "items": [
-            "Solidware (Ailys) — Won 13 Japanese enterprise clients, YoY revenue +100%",
-            "Lunit — Early product planning for vision biomarker analysis software"
+            "Solidware (Ailys), secured 13 Japanese enterprise clients and grew annual revenue by 100%",
+            "Lunit, early product planning for vision biomarker analysis software"
           ]
         },
         "era2": {
-          "label": "Era 2 · LLM Application (2023-2024)",
           "items": [
-            "BUZZNI — Built AIaaS unit from 0 to 20 members, MRR 10x growth",
-            "BUZZNI — Launched Long→Short-form AI video editor and shopping assistant chatbot",
-            "Dasan E&E — Integrated AI task development workflow for business efficiency and recovery support"
+            "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
+            "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
+            "Dasan E&E, integrated AI into Assessment Center task development workflows to improve operations and support a business turnaround"
           ]
         },
         "era3": {
-          "label": "Era 3 · Generative AI Native (2025~)",
           "items": [
-            "Cinamon CineV S2M — LLM Agent to Unreal E2E integration",
-            "Cinamon MOAI — Built Motion AI evaluation platform",
-            "Chroma Awards — Sponsor Award Top 11 Finalist"
+            "Cinamon AI PO Leadership → Official Web CineV launch and 3 experimental features integrated into the product",
+            "Cinamon AI Technology & Org Enablement → 13 AI Literacy and visioning sessions, plus web-team-led Product Discovery",
+            "Chroma Awards → Sponsor Award Top 11 Finalist"
           ]
         }
       }
@@ -87,42 +87,34 @@
   },
   "about": {
     "motivationKicker": "What Moves Me",
+    "demosCta": "View Demos",
     "images": {
-      "opening": "Domain expansion narrative image",
-      "markets": "Three languages and three markets image",
-      "motivation": "AI creative motivation image",
-      "working": "Working style image"
+      "opening": "Expansion across domains",
+      "markets": "Three languages and three markets",
+      "motivation": "Why I create with AI",
+      "working": "How I work with others"
     }
   },
   "projects": {
     "page": {
       "kicker": "Portfolio",
       "title": "Projects",
-      "description": "Projects are organized by the 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+      "description": "The portfolio follows a 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
     },
     "explorer": {
       "featuredTitle": "Featured",
-      "featuredDescription": "Only high-signal projects are highlighted first.",
+      "featuredDescription": "Only projects with clear results appear in Featured.",
       "archiveTitle": "Archive",
-      "archiveDescription": "Execution history and domain expansion tracks.",
-      "emptyFeatured": "No featured projects in the selected era.",
-      "emptyArchive": "No archive projects in the selected era."
+      "archiveDescription": "A list of projects carried out across various domains.",
+      "emptyFeatured": "No Featured projects in the selected Era.",
+      "emptyArchive": "No Archive projects in the selected Era."
     },
     "filter": {
-      "all": "All",
-      "era1": "Classical ML (2018-2022)",
-      "era2": "LLM Application (2023-2024)",
-      "era3": "Generative AI Native (2025~)"
+      "all": "All"
     },
     "card": {
-      "contributionLabel": "Contribution",
-      "metricFallbackPrefix": "Contribution",
+      "highlightLabel": "Highlight",
       "thumbnailAltSuffix": "thumbnail"
-    },
-    "eras": {
-      "era1": "Classical ML Era",
-      "era2": "LLM Application Era",
-      "era3": "Generative AI Native Era"
     },
     "caseStudy": {
       "role": "Role",
@@ -130,14 +122,73 @@
       "contribution": "Contribution",
       "firstProject": "First project",
       "lastProject": "Last project",
-      "backToList": "Back to project list"
+      "backToList": "Back to project list",
+      "fallbackNotice": "Detailed content for this project is currently available in the original Korean."
+    }
+  },
+  "demos": {
+    "page": {
+      "kicker": "Demos",
+      "title": "Tinkering with the latest AI",
+      "description": "Hands-on experiments with the latest AI, built into products and internal tools and documented with results and evidence."
+    },
+    "groups": {
+      "productized": {
+        "title": "Built into Products",
+        "description": "Work integrated into product flows and tested in real use."
+      },
+      "experiments": {
+        "title": "Experiments and Internal Tools",
+        "description": "Experiments and internal tools for testing hypotheses quickly and informing the next decision."
+      }
+    },
+    "kind": {
+      "service": "Service",
+      "prototype": "Prototype",
+      "workflow": "Workflow"
+    },
+    "status": {
+      "productized": "Productized",
+      "internal": "Internal"
+    },
+    "card": {
+      "outcomeLabel": "Outcome",
+      "openDetail": "View Demo Details"
+    },
+    "detail": {
+      "backToList": "Back to Demos",
+      "outcomeLabel": "Outcome",
+      "flowTitle": "From Observation to Hypothesis",
+      "sections": {
+        "observation": "Observation",
+        "problem": "Problem",
+        "hypothesis": "Hypothesis",
+        "highlightMedia": "Highlight Media",
+        "video": "Video",
+        "gallery": "Product Evidence",
+        "howItWorks": "How It Works",
+        "pipeline": "Pipeline",
+        "stack": "Stack",
+        "boundary": "Boundary"
+      },
+      "video": {
+        "playPrefix": "Play highlight video",
+        "titleSuffix": "highlight video"
+      },
+      "gallery": {
+        "previous": "Previous image",
+        "next": "Next image",
+        "selectPrefix": "Select image",
+        "counterLabel": "Current image and total image count"
+      },
+      "diagramScrollHint": "On small screens, scroll horizontally to view the full pipeline."
     }
   },
   "resume": {
     "page": {
       "kicker": "Resume",
       "title": "Jay Ko Resume",
-      "description": "The web resume and downloadable PDFs are maintained with the same standard.",
+      "description": "The web resume and downloadable PDFs follow the same content standard.",
       "downloadKo": "Download Korean PDF",
       "downloadEn": "Download English PDF"
     },
@@ -158,7 +209,7 @@
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you requested could not be found.",
-    "backHome": "Back to home"
+    "backHome": "Back to Home"
   },
   "footer": {
     "brand": "Jay Ko Portfolio",

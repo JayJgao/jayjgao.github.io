@@ -41,6 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 # local tooling / notes
+.local/
+.superpowers/
+docs/superpowers/
 .cursorindexingignore
 .specstory/
-.reference/notion-export/public-assets-raw/
+.reference/

@@ -2,23 +2,27 @@
   "meta": {
     "name": "고재현 (Jay Ko)",
     "title": "AI Product Leader",
-    "subtitle": "6+ Years | Tabular ML → Vision → LLM Agent → Motion AI",
+    "subtitle": "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI",
     "location": "Seoul, Korea",
     "email": "rhwogus0205@gmail.com",
     "website": "https://jayjgao.github.io",
     "github": "https://github.com/JayJgao"
   },
-  "summary": "새로운 산업 도메인에 AI를 적용해 제품을 만들고 스케일하는 AI Product Leader입니다. 제로에서 팀을 빌딩하고 MRR 10배 성장을 만든 경험을 바탕으로, 기획부터 시스템 설계·실행까지 End-to-End로 문제를 해결합니다.",
+  "summary": [
+    "산업과 제품의 구조를 빠르게 파악하고, 아직 언어로서 규명되지 않은 문제를 기술의 언어로 번역해 제품과 사업 성과로 연결하는 AI Product Leader입니다.",
+    "핀테크 AutoML, 의료 Computer Vision, 이커머스 LLM Application, 생성형 AI 영상 제품을 거치며 팀 빌딩, 엔터프라이즈 계약, MRR 10배 성장, 웹 제품 공식 출시까지 일관된 성과를 만들어왔습니다.",
+    "새로운 도메인에서는 제품의 인프라와 시스템, 시장을 먼저 구조화한 뒤 직접 자사와 경쟁사 제품을 사용하며 정의되지 않은 빈틈을 찾습니다. 코어 시스템과 강하게 맞물린 문제는 조직의 화두로 만들고, 독립적으로 검증할 수 있는 사용자 마찰은 직접 프로토타이핑합니다. 구현에 머물지 않고 계약과 결제 전환, Golden Path를 이탈하지 않은 채 FSO (First Satisfactory Output)에 도달하는 것처럼 실제 성과가 나올 때까지 팀과 함께 실행합니다."
+  ],
   "experience": [
     {
       "company": "Cinamon (CineV)",
       "role": "AI Tech Product Owner",
       "period": "2025.04 - Present",
       "highlights": [
-        "LangChain 기반 Film Agent 설계로 LLM-to-Unreal E2E 통합 달성",
-        "MOAI 평가 플랫폼 구축으로 Model-to-Product 통합 사이클 가속: 도입 전 2년 2건 → 도입 후 5개월 2건(Locomotion, Text-to-Motion), 유저스터디 총 6회",
-        "외부 모델 라우팅 플랫폼 도입으로 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축, I2V/I2I/TTS/Music Gen 연동 아키텍처·API 설계",
-        "CineV 런칭 전략 수립 및 AI 파트 리딩 (2026년 1월 공식 런칭)"
+        "Film Agent E2E 통합에서 시작한 방향 전환, 3년 레거시 정리 합의, 2026년 7월 웹 CineV 공식 출시",
+        "Conditioning과 컨텍스트 관리, 서사와 비주얼 일관성 연구, 120+ 동일 장면 검증, Asset 관리 시스템 제품 통합",
+        "실험 기능 3건 제품 통합, 내부 Eval 플랫폼을 통한 모델 2건 통합과 유저스터디 6회 운영, AI Literacy와 비저닝 세션 13회 진행, 웹팀 주도 Product Discovery 프로그램 설계와 운영",
+        "외부 모델 라우팅을 통한 7개 이상 영역과 모델 30종 이상 제품 통합"
       ]
     },
     {
@@ -60,9 +64,25 @@
     }
   ],
   "skills": {
-    "AI/ML": ["LLM Agent", "Context Engineering", "AI Evals", "Generative AI", "Computer Vision", "Motion AI", "AutoML"],
-    "Product": ["AIaaS", "Roadmapping", "PRD", "Cross-functional Leadership", "Team Building", "Agile/Scrum"],
-    "Technical": ["Vibe Coding", "System Architecture", "API Design", "SQL", "GA", "Figma", "Linear", "LangChain/LangSmith"]
+    "AI Product Leadership": [
+      "Product Strategy and KPI/OKR",
+      "Product Discovery and Hypothesis Validation",
+      "Cross-functional Leadership and Team Building",
+      "B2B Go-to-Market"
+    ],
+    "AI Systems": [
+      "LLM Applications and Agents",
+      "Context Engineering and AI Evals",
+      "Generative Media and Computer Vision",
+      "Model Routing and Integration"
+    ],
+    "Technical Execution": [
+      "Rapid Prototyping",
+      "System Architecture",
+      "API Design",
+      "Product Analytics"
+    ],
+    "Selected Tools": ["SQL", "Google Analytics", "LangChain / LangGraph"]
   },
   "education": [
     "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"

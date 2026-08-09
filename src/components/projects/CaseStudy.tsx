@@ -1,86 +1,118 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getEraLabel } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
-import type { Project } from "@/lib/projects";
+import type { Locale } from "@/lib/locale";
+import { getProjectDisplayTitle, type Project } from "@/lib/projects";
+import { getLocalizedPath } from "@/lib/routes";
 
 export function CaseStudy({
   project,
   content,
+  contentLocale,
   prev,
   next,
 }: {
   project: Project;
   content: ReactNode;
+  contentLocale: Locale;
   prev?: Project;
   next?: Project;
 }) {
   const { locale } = useLocale();
   const messages = getMessages(locale);
   const copy = messages.projects.caseStudy;
-  const eraByIndex: Record<number, string> = {
-    1: messages.projects.eras.era1,
-    2: messages.projects.eras.era2,
-    3: messages.projects.eras.era3,
-  };
+  const subtitle = project.subtitle[locale];
+  const isFallback = contentLocale !== locale;
 
   return (
-    <article className="space-y-7 md:space-y-8">
-      <header className="panel p-5 md:p-8">
-        <p className="section-kicker">{eraByIndex[project.era] ?? project.eraLabel}</p>
-        <h1 className="editorial-title mt-3 text-4xl md:text-6xl">{project.title[locale]}</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/86">{project.oneLiner[locale]}</p>
+    <article className="project-detail">
+      <header className="project-detail-hero" data-project-section="hero">
+        <div className="chapter-inner">
+          <p className="section-kicker">{getEraLabel(project.era, locale)}</p>
+          <h1 className="page-display">{project.title[locale]}</h1>
+          {subtitle ? <p className="project-detail-subtitle">{subtitle}</p> : null}
+          <p className="project-detail-intro">{project.oneLiner[locale]}</p>
 
-        <dl className="mt-6 grid gap-4 border-t border-white/10 pt-5 text-sm md:grid-cols-3 md:gap-6">
-          <div>
-            <dt className="text-white/64">{copy.role}</dt>
-            <dd className="mt-1 text-white/90">{project.role}</dd>
-          </div>
-          <div>
-            <dt className="text-white/64">{copy.company}</dt>
-            <dd className="mt-1 text-white/90">{project.company}</dd>
-          </div>
-          <div>
-            <dt className="text-white/64">{copy.contribution}</dt>
-            <dd className="mt-1 text-white/90">{project.contribution}%</dd>
-          </div>
-        </dl>
+          <dl className="project-detail-ledger">
+            <div>
+              <dt>{copy.role}</dt>
+              <dd>{project.role}</dd>
+            </div>
+            <div>
+              <dt>{copy.company}</dt>
+              <dd>{project.company}</dd>
+            </div>
+            <div>
+              <dt>{copy.contribution}</dt>
+              <dd>{project.contribution}%</dd>
+            </div>
+          </dl>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span key={tag} className="pill text-xs">
-              {tag}
-            </span>
-          ))}
+          <ul className="tag-list" aria-label="Tags">
+            {project.tags.map((tag) => (
+              <li key={tag} className="pill">{tag}</li>
+            ))}
+          </ul>
         </div>
       </header>
 
-      <section className="panel mdx-content p-5 md:p-8">
-        <div className="mx-auto max-w-[860px]">{content}</div>
+      <figure className="project-detail-media" data-project-section="media">
+        <Image
+          src={project.thumbnail}
+          alt={getProjectDisplayTitle(project, locale)}
+          width={1200}
+          height={675}
+          sizes="100vw"
+          className="project-detail-image"
+          priority
+        />
+      </figure>
+
+      <section className="project-content" data-project-section="content">
+        {isFallback ? (
+          <p
+            className="project-fallback-notice"
+            data-project-fallback-notice={contentLocale}
+            lang={locale}
+            role="note"
+          >
+            {copy.fallbackNotice}
+          </p>
+        ) : null}
+        <div
+          lang={contentLocale}
+          className="mdx-content"
+          data-project-content-locale={contentLocale}
+        >
+          {content}
+        </div>
       </section>
 
-      <nav className="flex flex-col gap-3 border-t border-white/10 pt-6 text-sm md:flex-row md:items-center md:justify-between">
+      <nav className="project-detail-nav" data-project-section="navigation" aria-label="Project navigation">
         <div>
           {prev ? (
-            <Link href={`/projects/${prev.slug}`} className="text-white/66 hover:text-white">
-              ← {prev.title[locale]}
+            <Link href={getLocalizedPath(locale, `/projects/${prev.slug}/`)}>
+              <span aria-hidden="true">←</span> {getProjectDisplayTitle(prev, locale)}
             </Link>
           ) : (
-            <span className="text-white/56">{copy.firstProject}</span>
+            <span>{copy.firstProject}</span>
           )}
         </div>
-        <Link href="/projects" className="text-accent/95 hover:underline">
-          {copy.backToList}
-        </Link>
+        <div>
+          <Link href={getLocalizedPath(locale, "/projects/")}>{copy.backToList}</Link>
+        </div>
         <div>
           {next ? (
-            <Link href={`/projects/${next.slug}`} className="text-white/66 hover:text-white">
-              {next.title[locale]} →
+            <Link href={getLocalizedPath(locale, `/projects/${next.slug}/`)}>
+              {getProjectDisplayTitle(next, locale)} <span aria-hidden="true">→</span>
             </Link>
           ) : (
-            <span className="text-white/56">{copy.lastProject}</span>
+            <span>{copy.lastProject}</span>
           )}
         </div>
       </nav>

@@ -10,6 +10,7 @@ export type AboutNarrative = {
   workingWithMe: {
     kicker: string;
     lead: string;
-    principles: string[];
+    principles: Array<string | { title: string; body: string }>;
+    demosBridge: string;
   };
 };

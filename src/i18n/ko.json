@@ -3,6 +3,7 @@
     "home": "홈",
     "about": "소개",
     "projects": "포트폴리오",
+    "demos": "Demos",
     "resume": "이력서"
   },
   "common": {
@@ -16,10 +17,9 @@
       "kicker": "AI Product Leader",
       "name": "고재현",
       "alias": "Jay Ko",
-      "headline": "Tabular ML에서 생성형 비디오까지\n— AI 제품을 만들고 성장시킵니다.",
-      "subheadline": "6+ years, AI 제품 기획·출시·스케일링을 리드한 Product 운영 이력",
-      "ctaPortfolio": "View Portfolio",
-      "ctaResume": "View Resume",
+      "headline": "Tinkering with the latest AI and building it into real-world products.",
+      "subheadline": "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
+      "supporting": "7+ years, AI 제품을 기획하고 출시해 스케일링까지 리드한 Product 운영 이력",
       "profileAlt": "고재현 프로필 사진",
       "stats": [
         {
@@ -42,6 +42,9 @@
       "viewAll": "전체 보기",
       "metricFallbackPrefix": "기여"
     },
+    "demos": {
+      "viewAll": "View All Demos"
+    },
     "spotlight": {
       "kicker": "Creative Spotlight",
       "title": "Watch First",
@@ -60,33 +63,31 @@
       "title": "Career Timeline",
       "eras": {
         "era1": {
-          "label": "Era 1 · Classical ML (2018-2022)",
           "items": [
-            "Solidware (Ailys) — 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
-            "Lunit — 비전 바이오마커 분석 SW 초기 기획"
+            "Solidware (Ailys)에서 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
+            "Lunit에서 비전 바이오마커 분석 SW 초기 기획"
           ]
         },
         "era2": {
-          "label": "Era 2 · LLM Application (2023-2024)",
           "items": [
-            "BUZZNI — AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-            "BUZZNI — Long→Short-form AI 비디오 편집기 / 쇼핑 어시스턴트 챗봇 출시",
-            "Dasan E&E — AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원"
+            "BUZZNI에서 AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
+            "BUZZNI에서 Long→Short-form AI 비디오 편집기와 쇼핑 어시스턴트 챗봇 출시",
+            "Dasan E&E에서 AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원"
           ]
         },
         "era3": {
-          "label": "Era 3 · Generative AI Native (2025~)",
           "items": [
-            "Cinamon CineV S2M — LLM Agent to Unreal E2E 통합",
-            "Cinamon MOAI — 모션 AI 평가 플랫폼 구축",
-            "Chroma Awards — Sponsor Award Top 11 Finalist"
+            "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
+            "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
+            "Chroma Awards → Sponsor Award Top 11 Finalist"
           ]
         }
       }
     }
   },
   "about": {
-    "motivationKicker": "저를 움직이는 것",
+    "motivationKicker": "What Moves Me",
+    "demosCta": "View Demos",
     "images": {
       "opening": "도메인 확장 내러티브 이미지",
       "markets": "3개 언어 3개 시장 소개 이미지",
@@ -104,25 +105,16 @@
       "featuredTitle": "Featured",
       "featuredDescription": "핵심 성과가 선명한 프로젝트만 우선 배치했습니다.",
       "archiveTitle": "Archive",
-      "archiveDescription": "축적된 실행 이력과 도메인 확장 트랙입니다.",
+      "archiveDescription": "다양한 도메인에서 진행했던 프로젝트들의 목록입니다.",
       "emptyFeatured": "선택한 Era에 해당하는 Featured 프로젝트가 없습니다.",
       "emptyArchive": "선택한 Era에 해당하는 Archive 프로젝트가 없습니다."
     },
     "filter": {
-      "all": "All",
-      "era1": "Classical ML (2018-2022)",
-      "era2": "LLM Application (2023-2024)",
-      "era3": "Generative AI Native (2025~)"
+      "all": "All"
     },
     "card": {
-      "contributionLabel": "기여도",
-      "metricFallbackPrefix": "기여",
+      "highlightLabel": "하이라이트",
       "thumbnailAltSuffix": "썸네일"
-    },
-    "eras": {
-      "era1": "Classical ML Era",
-      "era2": "LLM Application Era",
-      "era3": "Generative AI Native Era"
     },
     "caseStudy": {
       "role": "역할",
@@ -130,7 +122,66 @@
       "contribution": "기여도",
       "firstProject": "첫 프로젝트",
       "lastProject": "마지막 프로젝트",
-      "backToList": "프로젝트 목록으로"
+      "backToList": "프로젝트 목록으로",
+      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
+    }
+  },
+  "demos": {
+    "page": {
+      "kicker": "Demos",
+      "title": "Tinkering with the latest AI",
+      "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
+    },
+    "groups": {
+      "productized": {
+        "title": "Built into Products",
+        "description": "실제 제품 흐름에 반영되어 사용 맥락을 검증한 작업입니다."
+      },
+      "experiments": {
+        "title": "Experiments and Internal Tools",
+        "description": "가설을 빠르게 검증하고 다음 판단을 만든 실험과 내부 도구입니다."
+      }
+    },
+    "kind": {
+      "service": "Service",
+      "prototype": "Prototype",
+      "workflow": "Workflow"
+    },
+    "status": {
+      "productized": "Productized",
+      "internal": "Internal"
+    },
+    "card": {
+      "outcomeLabel": "Outcome",
+      "openDetail": "Demo 상세 보기"
+    },
+    "detail": {
+      "backToList": "Demos 목록으로",
+      "outcomeLabel": "Outcome",
+      "flowTitle": "From Observation to Hypothesis",
+      "sections": {
+        "observation": "Observation",
+        "problem": "Problem",
+        "hypothesis": "Hypothesis",
+        "highlightMedia": "Highlight Media",
+        "video": "Video",
+        "gallery": "Product Evidence",
+        "howItWorks": "How It Works",
+        "pipeline": "Pipeline",
+        "stack": "Stack",
+        "boundary": "Boundary"
+      },
+      "video": {
+        "playPrefix": "하이라이트 영상 재생",
+        "titleSuffix": "하이라이트 영상"
+      },
+      "gallery": {
+        "previous": "이전 이미지",
+        "next": "다음 이미지",
+        "selectPrefix": "이미지 선택",
+        "counterLabel": "현재 이미지와 전체 이미지 수"
+      },
+      "diagramScrollHint": "작은 화면에서는 좌우로 스크롤해 전체 파이프라인을 볼 수 있습니다."
     }
   },
   "resume": {

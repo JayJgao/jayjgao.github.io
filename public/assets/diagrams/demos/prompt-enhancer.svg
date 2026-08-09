@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="840" viewBox="0 0 1500 840" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Enhancer Prompt Transform Pipeline</title>
+  <desc id="desc">A five step pipeline showing user prompt input, skill reference knowledge, product API orchestration, safety validation boundaries, and final prompt output.</desc>
+  <rect width="1500" height="840" fill="#f4e9e1"/>
+
+  <text x="64" y="86" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#0e0e0e" letter-spacing="0">PROMPT ENHANCER</text>
+  <text x="68" y="124" font-family="Courier New, monospace" font-size="18" fill="#0e0e0e">Prompt know-how to product API contract</text>
+
+  <line x1="64" y1="156" x2="1436" y2="156" stroke="#0e0e0e" stroke-width="4"/>
+
+  <g transform="translate(64 210)">
+    <rect width="248" height="260" rx="16" fill="#2835f8" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="22" y="42" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="#f4e9e1">01 / INPUT</text>
+    <text x="22" y="88" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="800" fill="#f4e9e1">User Intent</text>
+    <text x="22" y="128" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#f4e9e1">
+      <tspan x="22" dy="0">Korean rough prompt</tspan>
+      <tspan x="22" dy="28">optional references</tspan>
+      <tspan x="22" dy="28">ordered 1 to 9</tspan>
+      <tspan x="22" dy="28">image or video mode</tspan>
+    </text>
+  </g>
+
+  <line x1="328" y1="340" x2="344" y2="340" stroke="#0e0e0e" stroke-width="5" stroke-linecap="round"/>
+
+  <g transform="translate(360 210)">
+    <rect width="248" height="260" rx="16" fill="#5900cc" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="22" y="42" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="#f4e9e1">02 / SKILLS</text>
+    <text x="22" y="88" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" fill="#f4e9e1">Knowledge Pack</text>
+    <text x="22" y="128" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#f4e9e1">
+      <tspan x="22" dy="0">Nanotape for image</tspan>
+      <tspan x="22" dy="28">Seehorse for video</tspan>
+      <tspan x="22" dy="28">camera, expression</tspan>
+      <tspan x="22" dy="28">lighting, patterns</tspan>
+    </text>
+  </g>
+
+  <line x1="624" y1="340" x2="640" y2="340" stroke="#0e0e0e" stroke-width="5" stroke-linecap="round"/>
+
+  <g transform="translate(656 210)">
+    <rect width="248" height="260" rx="16" fill="#ff3d00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="22" y="42" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="#0e0e0e">03 / GRAPH</text>
+    <text x="22" y="88" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" fill="#0e0e0e">Transform Core</text>
+    <text x="22" y="128" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#0e0e0e">
+      <tspan x="22" dy="0">preflight checks</tspan>
+      <tspan x="22" dy="28">reference resolver</tspan>
+      <tspan x="22" dy="28">policy writer</tspan>
+      <tspan x="22" dy="28">one repair pass</tspan>
+    </text>
+  </g>
+
+  <line x1="920" y1="340" x2="936" y2="340" stroke="#0e0e0e" stroke-width="5" stroke-linecap="round"/>
+
+  <g transform="translate(952 210)">
+    <rect width="248" height="260" rx="16" fill="#ffff00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="22" y="42" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="#0e0e0e">04 / BOUNDARY</text>
+    <text x="22" y="88" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" fill="#0e0e0e">Safety Gate</text>
+    <text x="22" y="128" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#0e0e0e">
+      <tspan x="22" dy="0">clarify or fail</tspan>
+      <tspan x="22" dy="28">structured warnings</tspan>
+      <tspan x="22" dy="28">diagnostics opt-in</tspan>
+      <tspan x="22" dy="28">no raw prompt logs</tspan>
+    </text>
+  </g>
+
+  <line x1="1216" y1="340" x2="1232" y2="340" stroke="#0e0e0e" stroke-width="5" stroke-linecap="round"/>
+
+  <g transform="translate(1248 210)">
+    <rect width="188" height="260" rx="16" fill="#05ff00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="20" y="42" font-family="Courier New, monospace" font-size="15" font-weight="700" fill="#0e0e0e">05 / OUTPUT</text>
+    <text x="20" y="88" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#0e0e0e">Model-ready</text>
+    <text x="20" y="128" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0e0e0e">
+      <tspan x="20" dy="0">English prompt</tspan>
+      <tspan x="20" dy="27">Image N or</tspan>
+      <tspan x="20" dy="27">@imageN handles</tspan>
+      <tspan x="20" dy="27">no media output</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(64 535)">
+    <rect width="1372" height="218" rx="16" fill="#f4e9e1" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="26" y="48" font-family="Courier New, monospace" font-size="17" font-weight="700" fill="#0e0e0e">REFERENCE MATERIALS AND PRODUCT CONSTRAINTS</text>
+
+    <rect x="26" y="74" width="404" height="104" rx="16" fill="#5900cc" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="48" y="111" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#f4e9e1">Skill materials</text>
+    <text x="48" y="143" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#f4e9e1">camera · expression · lighting · model guides</text>
+    <text x="48" y="168" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#f4e9e1">prompt patterns · reference handles · schemas</text>
+
+    <rect x="484" y="74" width="404" height="104" rx="16" fill="#ff3d00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="506" y="111" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#0e0e0e">Product contract</text>
+    <text x="506" y="143" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0e0e0e">image-only style · video duration required</text>
+    <text x="506" y="168" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0e0e0e">contiguous order · endpoint-specific handles</text>
+
+    <rect x="942" y="74" width="404" height="104" rx="16" fill="#ffff00" stroke="#0e0e0e" stroke-width="3"/>
+    <text x="964" y="111" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#0e0e0e">Validation evidence</text>
+    <text x="964" y="143" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0e0e0e">model · workflow · endpoint · demo tests</text>
+    <text x="964" y="168" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0e0e0e">Swagger examples and logging privacy checks</text>
+  </g>
+
+  <text x="64" y="800" font-family="Courier New, monospace" font-size="14" fill="#0e0e0e">The API transforms prompts only. Image and video generation remain downstream responsibilities.</text>
+</svg>

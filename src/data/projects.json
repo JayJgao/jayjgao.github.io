@@ -2,18 +2,17 @@
   {
     "slug": "cinev-s2m",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
-    "featured": true,
-    "showcaseOrder": 1,
+    "featured": false,
+    "showcaseOrder": null,
     "title": {
-      "ko": "CineV S2M — LLM Agent → Unreal Pipeline",
-      "en": "CineV S2M — LLM Agent to Unreal Pipeline",
-      "zh": "CineV S2M — LLM Agent 到 Unreal"
+      "ko": "CineV S2M",
+      "en": "CineV S2M",
+      "zh": "CineV S2M"
     },
     "oneLiner": {
       "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
-      "en": "Delivered first LLM-to-Unreal E2E integration in 3 months and cut experiment lead time by 50%",
-      "zh": "入职3个月完成首个 LLM→Unreal 端到端集成，并将实验周期缩短50%"
+      "en": "Within 3 months of joining, completed the first LLM-to-Unreal E2E integration and cut experiment lead time by 50%",
+      "zh": "入职3个月内完成首个 LLM-to-Unreal E2E 集成，并将实验周期缩短50%"
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
@@ -24,23 +23,27 @@
       "System Architecture"
     ],
     "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
-    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%"
+    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%",
+    "subtitle": {
+      "ko": "LLM Agent → Unreal Pipeline",
+      "en": "LLM Agent → Unreal Pipeline",
+      "zh": "LLM Agent → Unreal 管线"
+    }
   },
   {
     "slug": "cinev-moai",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
-    "featured": true,
-    "showcaseOrder": 2,
+    "featured": false,
+    "showcaseOrder": null,
     "title": {
-      "ko": "CineV MOAI — Motion AI 평가 플랫폼",
-      "en": "CineV MOAI — Motion AI Evaluation Platform",
-      "zh": "CineV MOAI — Motion AI 评测平台"
+      "ko": "CineV MOAI",
+      "en": "CineV MOAI",
+      "zh": "CineV MOAI"
     },
     "oneLiner": {
       "ko": "바이브코딩으로 구축, 5개월간 유저스터디 6회 + 모델 2건 통합",
-      "en": "Vibe-coded platform; 6 user studies in 5 months and 2 model integrations",
-      "zh": "从零搭建评测平台，5个月完成6次用户研究并集成2个模型"
+      "en": "Built through vibe coding; ran 6 user studies and integrated 2 models over 5 months",
+      "zh": "用 Vibe Coding 搭建平台，5个月完成6次用户研究和2个模型集成"
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
@@ -51,23 +54,27 @@
       "User Study"
     ],
     "thumbnail": "/assets/images/projects/cinev/moai-thumb.webp",
-    "primaryMetric": "6 USER STUDIES / 5 MONTHS"
+    "primaryMetric": "6 USER STUDIES / 5 MONTHS",
+    "subtitle": {
+      "ko": "Motion AI 평가 플랫폼",
+      "en": "Motion AI Evaluation Platform",
+      "zh": "Motion AI 评估平台"
+    }
   },
   {
     "slug": "chroma-awards",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
     "featured": true,
     "showcaseOrder": 3,
     "title": {
-      "ko": "Chroma Awards — Fully AI-Generated Short Film",
-      "en": "Chroma Awards — Fully AI-Generated Short Film",
-      "zh": "Chroma Awards — 全AI生成短片"
+      "ko": "Chroma Awards",
+      "en": "Chroma Awards",
+      "zh": "Chroma Awards"
     },
     "oneLiner": {
       "ko": "세계 최대 AI Film Competition Sponsor Award Top 11 Finalist",
-      "en": "Top 11 Finalist, Sponsor Award — World's largest AI Film Competition (ElevenLabs)",
-      "zh": "全球最大 AI 电影赛事赞助奖 Top 11 入围"
+      "en": "Sponsor Award Top 11 Finalist at the world's largest AI Film Competition",
+      "zh": "获选全球最大 AI Film Competition 的 Sponsor Award Top 11 Finalist"
     },
     "company": "Side Project",
     "role": "Creator / Director",
@@ -79,12 +86,16 @@
     ],
     "thumbnail": "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
     "primaryMetric": "TOP 11 FINALIST",
-    "demoUrl": "https://vimeo.com/1137973544"
+    "demoUrl": "https://vimeo.com/1137973544",
+    "subtitle": {
+      "ko": "Fully AI-Generated Short Film",
+      "en": "Fully AI-Generated Short Film",
+      "zh": "全 AI 生成短片"
+    }
   },
   {
     "slug": "buzzni-shortform-ai",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": true,
     "showcaseOrder": 4,
     "title": {
@@ -94,8 +105,8 @@
     },
     "oneLiner": {
       "ko": "Long→Short-form AI 비디오 편집기, 0→1 기획·출시·운영",
-      "en": "AI video editor, built 0→1 from planning to launch and operation",
-      "zh": "AI 视频编辑器，从0到1完成规划、上线与运营"
+      "en": "Took a Long→Short-form AI video editor from 0→1 through planning, launch, and operations",
+      "zh": "Long→Short-form AI 视频编辑器，从0→1完成策划、上线和运营"
     },
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
@@ -108,23 +119,27 @@
     ],
     "thumbnail": "/assets/images/projects/buzzni/shortform-shot-02.webp",
     "primaryMetric": "0→1 PRODUCT LAUNCH",
-    "demoUrl": "https://devpost.com/software/mystery-invitation"
+    "demoUrl": "https://devpost.com/software/mystery-invitation",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-aiaas-biz",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": true,
     "showcaseOrder": 5,
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
-      "en": "AIaaS Business Unit — Build & Lead",
-      "zh": "AIaaS 事业部搭建与领导"
+      "en": "Building and Leading an AIaaS Business Unit",
+      "zh": "组建并带领 AIaaS 事业部"
     },
     "oneLiner": {
       "ko": "제로에서 20명 팀 빌딩, AIaaS 사업부 리딩 — MRR 500만→5,200만 원 (10x 성장)",
-      "en": "Built 20-person team from zero, led AIaaS unit — MRR ₩5M→₩52M (10x growth)",
-      "zh": "从零搭建20人团队，带领 AIaaS 事业部实现 MRR 10倍增长"
+      "en": "Built the AIaaS team from 0→20 people, led the business unit, and grew MRR from ₩5 million to ₩52 million, a 10x increase",
+      "zh": "从零组建20人团队并带领 AIaaS 事业部，MRR 500万→5,200万韩元，实现10x增长"
     },
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
@@ -135,24 +150,28 @@
       "AIaaS",
       "Go-to-Market"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
-    "primaryMetric": "MRR 10X"
+    "thumbnail": "/assets/images/projects/buzzni/aiaas-thumb.webp",
+    "primaryMetric": "MRR 10X",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-mlaas",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": true,
     "showcaseOrder": 6,
     "title": {
-      "ko": "핀테크 MLaaS — 일본 엔터프라이즈",
-      "en": "Fintech MLaaS — Japan Enterprise",
-      "zh": "金融 MLaaS — 日本企业市场"
+      "ko": "핀테크 MLaaS",
+      "en": "Fintech MLaaS",
+      "zh": "金融科技 MLaaS"
     },
     "oneLiner": {
       "ko": "Mitsubishi, AEON 등 13개 클라이언트 확보, 연매출 100% 신장",
-      "en": "Acquired 13 clients incl. Mitsubishi, AEON; YoY revenue +100%",
-      "zh": "获得13家企业客户（含三菱、AEON），年营收同比增长100%"
+      "en": "Secured 13 Japanese enterprise clients, including Mitsubishi and AEON; annual revenue grew by 100%",
+      "zh": "拿下 Mitsubishi、AEON 等13家日本企业客户，年营收增长100%"
     },
     "company": "Solidware",
     "role": "AI PM / Biz Lead",
@@ -165,12 +184,16 @@
     ],
     "thumbnail": "/assets/images/projects/solidware/mlaas-thumb.webp",
     "primaryMetric": "13 ENTERPRISE CLIENTS WON",
-    "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e"
+    "demoUrl": "https://medium.com/@jjko/human-driven-ai-a087620db02e",
+    "subtitle": {
+      "ko": "일본 엔터프라이즈",
+      "en": "Japanese Enterprise Market",
+      "zh": "日本企业业务"
+    }
   },
   {
     "slug": "buzzni-chatbot",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -180,8 +203,8 @@
     },
     "oneLiner": {
       "ko": "상품 탐색과 구매 전환을 돕는 대화형 쇼핑 경험 설계",
-      "en": "Designed conversational shopping flow to improve product discovery and conversion",
-      "zh": "设计对话式购物流程，提升商品发现与转化"
+      "en": "Designed a conversational shopping experience to help users find products and complete purchases",
+      "zh": "设计对话式购物体验，帮助用户发现商品并提升购买转化"
     },
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
@@ -192,66 +215,79 @@
       "LLM"
     ],
     "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
-    "primaryMetric": "SHOPPING ASSISTANT LAUNCHED"
+    "primaryMetric": "SHOPPING ASSISTANT LAUNCHED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "cinev-ai-po-leadership",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 1,
     "title": {
-      "ko": "AI PO Integration Leadership",
-      "en": "AI PO Integration Leadership",
-      "zh": "AI PO 统合领导"
+      "ko": "AI PO Leadership",
+      "en": "AI PO Leadership",
+      "zh": "AI PO Leadership"
     },
     "oneLiner": {
-      "ko": "Unreal·Web·LLM 3자 표준 통신 스펙 정의, 조직 AI Literacy 정렬 가속",
-      "en": "Defined 3-way Unreal-Web-LLM interface standards and accelerated AI literacy alignment",
-      "zh": "制定 Unreal/Web/LLM 三方通信标准并加速组织 AI 认知对齐"
+      "ko": "3D 기반 제품을 생성형 모델 중심의 웹 제품으로 전환하고, 가설 검증부터 공식 출시까지 공동으로 이끈 AI PO 리더십",
+      "en": "Co-led the transition of a 3D product into a generative-model-centered web product, from hypothesis validation through the official Web CineV launch",
+      "zh": "作为 AI PO，与团队共同推动3D产品转型为以生成模型为核心的 Web 产品，完成从假设验证到正式上线"
     },
     "company": "Cinamon",
-    "role": "AI Tech PO",
-    "contribution": 100,
+    "role": "AI Tech Product Owner",
+    "contribution": 60,
     "tags": [
-      "System Integration",
-      "Architecture",
-      "AI Leadership"
+      "Product Strategy",
+      "Hypothesis Validation",
+      "Generative AI"
     ],
-    "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership-thumb.webp",
-    "primaryMetric": "3-WAY SPEC STANDARDIZED"
+    "thumbnail": "/assets/images/projects/cinev/cinev-ai-po-leadership.svg",
+    "primaryMetric": "PIVOT → WEB LAUNCH",
+    "demoUrl": "https://cinev.com/",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
-    "slug": "cinev-a2p",
+    "slug": "cinev-ai-enablement",
     "era": 3,
-    "eraLabel": "Generative AI Native (2025~)",
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 2,
     "title": {
-      "ko": "CineV A2P — External Model Routing Integration",
-      "en": "CineV A2P — External Model Routing Integration",
-      "zh": "CineV A2P — 外部模型路由整合"
+      "ko": "AI Technology & Org Enablement",
+      "en": "AI Technology & Org Enablement",
+      "zh": "AI Technology & Org Enablement"
     },
     "oneLiner": {
-      "ko": "I2V·I2I·TTS·Music Gen 통합 라우팅 설계로 외부 모델 적용 사이클을 주 단위에서 즉시 배포 수준으로 단축",
-      "en": "Unified I2V, I2I, TTS, and Music Gen routing to reduce model integration cycles from weekly to near-immediate deployment",
-      "zh": "通过统一 I2V、I2I、TTS、Music Gen 路由，将外部模型接入周期从按周缩短到接近即时部署"
+      "ko": "13회의 AI Literacy와 비저닝 세션에서 출발해, 웹팀이 AI로 사용자 마찰을 직접 발견하고 검증하는 Product Discovery 프로그램으로 확장한 조직 Enablement 프로젝트",
+      "en": "Expanded 13 AI Literacy and visioning sessions into a web-team-led Product Discovery program for identifying user friction and testing whether AI could address it",
+      "zh": "这项组织 Enablement 工作从13场 AI Literacy 与愿景研讨会起步，后来扩展为由 Web 团队主导的 Product Discovery 项目，让团队直接发现用户摩擦点并用 AI 验证"
     },
     "company": "Cinamon",
-    "role": "AI Tech PO",
-    "contribution": 50,
+    "role": "AI Tech Product Owner / Facilitator",
+    "contribution": 90,
     "tags": [
-      "A2P",
-      "Model Routing",
-      "API Design"
+      "AI Literacy",
+      "Product Discovery",
+      "Team Enablement"
     ],
-    "thumbnail": "/assets/images/projects/cinev/a2p-thumb.png",
-    "primaryMetric": "WEEKLY → IMMEDIATE DEPLOYMENT"
+    "thumbnail": "/assets/images/projects/cinev/enablement/r2v-developer-checklist.webp",
+    "primaryMetric": "SHARED LANGUAGE → INDEPENDENT EXECUTION",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-review-aiaas",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -261,8 +297,8 @@
     },
     "oneLiner": {
       "ko": "2개 고객사 납품 + GPT-4o 워크로드를 4o-mini로 최적화해 비용 절감",
-      "en": "Shipped to 2 clients and optimized GPT-4o workloads to 4o-mini for major cost savings",
-      "zh": "交付2家客户，并将 GPT-4o 工作负载优化到 4o-mini 以降低成本"
+      "en": "Delivered the service to 2 clients and cut costs by moving GPT-4o workloads to 4o-mini",
+      "zh": "向2家客户交付，并将 GPT-4o 工作负载优化为 4o-mini，降低成本"
     },
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
@@ -273,12 +309,16 @@
       "B2B SaaS"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-review-aiaas-thumb.webp",
-    "primaryMetric": "2 CLIENTS · COST OPTIMIZATION"
+    "primaryMetric": "2 CLIENTS · COST OPTIMIZATION",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-search-aiaas",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -288,8 +328,8 @@
     },
     "oneLiner": {
       "ko": "3개 고객사 검색 서비스 납품 + 7개 기업 PoC로 확장 파이프라인 구축",
-      "en": "Delivered search service to 3 clients and ran 7 enterprise PoCs for expansion",
-      "zh": "为3家客户交付搜索服务，并完成7家企业 PoC"
+      "en": "Delivered search services to 3 clients and built an expansion pipeline through 7 enterprise PoCs",
+      "zh": "向3家客户交付搜索服务，并以7家企业 PoC 搭建业务拓展管线"
     },
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
@@ -300,12 +340,16 @@
       "API Strategy"
     ],
     "thumbnail": "/assets/images/projects/buzzni/buzzni-search-aiaas-thumb.webp",
-    "primaryMetric": "3 CLIENTS + 7 POCS"
+    "primaryMetric": "3 CLIENTS + 7 POCS",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "buzzni-branding-marketing",
     "era": 2,
-    "eraLabel": "LLM Application (2023-2024)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -315,8 +359,8 @@
     },
     "oneLiner": {
       "ko": "홍보 콘텐츠 제작, 외부 강연/부스 운영, 보도자료 운영까지 End-to-End 리드",
-      "en": "Led end-to-end promotion content, speaking events, expo booths, and PR coverage",
-      "zh": "端到端负责内容、演讲、展会展台与媒体宣传"
+      "en": "Led End-to-End product promotion across content creation, external talks, booth operations, and press releases",
+      "zh": "End-to-End 主导宣传内容制作、外部演讲与展位运营，以及新闻稿管理"
     },
     "company": "BUZZNI",
     "role": "Product Marketing / PR",
@@ -326,24 +370,28 @@
       "PR",
       "Content"
     ],
-    "thumbnail": "/assets/images/projects/buzzni/buzzni-branding-marketing-shot-02.jpg",
-    "primaryMetric": "IN-HOUSE BRANDING & PR"
+    "thumbnail": "/assets/images/projects/buzzni/buzzni-aiaas-biz-thumb.webp",
+    "primaryMetric": "IN-HOUSE BRANDING & PR",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-automl",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
       "ko": "AutoML 모듈 신규 개발",
-      "en": "AutoML Module Development",
-      "zh": "AutoML 模块开发"
+      "en": "New AutoML Module Development",
+      "zh": "AutoML 新模块开发"
     },
     "oneLiner": {
       "ko": "금융 도메인용 AutoML 신규 모듈 기획 및 출시",
-      "en": "Planned and launched AutoML module for fintech use-cases",
-      "zh": "为金融场景规划并上线 AutoML 新模块"
+      "en": "Planned and launched a new AutoML module for financial services",
+      "zh": "规划并上线面向金融领域的 AutoML 新模块"
     },
     "company": "Solidware",
     "role": "AI PM / Biz Lead",
@@ -353,12 +401,16 @@
       "Product Planning"
     ],
     "thumbnail": "/assets/images/projects/solidware/automl-thumb.webp",
-    "primaryMetric": "NEW AUTOML MODULE SHIPPED"
+    "primaryMetric": "NEW AUTOML MODULE SHIPPED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "solidware-product-marketing",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -368,10 +420,10 @@
     },
     "oneLiner": {
       "ko": "별도 조직 없이 제품 마케팅 체계 구축, 컨택포인트 256% 증가·신규 고객 13개 확보",
-      "en": "Built product marketing operations without a dedicated team: touchpoints +256%, 13 new clients",
-      "zh": "在无独立团队情况下搭建营销体系：触点 +256%，新增13家客户"
+      "en": "Built product marketing operations without a dedicated team, increased touchpoints by 256%, and won 13 new clients",
+      "zh": "在没有独立团队的情况下搭建产品营销体系，触点增长256%，新增13家客户"
     },
-    "company": "Ailys (Solidware)",
+    "company": "Solidware",
     "role": "PMO / Product Marketing",
     "contribution": 100,
     "tags": [
@@ -380,23 +432,27 @@
       "B2B Sales"
     ],
     "thumbnail": "/assets/images/projects/solidware/solidware-product-marketing-thumb.webp",
-    "primaryMetric": "CONTACT POINTS +256% · 13 NEW CLIENTS"
+    "primaryMetric": "CONTACT POINTS +256% · 13 NEW CLIENTS",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   },
   {
     "slug": "lunit-biomarker",
     "era": 1,
-    "eraLabel": "Classical ML (2018-2022)",
     "featured": false,
     "showcaseOrder": null,
     "title": {
       "ko": "비전 바이오마커 분석 SW 기획",
-      "en": "Vision Biomarker Analysis Software",
-      "zh": "视觉生物标志物分析软件"
+      "en": "Product Planning for Vision Biomarker Analysis Software",
+      "zh": "视觉生物标志物分析软件规划"
     },
     "oneLiner": {
       "ko": "규제 요건 기반 의료 AI 소프트웨어 초기 PRD 수립",
-      "en": "Defined initial PRD for regulated medical AI software",
-      "zh": "基于监管要求制定医疗AI软件初期 PRD"
+      "en": "Defined the initial PRD for medical AI software based on regulatory requirements",
+      "zh": "基于监管要求制定医疗 AI 软件的初始 PRD"
     },
     "company": "Lunit",
     "role": "AI PM",
@@ -407,6 +463,11 @@
       "PRD"
     ],
     "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
-    "primaryMetric": "INITIAL PRD COMPLETED"
+    "primaryMetric": "INITIAL PRD COMPLETED",
+    "subtitle": {
+      "ko": "",
+      "en": "",
+      "zh": ""
+    }
   }
 ]

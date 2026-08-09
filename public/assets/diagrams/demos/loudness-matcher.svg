@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="840" viewBox="0 0 1600 840" role="img" aria-labelledby="title desc">
+  <title id="title">Loudness Matcher 처리 파이프라인</title>
+  <desc id="desc">영상 클립을 검증하고 사용자가 레퍼런스를 고른 뒤 라우드니스를 측정해 gain-only 또는 dynamic loudnorm 처리를 선택하고, 렌더 결과를 재검증해 A/B 비교와 리포트로 제공하는 5단계 흐름</desc>
+  <defs>
+    <style>
+      .display { font-family: "Arial Unicode MS"; font-weight: 900; letter-spacing: -2px; }
+      .heading { font-family: "Arial Unicode MS"; font-weight: 850; letter-spacing: -0.8px; }
+      .body { font-family: "Arial Unicode MS"; font-weight: 700; }
+      .mono { font-family: "Courier New"; font-weight: 700; letter-spacing: 0.7px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="840" fill="#f4e9e1"/>
+
+  <text x="48" y="40" class="mono" font-size="13" fill="#0e0e0e">LOUDNESS MATCHER / REFERENCE-FIRST PIPELINE</text>
+  <text x="48" y="112" class="display" font-size="56" fill="#0e0e0e">NATIVE AUDIO</text>
+  <line x1="476" y1="90" x2="612" y2="90" stroke="#ff3d00" stroke-width="5"/>
+  <path d="M612 78 L632 90 L612 102 Z" fill="#ff3d00"/>
+  <text x="680" y="112" class="display" font-size="56" fill="#0e0e0e">MATCHED LOUDNESS</text>
+
+  <line x1="288" y1="352" x2="312" y2="352" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="552" y1="352" x2="576" y2="352" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="876" y1="352" x2="900" y2="352" stroke="#0e0e0e" stroke-width="3"/>
+  <line x1="1200" y1="352" x2="1224" y2="352" stroke="#0e0e0e" stroke-width="3"/>
+
+  <g aria-label="1단계 입력 업로드와 검증">
+    <rect x="48" y="178" width="240" height="348" rx="16" fill="#2835f8"/>
+    <text x="72" y="212" class="mono" font-size="13" fill="#ffffff">01 / INPUT</text>
+    <text x="72" y="266" class="heading" font-size="28" fill="#ffffff">UPLOAD</text>
+    <text x="72" y="300" class="heading" font-size="28" fill="#ffffff">&amp; VALIDATE</text>
+    <path d="M72 326 H264" stroke="#ffffff" stroke-width="2"/>
+    <text x="72" y="360" class="body" font-size="14" fill="#ffffff">2–8 MP4 / MOV</text>
+    <text x="72" y="384" class="body" font-size="14" fill="#ffffff">≤ 15 SEC EACH</text>
+    <text x="72" y="442" class="mono" font-size="11" fill="#f4e9e1">FFPROBE</text>
+    <text x="72" y="462" class="mono" font-size="11" fill="#f4e9e1">CONTAINER · STREAMS</text>
+    <text x="72" y="482" class="mono" font-size="11" fill="#f4e9e1">DURATION · SUPPORT</text>
+  </g>
+
+  <g aria-label="2단계 사용자가 레퍼런스 선택">
+    <rect x="312" y="178" width="240" height="348" rx="16" fill="#ffff00"/>
+    <text x="336" y="212" class="mono" font-size="13" fill="#0e0e0e">02 / USER GATE</text>
+    <text x="336" y="266" class="heading" font-size="28" fill="#0e0e0e">CHOOSE</text>
+    <text x="336" y="300" class="heading" font-size="28" fill="#0e0e0e">REFERENCE</text>
+    <path d="M336 326 H528" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="336" y="360" class="body" font-size="14" fill="#0e0e0e">LISTEN FIRST</text>
+    <text x="336" y="384" class="body" font-size="14" fill="#0e0e0e">1 CLIP = TARGET LUFS</text>
+    <text x="336" y="442" class="mono" font-size="11" fill="#0e0e0e">REFERENCE BYTES</text>
+    <text x="336" y="462" class="mono" font-size="11" fill="#0e0e0e">STAY UNCHANGED</text>
+  </g>
+
+  <g aria-label="3단계 라우드니스 측정과 처리 모드 선택">
+    <rect x="576" y="178" width="300" height="348" rx="16" fill="#5900cc"/>
+    <text x="600" y="212" class="mono" font-size="13" fill="#ffffff">03 / POLICY</text>
+    <text x="600" y="266" class="heading" font-size="28" fill="#ffffff">MEASURE</text>
+    <text x="600" y="300" class="heading" font-size="28" fill="#ffffff">&amp; PLAN</text>
+    <path d="M600 326 H852" stroke="#ffffff" stroke-width="2"/>
+    <text x="600" y="360" class="body" font-size="14" fill="#ffffff">LOUDNORM JSON</text>
+    <text x="600" y="384" class="body" font-size="14" fill="#ffffff">Δ = REF I − SOURCE I</text>
+    <text x="600" y="438" class="mono" font-size="11" fill="#f4e9e1">PEAK ≤ −1.5 DBTP</text>
+    <text x="600" y="458" class="mono" font-size="11" fill="#f4e9e1">→ GAIN ONLY</text>
+    <text x="600" y="486" class="mono" font-size="11" fill="#f4e9e1">ABOVE → DYNAMIC</text>
+    <text x="600" y="500" class="mono" font-size="11" fill="#f4e9e1">LOUDNORM 2-PASS</text>
+  </g>
+
+  <g aria-label="4단계 렌더와 안전 검증">
+    <rect x="900" y="178" width="300" height="348" rx="16" fill="#ff3d00"/>
+    <text x="924" y="212" class="mono" font-size="13" fill="#0e0e0e">04 / SAFETY</text>
+    <text x="924" y="266" class="heading" font-size="28" fill="#0e0e0e">RENDER</text>
+    <text x="924" y="300" class="heading" font-size="28" fill="#0e0e0e">&amp; VERIFY</text>
+    <path d="M924 326 H1176" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="924" y="360" class="body" font-size="14" fill="#0e0e0e">VIDEO STREAM COPY</text>
+    <text x="924" y="384" class="body" font-size="14" fill="#0e0e0e">AUDIO → AAC LC</text>
+    <text x="924" y="438" class="mono" font-size="11" fill="#0e0e0e">±0.5 LU · ≤ −1.0 DBTP</text>
+    <text x="924" y="458" class="mono" font-size="11" fill="#0e0e0e">PACKET · AUDIO</text>
+    <text x="924" y="478" class="mono" font-size="11" fill="#0e0e0e">CONTAINER · DURATION</text>
+  </g>
+
+  <g aria-label="5단계 사용자 비교와 결과 내보내기">
+    <rect x="1224" y="178" width="328" height="348" rx="16" fill="#05ff00"/>
+    <text x="1248" y="212" class="mono" font-size="13" fill="#0e0e0e">05 / REVIEW + OUTPUT</text>
+    <text x="1248" y="266" class="heading" font-size="28" fill="#0e0e0e">A/B CHECK</text>
+    <text x="1248" y="300" class="heading" font-size="28" fill="#0e0e0e">&amp; EXPORT</text>
+    <path d="M1248 326 H1528" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="1248" y="360" class="body" font-size="14" fill="#0e0e0e">ORIGINAL / MATCHED</text>
+    <text x="1248" y="384" class="body" font-size="14" fill="#0e0e0e">VERIFIED MEDIA ONLY</text>
+    <text x="1248" y="438" class="mono" font-size="11" fill="#0e0e0e">JSON · CSV · ZIP</text>
+    <text x="1248" y="478" class="mono" font-size="11" fill="#0e0e0e">BLOCK PACKAGE WHILE</text>
+    <text x="1248" y="498" class="mono" font-size="11" fill="#0e0e0e">TARGETS REMAIN</text>
+  </g>
+
+  <g aria-label="한 번만 허용되는 true peak fallback">
+    <rect x="576" y="574" width="624" height="124" rx="16" fill="#ffff00" stroke="#0e0e0e" stroke-width="2"/>
+    <text x="600" y="606" class="mono" font-size="12" fill="#0e0e0e">FALLBACK / ONE SAFE RETRY</text>
+    <text x="600" y="642" class="heading" font-size="20" fill="#0e0e0e">GAIN-ONLY 결과가 TRUE PEAK만 초과할 때</text>
+    <text x="600" y="674" class="body" font-size="14" fill="#0e0e0e">원본에서 DYNAMIC 2-PASS 재시도 · 다른 검증 실패는 결과 거절</text>
+  </g>
+
+  <text x="48" y="780" class="mono" font-size="11" fill="#0e0e0e">BOUNDARIES / LOCAL MEDIA · USER CHOICE · FFMPEG POLICY · SAFETY VERIFICATION</text>
+  <text x="1552" y="780" class="mono" font-size="11" fill="#0e0e0e" text-anchor="end">NO EXTERNAL MODEL / API</text>
+  <line x1="48" y1="804" x2="1552" y2="804" stroke="#0e0e0e" stroke-width="2"/>
+</svg>

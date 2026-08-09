@@ -1,13 +1,13 @@
 <div className="highlight-callout">
   <p className="highlight-callout__eyebrow">Lessons & Learned</p>
-  <h3 className="highlight-callout__title">결국 Proprietary LLMs도 늙는다.</h3>
-  <p className="highlight-callout__body">
-    아무리 좋은 모델이 존재한다고 하더라도, 해당 모델에 제품의 <strong>워크플로우를 과적합</strong>한다면, <strong>결말은 좋지 못할 것임</strong>.
-  </p>
+  <h3 className="highlight-callout__title">모델은 늙지만, 역할과 계약은 남는다</h3>
+  <div className="highlight-callout__body">
+    특정 모델의 현재 역량에 제품 워크플로를 과적합하면, 다음 세대 모델이 등장할 때 엔지니어링 부채가 남는다는 것을 배웠습니다.
+  </div>
   <ul className="highlight-callout__list">
-    <li>LangChain·LangGraph 기반의 계층적 에이전트 아키텍처로 구성된 프로젝트를 맡은 후, 각 그래프의 노드에서 어떤 LLM을 호출해 사용하는 것이 최적인지에 대한 고민이 깊었음.</li>
-    <li>개별 LLM을 각 노드의 역할에 따라 그 한계 효용까지 활용하려는 시도를 반복했으나, 다음 세대 모델이 발표될 때마다 그러한 엔지니어링이 <strong>불필요한 엔지니어링 부채</strong>를 남긴다는 것을 깨달음.</li>
-    <li>이에, <strong>노드의 본질적인 역할에만 집중</strong>하고 현재 수준의 한계 인식을 바탕으로 제품 스펙을 정의하는 것이 종국에는 <strong>더 나은 결과</strong>를 만들어내었음.</li>
+    <li>에이전트와 그래프 노드는 특정 모델의 기법보다 제품에서 맡는 본질적 역할을 기준으로 정의해야 합니다.</li>
+    <li>오케스트레이션과 실행을 분리하고 데이터 계약을 명시해야 모델 교체와 실패 진단이 쉬워집니다.</li>
+    <li>단기적인 E2E 성공에서 발견한 구조적 한계도 이후 방향 전환을 위한 중요한 판단 근거가 됩니다.</li>
   </ul>
 </div>
 
@@ -22,24 +22,27 @@
   />
 </div>
 
-## 🚧 Problem
+## Problem
+
 자연어 스크립트를 Unreal 결과물로 연결하는 구간에서 병목이 컸고, 모듈 계약이 느슨해 실험 실패 비용이 높았습니다.
 
-## 💡 Approach
-- 오케스트레이션 레이어와 실행 레이어를 분리했습니다.(S2M=오케스트레이션 레이어)
-- 모듈간 데이터 입력/출력 스키마를 확정해 제품 파이프라인을 확립했습니다.
+## Approach
 
-## ⚙️ Execution
+- 오케스트레이션 레이어와 실행 레이어를 분리했습니다. S2M은 오케스트레이션 레이어를 담당했습니다.
+- 모듈 간 데이터 입력과 출력 스키마를 확정해 제품 파이프라인을 확립했습니다.
+
+## Execution
+
 - 파이프라인 실패 로그를 기준으로 병목 3개 구간을 먼저 정리
-- Scene/Action/Camera/Map/Character 계약을 JSON schema 중심으로 재작성
-- LLM 평가셋과 E2E 체크리스트를 운영 루프에 고정할 수 있도록 설계 (LLM evals)
-- LangChain·LangGraph 기반 Film Agent 오케스트레이션 레이어 설계에 참여
+- Scene, Action, Camera, Map, Character 계약을 JSON schema 중심으로 재작성
+- LLM 평가셋과 E2E 체크리스트를 운영 루프에 고정할 수 있도록 설계
+- LangChain과 LangGraph 기반 Film Agent 오케스트레이션 레이어 설계에 참여
 
-![S2M shot 01](/assets/images/projects/cinev/cinev-s2m-shot-01.webp)
 ![S2M shot 03](/assets/images/projects/cinev/cinev-s2m-shot-03.webp)
 
-## ✅ Results
+## Results
+
 - 합류 3개월 내 첫 LLM-to-Unreal E2E 통합
-- 실험 리드타임 약 50% 단축 (600s → 300s)
-- MOAI/A2P 확장을 위한 재사용 가능한 베이스 확보 (json 형태의 프로젝트 파일)
-- 2026년 1월 CineV 공식 런칭 AI 파트 리딩 기반 마련
+- 실험 리드타임 약 50% 단축
+- 상태와 컨텍스트 관리, 모듈 간 데이터 계약을 후속 웹 CineV가 승계할 기반으로 정리
+- 3D 렌더링 중심 파이프라인의 구조적 한계를 확인해 이후 방향 전환의 판단 근거로 활용
