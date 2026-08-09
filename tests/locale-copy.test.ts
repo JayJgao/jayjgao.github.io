@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
@@ -215,6 +216,18 @@ test("locale files retain recursively identical key and array shapes", () => {
   const dictionaries = locales.map((locale) => readJson(`src/i18n/${locale}.json`));
   assert.deepEqual(recursiveShape(dictionaries[1]), recursiveShape(dictionaries[0]), "i18n.en shape");
   assert.deepEqual(recursiveShape(dictionaries[2]), recursiveShape(dictionaries[0]), "i18n.zh shape");
+});
+
+test("localized About files match the exact approved copy", () => {
+  const approvedSha256 = {
+    en: "15eb12da0e51bbb9605a34b4ba3553a723dc579a151a92b7541a6c4c46dd415d",
+    zh: "829fa5afd4e3c95504c5ceccab2a9ef507ef2c5a8d5220e11111b6234079281b",
+  } as const;
+
+  for (const locale of ["en", "zh"] as const) {
+    const bytes = readFileSync(new URL(`src/data/about.${locale}.json`, repoRoot));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), approvedSha256[locale]);
+  }
 });
 
 test("every localized project and Demo leaf is complete in all three locales", () => {
