@@ -27,7 +27,7 @@
     "outcome": {
       "ko": "FastAPI Gateway의 Prompt Transform 기능으로 구현되어 API 문서, Gradio 데모, 자동화 테스트가 함께 반영된 상태",
       "en": "Implemented as Prompt Transform in the FastAPI Gateway, with API documentation, a Gradio demo, and automated tests",
-      "zh": "Prompt Transform 已在 FastAPI Gateway 中实现，API 文档、Gradio demo 和自动化测试也已同步纳入。"
+      "zh": "Prompt Transform 已在 FastAPI Gateway 中实现，API 文档、Gradio 演示界面和自动化测试也已同步纳入。"
     },
     "productized": true,
     "howItWorks": [
@@ -197,7 +197,7 @@
         "label": {
           "ko": "데모와 검증",
           "en": "Demo and validation",
-          "zh": "demo 与验证"
+          "zh": "演示与验证"
         },
         "items": [
           {
@@ -226,7 +226,7 @@
     "boundary": {
       "ko": "Gradio 데모는 제품 API의 정성 검수와 요청 조립 확인을 위한 로컬 인터페이스이며, 최종 이미지·비디오 생성 품질을 보장하지 않는다. Prompt Transform은 화면 비율, 해상도, 후속 모델의 처리 용량을 추론하지 않고 참조 이미지의 픽셀 특징을 새로 설명하지 않으며, 필요한 경우 호출자가 추가 질문 또는 400 오류를 사용자에게 보여줘야 한다. 원문·최종 프롬프트, 이미지 URL·data URL, 외부 응답 payload는 로그에 남기지 않으며 진단 정보는 사용자가 요청한 경우에만 반환한다.",
       "en": "The Gradio demo is a local interface for qualitative review of the product API and verification of request assembly. It does not guarantee the quality of final image or video generation. Prompt Transform does not infer aspect ratio, resolution, or downstream model capacity, and it does not create new descriptions of pixel features in reference images. When needed, the caller must show the user follow-up questions or a 400 error. Original and final prompts, image URLs and data URLs, and external response payloads are not logged. Diagnostics are returned only when requested by the user.",
-      "zh": "Gradio demo 是一个本地界面，用来定性检查产品 API 并确认请求组装是否正确，不对最终图像或视频的生成质量作保证。Prompt Transform 不推断画面比例、分辨率和后续模型处理容量，也不为引用图像的像素特征另写描述。需要追问或发生 400 错误时，调用方必须把相应信息展示给用户。原文、最终提示词、图像 URL、data URL 和外部响应 payload 均不写入日志，诊断信息也只在用户主动请求时返回。"
+      "zh": "Gradio 演示界面用于定性检查产品 API，并确认请求组装是否正确，不对最终图像或视频的生成质量作保证。Prompt Transform 不推断画面比例、分辨率和后续模型处理容量，也不为引用图像的像素特征另写描述。需要追问或发生 400 错误时，调用方必须把相应信息展示给用户。原文、最终提示词、图像 URL、data URL 和外部响应 payload 均不写入日志，诊断信息也只在用户主动请求时返回。"
     },
     "video": {
       "provider": "youtube",
@@ -299,7 +299,7 @@
     "outcome": {
       "ko": "음성과 배경음 분리 기능을 제품에 통합했습니다. 기존 TTS 기능은 유지했으며, 화자별 후보 생성과 검토 흐름은 프로토타입 검증 범위로 남았습니다.",
       "en": "The speech and background audio separation feature was integrated into the product. The existing TTS feature remained, while per-speaker candidate generation and review stayed within the scope of prototype validation.",
-      "zh": "人声与背景音乐分离功能已集成到产品中。现有 TTS 功能继续保留，按说话人生成候选音频并检查的流程仍限于原型验证。"
+      "zh": "人声与背景音频分离功能已集成到产品中。现有 TTS 功能继续保留，按说话人生成候选音频并检查的流程仍限于原型验证。"
     },
     "productized": true,
     "howItWorks": [
@@ -311,7 +311,7 @@
       {
         "ko": "fal.ai Demucs로 음성과 배경음을 나눈 뒤, 음성 트랙만 ElevenLabs STT에 보내 단어 타임스탬프와 화자 ID를 얻고 화자별 클립을 만든다. 분리·음성 인식·클립 생성 실패는 실제 파이프라인 실패로 기록한다.",
         "en": "fal.ai Demucs separates speech from background audio. Only the speech track goes to ElevenLabs STT to obtain word timestamps and speaker IDs, which are used to create per-speaker clips. Separation, transcription, and clip creation failures are recorded as actual pipeline failures.",
-        "zh": "fal.ai Demucs 先分离人声与背景音乐，随后只有人声轨会发送到 ElevenLabs STT，以获取单词时间戳和说话人 ID，并生成按说话人拆分的片段。分离、语音识别或片段生成失败都会记为真实的管线失败。"
+        "zh": "fal.ai Demucs 先分离人声与背景音频，随后只有人声轨会发送到 ElevenLabs STT，以获取单词时间戳和说话人 ID，并生成按说话人拆分的片段。分离、语音识别或片段生成失败都会记为真实的管线失败。"
       },
       {
         "ko": "사용자가 저장된 음성을 선택해 고정된 transcript로 TTS 후보를 만들거나 원본 클립을 음성 변환한다. TTS는 앞뒤 무음을 정리하고 짧으면 padding, 제한 범위 안에서 길면 time-fit을 적용한다.",
@@ -326,7 +326,7 @@
       {
         "ko": "활성화된 take와 분리된 배경음을 서버에서 합성해 원본 영상 트랙에 mux하고, MP4와 transcript·오디오·작업 메타데이터를 로컬 작업 산출물로 남긴다.",
         "en": "The server mixes the active takes with the separated background audio, muxes the result onto the original video track, and saves the MP4, transcript, audio, and job metadata as local job artifacts.",
-        "zh": "服务器把已启用的 take 与分离出的背景音乐合成，再 mux 到原始视频轨中。MP4、transcript、音频和任务元数据都会保留为本地任务产物。"
+        "zh": "服务器把已启用的 take 与分离出的背景音频合成，再 mux 到原始视频轨中。MP4、transcript、音频和任务元数据都会保留为本地任务产物。"
       }
     ],
     "stack": [
@@ -403,7 +403,7 @@
           {
             "ko": "단일 in-process background worker",
             "en": "Single in-process background worker",
-            "zh": "单个 in-process background worker"
+            "zh": "单个进程内后台任务执行器"
           }
         ]
       },
@@ -488,7 +488,7 @@
     "boundary": {
       "ko": "15–30초 대화 중심 MP4를 대상으로 한 내부 데모이며 한 작업에서 최대 8개 speech clip만 만든다. 음성·배경 분리, 화자 구분, TTS·음성 변환 품질이나 클립 간 음성 일관성을 보장하지 않고 이를 수치로 입증하는 비교 benchmark도 없다. 외부 API 자격 증명과 네트워크가 필요하며, 슬롯보다 15% 긴 TTS 차단과 음성 변환 실패 시 원본 복사본인 대체 후보를 포함해 최종 판단은 사용자가 해야 한다. 로컬·임시 파일과 한 번에 하나씩 처리하는 worker를 사용하므로 인증, 영속 저장, 다중 사용자 운영, 전문 오디오 편집 수준의 waveform·trim·volume 편집은 범위 밖이다.",
       "en": "This internal demo targets dialogue-focused MP4 files from 15 to 30 seconds and creates no more than 8 speech clips per job. It does not guarantee speech and background separation, speaker identification, TTS or voice conversion quality, or voice consistency across clips. There is no comparative benchmark that quantifies those qualities. It requires external API credentials and network access. Users must make the final decision, including when TTS more than 15% longer than its slot is blocked or a copy of the original is offered as the fallback after voice conversion failure. Because it uses local and temporary files and a worker that processes one job at a time, authentication, persistent storage, multi-user operation, and professional audio editing controls for waveform, trim, and volume are out of scope.",
-      "zh": "这是面向 15 至 30 秒对话型 MP4 的内部 demo，每个任务最多生成 8 个 speech clip。它不保证人声与背景音乐分离、说话人区分、TTS、声音转换质量或片段间的声音一致性，也没有对比 benchmark 来量化证明这些能力。运行需要外部 API 凭据和网络。比槽位长 15% 的 TTS 会被阻止启用；声音转换失败时，原始音频副本只作为替代候选项。最终判断都由用户作出。系统使用本地和临时文件，worker 每次只处理一个任务，因此身份验证、持久化存储、多用户运行，以及专业音频编辑级别的 waveform、trim 和 volume 调整均不在范围内。"
+      "zh": "这是面向 15 至 30 秒对话型 MP4 的内部演示，每个任务最多生成 8 个语音片段。它不保证人声与背景音频分离、说话人区分、TTS、声音转换质量或片段间的声音一致性，也没有对比基准测试来量化这些能力。运行需要外部 API 凭据和网络。比槽位长 15% 的 TTS 会被阻止启用；声音转换失败时，原始音频副本只作为替代候选项。最终判断都由用户作出。系统使用本地和临时文件，后台任务执行器每次只处理一个任务，因此身份验证、持久化存储、多用户运行，以及专业音频编辑级别的波形、裁剪和音量调整均不在范围内。"
     },
     "video": {
       "provider": "youtube",
@@ -505,7 +505,7 @@
         "caption": {
           "ko": "영상 클립에서 음성과 배경음을 분리하는 제품 진입 화면",
           "en": "Product entry screen for separating speech and background audio in a video clip",
-          "zh": "从视频片段中分离人声与背景音乐的产品入口界面"
+          "zh": "从视频片段中分离人声与背景音频的产品入口界面"
         },
         "width": 1920,
         "height": 967
@@ -515,12 +515,12 @@
         "alt": {
           "ko": "배경음과 화자 음성 트랙이 영상 클립으로 연결된 오디오 라우팅 화면",
           "en": "Audio routing screen connecting background audio and speaker tracks to video clips",
-          "zh": "背景音乐轨和说话人语音轨连接到视频片段的音频路由界面"
+          "zh": "背景音频轨和说话人语音轨连接到视频片段的音频路由界面"
         },
         "caption": {
           "ko": "분리된 배경음과 화자 음성을 클립별로 검토하는 라우팅 화면",
           "en": "Routing screen for reviewing separated background audio and speaker voices by clip",
-          "zh": "逐片段检查已分离背景音乐和说话人语音的路由界面"
+          "zh": "逐片段检查已分离背景音频和说话人语音的路由界面"
         },
         "width": 1149,
         "height": 1102
@@ -536,7 +536,7 @@
     "summary": {
       "ko": "완성된 비디오를 샷 순서가 보이는 대표 프레임과 메타데이터로 펼치는 내부 데모",
       "en": "An internal demo that lays out a finished video as representative frames and metadata in shot order",
-      "zh": "把视频成片展开为按镜头顺序排列的代表帧和元数据，供内部使用的 demo"
+      "zh": "把视频成片展开为按镜头顺序排列的代表帧和元数据，供内部使用的演示"
     },
     "observation": {
       "ko": "이미지 모델은 단일 이미지 안에 요청한 요소를 빠짐없이 담기 위해 인물을 과도하게 중앙과 정면에 배치하는 경향이 있다.",
@@ -930,7 +930,7 @@
     "outcome": {
       "ko": "내부 검토용 데모 구현 및 배포 구성 포함",
       "en": "Implemented an internal review demo, including deployment configuration",
-      "zh": "内部检查 demo 已实现，部署配置也已包含在内。"
+      "zh": "内部检查演示已实现，部署配置也已包含在内。"
     },
     "productized": false,
     "howItWorks": [
@@ -1024,7 +1024,7 @@
           {
             "ko": "deterministic fixture",
             "en": "deterministic fixture",
-            "zh": "deterministic fixture"
+            "zh": "确定性测试样例"
           }
         ]
       },
@@ -1099,7 +1099,7 @@
     "boundary": {
       "ko": "검출기는 시각적·시간적 유사도만 다루므로 의도적인 정지 연출이나 장면의 의미를 판단하지 않으며, 제안은 편집자의 승인을 대체하지 않는다. 입력 형식과 길이가 제한되고 threshold는 deterministic fixture에 맞춘 데모 값이며 비교 성능 benchmark는 없다. 작업 상태는 단일 프로세스의 메모리와 임시 저장소에 머물고, 변경 클립은 손실 재인코딩된다.",
       "en": "The detector considers only visual and temporal similarity. It cannot judge intentional stillness or scene meaning, and its suggestions do not replace an editor's approval. Input format and duration are limited, the threshold is a demo value calibrated to a deterministic fixture, and there is no comparative performance benchmark. Job state remains in single-process memory and temporary storage, and changed clips are re-encoded with loss.",
-      "zh": "检测器只处理视觉和时间相似度，无法判断有意的静止演出或场景语义，建议也不能取代编辑者的批准。输入格式和时长有限，threshold 是针对 deterministic fixture 调整的 demo 值，也没有对比性能 benchmark。任务状态只保存在单进程内存和临时存储中，改动过的片段会进行有损重新编码。"
+      "zh": "检测器只处理视觉和时间相似度，无法判断有意的静止演出或场景语义，建议也不能取代编辑者的批准。输入格式和时长有限，阈值是根据确定性测试样例调整的演示值，也没有对比性能基准测试。任务状态只保存在单进程内存和临时存储中，改动过的片段会进行有损重新编码。"
     },
     "video": {
       "provider": "youtube",
@@ -1358,7 +1358,7 @@
     "boundary": {
       "ko": "정량 품질 점수나 비교 benchmark가 없는 사내 검증용 MVP이며, 진단 경고는 휴리스틱이라 컬러 일관성이나 미학적 적합성을 보장하지 않는다. 레퍼런스는 한 프레임, 보정 대상은 중간 프레임 또는 고정된 5개 지점만 분석하므로 최종 판단과 강도 조정에는 사람이 필요하다. 인증·사용자 격리·영속 스토리지·background export queue·batch export가 없고 업로드와 생성 파일, 세션 기록은 영속성을 전제로 하지 않는다.",
       "en": "This internal validation MVP has no quantitative quality score or comparative benchmark. Its diagnostic warnings are heuristic and do not guarantee color consistency or aesthetic fit. It analyzes 1 reference frame and either the midpoint or 5 fixed positions for each target, so a person must make the final judgment and adjust the strength. It has no authentication, user isolation, persistent storage, background export queue, or batch export. Uploads, generated files, and session logs are not designed for persistence.",
-      "zh": "这是没有定量质量分数或对比 benchmark 的公司内部验证 MVP。诊断警告基于启发式方法，不能保证色彩一致性或审美适配。参考只分析一帧，校正目标只分析中间帧或固定的 5 个位置，因此最终判断和强度调整需要人工完成。系统没有身份验证、用户隔离、持久化存储、background export queue 或 batch export，上传文件、生成文件和会话记录均不以持久保存为前提。"
+      "zh": "这是没有定量质量分数或对比基准测试的公司内部验证 MVP。诊断警告基于启发式方法，不能保证色彩一致性或审美适配。参考只分析一帧，校正目标只分析中间帧或固定的 5 个位置，因此最终判断和强度调整需要人工完成。系统没有身份验证、用户隔离、持久化存储、后台导出队列或批量导出，上传文件、生成文件和会话记录均不以持久保存为前提。"
     },
     "video": {
       "provider": "youtube",
@@ -1395,7 +1395,7 @@
     "outcome": {
       "ko": "사내 배포용 웹 데모",
       "en": "Web demo for internal deployment",
-      "zh": "这是用于公司内部部署的网页 demo。"
+      "zh": "这是用于公司内部部署的网页演示。"
     },
     "productized": false,
     "howItWorks": [
@@ -1407,7 +1407,7 @@
       {
         "ko": "사용자가 소리를 듣고 레퍼런스 한 개를 고르면, FFmpeg loudnorm이 각 클립의 integrated LUFS, LRA, true peak와 threshold를 측정한다. 레퍼런스 파일은 바이트 단위로 유지한다.",
         "en": "After the user listens and chooses 1 reference, FFmpeg loudnorm measures integrated LUFS, LRA, true peak, and threshold for each clip. The reference file is preserved byte for byte.",
-        "zh": "用户试听并选择一个参考片段后，FFmpeg loudnorm 测量每个片段的 integrated LUFS、LRA、true peak 和 threshold。参考文件保持逐字节不变。"
+        "zh": "用户试听并选择一个参考片段后，FFmpeg loudnorm 测量每个片段的 integrated LUFS、LRA、true peak 和阈值。参考文件保持逐字节不变。"
       },
       {
         "ko": "레퍼런스와 소스의 integrated LUFS 차이로 gain을 계산하고 예상 true peak가 -1.5 dBTP 이하이면 고정 gain, 초과하면 측정값을 넣은 dynamic loudnorm 2-pass를 선택한다. 지원하지 않는 입력과 사실상 무음은 임의 처리하지 않고 사유 코드와 함께 제외한다.",
@@ -1648,7 +1648,7 @@
     "boundary": {
       "ko": "MP4/MOV, 15초 이하, video 1개와 mono/stereo audio 1개, 44.1/48 kHz인 클립 2–8개만 다루는 동기식 단일 처리 슬롯 데모다. 계정, 영구 저장, 작업 큐, 다중 worker, 재시작 복구를 제공하지 않으며 세션은 로컬 임시 디렉터리에서 만료된다. 방송 납품 규격이나 음악 마스터링 품질을 보장하지 않으며 최종 체감 품질은 사용자의 A/B 청취 판단이 필요하다.",
       "en": "This synchronous, single-slot demo handles only 2 to 8 MP4/MOV clips, each 15 seconds or shorter, with 1 video stream, 1 mono or stereo audio stream, and a 44.1 or 48 kHz sample rate. It provides no accounts, persistent storage, job queue, multiple workers, or restart recovery, and sessions expire in local temporary directories. It does not guarantee broadcast delivery standards or music mastering quality. The user must make the final judgment through A/B listening.",
-      "zh": "这是一个同步单处理槽位 demo，只处理 2 至 8 个 MP4/MOV 片段。每个片段不超过 15 秒，包含 1 路 video 和 1 路 mono/stereo audio，采样率为 44.1/48 kHz。系统不提供账户、永久存储、任务队列、多 worker 或重启恢复，会话会从本地临时目录中过期。它不保证广播交付规范或音乐母带质量，最终感知质量需要用户通过 A/B 试听判断。"
+      "zh": "这是一个同步单处理槽位演示，只处理 2 至 8 个 MP4/MOV 片段。每个片段不超过 15 秒，包含 1 路视频和 1 路单声道或立体声音频，采样率为 44.1/48 kHz。系统不提供账户、永久存储、任务队列、多个工作进程或重启恢复，会话会在本地临时目录中到期。它不保证广播交付规范或音乐母带质量，最终感知质量需要用户通过 A/B 试听判断。"
     },
     "video": {
       "provider": "youtube",

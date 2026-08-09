@@ -289,12 +289,26 @@ test("approved Demo copy is frozen independently for every locale", () => {
   const expected = {
     ko: "3590e9b34c9dd3697d5208bec73a6310c16119dcbaf97e41079561d59e5f5464",
     en: "7d5a54382c642a4cae56e30b23c45f1ddcefc1e19565191da040ca96ca413c5f",
-    zh: "c797551927ee7af81de87397dc0e5c37ae565c76858bdffffe30e1db6fc045f6",
+    zh: "e5a42af914da331ecff9f2497586bf3a04d809df33974448e5e11c73aed51b38",
   } as const;
 
   for (const locale of SUPPORTED_LOCALES) {
     assert.equal(localizedLeafDigest(locale), expected[locale], `${locale} Demo copy digest`);
   }
+});
+
+test("Chinese Demo prose keeps background audio broad and translates generic technical prose", () => {
+  const bySlug = new Map((demosJson as unknown as Demo[]).map((demo) => [demo.slug, demo]));
+  const chineseCopy = (slug: string) =>
+    JSON.stringify(bySlug.get(slug), (key, value: unknown) => (key === "ko" || key === "en" ? undefined : value));
+  const voiceAdaptor = chineseCopy("voice-adaptor");
+  const boundaryDeduper = chineseCopy("boundary-deduper");
+  const iroMatcher = chineseCopy("iro-matcher");
+
+  assert.match(voiceAdaptor, /背景音频/);
+  assert.doesNotMatch(voiceAdaptor, /背景音乐|speech clip|benchmark|worker|waveform|trim/);
+  assert.doesNotMatch(boundaryDeduper, /threshold|deterministic fixture|performance benchmark/);
+  assert.doesNotMatch(iroMatcher, /background export queue|batch export|benchmark/);
 });
 
 test("core demo copy maps to the canonical README sections", () => {

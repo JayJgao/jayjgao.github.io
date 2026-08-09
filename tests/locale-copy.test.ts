@@ -218,16 +218,37 @@ test("locale files retain recursively identical key and array shapes", () => {
   assert.deepEqual(recursiveShape(dictionaries[2]), recursiveShape(dictionaries[0]), "i18n.zh shape");
 });
 
-test("localized About files match the exact approved copy", () => {
+test("localized structured files match the exact approved copy", () => {
   const approvedSha256 = {
-    en: "15eb12da0e51bbb9605a34b4ba3553a723dc579a151a92b7541a6c4c46dd415d",
-    zh: "829fa5afd4e3c95504c5ceccab2a9ef507ef2c5a8d5220e11111b6234079281b",
+    about: {
+      en: "15eb12da0e51bbb9605a34b4ba3553a723dc579a151a92b7541a6c4c46dd415d",
+      zh: "829fa5afd4e3c95504c5ceccab2a9ef507ef2c5a8d5220e11111b6234079281b",
+    },
+    resume: {
+      en: "6209424686cd50c43b069ad9c6f962aa4979cf25d7f3a2335ec7ff344198d177",
+      zh: "ac3f70d92363504765e8cb12b618f8ee9ae2325d719e8367ac60ec4265e67029",
+    },
+    i18n: {
+      en: "32e11e1cf894b8e830cedd1912d6d2fdc7f86efad9d9fcfbcbf0dc778b6bec92",
+      zh: "88a149e973b1fd0d8527fd3ed44a98ceea6abd6427d2e4b441e0d5987e792e96",
+    },
   } as const;
 
-  for (const locale of ["en", "zh"] as const) {
-    const bytes = readFileSync(new URL(`src/data/about.${locale}.json`, repoRoot));
-    assert.equal(createHash("sha256").update(bytes).digest("hex"), approvedSha256[locale]);
+  for (const [stem, hashes] of Object.entries(approvedSha256)) {
+    for (const locale of ["en", "zh"] as const) {
+      const path = stem === "i18n" ? `src/i18n/${locale}.json` : `src/data/${stem}.${locale}.json`;
+      const bytes = readFileSync(new URL(path, repoRoot));
+      assert.equal(createHash("sha256").update(bytes).digest("hex"), hashes[locale], `${stem}.${locale}`);
+    }
   }
+});
+
+test("localized Dasan timeline retains the Assessment Center task-development domain", () => {
+  const en = readJson("src/i18n/en.json") as { home: { timeline: { eras: { era2: { items: string[] } } } } };
+  const zh = readJson("src/i18n/zh.json") as { home: { timeline: { eras: { era2: { items: string[] } } } } };
+
+  assert.match(en.home.timeline.eras.era2.items[2], /Assessment Center task development/);
+  assert.match(zh.home.timeline.eras.era2.items[2], /Assessment Center 测评任务开发/);
 });
 
 test("every localized project and Demo leaf is complete in all three locales", () => {
