@@ -115,8 +115,7 @@
       "all": "All"
     },
     "card": {
-      "contributionLabel": "기여도",
-      "metricFallbackPrefix": "기여",
+      "highlightLabel": "하이라이트",
       "thumbnailAltSuffix": "썸네일"
     },
     "caseStudy": {

@@ -115,8 +115,7 @@
       "all": "全部"
     },
     "card": {
-      "contributionLabel": "贡献度",
-      "metricFallbackPrefix": "贡献",
+      "highlightLabel": "亮点",
       "thumbnailAltSuffix": "缩略图"
     },
     "caseStudy": {

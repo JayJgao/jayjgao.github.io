@@ -1,11 +1,19 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 const repoRoot = new URL("..", import.meta.url);
 
 function readRepoFile(path: string): string {
   return readFileSync(new URL(path, repoRoot), "utf8");
+}
+
+function readProjectContentSources(): string {
+  const projectContentUrl = new URL("src/content/projects/ko/", repoRoot);
+  return readdirSync(projectContentUrl)
+    .filter((name) => name.endsWith(".mdx"))
+    .map((name) => readFileSync(new URL(name, projectContentUrl), "utf8"))
+    .join("\n");
 }
 
 const presentationFiles = [
@@ -130,6 +138,39 @@ test("Projects separate white Featured cards from one-line Archive rows and reta
   assert.match(detail, /data-project-section="content"/);
   assert.match(css, /counter-reset:\s*project-section/);
   assert.match(css, /counter-increment:\s*project-section/);
+});
+
+test("Project cards label performance as a highlight while ownership stays in details", () => {
+  const card = readRepoFile("src/components/projects/ProjectCard.tsx");
+  const detail = readRepoFile("src/components/projects/CaseStudy.tsx");
+  const locales = {
+    ko: JSON.parse(readRepoFile("src/i18n/ko.json")),
+    en: JSON.parse(readRepoFile("src/i18n/en.json")),
+    zh: JSON.parse(readRepoFile("src/i18n/zh.json")),
+  } as const;
+
+  assert.deepEqual(
+    Object.values(locales).map((messages) => messages.projects.card.highlightLabel),
+    ["하이라이트", "Highlight", "亮点"],
+  );
+  assert.match(card, /copy\.card\.highlightLabel/);
+  assert.match(card, /project\.primaryMetric/);
+  assert.doesNotMatch(card, /copy\.card\.contributionLabel/);
+  assert.doesNotMatch(card, /project\.contribution/);
+  assert.match(detail, /copy\.contribution/);
+  assert.match(detail, /project\.contribution/);
+});
+
+test("Project detail content does not use decorative emoji icons", () => {
+  assert.doesNotMatch(readProjectContentSources(), /🚧|💡|⚙️?|✅|🔗|🏆/);
+});
+
+test("Project detail callouts compile without nested paragraph markup", () => {
+  assert.doesNotMatch(
+    readProjectContentSources(),
+    /<p className="highlight-callout__body">/,
+    "callout bodies must not create nested paragraphs during MDX compilation",
+  );
 });
 
 test("Demos retain exact semantic flow with orange media and intrinsic diagrams", () => {

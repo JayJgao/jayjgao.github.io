@@ -59,10 +59,12 @@ export function ProjectCard({
         </div>
 
         <dl className="project-card-ledger">
-          <div>
-            <dt>{copy.card.contributionLabel}</dt>
-            <dd>{project.primaryMetric ?? `${project.contribution}%`}</dd>
-          </div>
+          {project.primaryMetric ? (
+            <div>
+              <dt>{copy.card.highlightLabel}</dt>
+              <dd>{project.primaryMetric}</dd>
+            </div>
+          ) : null}
           <div>
             <dt>Role</dt>
             <dd>{project.role}</dd>
