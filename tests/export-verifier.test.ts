@@ -757,6 +757,31 @@ test("the production contract has eight localized Demos and no pending video sta
   );
 });
 
+test("the production contract freezes the Phase 4 static export inventory", () => {
+  const contract = createProductionExportContract();
+
+  assert.equal(contract.expectedHtmlFileCount, 106);
+  assert.equal(contract.expectedLocalizedRouteCount, 84);
+  assert.equal(contract.expectedProjectDetailCount, 45);
+  assert.equal(contract.expectedDemoDetailCount, 24);
+  assert.equal(contract.legacyRoutes.length, 19);
+});
+
+test("the production contract treats the retired A2P URL as an AI PO Leadership alias", () => {
+  const contract = createProductionExportContract();
+  const alias = contract.legacyRoutes.find(({ route }) => route === "/projects/cinev-a2p/");
+
+  assert.deepEqual(alias, {
+    route: "/projects/cinev-a2p/",
+    canonical: `${siteUrl}/ko/projects/cinev-ai-po-leadership/`,
+    fallbackHrefs: [
+      "/ko/projects/cinev-ai-po-leadership/",
+      "/en/projects/cinev-ai-po-leadership/",
+      "/zh/projects/cinev-ai-po-leadership/",
+    ],
+  });
+});
+
 test("a playable Demo accepts the exact thumbnail and still rejects an initial iframe", async () => {
   const valid = await createValidFixture();
   addVideoExpectation(valid.contract, "play", "NLleH-4c5HY");

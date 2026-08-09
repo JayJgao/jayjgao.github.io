@@ -4,6 +4,7 @@ import path from "node:path";
 import { getAllDemoSlugs, getDemoBySlug, getGalleryMode } from "../../src/lib/demos";
 import { SUPPORTED_LOCALES, type Locale } from "../../src/lib/locale";
 import { SITE_URL } from "../../src/lib/metadata";
+import { getCanonicalProjectPath, getLegacyProjectSlugs } from "../../src/lib/project-redirects";
 import { getAllProjectSlugs } from "../../src/lib/projects";
 
 export type HtmlTag = {
@@ -503,7 +504,18 @@ export function createProductionExportContract(): ExportContract {
       route: suffix,
       canonical: localizedUrl(SITE_URL, "ko", suffix),
       fallbackHrefs: SUPPORTED_LOCALES.map((locale) => `/${locale}${suffix}`),
-    })),
+    })).concat(
+      getLegacyProjectSlugs().map((slug) => {
+        const route = `/projects/${slug}/`;
+        const canonicalPath = getCanonicalProjectPath(slug);
+
+        return {
+          route,
+          canonical: localizedUrl(SITE_URL, "ko", canonicalPath),
+          fallbackHrefs: SUPPORTED_LOCALES.map((locale) => `/${locale}${canonicalPath}`),
+        };
+      }),
+    ),
     rootRedirect: {
       route: "/",
       fallbackHrefs: SUPPORTED_LOCALES.map((locale) => `/${locale}/`),
@@ -511,9 +523,9 @@ export function createProductionExportContract(): ExportContract {
     projectDetailRoutes,
     demoDetailRoutes,
     require404: true,
-    expectedHtmlFileCount: 108,
+    expectedHtmlFileCount: 106,
     enforceExactHtmlInventory: true,
-    expectedLocalizedRouteCount: 87,
+    expectedLocalizedRouteCount: 84,
     expectedProjectDetailCount: 45,
     expectedDemoDetailCount: 24,
     expectedGalleryCounts: { static: 3, slider: 9, none: 12 },
