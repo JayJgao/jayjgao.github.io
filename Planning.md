@@ -1,9 +1,9 @@
 # Planning.md — Lean Execution Board
 
 ## 1. Goal & Scope
-- 목적: 노션 원본 HTML을 source-of-truth로 유지하면서, 실제 운영 중인 포트폴리오 실행 항목만 관리한다.
+- 목적: 노션 원본 HTML과 승인된 content canon을 source-of-truth로 유지하면서, 실제 운영 중인 포트폴리오 실행 항목만 관리한다.
 - 범위: `Planning.md`는 실행 큐/정합성 문서로만 사용한다.
-- 원칙: 모든 항목은 `Source HTML -> Target Output Path -> Status -> Batch`로 추적 가능해야 한다.
+- 원칙: 모든 항목은 `Source / Canon -> Target Output Path -> Status -> Batch`로 추적 가능해야 한다.
 
 ## 2. Ground Truth Snapshot
 - 기준 시각: 2026-08-10
@@ -23,7 +23,7 @@
   - raw 보관: `.reference/notion-export/public-assets-raw`
 
 ## 3. Notion Curated Mapping
-| Notion Title | Source HTML Path | Target Output Path | Status | Batch ID |
+| Notion Title | Source / Canon | Target Output Path | Status | Batch ID |
 |---|---|---|---|---|
 | 고재현 포트폴리오 | `.reference/notion-export/고재현_포트폴리오_1aba667ac505800aa943c9704163e21a.html` | `Planning.md`, `src/data/projects.json` | Published | B2-PLAN-BASE |
 | CineV S2M (Film Agent) | `.reference/notion-export/public-assets-raw/cinev/s2m/CineV S2M (Film Agent) 30aa667ac505802da1a4f41e622eb38f.html` | `src/content/projects/ko/cinev-s2m.mdx` | Published | B2-CONTENT-CORE |
@@ -35,13 +35,13 @@
 | 이커머스 리뷰분석 AIaaS | `.reference/notion-export/이커머스_리뷰분석_AIaaS_1aba667ac50580cba7a5e295e25aba66.html` | `src/content/projects/ko/buzzni-review-aiaas.mdx` | Published | B2-PHASE2-2 |
 | 이커머스 검색 AIaaS | `.reference/notion-export/이커머스_검색_AIaaS_1aba667ac505806ea845c9be7fecace9.html` | `src/content/projects/ko/buzzni-search-aiaas.mdx` | Published | B2-PHASE2-2 |
 | Archive) AI PO Job | `.reference/notion-export/public-assets-raw/archive/aipo_tasks/Archive) AI PO Job 30aa667ac50580258e45c48bc3dbee11.html` | `src/content/projects/ko/cinev-ai-po-leadership.mdx` | Published | B2-PHASE2-2 |
-| AI Technology & Org Enablement | `/Users/vonvon/Documents/jayjgao/04-content-updates.md` | `src/content/projects/ko/cinev-ai-enablement.mdx` | Published | B4-CONTENT |
+| AI Technology & Org Enablement | Phase 4 approved interview canon (external); fact contract in `tests/phase3-content.test.ts` | `src/content/projects/ko/cinev-ai-enablement.mdx` | Published | B4-CONTENT |
 | 제품 마케팅 | `.reference/notion-export/제품_마케팅_1aba667ac5058022a4c3f8e63cc2b377.html` | `src/content/projects/ko/solidware-product-marketing.mdx` | Published | B2-PHASE2-2 |
 | 제품 브랜딩&마케팅 | `.reference/notion-export/제품_브랜딩_마케팅_1aba667ac505808aaebcd92753f75241.html` | `src/content/projects/ko/buzzni-branding-marketing.mdx` | Published | B2-PHASE2-2 |
 | MLaaS Product Management | `.reference/notion-export/MLaaS_Product_Management_1aba667ac50580e982d9e26c6be90b60.html` | `src/content/projects/ko/solidware-mlaas.mdx` | Published | B2-CONTENT-CORE |
 | AutoML 솔루션 신규 Feature개발 | `.reference/notion-export/AutoML_솔루션_신규_Feature개발_1aba667ac50580fd9687deae5d4d0d37.html` | `src/content/projects/ko/solidware-automl.mdx` | Published | B2-CONTENT-CORE |
 | AI 바이오마커 진단 솔루션 (HER2, ER/PR) | `.reference/notion-export/AI_바이오마커_진단_솔루션__HER2__ER_PR__1aba667ac5058085a86cf1b2ffaa56ed.html` | `src/content/projects/ko/lunit-biomarker.mdx` | Published | B2-CONTENT-CORE |
-| CineV A2P legacy alias | `/Users/vonvon/Documents/jayjgao/04-content-updates.md` | `src/lib/project-redirects.ts` | Published | B4-ROUTING |
+| CineV A2P legacy alias | Phase 4 approved routing decision (external); contract in `tests/project-data.test.ts` | `src/lib/project-redirects.ts` | Published | B4-ROUTING |
 | 프롬프트 모음 | `.reference/notion-export/프롬프트_모음_1aba667ac50580839a11c34cfb99283e.html` | `src/content/archive/ko/prompt-collection.mdx` | Parked | B2-PARKED |
 | 숏폼AI User Manual_Common_VER.1 | `.reference/notion-export/숏폼AI_User_Manual_Common_VER_1_1aba667ac50580e28362c73058327994.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |
 | 프로토타입 유저매뉴얼 | `.reference/notion-export/프로토타입_유저매뉴얼_1aba667ac50580159a7df52e26abac7b.html` | `src/content/archive/ko/user-manual-digest.mdx` | Parked | B2-PARKED |

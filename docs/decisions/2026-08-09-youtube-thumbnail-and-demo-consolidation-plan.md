@@ -1,5 +1,7 @@
 # Direct YouTube Thumbnails Implementation Plan
 
+> **Historical status:** This Phase 2 plan was completed for direct YouTube thumbnails, then its nine-Demo inventory and pending Prompt Skills state were superseded by Phase 3 commit `b80939c`. The current contract is eight Demos with Prompt Enhance Skills merged into Prompt Enhancer and no pending video state.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` (recommended) or `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox syntax for implementation tracking.
 
 **Goal:** Replace the unused custom-poster layer with direct, privacy-conscious YouTube thumbnails while preserving click-gated playback, and record the Prompt Enhancer/Prompt Enhance Skills consolidation question for Phase 3.
@@ -213,14 +215,14 @@
 
 **Files:**
 
-- Modify: `/Users/vonvon/Documents/jayjgao/00-ground-truth.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/01-decisions.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/03-demos-spec.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/work-order.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/demos-content-template.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/initial-prompt-phase1.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/initial-prompt-phase3.md`
-- Modify: `/Users/vonvon/Documents/jayjgao/README.md`
+- Modify: `<external-canon>/00-ground-truth.md`
+- Modify: `<external-canon>/01-decisions.md`
+- Modify: `<external-canon>/03-demos-spec.md`
+- Modify: `<external-canon>/work-order.md`
+- Modify: `<external-canon>/demos-content-template.md`
+- Modify: `<external-canon>/initial-prompt-phase1.md`
+- Modify: `<external-canon>/initial-prompt-phase3.md`
+- Modify: `<external-canon>/README.md`
 - Modify: `.local/handoffs/phase1.md`
 
 - [x] **Step 1: Replace the superseded poster decision everywhere**
@@ -240,7 +242,7 @@
 
   ```bash
   rg -n "custom poster|video-poster|poster.*null|외부.*thumbnail.*없|thumbnail.*요청하지" \
-    /Users/vonvon/Documents/jayjgao .local/handoffs/phase1.md
+    <external-canon> .local/handoffs/phase1.md
   ```
 
   Expected: no superseded custom-poster requirement remains; unrelated project/Spotlight poster references are not changed.

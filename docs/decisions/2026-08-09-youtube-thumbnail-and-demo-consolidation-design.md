@@ -4,7 +4,9 @@
 
 **Branch:** `redesign/2026`
 
-**Status:** Implemented and verified on `redesign/2026`
+**Status:** Historical Phase 2 follow-up, superseded for the current Demo inventory by Phase 3 commit `b80939c`
+
+> Current contract: eight Demos, no pending video state, and Prompt Enhance Skills merged into Prompt Enhancer. The decisions below are preserved as the implementation record for direct YouTube thumbnails.
 
 ## Context
 
