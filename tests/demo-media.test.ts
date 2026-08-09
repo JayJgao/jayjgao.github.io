@@ -11,6 +11,10 @@ import type { Demo } from "../src/types/demo";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 const demoImagesRoot = join(repositoryRoot, "public/assets/images/demos");
+const enablementImagesRoot = join(
+  repositoryRoot,
+  "public/assets/images/projects/cinev/enablement",
+);
 
 const expectedImages = [
   {
@@ -95,6 +99,39 @@ const expectedDiagrams = {
     sha256: "42a2a2d9b99d1403a93270fc6c6c07efb1dfd7c4ffbce44ec5600c4ec537e7ce",
   },
 } as const;
+
+const expectedEnablementImages = [
+  {
+    path: "r2v-user-purpose.webp",
+    width: 1600,
+    height: 809,
+    sha256: "662ca885b4f77acd390ccbd9a84610dc15b883c7950bc56122f9f5ccd5b9dac2",
+  },
+  {
+    path: "r2v-developer-checklist.webp",
+    width: 1600,
+    height: 809,
+    sha256: "6d31545b7c523594e534c5d3292fe2dab623f90cc506d5d218aa5dde9fea80c3",
+  },
+  {
+    path: "ai101-multimodal-translation.webp",
+    width: 1600,
+    height: 839,
+    sha256: "0e116dc2bd6e5ed7979d40f3b796b1822eed1669bec9a14934fa245c8a187ead",
+  },
+  {
+    path: "ai101-training-vs-inference.webp",
+    width: 1600,
+    height: 839,
+    sha256: "f91246d6f8b9a9b5c3d0e18adbb3b5c7cb29d7b8143c23f473c35ec4903f49d5",
+  },
+  {
+    path: "3d-language-gap.webp",
+    width: 2200,
+    height: 816,
+    sha256: "5b22c3c107b4f942c838f01c020da008a144364d940d9dc9d58fd28378ca41f1",
+  },
+] as const;
 
 function listFiles(root: string, directory = root): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -236,6 +273,41 @@ test("ships exactly the seven approved derivative images with expected bytes and
       height: expected.height,
     });
   }
+});
+
+test("ships only the five approved Enablement evidence images with fixed bytes and dimensions", () => {
+  assert.equal(existsSync(enablementImagesRoot), true, "Enablement evidence directory must exist");
+  assert.deepEqual(
+    listFiles(enablementImagesRoot).sort(),
+    expectedEnablementImages.map(({ path }) => path).sort(),
+  );
+
+  const hashes = new Set<string>();
+  for (const expected of expectedEnablementImages) {
+    assert.doesNotMatch(
+      expected.path,
+      /(?:^|[-_.])(raw|original|source|screenshot|screen-shot|img-?\d+|copy|export)(?:[-_.]|$)/i,
+    );
+
+    const image = readFileSync(join(enablementImagesRoot, expected.path));
+    const digest = sha256(image);
+    hashes.add(digest);
+    assert.equal(digest, expected.sha256, `${expected.path} bytes must remain unchanged`);
+    assert.deepEqual(inspectImage(image), {
+      format: "webp",
+      width: expected.width,
+      height: expected.height,
+    });
+
+    const containerText = image.toString("latin1");
+    assert.doesNotMatch(
+      containerText,
+      /(?:cinev\.github\.io|app\.notion\.com|github\.com\/CINEV|NSIRD_screencaptureui|TemporaryItems|스크린샷)/i,
+      `${expected.path} must not retain source URLs, paths, or capture names`,
+    );
+  }
+
+  assert.equal(hashes.size, expectedEnablementImages.length, "evidence images must be distinct");
 });
 
 test("gallery entries preserve exact order, slug paths, dimensions, and factual Korean copy", () => {

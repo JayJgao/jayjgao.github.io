@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { extname, join } from "node:path";
 import test from "node:test";
 
@@ -29,6 +30,14 @@ type ContractDemo = {
 
 function readRepoFile(path: string): string {
   return readFileSync(new URL(path, repoRoot), "utf8");
+}
+
+function readRepoBytes(path: string): Buffer {
+  return readFileSync(new URL(path, repoRoot));
+}
+
+function sha256(bytes: Uint8Array): string {
+  return createHash("sha256").update(bytes).digest("hex");
 }
 
 function collectPublicCopyFiles(directory: string): string[] {
@@ -288,4 +297,47 @@ test("the obsolete public S2M object diagram and six-year claim are absent", () 
     .map((path) => readFileSync(path, "utf8"))
     .join("\n");
   assert.doesNotMatch(publicJson, /6\+\s*(?:Years|years|年)/);
+});
+
+test("approved resume downloads are byte-identical to the final PDFs", () => {
+  assert.equal(
+    sha256(readRepoBytes("public/assets/resume/resume_ko.pdf")),
+    "7f53f9cff8d4f4ce8cb4e668548f47b1304cb5ddbc3afd29c54940131fe09ecb",
+  );
+  assert.equal(
+    sha256(readRepoBytes("public/assets/resume/resume_en.pdf")),
+    "c2e96a5dcd4cbfb0d85482173cce0048892714c82113409669c5ae8ac96af097",
+  );
+});
+
+test("AI PO Leadership thumbnail presents only the approved public-safe five-stage narrative", () => {
+  const path = "public/assets/images/projects/cinev/cinev-ai-po-leadership.svg";
+  assert.equal(existsSync(new URL(path, repoRoot)), true, "Leadership SVG must exist");
+
+  const svg = readRepoFile(path);
+  assert.match(svg, /viewBox=["']0 0 1600 900["']/);
+  for (const color of ["#f4e9e1", "#0e0e0e", "#2835f8", "#ff5c00"]) {
+    assert.match(svg.toLowerCase(), new RegExp(color));
+  }
+  for (const copy of [
+    "SIGNAL",
+    "생성 모델의 표현 범위가 기존 렌더링의 전제를 변화",
+    "REFRAME",
+    "렌더링 수단과 계승할 상태와 컨텍스트 자산을 분리",
+    "HYPOTHESIS",
+    "생성형 렌더링과 Web 3D Conditioning의 결합",
+    "VALIDATE",
+    "120+ Same-scene Comparisons",
+    "ALIGN TO LAUNCH",
+    "조직 합의에서 Web CineV 공식 출시까지",
+    "120+ SCENES VALIDATED",
+    "WEB CINEV LAUNCHED",
+    "2026.07.10",
+  ]) {
+    assert.match(svg, new RegExp(copy.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  assert.doesNotMatch(svg, /(?:<image|<script|href=|MAU|1\.5\s*만|NDA|실패율|failure rate)/i);
+  assert.deepEqual(svg.match(/https?:\/\/[^"'\s<]+/gi) ?? [], ["http://www.w3.org/2000/svg"]);
+  assert.doesNotMatch(svg, /(?:Asset 관리 시스템|내부 구조|데이터 구조|생성 방식|연결 규칙|내부 화면)/i);
 });
