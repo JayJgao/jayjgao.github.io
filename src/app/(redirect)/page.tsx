@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
 import { LocaleRedirect } from "@/components/i18n/LocaleRedirect";
-import { createLegacyMetadata } from "@/lib/metadata";
+import { getMessages } from "@/lib/i18n";
+import { createHomeDescription, createLocalizedMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = createLegacyMetadata("/");
+const copy = getMessages("ko").home.hero;
+
+export const metadata: Metadata = {
+  ...createLocalizedMetadata({
+    locale: "ko",
+    path: "/",
+    title: `${copy.name} | AI Product Leader`,
+    description: createHomeDescription("ko", copy),
+  }),
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function RootRedirectPage() {
   return <LocaleRedirect path="/" />;
