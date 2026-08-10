@@ -4,7 +4,12 @@ import test from "node:test";
 
 import * as metadataModule from "../src/lib/metadata";
 
-const { createLegacyMetadata, createLocalizedMetadata, SITE_URL } = metadataModule;
+const {
+  createLegacyMetadata,
+  createLocalizedMetadata,
+  KOREAN_HOME_DESCRIPTION,
+  SITE_URL,
+} = metadataModule;
 
 test("legacy redirect metadata has a descriptive title", () => {
   const metadata = createLegacyMetadata("/");
@@ -72,6 +77,30 @@ test("Home metadata uses the approved Korean share description without changing 
     createHomeDescription!("zh", copy),
     "Headline Line one\nLine two Supporting",
   );
+});
+
+test("the root locale redirect shares Korean Home metadata with crawlers", async () => {
+  const route = await import("../src/app/(redirect)/page");
+
+  assert.equal(route.metadata.title, "고재현 | AI Product Leader");
+  assert.equal(route.metadata.description, KOREAN_HOME_DESCRIPTION);
+  assert.equal(
+    route.metadata.alternates?.canonical,
+    "https://jayjgao.github.io/ko/",
+  );
+  assert.equal(route.metadata.openGraph?.title, "고재현 | AI Product Leader");
+  assert.equal(
+    route.metadata.openGraph?.description,
+    KOREAN_HOME_DESCRIPTION,
+  );
+  assert.equal(
+    route.metadata.openGraph?.url,
+    "https://jayjgao.github.io/ko/",
+  );
+  assert.deepEqual(route.metadata.robots, {
+    index: false,
+    follow: true,
+  });
 });
 
 test("the app ships the approved self-contained Jay Ko SVG favicon", () => {
