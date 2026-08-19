@@ -1,6 +1,27 @@
 [
   {
     "slug": "chroma-awards",
+    "provider": "youtube",
+    "videoId": "8NQiyv5bbBg",
+    "title": {
+      "ko": "LG AI 영상 공모전 MV 부문",
+      "en": "LG AI Video Contest\nMusic Video Category",
+      "zh": "LG AI 视频大赛\n音乐视频组"
+    },
+    "workTitle": {
+      "ko": "곡선이 직선이 되고",
+      "en": "When Curves Become Straight Lines",
+      "zh": "当曲线化作直线"
+    },
+    "caption": {
+      "ko": "LG AI 영상 공모전 뮤직비디오 부문 출품작",
+      "en": "Music video entry in the LG AI Video Contest",
+      "zh": "LG AI 视频大赛音乐视频组参赛作品"
+    },
+    "poster": "https://i.ytimg.com/vi/8NQiyv5bbBg/maxresdefault.jpg"
+  },
+  {
+    "slug": "chroma-awards",
     "provider": "vimeo",
     "videoId": "1137973544",
     "title": {
@@ -22,27 +43,6 @@
   },
   {
     "slug": "chroma-awards",
-    "provider": "vimeo",
-    "videoId": "1137947360",
-    "title": {
-      "ko": "Chroma Awards\nMystery Invitation",
-      "en": "Chroma Awards\nMystery Invitation",
-      "zh": "Chroma Awards\nMystery Invitation"
-    },
-    "workTitle": {
-      "ko": "Mystery Invitation",
-      "en": "Mystery Invitation",
-      "zh": "Mystery Invitation"
-    },
-    "caption": {
-      "ko": "Chroma Awards Romance 트랙 본선 진출작",
-      "en": "Finalist entry in the Chroma Awards Romance track",
-      "zh": "Chroma Awards Romance 赛道决赛入围作品"
-    },
-    "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
-  },
-  {
-    "slug": "chroma-awards",
     "provider": "youtube",
     "videoId": "4ngeQ9EJew4",
     "title": {
@@ -61,6 +61,27 @@
       "zh": "WAIFF 2026 广告类别投稿作品"
     },
     "poster": "/assets/images/projects/chroma/waiff-thumb.webp"
+  },
+  {
+    "slug": "chroma-awards",
+    "provider": "vimeo",
+    "videoId": "1137947360",
+    "title": {
+      "ko": "Chroma Awards\nMystery Invitation",
+      "en": "Chroma Awards\nMystery Invitation",
+      "zh": "Chroma Awards\nMystery Invitation"
+    },
+    "workTitle": {
+      "ko": "Mystery Invitation",
+      "en": "Mystery Invitation",
+      "zh": "Mystery Invitation"
+    },
+    "caption": {
+      "ko": "Chroma Awards Romance 트랙 본선 진출작",
+      "en": "Finalist entry in the Chroma Awards Romance track",
+      "zh": "Chroma Awards Romance 赛道决赛入围作品"
+    },
+    "poster": "/assets/images/projects/chroma/chroma-mystery-thumb.webp"
   },
   {
     "slug": "chroma-awards",
