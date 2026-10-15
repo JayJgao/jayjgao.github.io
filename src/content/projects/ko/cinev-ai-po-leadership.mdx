@@ -1,5 +1,5 @@
 <div className="highlight-callout">
-  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <p className="highlight-callout__eyebrow">배운 것</p>
   <h3 className="highlight-callout__title">좋은 피벗은 남길 강점과 바꿀 수단을 구분하는 일이다</h3>
   <div className="highlight-callout__body">
     기술 변화가 기존 해법의 전제를 무너뜨릴 때, 과거의 투자를 방어하기보다 문제와 자산을 다시 분리해야 한다는 것을 배웠습니다.
@@ -26,19 +26,19 @@ CineV의 핵심 기술인 State Engine, Element Engine, 3D Proxy를 설명하기
   />
 </div>
 
-## Problem
+## 문제
 
 기존 CineV는 3D 월드에서 상태를 일관되게 관리하고, LLM이 활용할 수 있는 장면의 컨텍스트를 구조화하는 데 강점이 있었습니다. 그러나 2026년 비디오 생성 모델의 표현력과 물리적 정합성이 빠르게 개선되면서, Unreal 중심 렌더링은 더 이상 좁은 표현 범위를 상쇄할 이점을 제공하지 못했습니다.
 
 문제는 단순한 엔진 교체가 아니었습니다. 3년간 축적된 레거시를 걷어내면서도 상태와 컨텍스트 관리라는 자산은 계승하고, 외부 사용자가 직접 접근하기 어려웠던 제품을 이미지와 비디오 생성 모델 중심의 웹 제품으로 다시 설계해야 했습니다.
 
-## Approach
+## 접근
 
 렌더링은 이미지와 비디오 생성 모델에 맡기되, 3D에서 축적한 상태와 컨텍스트 관리 역량은 새로운 제품의 기반으로 계승하는 방향을 세웠습니다. 여기에 웹 기반 3D를 제어 가능한 conditioning으로 활용하면, 텍스트만으로 전달하기 어려운 복합 조건의 반영률을 높일 수 있다는 가설을 수립했습니다.
 
 가설을 조직의 의사결정 근거로 바꾸기 위해 AI 개발 리드와 함께 120개 이상의 동일 장면을 대상으로 텍스트 프롬프트와 3D conditioning 결과를 비교했습니다. 다섯 명이 함께 결과를 검토하고 합의 판정했으며, 이를 바탕으로 CPO, CTO 및 기술 조직과 제품 전환 방향을 정렬했습니다.
 
-## Execution
+## 실행
 
 ### Direction and Validation
 
@@ -52,7 +52,7 @@ CineV의 핵심 기술인 State Engine, Element Engine, 3D Proxy를 설명하기
 
 신뢰할 수 있는 공식 발표를 기준으로 새로운 모델과 기술을 탐색하고, 기존 제품 API로 수용할 수 있는지 또는 별도의 구현이 필요한지를 판단해 웹팀과 AI팀에 전달했습니다. 외부 모델 라우팅을 통해 7개 이상 영역에서 30종 이상의 모델을 제품에 통합했으며, 별도의 Enablement 프로젝트를 통해 조직이 새로운 기술을 직접 판단하고 검증할 수 있는 기반을 만들었습니다.
 
-## Results
+## 결과
 
 - **WEB CINEV LAUNCH**: 3년간 축적된 레거시 중심의 제품을 생성형 AI 기반 웹 제품으로 전환해 2026년 7월 10일 공식 출시했습니다.
 - **3 EXPERIMENTAL FEATURES**: Prompt Enhancer, Voice Adaptor, Reverse Storyboard를 검증 결과와 함께 개발 조직에 이관해 제품에 통합했습니다.

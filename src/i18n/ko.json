@@ -2,15 +2,15 @@
   "nav": {
     "home": "홈",
     "about": "소개",
-    "projects": "포트폴리오",
-    "demos": "Demos",
+    "projects": "프로젝트",
+    "demos": "데모",
     "resume": "이력서"
   },
   "common": {
     "website": "웹사이트",
     "github": "GitHub",
     "email": "이메일",
-    "projectsUnit": "projects"
+    "projectsUnit": "개 프로젝트"
   },
   "home": {
     "hero": {
@@ -37,20 +37,20 @@
       ]
     },
     "featured": {
-      "sectionLabel": "Featured Showcase",
-      "title": "Notable Projects",
+      "sectionLabel": "대표 사례",
+      "title": "대표 사례",
       "viewAll": "전체 보기",
       "metricFallbackPrefix": "기여"
     },
     "demos": {
-      "viewAll": "View All Demos"
+      "viewAll": "데모 전체"
     },
     "spotlight": {
-      "kicker": "Creative Spotlight",
-      "title": "Watch First",
+      "kicker": "창작 작업",
+      "title": "영상으로 보기",
       "subtitle": "AI Filmmaking Showcase.",
-      "prev": "Prev",
-      "next": "Next",
+      "prev": "이전",
+      "next": "다음",
       "prevAria": "이전 스포트라이트",
       "nextAria": "다음 스포트라이트",
       "relatedProject": "관련 프로젝트 보기",
@@ -59,8 +59,8 @@
       "posterAltSuffix": "포스터"
     },
     "timeline": {
-      "kicker": "3-Era Narrative",
-      "title": "Career Timeline",
+      "kicker": "경력",
+      "title": "경력",
       "eras": {
         "era1": {
           "items": [
@@ -86,8 +86,8 @@
     }
   },
   "about": {
-    "motivationKicker": "What Moves Me",
-    "demosCta": "View Demos",
+    "motivationKicker": "나를 움직이는 것",
+    "demosCta": "데모 보기",
     "images": {
       "opening": "도메인 확장 내러티브 이미지",
       "markets": "3개 언어 3개 시장 소개 이미지",
@@ -97,20 +97,20 @@
   },
   "projects": {
     "page": {
-      "kicker": "Portfolio",
-      "title": "Projects",
+      "kicker": "프로젝트",
+      "title": "프로젝트",
       "description": "3-Era Narrative를 기준으로 포트폴리오를 구성했습니다.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
     },
     "explorer": {
-      "featuredTitle": "Featured",
+      "featuredTitle": "대표 프로젝트",
       "featuredDescription": "핵심 성과가 선명한 프로젝트만 우선 배치했습니다.",
-      "archiveTitle": "Archive",
+      "archiveTitle": "전체 목록",
       "archiveDescription": "다양한 도메인에서 진행했던 프로젝트들의 목록입니다.",
       "emptyFeatured": "선택한 Era에 해당하는 Featured 프로젝트가 없습니다.",
       "emptyArchive": "선택한 Era에 해당하는 Archive 프로젝트가 없습니다."
     },
     "filter": {
-      "all": "All"
+      "all": "전체"
     },
     "card": {
       "highlightLabel": "하이라이트",
@@ -128,48 +128,48 @@
   },
   "demos": {
     "page": {
-      "kicker": "Demos",
+      "kicker": "데모",
       "title": "Tinkering with the latest AI",
       "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
     },
     "groups": {
       "productized": {
-        "title": "Built into Products",
+        "title": "제품에 반영된 데모",
         "description": "실제 제품 흐름에 반영되어 사용 맥락을 검증한 작업입니다."
       },
       "experiments": {
-        "title": "Experiments and Internal Tools",
+        "title": "실험과 내부 도구",
         "description": "가설을 빠르게 검증하고 다음 판단을 만든 실험과 내부 도구입니다."
       }
     },
     "kind": {
-      "service": "Service",
-      "prototype": "Prototype",
-      "workflow": "Workflow"
+      "service": "서비스",
+      "prototype": "프로토타입",
+      "workflow": "워크플로"
     },
     "status": {
-      "productized": "Productized",
-      "internal": "Internal"
+      "productized": "제품 반영",
+      "internal": "내부 도구"
     },
     "card": {
-      "outcomeLabel": "Outcome",
-      "openDetail": "Demo 상세 보기"
+      "outcomeLabel": "결과",
+      "openDetail": "데모 상세 보기"
     },
     "detail": {
-      "backToList": "Demos 목록으로",
-      "outcomeLabel": "Outcome",
-      "flowTitle": "From Observation to Hypothesis",
+      "backToList": "데모 목록으로",
+      "outcomeLabel": "결과",
+      "flowTitle": "관찰에서 가설까지",
       "sections": {
-        "observation": "Observation",
-        "problem": "Problem",
-        "hypothesis": "Hypothesis",
-        "highlightMedia": "Highlight Media",
-        "video": "Video",
-        "gallery": "Product Evidence",
-        "howItWorks": "How It Works",
-        "pipeline": "Pipeline",
-        "stack": "Stack",
-        "boundary": "Boundary"
+        "observation": "관찰",
+        "problem": "문제",
+        "hypothesis": "가설",
+        "highlightMedia": "주요 자료",
+        "video": "영상",
+        "gallery": "제품 근거 자료",
+        "howItWorks": "작동 방식",
+        "pipeline": "파이프라인",
+        "stack": "기술 구성",
+        "boundary": "범위와 한계"
       },
       "video": {
         "playPrefix": "하이라이트 영상 재생",
@@ -186,24 +186,24 @@
   },
   "resume": {
     "page": {
-      "kicker": "Resume",
+      "kicker": "이력서",
       "title": "Jay Ko Resume",
       "description": "웹 이력서와 다운로드 PDF를 동일한 기준으로 관리하고 있습니다.",
       "downloadKo": "한국어 PDF 다운로드",
-      "downloadEn": "English PDF Download"
+      "downloadEn": "영어 PDF 다운로드"
     },
     "renderer": {
       "website": "웹사이트",
       "github": "GitHub",
-      "revenue": "Revenue",
-      "clientScale": "Client Scale",
-      "ipResearch": "IP & Research",
-      "summary": "Summary",
-      "experience": "Experience",
-      "skills": "Skills",
-      "education": "Education",
-      "achievements": "Achievements",
-      "languages": "Languages"
+      "revenue": "매출",
+      "clientScale": "고객 규모",
+      "ipResearch": "지식재산 및 연구",
+      "summary": "요약",
+      "experience": "경력",
+      "skills": "역량",
+      "education": "학력",
+      "achievements": "주요 성과",
+      "languages": "언어"
     }
   },
   "notFound": {

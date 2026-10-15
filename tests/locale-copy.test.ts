@@ -222,7 +222,7 @@ test("localized structured files match the exact approved copy", () => {
   const approvedSha256 = {
     about: {
       en: "15eb12da0e51bbb9605a34b4ba3553a723dc579a151a92b7541a6c4c46dd415d",
-      zh: "829fa5afd4e3c95504c5ceccab2a9ef507ef2c5a8d5220e11111b6234079281b",
+      zh: "b8ebfa9e1406db913f9551e2c7bee66b82b3051bb6537912e70875bca34f9324",
     },
     resume: {
       en: "69d4328869d1e13ebe10ec7a2b01476172b2c0f773a9ae60e09107d9f62b9c34",
@@ -230,7 +230,7 @@ test("localized structured files match the exact approved copy", () => {
     },
     i18n: {
       en: "32e11e1cf894b8e830cedd1912d6d2fdc7f86efad9d9fcfbcbf0dc778b6bec92",
-      zh: "88a149e973b1fd0d8527fd3ed44a98ceea6abd6427d2e4b441e0d5987e792e96",
+      zh: "551a5b7054b297304995d68a81b6392d7b2528de403f30aa1506c4863973405a",
     },
   } as const;
 

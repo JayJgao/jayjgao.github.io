@@ -117,7 +117,7 @@ const expectedAboutKo = {
     ],
   },
   markets: {
-    kicker: "Three Languages, Three Markets",
+    kicker: "세 언어, 세 시장",
     intro: "세 언어로 서로 다른 시장의 제품과 사업을 직접 다뤄왔습니다.",
     items: [
       { language: "중국어", detail: "네이티브 수준. 칭화대 최우수 졸업논문 수상." },
@@ -133,7 +133,7 @@ const expectedAboutKo = {
     belief: "AI는 문제 정의의 즐거움을 해결의 즐거움으로 확장합니다.",
   },
   workingWithMe: {
-    kicker: "Working with Me",
+    kicker: "함께 일하는 방식",
     lead: "Clarity first. Then speed.",
     principles: [
       {
@@ -467,7 +467,7 @@ test("AI PO Leadership thumbnail presents only the approved public-safe five-sta
 
   const svg = readRepoFile(path);
   assert.match(svg, /viewBox=["']0 0 1600 900["']/);
-  for (const color of ["#f4e9e1", "#0e0e0e", "#2835f8", "#ff5c00"]) {
+  for (const color of ["#ffffff", "#0e0e0e", "#2835f8"]) {
     assert.match(svg.toLowerCase(), new RegExp(color));
   }
   for (const copy of [

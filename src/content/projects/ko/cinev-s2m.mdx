@@ -1,5 +1,5 @@
 <div className="highlight-callout">
-  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+  <p className="highlight-callout__eyebrow">배운 것</p>
   <h3 className="highlight-callout__title">모델은 늙지만, 역할과 계약은 남는다</h3>
   <div className="highlight-callout__body">
     특정 모델의 현재 역량에 제품 워크플로를 과적합하면, 다음 세대 모델이 등장할 때 엔지니어링 부채가 남는다는 것을 배웠습니다.
@@ -22,16 +22,16 @@
   />
 </div>
 
-## Problem
+## 문제
 
 자연어 스크립트를 Unreal 결과물로 연결하는 구간에서 병목이 컸고, 모듈 계약이 느슨해 실험 실패 비용이 높았습니다.
 
-## Approach
+## 접근
 
 - 오케스트레이션 레이어와 실행 레이어를 분리했습니다. S2M은 오케스트레이션 레이어를 담당했습니다.
 - 모듈 간 데이터 입력과 출력 스키마를 확정해 제품 파이프라인을 확립했습니다.
 
-## Execution
+## 실행
 
 - 파이프라인 실패 로그를 기준으로 병목 3개 구간을 먼저 정리
 - Scene, Action, Camera, Map, Character 계약을 JSON schema 중심으로 재작성
@@ -40,7 +40,7 @@
 
 ![S2M shot 03](/assets/images/projects/cinev/cinev-s2m-shot-03.webp)
 
-## Results
+## 결과
 
 - 첫 LLM-to-Unreal E2E 통합
 - 상태와 컨텍스트 관리, 모듈 간 데이터 계약을 후속 웹 CineV가 승계할 기반으로 정리

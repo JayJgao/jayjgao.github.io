@@ -46,7 +46,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               <h2 id="featured-projects-title" className="section-display">{copy.featuredTitle}</h2>
               <p>{copy.featuredDescription}</p>
             </div>
-            <span className="pill">{featured.length} {messages.common.projectsUnit}</span>
+            <span className="tag"><span className="num">{featured.length}</span> {messages.common.projectsUnit}</span>
           </header>
           <div className="featured-project-grid">
             {featured.map((project, index) => (
@@ -68,7 +68,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               <h2 id="archive-projects-title" className="section-display">{copy.archiveTitle}</h2>
               <p>{copy.archiveDescription}</p>
             </div>
-            <span className="pill">{archive.length} {messages.common.projectsUnit}</span>
+            <span className="tag"><span className="num">{archive.length}</span> {messages.common.projectsUnit}</span>
           </header>
           <div className="project-archive-list">
             {archive.map((project, index) => (

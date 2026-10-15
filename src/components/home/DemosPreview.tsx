@@ -14,7 +14,7 @@ export function DemosPreview({ locale }: { locale: Locale }) {
   return (
     <section className="demo-preview-chapter" aria-labelledby="home-demos-title">
       <div className="chapter-inner">
-        <header className="chapter-heading chapter-heading--cream">
+        <header className="chapter-heading chapter-heading--paper">
           <p className="section-kicker">{copy.page.kicker}</p>
           <h2 id="home-demos-title" className="section-display">
             {copy.groups.productized.title}
@@ -28,7 +28,7 @@ export function DemosPreview({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <Link href={getLocalizedPath(locale, "/demos/")} className="btn-on-orange">
+        <Link href={getLocalizedPath(locale, "/demos/")} className="btn-primary">
           {homeCopy.viewAll}
         </Link>
       </div>

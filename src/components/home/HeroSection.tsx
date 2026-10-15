@@ -41,7 +41,11 @@ export function HeroSection() {
           <div className="hero-stat-ledger">
             {copy.stats.map((stat) => (
               <div key={stat.label} className="hero-stat">
-                <p className="hero-stat__value">{stat.value}</p>
+                <p className="hero-stat__value">
+                  {stat.value.split(/(\d+(?:[.,]\d+)*(?:[xX+])?)/).map((part, index) =>
+                    /\d/.test(part) ? <span key={index} className="num">{part}</span> : part,
+                  )}
+                </p>
                 <p className="hero-stat__label">{stat.label}</p>
               </div>
             ))}

@@ -337,9 +337,9 @@ test("BUZZNI AIaaS and branding media have distinct highlight and Execution role
     1,
     "the former branding highlight must appear once at the end of Execution",
   );
-  const brandingExecution = brandingMdx.indexOf("## Execution");
+  const brandingExecution = brandingMdx.indexOf("## 실행");
   const brandingEvidence = brandingMdx.indexOf("buzzni-branding-marketing-shot-02.jpg");
-  const brandingResults = brandingMdx.indexOf("## Results");
+  const brandingResults = brandingMdx.indexOf("## 결과");
   assert.ok(brandingExecution < brandingEvidence && brandingEvidence < brandingResults);
 
   const assetManifest = readJson(dataUrl("asset-manifest.json"));

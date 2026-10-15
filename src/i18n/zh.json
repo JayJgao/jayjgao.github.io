@@ -2,8 +2,8 @@
   "nav": {
     "home": "首页",
     "about": "关于",
-    "projects": "作品集",
-    "demos": "Demos",
+    "projects": "项目",
+    "demos": "演示",
     "resume": "简历"
   },
   "common": {
@@ -37,13 +37,13 @@
       ]
     },
     "featured": {
-      "sectionLabel": "Featured Showcase",
+      "sectionLabel": "代表案例",
       "title": "代表项目",
       "viewAll": "查看全部",
       "metricFallbackPrefix": "贡献"
     },
     "demos": {
-      "viewAll": "View All Demos"
+      "viewAll": "全部演示"
     },
     "spotlight": {
       "kicker": "创作精选",
@@ -86,8 +86,8 @@
     }
   },
   "about": {
-    "motivationKicker": "What Moves Me",
-    "demosCta": "View Demos",
+    "motivationKicker": "我的动力",
+    "demosCta": "查看演示",
     "images": {
       "opening": "领域拓展叙事配图",
       "markets": "三种语言与三个市场的介绍图",
@@ -97,14 +97,14 @@
   },
   "projects": {
     "page": {
-      "kicker": "Portfolio",
+      "kicker": "项目",
       "title": "项目",
       "description": "作品集围绕三阶段经历展开。\nEra 1: Classical ML，Era 2: LLM Application，Era 3: Generative AI Native。"
     },
     "explorer": {
-      "featuredTitle": "Featured",
+      "featuredTitle": "代表项目",
       "featuredDescription": "优先呈现核心成果清晰的项目。",
-      "archiveTitle": "Archive",
+      "archiveTitle": "全部项目",
       "archiveDescription": "这里汇总了在不同领域开展过的项目。",
       "emptyFeatured": "所选 Era 下没有 Featured 项目。",
       "emptyArchive": "所选 Era 下没有 Archive 项目。"
@@ -128,48 +128,48 @@
   },
   "demos": {
     "page": {
-      "kicker": "Demos",
+      "kicker": "演示",
       "title": "Tinkering with the latest AI",
       "description": "这里汇总了亲自上手最新 AI，并将实验用于产品和内部工具的案例，重点呈现结果和依据。"
     },
     "groups": {
       "productized": {
-        "title": "Built into Products",
+        "title": "已融入产品的演示",
         "description": "这些工作已进入实际产品流程，并通过使用场景验证。"
       },
       "experiments": {
-        "title": "Experiments and Internal Tools",
+        "title": "实验与内部工具",
         "description": "用实验和内部工具快速验证假设，为下一步判断提供依据。"
       }
     },
     "kind": {
-      "service": "Service",
-      "prototype": "Prototype",
-      "workflow": "Workflow"
+      "service": "服务",
+      "prototype": "原型",
+      "workflow": "工作流"
     },
     "status": {
-      "productized": "Productized",
-      "internal": "Internal"
+      "productized": "已融入产品",
+      "internal": "内部工具"
     },
     "card": {
-      "outcomeLabel": "Outcome",
+      "outcomeLabel": "成果",
       "openDetail": "查看 Demo 详情"
     },
     "detail": {
       "backToList": "返回 Demos 列表",
-      "outcomeLabel": "Outcome",
-      "flowTitle": "From Observation to Hypothesis",
+      "outcomeLabel": "成果",
+      "flowTitle": "从观察到假设",
       "sections": {
-        "observation": "Observation",
-        "problem": "Problem",
-        "hypothesis": "Hypothesis",
-        "highlightMedia": "Highlight Media",
-        "video": "Video",
-        "gallery": "Product Evidence",
-        "howItWorks": "How It Works",
-        "pipeline": "Pipeline",
-        "stack": "Stack",
-        "boundary": "Boundary"
+        "observation": "观察",
+        "problem": "问题",
+        "hypothesis": "假设",
+        "highlightMedia": "重点资料",
+        "video": "视频",
+        "gallery": "产品依据",
+        "howItWorks": "运作方式",
+        "pipeline": "流程",
+        "stack": "技术栈",
+        "boundary": "范围与限制"
       },
       "video": {
         "playPrefix": "播放亮点视频",

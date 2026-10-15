@@ -188,9 +188,9 @@ test("About data keeps the approved two-principle structure and Demos bridge", (
   }
   assert.deepEqual(aboutNarratives[0].workingWithMe.principles, expectedKoreanPrinciples);
   assert.equal(aboutNarratives[0].workingWithMe.demosBridge, expectedBridge);
-  for (const dictionary of messages) {
-    assert.equal(dictionary.about.demosCta, "View Demos");
-    assert.equal(dictionary.home.demos.viewAll, "View All Demos");
+  for (const [index, dictionary] of messages.entries()) {
+    assert.equal(dictionary.about.demosCta, ["데모 보기", "View Demos", "查看演示"][index]);
+    assert.equal(dictionary.home.demos.viewAll, ["데모 전체", "View All Demos", "全部演示"][index]);
   }
 
   assert.deepEqual(shapeOf(aboutNarratives[0]), shapeOf(aboutNarratives[1]));
@@ -201,7 +201,7 @@ test("About data keeps the approved two-principle structure and Demos bridge", (
   assert.deepEqual(shapeOf(messages[0].about), shapeOf(messages[2].about));
 });
 
-test("About subsection headings stay language-invariant English across all locales", () => {
+test("About subsection headings follow the page locale", () => {
   for (const locale of locales) {
     const narrative = JSON.parse(
       readRepoFile(`src/data/about.${locale}.json`),
@@ -213,9 +213,9 @@ test("About subsection headings stay language-invariant English across all local
       readRepoFile(`src/i18n/${locale}.json`),
     ) as { about: { motivationKicker: string } };
 
-    assert.equal(narrative.workingWithMe.kicker, "Working with Me");
-    assert.equal(narrative.markets.kicker, "Three Languages, Three Markets");
-    assert.equal(messages.about.motivationKicker, "What Moves Me");
+    assert.equal(narrative.workingWithMe.kicker, locale === "ko" ? "함께 일하는 방식" : locale === "zh" ? "合作方式" : "Working with Me");
+    assert.equal(narrative.markets.kicker, locale === "ko" ? "세 언어, 세 시장" : locale === "zh" ? "三种语言，三个市场" : "Three Languages, Three Markets");
+    assert.equal(messages.about.motivationKicker, locale === "ko" ? "나를 움직이는 것" : locale === "zh" ? "我的动力" : "What Moves Me");
   }
 });
 

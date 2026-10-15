@@ -47,7 +47,7 @@ export function ProjectCard({
     <article className={`project-card ${featured ? "project-card--featured" : "project-card--default"}`}>
       <Link href={href} className="project-card-link" aria-label={displayTitle}>
         <header className="project-card-meta">
-          <span>{number}</span>
+          <span className="num">{number}</span>
           <span>{project.company}</span>
           <span>{getEraLabel(project.era, locale)}</span>
         </header>
@@ -66,14 +66,14 @@ export function ProjectCard({
             </div>
           ) : null}
           <div>
-            <dt>Role</dt>
+            <dt>{copy.caseStudy.role}</dt>
             <dd>{project.role}</dd>
           </div>
         </dl>
 
         <ul className="tag-list" aria-label="Tags">
           {project.tags.slice(0, featured ? 3 : 4).map((tag) => (
-            <li key={tag} className="pill">{tag}</li>
+            <li key={tag} className="tag">{tag}</li>
           ))}
         </ul>
       </Link>

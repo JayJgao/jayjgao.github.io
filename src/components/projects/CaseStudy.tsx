@@ -55,7 +55,7 @@ export function CaseStudy({
 
           <ul className="tag-list" aria-label="Tags">
             {project.tags.map((tag) => (
-              <li key={tag} className="pill">{tag}</li>
+              <li key={tag} className="tag">{tag}</li>
             ))}
           </ul>
         </div>
