@@ -701,20 +701,20 @@
       "zh": "视觉生物标志物分析软件规划"
     },
     "oneLiner": {
-      "ko": "규제 요건 기반 의료 AI 소프트웨어 초기 PRD 수립",
-      "en": "Defined the initial PRD for medical AI software based on regulatory requirements",
-      "zh": "基于监管要求制定医疗 AI 软件的初始 PRD"
+      "ko": "Medical Device Specification 작성과 Figma 기반 초기 IA·스토리보드 기획",
+      "en": "Medical Device Specification documentation and initial IA and storyboard planning in Figma",
+      "zh": "编写 Medical Device Specification，并使用 Figma 规划初期 IA 与故事板"
     },
     "company": "Lunit",
     "role": "AI PM",
-    "contribution": 60,
+    "contribution": 30,
     "tags": [
       "Healthcare AI",
       "Regulation",
-      "PRD"
+      "Figma"
     ],
     "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp",
-    "primaryMetric": "INITIAL PRD COMPLETED",
+    "primaryMetric": "INITIAL PRODUCT PLANNING",
     "subtitle": {
       "ko": "",
       "en": "",

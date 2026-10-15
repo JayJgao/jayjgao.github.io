@@ -1,15 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { CompanyFilter } from "@/components/projects/CompanyFilter";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { getMessages } from "@/lib/i18n";
-import type { Project } from "@/lib/projects";
+import { COMPANY_FILTER_KEY, restoreCompanyFilter, type Project } from "@/lib/projects";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const { locale } = useLocale();
   const [filter, setFilter] = useState<string>("all");
+  useEffect(() => {
+    try { setFilter(restoreCompanyFilter(window.sessionStorage)); } catch { /* Storage can be unavailable. */ }
+  }, []);
+  function selectCompany(value: string) {
+    setFilter(value);
+    try { window.sessionStorage.setItem(COMPANY_FILTER_KEY, value); } catch { /* Filtering still works without persistence. */ }
+  }
   const messages = getMessages(locale);
   const pageCopy = messages.projects.page;
   const copy = messages.projects.explorer;
@@ -37,7 +44,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       </header>
 
       <div className="project-index__body">
-        <CompanyFilter value={filter} onChange={setFilter} />
+        <CompanyFilter value={filter} onChange={selectCompany} />
 
         <section className="project-group" data-project-section="featured" aria-labelledby="featured-projects-title">
           <header className="project-group__heading">

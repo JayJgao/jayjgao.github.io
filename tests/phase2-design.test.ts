@@ -166,14 +166,14 @@ test("localized layout self-hosts the approved fonts and removes the dark decora
   assert.match(css, /word-break:\s*keep-all/);
 });
 
-test("global shell keeps primary navigation visible and exposes skip and chapter progress", () => {
+test("global shell keeps primary navigation visible and exposes skip without reading progress", () => {
   const shell = readRepoFile("src/components/layout/SiteShell.tsx");
   const navbar = readRepoFile("src/components/layout/Navbar.tsx");
   const transition = readRepoFile("src/components/layout/PageTransition.tsx");
 
   assert.match(shell, /className="skip-link"/);
   assert.match(shell, /href="#main-content"/);
-  assert.match(shell, /ScrollProgress/);
+  assert.doesNotMatch(shell, /ScrollProgress/);
   assert.match(navbar, /nav-mobile-scroll/);
   assert.match(navbar, /aria-current=\{active \? "page"/);
   assert.doesNotMatch(navbar, /backdrop-blur|bg-background\//);
@@ -223,7 +223,8 @@ test("Projects separate white Featured cards from one-line Archive rows and reta
   assert.match(card, /variant\?:\s*"default"\s*\|\s*"featured"\s*\|\s*"archive"/);
   assert.match(card, /project\.oneLiner\[locale\]/);
   assert.match(card, /project-card--archive/);
-  assert.match(detail, /from "next\/image"/);
+  assert.match(detail, /<ImagePreview/);
+  assert.match(readRepoFile("src/components/projects/ImagePreview.tsx"), /from "next\/image"/);
   assert.match(detail, /src=\{project\.thumbnail\}/);
   assert.match(detail, /data-project-section="hero"/);
   assert.match(detail, /data-project-section="content"/);

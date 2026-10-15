@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImagePreview } from "@/components/projects/ImagePreview";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -43,7 +43,7 @@ export function CaseStudy({
           <p className="project-detail-intro">{project.oneLiner[locale]}</p>
         </div>
         <figure className="project-detail-media" data-project-section="media">
-          <Image src={project.thumbnail} alt={getProjectDisplayTitle(project, locale)} width={1200} height={675} sizes="(max-width: 767px) 100vw, 320px" className="project-detail-image" priority />
+          <ImagePreview src={project.thumbnail} alt={getProjectDisplayTitle(project, locale)} locale={locale} />
         </figure>
       </header>
       <div className="project-detail-layout">

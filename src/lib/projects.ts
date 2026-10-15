@@ -59,3 +59,14 @@ export function getProjectCompanies() {
   const order = ["Cinamon", "BUZZNI", "Lunit", "Solidware", "Side Project"];
   return [...new Set(projects.map((project) => project.company))].sort((a, b) => order.indexOf(a) - order.indexOf(b));
 }
+
+// Shared across locales within this tab so returning from a detail preserves context.
+export const COMPANY_FILTER_KEY = "portfolio-company-filter";
+export function restoreCompanyFilter(storage: Pick<Storage, "getItem">): string {
+  try {
+    const value = storage.getItem(COMPANY_FILTER_KEY);
+    return value && getProjectCompanies().includes(value) ? value : "all";
+  } catch {
+    return "all";
+  }
+}

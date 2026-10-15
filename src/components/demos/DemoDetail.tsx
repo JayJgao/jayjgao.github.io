@@ -15,6 +15,7 @@ import type { Demo } from "@/types/demo";
 export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
   const copy = getMessages(locale).demos;
   const detailCopy = copy.detail;
+  const relatedProject = ["prompt-enhancer", "voice-adaptor", "reverse-storyboard"].includes(demo.slug);
   const videoMode = getDemoVideoMode(demo);
   const galleryMode = getGalleryMode(demo.gallery);
   const embedUrl = demo.video.videoId ? getYouTubeEmbedUrl(demo.video.videoId) : null;
@@ -49,6 +50,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
               <p>{detailCopy.outcomeLabel}</p>
               <span>{demo.outcome[locale]}</span>
             </div>
+            {relatedProject ? <p className="demo-related-project"><Link href={getLocalizedPath(locale, "/projects/cinev-ai-po-leadership/")}>{locale === "ko" ? "관련 프로젝트" : locale === "zh" ? "相关项目" : "Related project"}: AI PO Leadership →</Link></p> : null}
           </div>
         </div>
       </section>
