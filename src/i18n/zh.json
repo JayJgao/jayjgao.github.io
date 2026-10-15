@@ -51,10 +51,11 @@
       "counts": "{productized} 个已集成到产品的演示 · {internal} 个实验与内部工具"
     },
     "timeline": {
-      "title": "职业历程"
+      "title": "职业历程",
+      "summary": "2018 – 至今 · {count} 家公司"
     },
     "films": {
-      "title": "6 部 AI 影像作品",
+      "title": "AI 影像作品集",
       "description": "《HappyEnd》（Chroma Awards 2025 fal Sponsor Award TOP 11 入围作品）及真人风格影片、广告和音乐视频作品",
       "viewAll": "影像画廊 ↗"
     }

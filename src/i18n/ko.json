@@ -51,10 +51,11 @@
       "counts": "제품에 반영된 데모 {productized}개 · 실험과 내부 도구 {internal}개"
     },
     "timeline": {
-      "title": "경력"
+      "title": "경력",
+      "summary": "2018 – 현재 · {count}개 회사"
     },
     "films": {
-      "title": "AI 영상 작업 6편",
+      "title": "AI 영상 작업 포트폴리오",
       "description": "「HappyEnd」(Chroma Awards 2025 fal Sponsor Award TOP 11 파이널리스트) 외 실사, 광고, 뮤직비디오 작업",
       "viewAll": "영상 갤러리 ↗"
     }

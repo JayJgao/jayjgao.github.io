@@ -23,3 +23,9 @@ export function getLocalizedPath(locale: Locale, pathname: string): string {
 
   return normalizeSitePath(`/${locale}/${suffix}`);
 }
+
+export function isNavigationActive(pathname: string | null | undefined, href: string): boolean {
+  const current = getPathWithoutLocale(pathname);
+  const target = normalizeSitePath(href);
+  return target === "/" ? current === "/" : current.startsWith(target);
+}

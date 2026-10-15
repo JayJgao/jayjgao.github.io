@@ -18,3 +18,12 @@ export function getCareerBars(locale: Locale, year = new Date().getUTCFullYear()
     return { ...entry, current, offset: (from - start) / (end - start) * 100, width: (until - from) / (end - start) * 100 };
   });
 }
+
+export function getCareerTicks(year: number) {
+  const start = 2018 * 12 + 9;
+  const end = (year + 1) * 12;
+  return Array.from({ length: Math.max(0, year - 2018) }, (_, index) => {
+    const tickYear = 2019 + index;
+    return { year: tickYear, offset: (tickYear * 12 - start) / (end - start) * 100 };
+  });
+}

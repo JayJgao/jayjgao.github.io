@@ -51,10 +51,11 @@
       "counts": "{productized} demos built into products · {internal} experiments and internal tools"
     },
     "timeline": {
-      "title": "Career Timeline"
+      "title": "Career Timeline",
+      "summary": "2018 – Present · {count} companies"
     },
     "films": {
-      "title": "6 AI films",
+      "title": "AI Film Portfolio",
       "description": "HappyEnd (Chroma Awards 2025 fal Sponsor Award TOP 11 finalist), plus live-action, advertising and music video work",
       "viewAll": "Film gallery ↗"
     }

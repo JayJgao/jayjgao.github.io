@@ -229,8 +229,8 @@ test("localized structured files match the exact approved copy", () => {
       zh: "a55889406418ae2796e9766f1c0ace2199e8f83f29a42d16b466d0f8a95a2c80",
     },
     i18n: {
-      en: "9809e3517ef0cf53144eab9b62ed6bca4ee4eee45bc9f04b27a27f9b22665714",
-      zh: "47698b35cc8a6610eecfd9b46123645b2a0393215c7226182ac228b65266ce0f",
+      en: "3c3279e36146acdd9336fcd07a81cadc3fe55f3915debc584982d7170ab232cd",
+      zh: "93c7e73b30b9af9148741ca31b1f9171582ab42e997d35c4694544a63d9f8247",
     },
   } as const;
 
