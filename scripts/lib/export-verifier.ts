@@ -561,7 +561,7 @@ export function createProductionExportContract(): ExportContract {
         scope: {
           attribute: "data-home-section",
           value: "featured",
-          endValue: "spotlight",
+          endValue: "demos",
         },
       },
       {

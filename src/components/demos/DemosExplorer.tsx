@@ -33,7 +33,7 @@ export function DemosExplorer({ locale }: { locale: Locale }) {
                   <h2 id={`demo-group-${group.id}`} className="section-display">{groupCopy.title}</h2>
                   <p>{groupCopy.description}</p>
                 </div>
-                <span className="pill">{String(group.demos.length).padStart(2, "0")} Demos</span>
+                <span className="tag"><span className="num">{String(group.demos.length).padStart(2, "0")}</span> {copy.page.kicker}</span>
               </header>
 
               <div className="demo-list-grid">

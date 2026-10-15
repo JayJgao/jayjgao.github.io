@@ -20,11 +20,10 @@ This repository builds Jay Ko's multilingual resume and portfolio as a Next.js s
 
 ## Design language
 
-- Use Bone and cream surfaces, Ink text, Cobalt structure, and Ember Orange accents.
-- Use `#ff5c00` for vivid fills and `#b83c00` for readable orange text on cream.
-- Prefer editorial typography, thin rules, generous spacing, text-led Project cards, and restrained media.
-- Do not reintroduce dark mode, decorative icons, arbitrary gradients, or dense dashboard styling.
-- Avoid forced line breaks in prose. Use layout measures and `text-wrap` instead.
+- Use White paper surfaces, Ink text and 3px structural rules, Cobalt structural fills, and Signal Yellow as a fill-only secondary.
+- `#ffc400` is never used for text. Mono only for numbers, dates, and indexes. No uppercase transforms. Square corners; circles only for the hero dot and play icon.
+- Labels follow the page locale; titles, proper nouns, and the hero meta line stay in English.
+- Do not reintroduce dark mode, decorative icons, gradients, shadows, or forced line breaks in prose. Use layout measures and `text-wrap` instead.
 
 ## Assets and privacy
 

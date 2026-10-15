@@ -44,13 +44,13 @@ export function ResumeRenderer() {
 
       <section className="resume-kpi-ledger" data-resume-section="kpis">
         <div>
-          <p>{copy.revenue}</p><strong>MRR 10x</strong><span>₩5M → ₩52M</span>
+          <p>{copy.revenue}</p><strong>MRR <span className="num">10x</span></strong><span><span className="num">₩5M → ₩52M</span></span>
         </div>
         <div>
-          <p>{copy.clientScale}</p><strong>25+ B2B clients</strong><span>KR / JP enterprise tracks</span>
+          <p>{copy.clientScale}</p><strong><span className="num">25+</span> B2B clients</strong><span>KR / JP enterprise tracks</span>
         </div>
         <div>
-          <p>{copy.ipResearch}</p><strong>3 patents</strong><span>KSC publication + awards</span>
+          <p>{copy.ipResearch}</p><strong><span className="num">3</span> patents</strong><span>KSC publication + awards</span>
         </div>
       </section>
 
@@ -86,7 +86,7 @@ export function ResumeRenderer() {
             <div key={category}>
               <h3>{category}</h3>
               <ul className="tag-list">
-                {items.map((skill) => <li key={skill} className="pill">{skill}</li>)}
+                {items.map((skill) => <li key={skill} className="tag">{skill}</li>)}
               </ul>
             </div>
           ))}
@@ -107,7 +107,7 @@ export function ResumeRenderer() {
       <section className="resume-section" data-resume-section="languages">
         <SectionTitle>{copy.languages}</SectionTitle>
         <ul className="tag-list">
-          {data.languages.map((language) => <li key={language} className="pill">{language}</li>)}
+          {data.languages.map((language) => <li key={language} className="tag">{language}</li>)}
         </ul>
       </section>
     </article>

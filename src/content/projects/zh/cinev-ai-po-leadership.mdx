@@ -1,4 +1,4 @@
-<div className="highlight-callout">
+<div className="highlight-callout" data-project-section="lessons">
   <p className="highlight-callout__eyebrow">经验与反思</p>
   <h3 className="highlight-callout__title">好的转型，要分清哪些能力该留下，哪些手段该换掉</h3>
   <div className="highlight-callout__body">
@@ -48,14 +48,15 @@ CineV原本擅长在3D世界中保持状态一致，并把场景上下文整理�
 
 我们重新梳理了完整的用户旅程，涵盖故事梗概输入、脚本、素材、故事板、视频生成、镜头编辑和最终输出。过程中，我们发现上下文包的组装，以及不同生成片段之间的不一致，是两个主要阻力。我直接搭建了 Prompt Enhancer、Voice Adaptor 和 Reverse Storyboard 的原型。经过内部创作者的定性评价后，团队把原型和验证结果一并交给开发团队，完成产品集成。
 
+<div className="project-demo-links">
+<p>相关演示</p>
+<ul>
+<li><a href="/zh/demos/prompt-enhancer/">Prompt Enhancer →</a></li>
+<li><a href="/zh/demos/voice-adaptor/">Voice Adaptor →</a></li>
+<li><a href="/zh/demos/reverse-storyboard/">Reverse Storyboard →</a></li>
+</ul>
+</div>
+
 ### 技术与组织
 
 我以可信的官方公告为依据，调研新模型和新技术，判断现有产品API能否接纳它们，还是需要单独实现，再把结论提供给Web团队和AI团队。团队通过外部模型路由，在7+个领域把30+个模型集成进产品。另一个组织赋能项目则为各团队自行判断和验证新技术打下了基础。
-
-## 成果
-
-- **WEB CINEV 正式上线**：团队把以3年遗留系统为核心的产品，转型为基于生成式AI的Web产品，并于2026年7月10日正式上线。
-- **3项实验功能**：Prompt Enhancer、Voice Adaptor 和 Reverse Storyboard 连同验证结果一起交给开发团队，并完成产品集成。
-- **7+个领域，30+个模型**：团队引入外部模型路由，在R2V、I2V、I2I、TTS、Music Generation、Upscaler、3D Reconstruction等7+个领域，把30+个模型集成进产品。
-
-[查看线上产品](https://cinev.com/)

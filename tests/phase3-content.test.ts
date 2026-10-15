@@ -10,10 +10,8 @@ import { LocaleProvider } from "../src/components/i18n/LocaleProvider";
 import { ResumeRenderer } from "../src/components/resume/ResumeRenderer";
 import aboutKo from "../src/data/about.ko.json";
 import demosJson from "../src/data/demos.json";
-import eras from "../src/data/eras.json";
 import projects from "../src/data/projects.json";
 import resumeKo from "../src/data/resume.ko.json";
-import spotlights from "../src/data/spotlights.json";
 import messagesKo from "../src/i18n/ko.json";
 import { getDemoVideoMode } from "../src/lib/demos";
 import type { Demo } from "../src/types/demo";
@@ -83,11 +81,11 @@ function assertPublicCopySafe(copy: string): void {
 
 const expectedFeaturedSlugs = [
   "cinev-ai-po-leadership",
+  "buzzni-aiaas-biz",
   "cinev-ai-enablement",
   "chroma-awards",
   "buzzni-shortform-ai",
-  "buzzni-aiaas-biz",
-  "solidware-mlaas",
+  "solidware-mlaas"
 ] as const;
 
 const expectedDemoSlugs = [
@@ -101,12 +99,6 @@ const expectedDemoSlugs = [
   "script-to-bgm",
 ] as const;
 
-const expectedEra3Items = [
-  "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
-  "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
-  "Chroma Awards → Sponsor Award Top 11 Finalist",
-] as const;
-
 const expectedAboutKo = {
   title: "About Jay Ko",
   opening: {
@@ -117,7 +109,7 @@ const expectedAboutKo = {
     ],
   },
   markets: {
-    kicker: "Three Languages, Three Markets",
+    kicker: "세 언어, 세 시장",
     intro: "세 언어로 서로 다른 시장의 제품과 사업을 직접 다뤄왔습니다.",
     items: [
       { language: "중국어", detail: "네이티브 수준. 칭화대 최우수 졸업논문 수상." },
@@ -133,7 +125,7 @@ const expectedAboutKo = {
     belief: "AI는 문제 정의의 즐거움을 해결의 즐거움으로 확장합니다.",
   },
   workingWithMe: {
-    kicker: "Working with Me",
+    kicker: "함께 일하는 방식",
     lead: "Clarity first. Then speed.",
     principles: [
       {
@@ -266,14 +258,7 @@ test("Phase 3 fixes the exact eight-Demo canon and three-card Home preview", asy
   assert.deepEqual(getProductizedDemos().map(({ slug }) => slug), expectedDemoSlugs.slice(0, 3));
 });
 
-test("Korean Era 3, About, and Resume copy exactly match the approved canon", () => {
-  const era3 = eras.find(({ id }) => id === 3);
-  assert.deepEqual(era3, {
-    id: 3,
-    name: { ko: "Generative AI Native", en: "Generative AI Native", zh: "Generative AI Native" },
-    period: "2025–",
-  });
-  assert.deepEqual(messagesKo.home.timeline.eras.era3.items, expectedEra3Items);
+test("Korean About and Resume copy exactly match the approved canon", () => {
   assert.deepEqual(aboutKo, expectedAboutKo);
 
   assert.equal(resumeKo.meta.subtitle, "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI");
@@ -318,7 +303,7 @@ test("approved Korean copy remains wrapping-safe without manual line breaks", ()
     aboutKo.workingWithMe.demosBridge,
     ...expectedResumeSummaryParagraphs,
     ...expectedCinamonHighlights,
-    ...messagesKo.home.timeline.eras.era3.items,
+    ...messagesKo.home.hero.lead,
     messagesKo.projects.explorer.archiveDescription,
   ];
 
@@ -359,20 +344,8 @@ test("Resume renders each approved localized summary paragraph semantically", ()
   }
 });
 
-test("Korean i18n and spotlight prose avoid em-dash and middle-dot connectors", () => {
-  const spotlightCopy = spotlights.flatMap(({ title, workTitle, caption }) => [
-    title.ko,
-    workTitle.ko,
-    caption.ko,
-  ]);
-  const auditedCopy = [
-    messagesKo.home.hero.supporting,
-    ...messagesKo.home.timeline.eras.era1.items,
-    ...messagesKo.home.timeline.eras.era2.items,
-    ...messagesKo.home.timeline.eras.era3.items,
-    ...spotlightCopy,
-  ];
-
+test("Korean hero lead and film prose avoid em-dash and middle-dot connectors", () => {
+  const auditedCopy = [...messagesKo.home.hero.lead, ...Object.values(messagesKo.home.films)];
   for (const copy of auditedCopy) assert.doesNotMatch(copy, /[—·]/);
 });
 
@@ -467,7 +440,7 @@ test("AI PO Leadership thumbnail presents only the approved public-safe five-sta
 
   const svg = readRepoFile(path);
   assert.match(svg, /viewBox=["']0 0 1600 900["']/);
-  for (const color of ["#f4e9e1", "#0e0e0e", "#2835f8", "#ff5c00"]) {
+  for (const color of ["#ffffff", "#0e0e0e", "#2835f8"]) {
     assert.match(svg.toLowerCase(), new RegExp(color));
   }
   for (const copy of [

@@ -9,7 +9,7 @@ import type { Locale } from "@/lib/locale";
 import {
   getLocalizedPath,
   getPathWithoutLocale,
-  normalizeSitePath,
+  isNavigationActive,
 } from "@/lib/routes";
 
 const localeText: Record<Locale, string> = {
@@ -127,12 +127,7 @@ export function Navbar() {
 
         <nav aria-label="Main navigation" className="nav-mobile-scroll">
           {navItems.map((item) => {
-            const normalizedItemPath = normalizeSitePath(item.href);
-            const active =
-              normalizedItemPath === "/"
-                ? pathWithoutLocale === "/"
-                : pathWithoutLocale === normalizedItemPath ||
-                  pathWithoutLocale.startsWith(`${normalizedItemPath}/`);
+            const active = isNavigationActive(pathname, item.href);
             return (
               <Link
                 key={item.href}

@@ -9,7 +9,7 @@ import { getLocalizedPath } from "@/lib/routes";
 
 export function FeaturedProjects() {
   const { locale } = useLocale();
-  const featured = getFeaturedProjects();
+  const featured = getFeaturedProjects().slice(0, 3);
   const copy = getMessages(locale).home.featured;
 
   return (
@@ -19,7 +19,7 @@ export function FeaturedProjects() {
           <p className="section-kicker">{copy.sectionLabel}</p>
           <h2 className="section-display">{copy.title}</h2>
         </div>
-        <Link href={getLocalizedPath(locale, "/projects/")} className="btn-on-cobalt">
+        <Link href={getLocalizedPath(locale, "/projects/")} className="btn-secondary">
           {copy.viewAll}
         </Link>
       </header>

@@ -15,6 +15,7 @@ import type { Demo } from "@/types/demo";
 export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
   const copy = getMessages(locale).demos;
   const detailCopy = copy.detail;
+  const relatedProject = ["prompt-enhancer", "voice-adaptor", "reverse-storyboard"].includes(demo.slug);
   const videoMode = getDemoVideoMode(demo);
   const galleryMode = getGalleryMode(demo.gallery);
   const embedUrl = demo.video.videoId ? getYouTubeEmbedUrl(demo.video.videoId) : null;
@@ -31,7 +32,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
       <section
         data-demo-block="hero"
         aria-labelledby="demo-title"
-        className="demo-block demo-block--orange demo-detail-hero"
+        className="demo-block demo-block--accent demo-detail-hero"
       >
         <div className="chapter-inner">
           <Link href={getLocalizedPath(locale, "/demos/")} className="demo-back-link">
@@ -39,16 +40,17 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
           </Link>
           <div className="demo-detail-hero__copy">
             <div className="tag-list">
-              <span className="pill">{copy.kind[demo.kind]}</span>
-              <span className="pill">{demo.productized ? copy.status.productized : copy.status.internal}</span>
+              <span className="tag">{copy.kind[demo.kind]}</span>
+              <span className="tag">{demo.productStatus === "partial" ? copy.status.partial : demo.productized ? copy.status.productized : copy.status.internal}</span>
             </div>
-            <p className="section-index">Demo {String(demo.order).padStart(2, "0")}</p>
+            <p className="section-kicker">{copy.page.kicker} <span className="num">{String(demo.order).padStart(2, "0")}</span></p>
             <h1 id="demo-title" className="page-display">{demo.name}</h1>
             <p className="demo-detail-summary">{demo.summary[locale]}</p>
             <div className="demo-outcome">
               <p>{detailCopy.outcomeLabel}</p>
               <span>{demo.outcome[locale]}</span>
             </div>
+            {relatedProject ? <p className="demo-related-project"><Link href={getLocalizedPath(locale, "/projects/cinev-ai-po-leadership/")}>{locale === "ko" ? "관련 프로젝트" : locale === "zh" ? "相关项目" : "Related project"}: AI PO Leadership →</Link></p> : null}
           </div>
         </div>
       </section>
@@ -59,7 +61,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
         className="demo-block"
       >
         <div className="chapter-inner">
-          <p className="section-kicker">01 / Reasoning</p>
+          <p className="section-kicker"><span className="num">01</span> / {locale === "ko" ? "추론" : locale === "zh" ? "推理" : "Reasoning"}</p>
           <h2 id="demo-hypothesis-flow" className="section-display">{detailCopy.flowTitle}</h2>
           <ol className="reasoning-ledger">
             {[
@@ -68,7 +70,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
               [detailCopy.sections.hypothesis, demo.hypothesis[locale]],
             ].map(([label, body], index) => (
               <li key={label}>
-                <span>0{index + 1}</span>
+                <span className="num">0{index + 1}</span>
                 <h3>{label}</h3>
                 <p>{body}</p>
               </li>
@@ -80,10 +82,10 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
       <section
         data-demo-block="media"
         aria-labelledby="demo-highlight-media"
-        className="demo-block demo-block--orange"
+        className="demo-block demo-block--accent"
       >
         <div className="chapter-inner">
-          <p className="section-kicker">02 / Evidence</p>
+          <p className="section-kicker"><span className="num">02</span> / {locale === "ko" ? "근거" : locale === "zh" ? "依据" : "Evidence"}</p>
           <h2 id="demo-highlight-media" className="section-display">{detailCopy.sections.highlightMedia}</h2>
           <div className="demo-media-stack">
             {videoMode !== "none" ? (
@@ -114,12 +116,12 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
         className="demo-block"
       >
         <div className="chapter-inner">
-          <p className="section-kicker">03 / System</p>
+          <p className="section-kicker"><span className="num">03</span> / {locale === "ko" ? "시스템" : locale === "zh" ? "系统" : "System"}</p>
           <h2 id="demo-how-it-works" className="section-display">{detailCopy.sections.howItWorks}</h2>
           <ol className="how-it-works-list">
             {demo.howItWorks.map((step, index) => (
               <li key={`${demo.slug}-step-${index}`}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span className="num">{String(index + 1).padStart(2, "0")}</span>
                 <p>{step[locale]}</p>
               </li>
             ))}
@@ -155,7 +157,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
 
       <section data-demo-block="stack" aria-labelledby="demo-stack" className="demo-block">
         <div className="chapter-inner">
-          <p className="section-kicker">04 / Stack</p>
+          <p className="section-kicker"><span className="num">04</span> / {locale === "ko" ? "기술 구성" : locale === "zh" ? "技术栈" : "Stack"}</p>
           <h2 id="demo-stack" className="section-display">{detailCopy.sections.stack}</h2>
           <dl className="stack-definitions">
             {demo.stack.map((group) => (
@@ -164,7 +166,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
                 <dd>
                   <ul className="tag-list">
                     {group.items.map((item) => (
-                      <li key={item[locale]} className="pill">{item[locale]}</li>
+                      <li key={item[locale]} className="tag">{item[locale]}</li>
                     ))}
                   </ul>
                 </dd>
@@ -176,7 +178,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
 
       <section data-demo-block="boundary" aria-labelledby="demo-boundary" className="demo-block">
         <div className="chapter-inner">
-          <p className="section-kicker">05 / Boundary</p>
+          <p className="section-kicker"><span className="num">05</span> / {locale === "ko" ? "범위와 한계" : locale === "zh" ? "范围与限制" : "Boundary"}</p>
           <h2 id="demo-boundary" className="section-display">{detailCopy.sections.boundary}</h2>
           <p className="boundary-copy">{demo.boundary[locale]}</p>
         </div>

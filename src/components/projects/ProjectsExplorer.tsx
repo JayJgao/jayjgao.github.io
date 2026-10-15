@@ -1,16 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { EraFilter } from "@/components/projects/EraFilter";
+import { CompanyFilter } from "@/components/projects/CompanyFilter";
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import type { EraFilterValue } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
-import type { Project } from "@/lib/projects";
+import { COMPANY_FILTER_KEY, restoreCompanyFilter, type Project } from "@/lib/projects";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const { locale } = useLocale();
-  const [filter, setFilter] = useState<EraFilterValue>("all");
+  const [filter, setFilter] = useState<string>("all");
+  useEffect(() => {
+    try { setFilter(restoreCompanyFilter(window.sessionStorage)); } catch { /* Storage can be unavailable. */ }
+  }, []);
+  function selectCompany(value: string) {
+    setFilter(value);
+    try { window.sessionStorage.setItem(COMPANY_FILTER_KEY, value); } catch { /* Filtering still works without persistence. */ }
+  }
   const messages = getMessages(locale);
   const pageCopy = messages.projects.page;
   const copy = messages.projects.explorer;
@@ -18,13 +24,13 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const featured = useMemo(() => {
     const base = projects.filter((project) => project.featured);
     if (filter === "all") return base;
-    return base.filter((project) => String(project.era) === filter);
+    return base.filter((project) => project.company === filter);
   }, [projects, filter]);
 
   const archive = useMemo(() => {
     const base = projects.filter((project) => !project.featured);
     if (filter === "all") return base;
-    return base.filter((project) => String(project.era) === filter);
+    return base.filter((project) => project.company === filter);
   }, [projects, filter]);
 
   return (
@@ -38,7 +44,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       </header>
 
       <div className="project-index__body">
-        <EraFilter value={filter} onChange={setFilter} />
+        <CompanyFilter value={filter} onChange={selectCompany} />
 
         <section className="project-group" data-project-section="featured" aria-labelledby="featured-projects-title">
           <header className="project-group__heading">
@@ -46,7 +52,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               <h2 id="featured-projects-title" className="section-display">{copy.featuredTitle}</h2>
               <p>{copy.featuredDescription}</p>
             </div>
-            <span className="pill">{featured.length} {messages.common.projectsUnit}</span>
+            <span className="tag"><span className="num">{featured.length}</span> {messages.common.projectsUnit}</span>
           </header>
           <div className="featured-project-grid">
             {featured.map((project, index) => (
@@ -68,7 +74,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               <h2 id="archive-projects-title" className="section-display">{copy.archiveTitle}</h2>
               <p>{copy.archiveDescription}</p>
             </div>
-            <span className="pill">{archive.length} {messages.common.projectsUnit}</span>
+            <span className="tag"><span className="num">{archive.length}</span> {messages.common.projectsUnit}</span>
           </header>
           <div className="project-archive-list">
             {archive.map((project, index) => (

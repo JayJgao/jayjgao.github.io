@@ -1,5 +1,5 @@
-<div className="highlight-callout">
-  <p className="highlight-callout__eyebrow">Lessons & Learned</p>
+<div className="highlight-callout" data-project-section="lessons">
+  <p className="highlight-callout__eyebrow">Lessons Learned</p>
   <h3 className="highlight-callout__title">A good pivot separates what is worth keeping from what needs to change</h3>
   <div className="highlight-callout__body">
     When a technology shift breaks the assumptions behind an existing solution, I learned to separate the underlying problem from the assets we had built instead of defending past investment.
@@ -48,14 +48,15 @@ In early February 2026, I began making the case for the product transition and b
 
 We reworked the user journey from logline input through script, assets, storyboard, video generation, cut editing, and final Export. Along the way, we identified the work of assembling context bundles and inconsistencies between generated clips as major sources of friction. I prototyped Prompt Enhancer, Voice Adaptor, and Reverse Storyboard. After qualitative evaluation by internal creators, I handed the prototypes and validation findings to engineering, which integrated them into the product.
 
+<div className="project-demo-links">
+<p>Related demos</p>
+<ul>
+<li><a href="/en/demos/prompt-enhancer/">Prompt Enhancer →</a></li>
+<li><a href="/en/demos/voice-adaptor/">Voice Adaptor →</a></li>
+<li><a href="/en/demos/reverse-storyboard/">Reverse Storyboard →</a></li>
+</ul>
+</div>
+
 ### Technology and Organization
 
 I tracked new models and technologies through reliable official announcements, assessed whether they fit the existing product APIs or needed separate implementation, and passed those assessments to the web and AI teams. External model routing brought 30+ models into the product across 7+ areas. A separate Enablement project gave the organization a foundation for evaluating and validating new technologies directly.
-
-## Results
-
-- **WEB CINEV LAUNCH**: We shifted a product built around three years of legacy to a generative AI web product and officially launched it on July 10, 2026.
-- **3 EXPERIMENTAL FEATURES**: I handed Prompt Enhancer, Voice Adaptor, and Reverse Storyboard to engineering with their validation findings, and the features were integrated into the product.
-- **7+ AREAS, 30+ MODELS**: External model routing brought 30+ models into the product across 7+ areas, including R2V, I2V, I2I, TTS, Music Generation, Upscaler, and 3D Reconstruction.
-
-[View Live Product](https://cinev.com/)

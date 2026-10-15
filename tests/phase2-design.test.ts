@@ -46,11 +46,11 @@ const presentationFiles = [
   "src/components/home/HeroSection.tsx",
   "src/components/home/DemosPreview.tsx",
   "src/components/home/FeaturedProjects.tsx",
-  "src/components/home/VideoSpotlightCarousel.tsx",
+  "src/components/home/FilmsStrip.tsx",
   "src/components/home/CareerTimeline.tsx",
   "src/components/projects/ProjectCard.tsx",
   "src/components/projects/ProjectsExplorer.tsx",
-  "src/components/projects/EraFilter.tsx",
+  "src/components/projects/CompanyFilter.tsx",
   "src/components/projects/CaseStudy.tsx",
   "src/components/demos/DemoCard.tsx",
   "src/components/demos/DemosExplorer.tsx",
@@ -64,11 +64,11 @@ const presentationFiles = [
 test("Phase 2 exposes only the approved editorial color and depth system", () => {
   const css = readRepoFile("src/styles/globals.css");
 
-  for (const color of ["#f4e9e1", "#ffffff", "#0e0e0e", "#242320", "#ff5c00", "#b83c00", "#2835f8"]) {
+  for (const color of ["#ffffff", "#0e0e0e", "#5a5d66", "#d9dbe0", "#2835f8", "#f3f4ff", "#ffc400"]) {
     assert.match(css, new RegExp(color, "i"), `${color} must be an active design token`);
   }
   assert.doesNotMatch(css, /#ff3d00/i, "the retired orange must not remain active");
-  for (const retired of ["#060b16", "#4ade80", "#374936", "#444639"]) {
+  for (const retired of ["#f4e9e1", "#ff5c00", "#b83c00", "#242320", "#ff3d00", "#060b16", "#4ade80", "#374936", "#444639"]) {
     assert.doesNotMatch(css, new RegExp(retired, "i"), `${retired} must be retired`);
   }
 
@@ -78,62 +78,36 @@ test("Phase 2 exposes only the approved editorial color and depth system", () =>
     match[1].trim(),
   );
   assert.ok(
-    radii.every((radius) => ["0", "999px", "50%"].includes(radius)),
+    radii.every((radius) => ["0", "50%"].includes(radius)),
     `unexpected border radius: ${radii.join(", ")}`,
   );
   assert.doesNotMatch(presentationFiles, /rounded-(?!full\b|none\b)[a-z0-9_[\]-]+/i);
   assert.doesNotMatch(presentationFiles, /shadow-|backdrop-blur|blur-|hover:-?translate|group-hover:scale/i);
 });
 
-test("orange separates vivid surfaces from accessible small copy on cream", () => {
+test("signal yellow is fill-only", () => {
   const css = readRepoFile("src/styles/globals.css");
+  assert.doesNotMatch(css, /(?:^|[;{])\s*color:\s*var\(--(?:color-signal-yellow|accent)\)/m);
+  assert.ok(contrastRatio(readColorToken(css, "color-paper"), readColorToken(css, "color-cobalt-blue")) >= 4.5);
+  for (const selector of [".demo-list-hero", ".demo-block--accent", ".about-demos-bridge", ".mdx-content .award-result"]) {
+    const rule = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].find((match) => match[1].split(",").some((part) => part.trim() === selector) && match[2].includes("background:"));
+    assert.ok(rule, selector);
+    assert.match(rule[2], /background: var\(--color-cobalt-blue\)/);
+    assert.match(rule[2], /color: var\(--color-paper\)/);
+  }
+  assert.match(css, /\.section-display::before\s*\{[^}]*background: var\(--color-signal-yellow\)/);
+});
 
-  assert.match(css, /--color-ember-orange:\s*#ff5c00\s*;/i);
-  assert.match(css, /--color-ember-orange-text:\s*#b83c00\s*;/i);
-  assert.match(
-    css,
-    /\.hero-clause--demo\s*\{[^}]*color:\s*var\(--color-ember-orange-text\);/,
-  );
-  const heroDemoContrast = contrastRatio(
-    readColorToken(css, "color-ember-orange-text"),
-    readColorToken(css, "color-bone-cream"),
-  );
-  assert.ok(
-    heroDemoContrast >= 3,
-    `.hero-clause--demo contrast must be at least 3:1, received ${heroDemoContrast.toFixed(2)}:1`,
-  );
-  assert.match(
-    css,
-    /\.demo-preview-chapter,[^}]*\.demo-block--orange\s*\{[^}]*background:\s*var\(--color-ember-orange\);[^}]*color:\s*var\(--color-ink\);/,
-  );
-  assert.match(
-    css,
-    /\.reasoning-ledger span,[^}]*\.how-it-works-list > li > span\s*\{[^}]*color:\s*var\(--color-ember-orange-text\);/,
-  );
-  assert.match(
-    css,
-    /\.about-principles span\s*\{[^}]*color:\s*var\(--color-ember-orange-text\);/,
-  );
-  assert.match(
-    css,
-    /\.about-markets-ledger span\s*\{[^}]*color:\s*var\(--color-ember-orange-text\);/,
-  );
-  assert.match(
-    css,
-    /\.scroll-progress--demo\s*\{[^}]*color:\s*var\(--color-ember-orange-text\);/,
-  );
-  assert.match(
-    css,
-    /\.scroll-progress--demo \.scroll-progress__line\s*\{[^}]*background:\s*var\(--color-ember-orange\);/,
-  );
-  assert.match(
-    css,
-    /\.mdx-content \.award-result\s*\{[^}]*background:\s*var\(--color-ember-orange\);[^}]*color:\s*var\(--color-ink\);/,
-  );
-  assert.match(
-    css,
-    /\.about-demos-bridge\s*\{[^}]*background:\s*var\(--color-ember-orange\);[^}]*color:\s*var\(--color-ink\);/,
-  );
+test("labels are sans and never uppercased", () => {
+  const css = readRepoFile("src/styles/globals.css");
+  assert.doesNotMatch(css, /text-transform:\s*uppercase/);
+  const numericSelectors = new Set([".num", ".reasoning-ledger .num", ".how-it-works-list > li > .num", ".resume-kpi-ledger .num", ".section-index", ".scroll-progress__counter", ".timeline-row__number", ".project-archive-index", ".mdx-content h2::before", ".demo-gallery-counter", ".resume-experience-row header > p", ".about-principles span", ".about-markets-ledger span"]);
+  for (const rule of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (!/font-family: var\(--font-plex-mono\)/.test(rule[2])) continue;
+    for (const selector of rule[1].trim().split(",")) assert.ok(numericSelectors.has(selector.trim()), selector);
+    assert.match(rule[2], /font-variant-numeric: tabular-nums/);
+  }
+  assert.doesNotMatch(presentationFiles, /className="pill"|btn-on-orange|demo-block--orange/);
 });
 
 test("wrapping follows display, prose, Korean, and technical-string roles", () => {
@@ -155,10 +129,11 @@ test("wrapping follows display, prose, Korean, and technical-string roles", () =
   assert.match(css, /\.mdx-content\[lang="ko"\]\s*\{[^}]*word-break:\s*keep-all;/);
   assert.deepEqual(
     [...css.matchAll(/overflow-wrap:\s*anywhere/g)].length,
-    1,
+    2,
     "anywhere wrapping must remain a narrow URL/technical-string fallback",
   );
   assert.match(css, /\.resume-contact a\s*\{[^}]*overflow-wrap:\s*anywhere;/);
+  assert.match(css, /\.project-related-links a\s*\{[^}]*overflow-wrap:\s*anywhere;/);
   assert.doesNotMatch(projectAndDemo, /<br\b/i);
 });
 
@@ -167,7 +142,7 @@ test("narrow Project titles and tablet About headings keep a readable measure", 
 
   assert.match(
     css,
-    /@media \(max-width:\s*639px\)[\s\S]*?\.project-detail \.page-display\s*\{[^}]*font-size:\s*clamp\(3rem,\s*15\.5vw,\s*4\.75rem\);/,
+    /\.project-detail \.page-display\s*\{[^}]*font-size:\s*clamp\(2\.2rem,\s*4vw,\s*3\.5rem\);/,
   );
   assert.match(
     css,
@@ -191,19 +166,19 @@ test("localized layout self-hosts the approved fonts and removes the dark decora
   assert.match(css, /word-break:\s*keep-all/);
 });
 
-test("global shell keeps primary navigation visible and exposes skip and chapter progress", () => {
+test("global shell keeps primary navigation visible and exposes skip without reading progress", () => {
   const shell = readRepoFile("src/components/layout/SiteShell.tsx");
   const navbar = readRepoFile("src/components/layout/Navbar.tsx");
   const transition = readRepoFile("src/components/layout/PageTransition.tsx");
 
   assert.match(shell, /className="skip-link"/);
   assert.match(shell, /href="#main-content"/);
-  assert.match(shell, /ScrollProgress/);
+  assert.doesNotMatch(shell, /ScrollProgress/);
   assert.match(navbar, /nav-mobile-scroll/);
   assert.match(navbar, /aria-current=\{active \? "page"/);
   assert.doesNotMatch(navbar, /backdrop-blur|bg-background\//);
   assert.doesNotMatch(transition, /\by\s*:/);
-  assert.match(transition, /duration:\s*0\.16/);
+  assert.doesNotMatch(transition, /framer-motion|AnimatePresence|opacity/);
 });
 
 test("Home is an evidence-first sequence with text-only project and Demo indexes", () => {
@@ -216,40 +191,25 @@ test("Home is an evidence-first sequence with text-only project and Demo indexes
 
   assert.match(home, /id="main-content"/);
   assert.match(home, /className="home-editorial"/);
-  assert.match(hero, /hero-clause--demo/);
-  assert.match(hero, /hero-clause--project/);
-  assert.match(hero, /hero-stat-ledger/);
-  assert.match(demos, /demo-preview-grid/);
+  assert.match(hero, /hero-lead/);
+  assert.match(hero, /<ResultBand/);
+  assert.match(demos, /demo-preview-rows/);
   assert.match(demos, /demo-preview-chapter/);
   assert.doesNotMatch(projects, /next\/image|<Image|project\.thumbnail/);
-  assert.match(
-    css,
-    /\.hero-display\s*\{[^}]*max-width:\s*100%;[^}]*font-size:\s*clamp\(4rem,\s*9vw,\s*9rem\)/,
-    "desktop Hero keeps the claim compact enough to reveal the next chapter",
-  );
-  assert.match(
-    css,
-    /\.hero-support-grid\s*\{[^}]*margin-top:\s*clamp\(1\.5rem,\s*3vw,\s*2\.5rem\)/,
-  );
-  assert.match(projects, /project-card--featured/);
-  assert.match(timeline, /timeline-ledger/);
+  assert.match(css, /\.hero-display\s*\{[^}]*font-size:\s*clamp\(2rem,\s*5\.2vw,\s*4\.4rem\)/);
+  assert.match(projects, /project-card--\$\{variant\}/);
+  assert.match(timeline, /career-bars/);
   assert.doesNotMatch(timeline, /eraColors|rounded-full/);
 });
 
-test("Home Hero delegates navigation without Portfolio or Resume shortcut CTAs", () => {
+test("Home Hero exposes locale-aware PDF and LinkedIn actions", () => {
   const hero = readRepoFile("src/components/home/HeroSection.tsx");
-  const css = readRepoFile("src/styles/globals.css");
-  const localeMessages = ["ko", "en", "zh"].map((locale) =>
-    JSON.parse(readRepoFile(`src/i18n/${locale}.json`)),
-  );
-
-  assert.doesNotMatch(hero, /hero-actions|ctaPortfolio|ctaResume/);
-  assert.doesNotMatch(hero, /from "next\/link"|getLocalizedPath/);
-  assert.doesNotMatch(css, /\.hero-actions/);
-  for (const messages of localeMessages) {
-    assert.equal("ctaPortfolio" in messages.home.hero, false);
-    assert.equal("ctaResume" in messages.home.hero, false);
-  }
+  assert.match(hero, /hero-actions/);
+  assert.match(hero, /locale === "ko"/);
+  assert.match(hero, /고재현_이력서\.pdf/);
+  assert.match(hero, /jayko_resume\.pdf/);
+  assert.match(hero, /href=\{meta.linkedin\}/);
+  assert.doesNotMatch(hero, /ctaPortfolio/);
 });
 
 test("Projects separate white Featured cards from one-line Archive rows and retain detail media", () => {
@@ -263,7 +223,8 @@ test("Projects separate white Featured cards from one-line Archive rows and reta
   assert.match(card, /variant\?:\s*"default"\s*\|\s*"featured"\s*\|\s*"archive"/);
   assert.match(card, /project\.oneLiner\[locale\]/);
   assert.match(card, /project-card--archive/);
-  assert.match(detail, /from "next\/image"/);
+  assert.match(detail, /<ImagePreview/);
+  assert.match(readRepoFile("src/components/projects/ImagePreview.tsx"), /from "next\/image"/);
   assert.match(detail, /src=\{project\.thumbnail\}/);
   assert.match(detail, /data-project-section="hero"/);
   assert.match(detail, /data-project-section="content"/);
@@ -284,8 +245,8 @@ test("Project cards label performance as a highlight while ownership stays in de
     Object.values(locales).map((messages) => messages.projects.card.highlightLabel),
     ["하이라이트", "Highlight", "亮点"],
   );
-  assert.match(card, /copy\.card\.highlightLabel/);
-  assert.match(card, /project\.primaryMetric/);
+  assert.match(card, /project\.results\?\.\[project\.featuredResult \?\? 0\]/);
+  assert.match(card, /result\.caption\[locale\]/);
   assert.doesNotMatch(card, /copy\.card\.contributionLabel/);
   assert.doesNotMatch(card, /project\.contribution/);
   assert.match(detail, /copy\.contribution/);
@@ -304,7 +265,7 @@ test("Project detail callouts compile without nested paragraph markup", () => {
   );
 });
 
-test("Demos retain exact semantic flow with orange media and intrinsic diagrams", () => {
+test("Demos retain exact semantic flow with accent media and intrinsic diagrams", () => {
   const detail = readRepoFile("src/components/demos/DemoDetail.tsx");
   const diagram = readRepoFile("src/components/demos/DemoDiagram.tsx");
   const video = readRepoFile("src/components/demos/DemoVideo.tsx");
@@ -315,7 +276,7 @@ test("Demos retain exact semantic flow with orange media and intrinsic diagrams"
     blocks.map((block) => detail.indexOf(`data-demo-block="${block}"`)),
     [...blocks.map((block) => detail.indexOf(`data-demo-block="${block}"`))].sort((a, b) => a - b),
   );
-  assert.match(detail, /demo-block--orange/);
+  assert.match(detail, /demo-block--accent/);
   assert.match(diagram, /demo-diagram__viewport/);
   assert.match(diagram, /demo-diagram__image/);
   assert.match(video, /demo-video-fallback/);
@@ -344,6 +305,44 @@ test("responsive and motion contracts use the approved breakpoints and restraine
   assert.match(css, /@media \(min-width:\s*640px\) and \(max-width:\s*1023px\)/);
   assert.match(css, /@media \(min-width:\s*1024px\)/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.match(css, /transition-duration:\s*1ms\s*!important/);
+  assert.match(css, /transition:\s*none\s*!important/);
   assert.doesNotMatch(css, /transition[^;]*(?:transform|filter)/i);
+});
+
+test("Resume ledgers distinguish structural rules from row separators", () => {
+  const css = readRepoFile("src/styles/globals.css");
+  assert.match(css, /\.resume-kpi-ledger\s*\{[^}]*border-block: 3px solid var\(--color-ink\)/);
+  assert.match(css, /\.resume-experience-list\s*\{[^}]*border-top: 3px solid var\(--color-ink\)/);
+  assert.match(css, /\.resume-experience-row\s*\{[^}]*border-bottom: 1px solid var\(--color-hairline\)/);
+  for (const rule of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (!rule[1].includes(".resume-experience-row > * + *") && !rule[1].includes(".resume-kpi-ledger > div + div")) continue;
+    assert.doesNotMatch(rule[2], /1px solid var\(--color-ink\)/);
+    assert.match(rule[2], /1px solid var\(--color-hairline\)/);
+  }
+});
+
+test("Demo step indexes use numeric typography", () => {
+  const detail = readRepoFile("src/components/demos/DemoDetail.tsx");
+  assert.match(detail, /<span className="num">\{String\(index \+ 1\).padStart\(2, "0"\)\}<\/span>/);
+});
+
+test("page navigation never introduces smooth scrolling", () => {
+  assert.doesNotMatch(readRepoFile("src/styles/globals.css"), /scroll-behavior:\s*smooth/);
+});
+
+test("Resume downloads prioritize the Korean PDF and keep the English PDF secondary", () => {
+  const page = readRepoFile("src/app/[locale]/resume/page.tsx");
+  assert.match(page, /href="\/assets\/resume\/고재현_이력서\.pdf" className="btn-primary"/);
+  assert.match(page, /href="\/assets\/resume\/jayko_resume\.pdf" className="btn-secondary"/);
+});
+
+test("focus rings contrast on cobalt controls without changing white card focus", () => {
+  const css = readRepoFile("src/styles/globals.css").replace(/\/\*[\s\S]*?\*\//g, "");
+  assert.match(css, /:focus-visible\s*\{[^}]*outline: 3px solid var\(--color-cobalt-blue\)/);
+  for (const selector of [".demo-detail-hero .demo-back-link:focus-visible"]) {
+    const rule = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].find((match) => match[1].split(",").some((part) => part.trim() === selector));
+    assert.ok(rule, selector);
+    assert.match(rule[2], /outline-color: var\(--color-paper\)/);
+  }
+  assert.doesNotMatch(css, /\.demo-preview-chapter :focus-visible|\.demo-block--accent :focus-visible/);
 });

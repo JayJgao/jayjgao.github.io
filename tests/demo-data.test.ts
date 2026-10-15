@@ -229,9 +229,7 @@ test("demos own the exact ordered schema, product states, and video IDs", () => 
   for (const demo of demos) {
     assert.deepEqual(
       Object.keys(demo).sort(),
-      demo.slug === "prompt-enhancer"
-        ? [...expectedTopLevelKeys, "prelude"].sort()
-        : expectedTopLevelKeys,
+      [...expectedTopLevelKeys, ...(demo.slug === "prompt-enhancer" ? ["prelude"] : []), ...(demo.productized ? ["productStatus"] : [])].sort(),
     );
     assert.deepEqual(demo.video, {
       provider: "youtube",

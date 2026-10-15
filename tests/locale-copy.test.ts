@@ -149,7 +149,7 @@ const approvedDigitFacts = [
     label: "13",
     korean: /(?:(?:AI Literacy|리터러시|비저닝|세션)[^.\n]{0,50}13\s*회|13\s*회[^.\n]{0,50}(?:AI Literacy|리터러시|비저닝|세션))/i,
     translated: {
-      en: /(?:(?:AI Literacy|visioning|sessions?)[^.\n]{0,60}\b13\b|\b13\s+(?:(?:AI Literacy|visioning)[^.\n]{0,40})?sessions?\b)/i,
+      en: /(?:(?:AI Literacy|visioning|sessions?)[^.\n]{0,60}\b13\b|\b13\s+(?:(?:AI Literacy|visioning|training and vision)[^.\n]{0,40})?sessions?\b)/i,
       zh: /(?:(?:AI Literacy|AI\s*素养|人工智能素养|愿景|願景|会议|會議|课程|課程|讲座|講座|研讨|研討)[^。\n]{0,50}13(?!\d)\s*(?:场|場|次)?|13(?!\d)\s*(?:场|場|次)[^。\n]{0,50}(?:AI Literacy|AI\s*素养|人工智能素养|愿景|願景|会议|會議|课程|課程|讲座|講座|研讨|研討))/i,
     },
   },
@@ -159,7 +159,7 @@ const approvedDigitFacts = [
 
 const approvedDateForms = {
   ko: /(?:2026-07-10(?!\d)|2026[./]0?7[./]10(?!\d)|2026년\s*0?7월\s*10일)/,
-  en: /(?:2026-07-10(?!\d)|2026[./]0?7[./]10(?!\d)|July\s+10(?:th)?[,]?\s+2026(?!\d)|10(?:th)?\s+July[,]?\s+2026(?!\d))/i,
+  en: /(?:2026-07-10(?!\d)|2026[./]0?7[./]10(?!\d)|Jul(?:y)?\s+10(?:th)?[,]?\s+2026(?!\d)|10(?:th)?\s+Jul(?:y)?[,]?\s+2026(?!\d))/i,
   zh: /(?:2026-07-10(?!\d)|2026[./]0?7[./]10(?!\d)|2026\s*年\s*0?7\s*月\s*10\s*[日号號])/,
 } as const;
 
@@ -222,15 +222,15 @@ test("localized structured files match the exact approved copy", () => {
   const approvedSha256 = {
     about: {
       en: "15eb12da0e51bbb9605a34b4ba3553a723dc579a151a92b7541a6c4c46dd415d",
-      zh: "829fa5afd4e3c95504c5ceccab2a9ef507ef2c5a8d5220e11111b6234079281b",
+      zh: "b8ebfa9e1406db913f9551e2c7bee66b82b3051bb6537912e70875bca34f9324",
     },
     resume: {
-      en: "69d4328869d1e13ebe10ec7a2b01476172b2c0f773a9ae60e09107d9f62b9c34",
-      zh: "eb7ca4f38e43c241e82ba5ee42184cb036dd3cc9b94ea2e0a0ee55b023b1aacd",
+      en: "840e931c27b896b122f0989ea20fc23d6d5a5d7a794747087eb091c2635b5fc5",
+      zh: "a55889406418ae2796e9766f1c0ace2199e8f83f29a42d16b466d0f8a95a2c80",
     },
     i18n: {
-      en: "32e11e1cf894b8e830cedd1912d6d2fdc7f86efad9d9fcfbcbf0dc778b6bec92",
-      zh: "88a149e973b1fd0d8527fd3ed44a98ceea6abd6427d2e4b441e0d5987e792e96",
+      en: "3c3279e36146acdd9336fcd07a81cadc3fe55f3915debc584982d7170ab232cd",
+      zh: "93c7e73b30b9af9148741ca31b1f9171582ab42e997d35c4694544a63d9f8247",
     },
   } as const;
 
@@ -243,12 +243,13 @@ test("localized structured files match the exact approved copy", () => {
   }
 });
 
-test("localized Dasan timeline retains the Assessment Center task-development domain", () => {
-  const en = readJson("src/i18n/en.json") as { home: { timeline: { eras: { era2: { items: string[] } } } } };
-  const zh = readJson("src/i18n/zh.json") as { home: { timeline: { eras: { era2: { items: string[] } } } } };
-
-  assert.match(en.home.timeline.eras.era2.items[2], /Assessment Center task development/);
-  assert.match(zh.home.timeline.eras.era2.items[2], /Assessment Center 测评任务开发/);
+test("company timeline draws localized employment data from the unchanged resume", () => {
+  for (const locale of ["en", "zh"]) {
+    const resume = readJson(`src/data/resume.${locale}.json`) as {experience: Array<{company: string; period: string; role: string}>};
+    const dasan = resume.experience.find((entry) => entry.company === "Dasan E&E");
+    assert.ok(dasan?.role);
+    assert.equal(dasan?.period, "2022.06 - 2023.03");
+  }
 });
 
 test("every localized project and Demo leaf is complete in all three locales", () => {

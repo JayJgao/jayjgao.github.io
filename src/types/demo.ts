@@ -37,6 +37,7 @@ export type Demo = {
   hypothesis: Localized<string>;
   outcome: Localized<string>;
   productized: boolean;
+  productStatus?: "shipped" | "partial";
   howItWorks: Array<Localized<string>>;
   stack: DemoStackGroup[];
   boundary: Localized<string>;

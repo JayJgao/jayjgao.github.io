@@ -1,10 +1,12 @@
 import projectsJson from "@/data/projects.json";
 import type { Locale } from "@/lib/locale";
-import type { EraId, Localized } from "@/types/content";
+import type { Localized } from "@/types/content";
 
 export type Project = {
   slug: string;
-  era: EraId;
+  results?: { value: Localized<string>; caption: Localized<string> }[];
+  featuredResult?: number;
+  links?: { label: Localized<string>; url: string }[];
   featured: boolean;
   showcaseOrder: number | null;
   title: Localized<string>;
@@ -33,7 +35,7 @@ export function getAllProjects() {
     }
     if (a.featured) return -1;
     if (b.featured) return 1;
-    return b.era - a.era;
+    return getProjectCompanies().indexOf(a.company) - getProjectCompanies().indexOf(b.company);
   });
 }
 
@@ -51,4 +53,20 @@ export function getProjectBySlug(slug: string) {
 
 export function getAllProjectSlugs() {
   return projects.map((project) => project.slug);
+}
+
+export function getProjectCompanies() {
+  const order = ["Cinamon", "BUZZNI", "Lunit", "Solidware", "Side Project"];
+  return [...new Set(projects.map((project) => project.company))].sort((a, b) => order.indexOf(a) - order.indexOf(b));
+}
+
+// Shared across locales within this tab so returning from a detail preserves context.
+export const COMPANY_FILTER_KEY = "portfolio-company-filter";
+export function restoreCompanyFilter(storage: Pick<Storage, "getItem">): string {
+  try {
+    const value = storage.getItem(COMPANY_FILTER_KEY);
+    return value && getProjectCompanies().includes(value) ? value : "all";
+  } catch {
+    return "all";
+  }
 }

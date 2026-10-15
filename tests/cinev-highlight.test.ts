@@ -20,7 +20,7 @@ for (const locale of ["ko", "en", "zh"]) {
       "utf8",
     );
     const video = mdx.indexOf('src="https://www.youtube.com/embed/iVccZeyvyI0"');
-    const problem = mdx.indexOf(locale === "zh" ? "## 问题" : "## Problem");
+    const problem = mdx.indexOf(locale === "zh" ? "## 问题" : locale === "ko" ? "## 문제" : "## Problem");
     assert.ok(video > 0 && video < problem, "technology overview must precede the case study problem");
     assert.match(mdx, /title="CineV Technologies"/);
     assert.doesNotMatch(mdx, /CineV Technologies \(KO\)/);
