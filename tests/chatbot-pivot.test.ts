@@ -58,3 +58,11 @@ test('featured chatbot card renders approved copy without replacing its detail t
   else Reflect.deleteProperty(globalThis, 'React');
  }
 });
+
+test('pivot figures stay in the body column and defer two columns until panels fit', () => {
+ const css = read('src/styles/globals.css');
+ const figureRules = [...css.matchAll(/\.mdx-content \.pivot-figure\s*\{([^}]+)\}/g)].map(match => match[1]);
+ assert.ok(figureRules.length > 0);
+ for (const rule of figureRules) assert.doesNotMatch(rule, /transform:|margin-left:|100vw/);
+ assert.match(css, /@media \(min-width: 88rem\)\s*\{\s*\.mdx-content \.pivot-figure\s*\{[^}]*max-width: 64rem;/);
+});
