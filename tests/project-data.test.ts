@@ -368,7 +368,7 @@ test("BUZZNI AIaaS and branding media have distinct highlight and Execution role
 test("asset policy distinguishes default derivatives from approved Phase 3 exceptions", () => {
   const assetManifest = readJson(dataUrl("asset-manifest.json"));
   assert.ok(isRecord(assetManifest));
-  assert.equal(assetManifest.updatedAt, "2026-08-10");
+  assert.equal(assetManifest.updatedAt, "2026-10-15");
   assert.ok(isRecord(assetManifest.policy));
   assert.equal(
     assetManifest.policy.thumbnail,

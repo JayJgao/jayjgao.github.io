@@ -10,9 +10,9 @@
       "zh": "CineV S2M"
     },
     "oneLiner": {
-      "ko": "합류 3개월 내 LLM-to-Unreal 첫 E2E 통합, 실험 리드타임 50% 단축",
-      "en": "Within 3 months of joining, completed the first LLM-to-Unreal E2E integration and cut experiment lead time by 50%",
-      "zh": "入职3个月内完成首个 LLM-to-Unreal E2E 集成，并将实验周期缩短50%"
+      "ko": "LLM-to-Unreal 첫 E2E 통합",
+      "en": "Completed the first LLM-to-Unreal E2E integration",
+      "zh": "完成首个 LLM-to-Unreal E2E 集成"
     },
     "company": "Cinamon",
     "role": "AI Tech PO",
@@ -23,7 +23,7 @@
       "System Architecture"
     ],
     "thumbnail": "/assets/images/projects/cinev/cinev-s2m-shot-02.webp",
-    "primaryMetric": "E2E INTEGRATION · LEAD TIME -50%",
+    "primaryMetric": "LLM-TO-UNREAL E2E INTEGRATION",
     "subtitle": {
       "ko": "LLM Agent → Unreal Pipeline",
       "en": "LLM Agent → Unreal Pipeline",

@@ -9,9 +9,8 @@
     "github": "https://github.com/JayJgao"
   },
   "summary": [
-    "I am an AI Product Leader who quickly understands how industries and products work, translates problems that have yet to be articulated into technical terms, and connects them to product and business outcomes.",
-    "Across fintech AutoML, healthcare Computer Vision, e-commerce LLM Application, and Generative AI video products, I have built teams, secured enterprise contracts, grown MRR 10x, and taken a web product to official launch.",
-    "When I enter a new domain, I first map the product's infrastructure and systems along with the market. I then use our own products and competing products to find gaps that have not been clearly defined. I put problems tightly coupled to the core system on the organization's agenda. When a point of user friction can be tested independently, I prototype it myself. I work with the team beyond implementation until we see concrete outcomes, such as contracts, paid conversion, or reaching FSO (First Satisfactory Output) without leaving the Golden Path."
+    "I find problems no one has defined yet and turn them into products that deliver business results.",
+    "For seven years, I have led AI products and teams across fintech AutoML, medical AI, commerce AIaaS, and generative AI video. I translate between technology, markets, and organizations, making the case with working demos rather than words. I align product teams with the company's vision and OKRs and stay accountable until the goals are met."
   ],
   "experience": [
     {
@@ -19,10 +18,11 @@
       "role": "AI Tech Product Owner",
       "period": "2025.04 - Present",
       "highlights": [
-        "Product direction shift that began with Film Agent E2E integration, agreement to clear three years of legacy, and official Web CineV launch in July 2026",
-        "Conditioning and context management, research into narrative and visual consistency, 120+ same-scene validations, and an Asset management system integrated into the product",
-        "3 experimental features integrated into the product; 2 model integrations and 6 user studies through an internal Eval platform; 13 AI Literacy and visioning sessions; design and operation of web-team-led Product Discovery",
-        "7+ areas and 30+ models integrated into the product through external model routing"
+        "Developed a Product Pivot strategy in response to changing technology and market trends, and led the transition from a 3D product to a generative AI web platform, officially launched in July 2026.",
+        "Implemented LLM-to-Unreal E2E integration for a LangChain-based Film Agent. After the web product launched, took responsibility for planning and developing context management across an entire production.",
+        "Personally prototyped and validated technical demos addressing Post Production challenges in generative AI workflows, then handed them over to the development team, which integrated them into the product.",
+        "Supported six user studies and two additional model integrations over five months using an internally built motion evaluation platform.",
+        "Formed the web team’s AI Literacy TF and redesigned the core user flow. Following a two-week implementation by the web team, production A/B testing confirmed that the clip-download conversion rate reached 2.8 times the baseline."
       ]
     },
     {
@@ -30,9 +30,10 @@
       "role": "AI PM / Team Lead",
       "period": "2023.04 - 2025.03",
       "highlights": [
-        "Built and led the AIaaS business unit, growing the team 0→20",
-        "Grew MRR 10x, from ₩5M to ₩52M, and secured 12 new clients",
-        "Launched two services from 0→1: a Long→Short-form AI video editor and a shopping chatbot"
+        "Planned and launched a Long→Short-form AI editor and a shopping assistant chatbot from 0→1.",
+        "Established the product, pricing, contracting, and operational foundations for AIaaS, leading business-wide MRR growth from KRW 5M to KRW 52M in one year.",
+        "Led technical discussions, PoCs, and contract negotiations after initial meetings, securing 12 new clients.",
+        "Built and led the AIaaS organization from 0 to 20 people, taking responsibility for overall OKRs and for hiring, personnel management, and performance reviews for four PMs."
       ]
     },
     {
@@ -40,8 +41,7 @@
       "role": "Business Operations Manager",
       "period": "2022.06 - 2023.03",
       "highlights": [
-        "Improved operations and supported the turnaround of a family-run HR consulting business",
-        "Redesigned operating processes and established a framework for executing business strategy"
+        "Used LLMs to automate manual work in developing HR competency assessment tasks, and improved operations to support the turnaround of a family business."
       ]
     },
     {
@@ -49,17 +49,17 @@
       "role": "AI Product Manager",
       "period": "2022.01 - 2022.04",
       "highlights": [
-        "Defined the initial PRD and requirements based on regulatory documentation for vision biomarker analysis software"
+        "Developed initial product plans and PRDs for HER2 and ER/PR biomarker analysis products, and helped prepare FDA and CE documentation for existing products."
       ]
     },
     {
       "company": "Solidware (Ailys)",
-      "role": "AI PM / New Business Team Lead",
+      "role": "AI Product Manager, New Business Planning",
       "period": "2018.12 - 2021.12",
       "highlights": [
-        "Secured 13 Japanese enterprise clients, including Mitsubishi and AEON",
-        "Grew annual revenue by 100% and expanded sales touchpoints by 256%",
-        "Won government projects totaling ₩1.5B"
+        "Planned fintech AutoML and MLaaS products and the SSDP data preparation solution, contributing to the acquisition of 13 Japanese enterprise clients and a doubling of annual revenue.",
+        "Developed and executed a product marketing strategy that expanded sales touchpoints by 256%.",
+        "Oversaw the preparation of proposals and business plans for government-funded projects, helping secure projects worth KRW 1.5B in total."
       ]
     }
   ],
@@ -89,18 +89,19 @@
     ]
   },
   "education": [
-    "Tsinghua University, B.A. Journalism (Media Statistics), GPA 3.78/4.0"
+    "Tsinghua University, B.A. in Journalism (Media Statistics), GPA 3.78/4.0"
   ],
   "achievements": [
-    "3 ML Patents",
-    "KSC 2023 Paper Presentation",
-    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
+    "3 granted AI patents · 2 patent applications pending",
+    "KSC 2023 oral presentation",
+    "Meta AI APAC Accelerator 2024 · 3rd place, Seoul regional round",
+    "Chroma Awards 2025 · fal Sponsor Award Top 11 Finalist"
   ],
   "languages": [
     "Korean (Native)",
-    "Chinese (Business Fluent, HSK 6)",
-    "English (Business Fluent)",
-    "Japanese (Basic)",
+    "Chinese (Native)",
+    "English (Business Professional)",
+    "Japanese (Business Basic)",
     "Russian (Elementary)"
   ]
 }
