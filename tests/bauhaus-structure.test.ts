@@ -15,7 +15,7 @@ test('approved results preserve exact values, order and selected metric',()=>{
  for (const [index,[slug,values]] of Object.entries(expected).entries()) {
   const p=projects.find((p:{slug:string})=>p.slug===slug);
   assert.deepEqual(p.results?.map((r:{value:{ko:string}})=>r.value.ko),values);
-  assert.equal(p.showcaseOrder,index+1);
+  assert.equal(p.showcaseOrder,slug==='solidware-mlaas'?null:index+1);
   assert.equal(p.featuredResult,slug==='buzzni-aiaas-biz'?2:0);
   assert.ok(p.results.every((r:{value:Record<string,string>;caption:Record<string,string>})=>['ko','en','zh'].every(l=>r.value[l]&&r.caption[l])));
  }

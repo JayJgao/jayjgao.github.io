@@ -108,8 +108,8 @@
   },
   {
     "slug": "solidware-mlaas",
-    "featured": true,
-    "showcaseOrder": 6,
+    "featured": false,
+    "showcaseOrder": null,
     "company": "Solidware",
     "role": "AI PM / Biz Lead",
     "contribution": 70,
@@ -130,8 +130,8 @@
   },
   {
     "slug": "buzzni-chatbot",
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 6,
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 75,

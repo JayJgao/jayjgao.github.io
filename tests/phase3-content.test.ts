@@ -85,7 +85,7 @@ const expectedFeaturedSlugs = [
   "cinev-ai-enablement",
   "chroma-awards",
   "buzzni-shortform-ai",
-  "solidware-mlaas"
+  "buzzni-chatbot"
 ] as const;
 
 const expectedDemoSlugs = [

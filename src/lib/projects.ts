@@ -6,6 +6,7 @@ export type Project = {
   slug: string;
   results?: { value: Localized<string>; caption: Localized<string> }[];
   featuredResult?: number;
+  featuredCard?: { headline: Localized<string>; caption: Localized<string>; title: Localized<string>; description: Localized<string> };
   links?: { label: Localized<string>; url: string }[];
   featured: boolean;
   showcaseOrder: number | null;
