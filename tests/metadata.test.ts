@@ -53,7 +53,7 @@ test("Home metadata uses the approved Korean share description without changing 
     metadataModule as typeof metadataModule & {
       createHomeDescription?: (
         locale: "ko" | "en" | "zh",
-        copy: { headline: string; subheadline: string; supporting: string },
+        copy: { headline: string; lead: string[] },
       ) => string;
     }
   ).createHomeDescription;
@@ -62,8 +62,7 @@ test("Home metadata uses the approved Korean share description without changing 
 
   const copy = {
     headline: "Headline",
-    subheadline: "Line one\nLine two",
-    supporting: "Supporting",
+    lead: ["Line one", "Line two"],
   };
   assert.equal(
     createHomeDescription!("ko", copy),
@@ -71,11 +70,11 @@ test("Home metadata uses the approved Korean share description without changing 
   );
   assert.equal(
     createHomeDescription!("en", copy),
-    "Headline Line one\nLine two Supporting",
+    "Headline Line one Line two",
   );
   assert.equal(
     createHomeDescription!("zh", copy),
-    "Headline Line one\nLine two Supporting",
+    "Headline Line one Line two",
   );
 });
 

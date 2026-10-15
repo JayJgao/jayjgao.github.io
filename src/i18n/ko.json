@@ -17,24 +17,28 @@
       "kicker": "AI Product Leader",
       "name": "고재현",
       "alias": "Jay Ko",
-      "headline": "Tinkering with the latest AI and building it into real-world products.",
-      "subheadline": "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
-      "supporting": "7+ years, AI 제품을 기획하고 출시해 스케일링까지 리드한 Product 운영 이력",
+      "headline": "정의되지 않은 문제를 찾아 사업 성과를 내는 제품으로 만듭니다.",
       "profileAlt": "고재현 프로필 사진",
       "stats": [
         {
-          "value": "MRR 10x",
-          "label": "매출 성장"
+          "value": "MRR 10X",
+          "caption": "AIaaS 사업 · 1년 만에 500만 → 5,200만 원"
         },
         {
-          "value": "25+ B2B Clients",
-          "label": "엔터프라이즈 납품"
+          "value": "0 → 20명",
+          "caption": "AIaaS 제품 조직 빌딩"
         },
         {
-          "value": "3 Patents",
-          "label": "IP 자산"
+          "value": "AI 특허 3건",
+          "caption": "출원 2건 · KSC 논문 · Chroma 파이널리스트"
         }
-      ]
+      ],
+      "lead": [
+        "기술과 시장, 조직 사이의 번역가를 자처하며 말보다 작동하는 데모로 설득합니다.",
+        "제품 팀이 회사의 비전과 OKR을 향해 움직이도록 방향을 맞추고 목표를 달성할 때까지 책임집니다."
+      ],
+      "career": "7+ years · Fintech AutoML → Medical AI → Commerce AIaaS → Generative AI Video",
+      "resumeLabel": "이력서 PDF"
     },
     "featured": {
       "sectionLabel": "대표 사례",
@@ -43,46 +47,16 @@
       "metricFallbackPrefix": "기여"
     },
     "demos": {
-      "viewAll": "데모 전체"
-    },
-    "spotlight": {
-      "kicker": "창작 작업",
-      "title": "영상으로 보기",
-      "subtitle": "AI Filmmaking Showcase.",
-      "prev": "이전",
-      "next": "다음",
-      "prevAria": "이전 스포트라이트",
-      "nextAria": "다음 스포트라이트",
-      "relatedProject": "관련 프로젝트 보기",
-      "selectPrefix": "선택",
-      "frameFallback": "스포트라이트",
-      "posterAltSuffix": "포스터"
+      "viewAll": "데모 전체",
+      "counts": "제품에 반영된 데모 {productized}개 · 실험과 내부 도구 {internal}개"
     },
     "timeline": {
-      "kicker": "경력",
-      "title": "경력",
-      "eras": {
-        "era1": {
-          "items": [
-            "Solidware (Ailys)에서 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
-            "Lunit에서 비전 바이오마커 분석 SW 초기 기획"
-          ]
-        },
-        "era2": {
-          "items": [
-            "BUZZNI에서 AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-            "BUZZNI에서 Long→Short-form AI 비디오 편집기와 쇼핑 어시스턴트 챗봇 출시",
-            "Dasan E&E에서 AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원"
-          ]
-        },
-        "era3": {
-          "items": [
-            "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
-            "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
-            "Chroma Awards → Sponsor Award Top 11 Finalist"
-          ]
-        }
-      }
+      "title": "경력"
+    },
+    "films": {
+      "title": "AI 영상 작업 6편",
+      "description": "「HappyEnd」(Chroma Awards 2025 fal Sponsor Award TOP 11 파이널리스트) 외 실사, 광고, 뮤직비디오 작업",
+      "viewAll": "영상 갤러리 ↗"
     }
   },
   "about": {
@@ -99,22 +73,23 @@
     "page": {
       "kicker": "프로젝트",
       "title": "프로젝트",
-      "description": "3-Era Narrative를 기준으로 포트폴리오를 구성했습니다.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+      "description": "회사와 기간 순으로 정리했습니다."
     },
     "explorer": {
       "featuredTitle": "대표 프로젝트",
       "featuredDescription": "핵심 성과가 선명한 프로젝트만 우선 배치했습니다.",
       "archiveTitle": "전체 목록",
       "archiveDescription": "다양한 도메인에서 진행했던 프로젝트들의 목록입니다.",
-      "emptyFeatured": "선택한 Era에 해당하는 Featured 프로젝트가 없습니다.",
-      "emptyArchive": "선택한 Era에 해당하는 Archive 프로젝트가 없습니다."
+      "emptyFeatured": "선택한 회사의 대표 프로젝트가 없습니다.",
+      "emptyArchive": "선택한 회사의 전체 목록에 표시할 프로젝트가 없습니다."
     },
     "filter": {
       "all": "전체"
     },
     "card": {
       "highlightLabel": "하이라이트",
-      "thumbnailAltSuffix": "썸네일"
+      "thumbnailAltSuffix": "썸네일",
+      "viewCase": "사례 보기 →"
     },
     "caseStudy": {
       "role": "역할",
@@ -123,13 +98,15 @@
       "firstProject": "첫 프로젝트",
       "lastProject": "마지막 프로젝트",
       "backToList": "프로젝트 목록으로",
-      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다."
+      "fallbackNotice": "이 프로젝트의 상세 내용은 현재 한국어 원문으로 제공됩니다.",
+      "period": "재직 기간",
+      "relatedLinks": "관련 링크"
     }
   },
   "demos": {
     "page": {
       "kicker": "데모",
-      "title": "Tinkering with the latest AI",
+      "title": "추상적인 언어보다, 동작하는 데모로",
       "description": "최신 AI를 직접 다루며 제품과 내부 도구로 연결한 실험을 결과와 근거 중심으로 정리했습니다."
     },
     "groups": {
@@ -149,7 +126,8 @@
     },
     "status": {
       "productized": "제품 반영",
-      "internal": "내부 도구"
+      "internal": "내부 도구",
+      "partial": "일부 반영"
     },
     "card": {
       "outcomeLabel": "결과",

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import * as demosModule from "../src/lib/demos";
@@ -15,8 +15,8 @@ type PortfolioJson = {
   home: {
     hero: {
       headline: string;
-      subheadline: string;
-      supporting: string;
+      lead: string[];
+      career: string;
       [key: string]: unknown;
     };
     demos: {
@@ -52,39 +52,25 @@ function shapeOf(value: unknown): unknown {
 }
 
 const expectedHero = {
-  ko: {
-    headline: "Tinkering with the latest AI and building it into real-world products.",
-    subheadline: "Tabular ML에서 생성형 비디오까지\nAI 제품을 만들고 성장시킵니다.",
-    supporting: "7+ years, AI 제품을 기획하고 출시해 스케일링까지 리드한 Product 운영 이력",
-  },
-  en: {
-    headline: "Tinkering with the latest AI and building it into real-world products.",
-    subheadline: "Building and scaling AI products\nfrom tabular ML to generative video.",
-    supporting: "7+ years leading AI product planning, launch, and scale across domains",
-  },
-  zh: {
-    headline: "Tinkering with the latest AI and building it into real-world products.",
-    subheadline: "从表格机器学习到生成式视频\n持续打造并规模化 AI 产品。",
-    supporting: "7+ 年 AI 产品运营经验，主导从规划、发布到规模化增长的全过程",
-  },
+  ko: "정의되지 않은 문제를 찾아 사업 성과를 내는 제품으로 만듭니다.",
+  en: "I find problems no one has defined yet and turn them into products that deliver business results.",
 } as const;
 
-test("hero copy preserves the old narrative under the exact new hierarchy", () => {
+test("hero preserves approved headline and two-paragraph lead", () => {
   for (const locale of locales) {
-    const messages = readJson(`src/i18n/${locale}.json`);
-    assert.deepEqual(messages.home.hero, {
-      ...messages.home.hero,
-      ...expectedHero[locale],
-    });
-    assert.doesNotMatch(messages.home.hero.subheadline, /^—/m);
+    const hero = readJson(`src/i18n/${locale}.json`).home.hero;
+    if (locale !== "zh") assert.equal(hero.headline, expectedHero[locale]);
+    assert.equal(hero.lead.length, 2);
+    assert.ok(hero.lead.every((paragraph) => paragraph.length > 0 && !paragraph.includes("\n")));
+    assert.equal(hero.career, "7+ years · Fintech AutoML → Medical AI → Commerce AIaaS → Generative AI Video");
   }
-
   const hero = readRepoFile("src/components/home/HeroSection.tsx");
-  const hierarchy = ["copy.headline.indexOf", "{copy.subheadline}", "{copy.supporting}"].map(
-    (token) => hero.indexOf(token),
-  );
-  assert.ok(hierarchy.every((index) => index >= 0), "hero renders all three copy levels");
-  assert.deepEqual([...hierarchy].sort((a, b) => a - b), hierarchy);
+  assert.match(hero, /<h1[^>]*>\{copy.headline\}/);
+  assert.match(hero, /copy.lead.map/);
+  const hierarchy = ["{copy.headline}", "copy.lead.map", "<ResultBand"].map((token) => hero.indexOf(token));
+  assert.ok(hierarchy.every((index) => index >= 0));
+  assert.deepEqual(hierarchy, [...hierarchy].sort((a, b) => a - b));
+  assert.doesNotMatch(hero, /<br\b/);
 });
 
 test("productized preview accessor returns the exact three productized records as deep copies", () => {
@@ -108,53 +94,37 @@ test("productized preview accessor returns the exact three productized records a
   assert.notEqual(getProductizedDemos!()[0].summary.ko, "mutated");
 });
 
-test("home Demos preview is a server-only compact three-card proof section", () => {
-  assert.ok(
-    existsSync(new URL("src/components/home/DemosPreview.tsx", repoRoot)),
-    "DemosPreview server component must exist",
-  );
+test("home Demos preview is a server-only three-row proof section", () => {
   const preview = readRepoFile("src/components/home/DemosPreview.tsx");
-
   assert.doesNotMatch(preview, /^"use client";/);
   assert.match(preview, /getProductizedDemos/);
-  assert.match(preview, /copy\.page\.kicker/);
-  assert.match(preview, /copy\.groups\.productized\.title/);
-  assert.match(preview, /copy\.groups\.productized\.description/);
-  assert.match(preview, /variant="compact"/);
+  assert.match(preview, /getAllDemos/);
+  assert.match(preview, /copy\.page\.title/);
+  assert.match(preview, /demo-preview-row/);
+  assert.match(preview, /demo\.summary\[locale\]/);
+  assert.match(preview, /demo\.productStatus === "partial"/);
+  assert.match(preview, /copy\.status\.partial/);
   assert.match(preview, /getLocalizedPath\(locale, "\/demos\/"\)/);
   assert.match(preview, /homeCopy\.viewAll/);
-  assert.doesNotMatch(preview, /iframe|video|gallery|DemoVideo|DemoGallery/i);
-  assert.ok(
-    preview.indexOf("<DemoCard") < preview.indexOf("{homeCopy.viewAll}"),
-    "the all-Demos link follows the three compact cards",
-  );
-
+  assert.doesNotMatch(preview, /iframe|video|gallery|DemoVideo|DemoGallery|<DemoCard/i);
   const card = readRepoFile("src/components/demos/DemoCard.tsx");
-  assert.match(card, /variant\?:\s*"default"\s*\|\s*"compact"/);
-  assert.match(card, /variant\s*=\s*"default"/);
-  assert.match(card, /data-demo-card/);
-  assert.match(card, /data-demo-slug/);
-  assert.match(card, /copy\.status\.productized/);
-  assert.match(card, /demo\.name/);
-  assert.match(card, /demo\.summary\[locale\]/);
-  assert.match(card, /copy\.card\.openDetail/);
-  assert.match(card, /demo\.outcome\[locale\]/, "default list cards retain outcome copy");
+  assert.match(card, /demo\.outcome\[locale\]/, "full Demo cards retain outcome copy");
 });
 
 test("localized Home uses the exact approved section order and markers", () => {
   const home = readRepoFile("src/app/[locale]/page.tsx");
   const components = [
     "<HeroSection",
-    "<DemosPreview",
     "<FeaturedProjects",
-    "<VideoSpotlightCarousel",
+    "<DemosPreview",
     "<CareerTimeline",
+    "<FilmsStrip",
   ];
   const componentIndexes = components.map((component) => home.indexOf(component));
   assert.ok(componentIndexes.every((index) => index >= 0));
   assert.deepEqual([...componentIndexes].sort((a, b) => a - b), componentIndexes);
 
-  const markers = ["hero", "demos", "featured", "spotlight", "timeline"];
+  const markers = ["hero", "featured", "demos", "timeline", "films"];
   const markerIndexes = markers.map((marker) =>
     home.indexOf(`data-home-section="${marker}"`),
   );

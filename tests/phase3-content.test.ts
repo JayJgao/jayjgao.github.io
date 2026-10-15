@@ -10,10 +10,8 @@ import { LocaleProvider } from "../src/components/i18n/LocaleProvider";
 import { ResumeRenderer } from "../src/components/resume/ResumeRenderer";
 import aboutKo from "../src/data/about.ko.json";
 import demosJson from "../src/data/demos.json";
-import eras from "../src/data/eras.json";
 import projects from "../src/data/projects.json";
 import resumeKo from "../src/data/resume.ko.json";
-import spotlights from "../src/data/spotlights.json";
 import messagesKo from "../src/i18n/ko.json";
 import { getDemoVideoMode } from "../src/lib/demos";
 import type { Demo } from "../src/types/demo";
@@ -83,11 +81,11 @@ function assertPublicCopySafe(copy: string): void {
 
 const expectedFeaturedSlugs = [
   "cinev-ai-po-leadership",
+  "buzzni-aiaas-biz",
   "cinev-ai-enablement",
   "chroma-awards",
   "buzzni-shortform-ai",
-  "buzzni-aiaas-biz",
-  "solidware-mlaas",
+  "solidware-mlaas"
 ] as const;
 
 const expectedDemoSlugs = [
@@ -99,12 +97,6 @@ const expectedDemoSlugs = [
   "iro-matcher",
   "loudness-matcher",
   "script-to-bgm",
-] as const;
-
-const expectedEra3Items = [
-  "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
-  "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
-  "Chroma Awards → Sponsor Award Top 11 Finalist",
 ] as const;
 
 const expectedAboutKo = {
@@ -266,14 +258,7 @@ test("Phase 3 fixes the exact eight-Demo canon and three-card Home preview", asy
   assert.deepEqual(getProductizedDemos().map(({ slug }) => slug), expectedDemoSlugs.slice(0, 3));
 });
 
-test("Korean Era 3, About, and Resume copy exactly match the approved canon", () => {
-  const era3 = eras.find(({ id }) => id === 3);
-  assert.deepEqual(era3, {
-    id: 3,
-    name: { ko: "Generative AI Native", en: "Generative AI Native", zh: "Generative AI Native" },
-    period: "2025–",
-  });
-  assert.deepEqual(messagesKo.home.timeline.eras.era3.items, expectedEra3Items);
+test("Korean About and Resume copy exactly match the approved canon", () => {
   assert.deepEqual(aboutKo, expectedAboutKo);
 
   assert.equal(resumeKo.meta.subtitle, "7+ Years | Tabular ML → Computer Vision → LLM Application → Generative AI");
@@ -318,7 +303,7 @@ test("approved Korean copy remains wrapping-safe without manual line breaks", ()
     aboutKo.workingWithMe.demosBridge,
     ...expectedResumeSummaryParagraphs,
     ...expectedCinamonHighlights,
-    ...messagesKo.home.timeline.eras.era3.items,
+    ...messagesKo.home.hero.lead,
     messagesKo.projects.explorer.archiveDescription,
   ];
 
@@ -359,20 +344,8 @@ test("Resume renders each approved localized summary paragraph semantically", ()
   }
 });
 
-test("Korean i18n and spotlight prose avoid em-dash and middle-dot connectors", () => {
-  const spotlightCopy = spotlights.flatMap(({ title, workTitle, caption }) => [
-    title.ko,
-    workTitle.ko,
-    caption.ko,
-  ]);
-  const auditedCopy = [
-    messagesKo.home.hero.supporting,
-    ...messagesKo.home.timeline.eras.era1.items,
-    ...messagesKo.home.timeline.eras.era2.items,
-    ...messagesKo.home.timeline.eras.era3.items,
-    ...spotlightCopy,
-  ];
-
+test("Korean hero lead and film prose avoid em-dash and middle-dot connectors", () => {
+  const auditedCopy = [...messagesKo.home.hero.lead, ...Object.values(messagesKo.home.films)];
   for (const copy of auditedCopy) assert.doesNotMatch(copy, /[—·]/);
 });
 

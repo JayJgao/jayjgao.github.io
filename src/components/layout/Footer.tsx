@@ -18,6 +18,7 @@ export function Footer() {
           <a href="mailto:rhwogus0205@gmail.com">
             {copy.common.email}
           </a>
+          <a href="https://www.linkedin.com/in/jayko-ai/">LinkedIn</a>
           <span>{copy.footer.copyright}</span>
         </div>
       </div>

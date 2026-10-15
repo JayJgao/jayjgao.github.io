@@ -7,7 +7,6 @@ import frozenProjectFacts from "./fixtures/project-facts.json";
 import originalProjectHeadings from "./fixtures/project-headings.json";
 import { SUPPORTED_LOCALES, type Locale } from "../src/lib/locale";
 import type { Project } from "../src/lib/projects";
-import type { EraId } from "../src/types/content";
 
 const dataUrl = (name: string) => new URL(`../src/data/${name}`, import.meta.url);
 const messagesUrl = (locale: Locale) => new URL(`../src/i18n/${locale}.json`, import.meta.url);
@@ -31,7 +30,6 @@ function assertLocalizedText(value: unknown, context: string): asserts value is 
 function freezeProject(project: (typeof projects)[number]) {
   return {
     slug: project.slug,
-    era: project.era,
     featured: project.featured,
     showcaseOrder: project.showcaseOrder,
     company: project.company,
@@ -44,186 +42,6 @@ function freezeProject(project: (typeof projects)[number]) {
     oneLiner: project.oneLiner,
   };
 }
-
-const expectedEras = [
-  {
-    id: 1,
-    name: { ko: "Classical ML", en: "Classical ML", zh: "Classical ML" },
-    period: "2018-2022",
-  },
-  {
-    id: 2,
-    name: { ko: "LLM Application", en: "LLM Application", zh: "LLM Application" },
-    period: "2023-2024",
-  },
-  {
-    id: 3,
-    name: {
-      ko: "Generative AI Native",
-      en: "Generative AI Native",
-      zh: "Generative AI Native",
-    },
-    period: "2025–",
-  },
-] as const;
-
-const expectedTimelineItems: Record<Locale, Record<"era1" | "era2", string[]>> = {
-  ko: {
-    era1: [
-      "Solidware (Ailys)에서 일본 엔터프라이즈 13개 고객 확보, 연매출 100% 신장",
-      "Lunit에서 비전 바이오마커 분석 SW 초기 기획",
-    ],
-    era2: [
-      "BUZZNI에서 AIaaS 사업부 0명→20명 팀빌딩, MRR 10x 성장",
-      "BUZZNI에서 Long→Short-form AI 비디오 편집기와 쇼핑 어시스턴트 챗봇 출시",
-      "Dasan E&E에서 AI 과제개발 워크플로우 통합으로 사업 효율화 및 경영정상화 지원",
-    ],
-  },
-  en: {
-    era1: [
-      "Solidware (Ailys), secured 13 Japanese enterprise clients and grew annual revenue by 100%",
-      "Lunit, early product planning for vision biomarker analysis software",
-    ],
-    era2: [
-      "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
-      "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
-      "Dasan E&E, integrated AI into Assessment Center task development workflows to improve operations and support a business turnaround",
-    ],
-  },
-  zh: {
-    era1: [
-      "在 Solidware (Ailys) 赢得 13 家日本企业客户，年营收增长 100%",
-      "在 Lunit 进行视觉生物标志物分析软件的早期规划",
-    ],
-    era2: [
-      "在 BUZZNI 从 0→20 人搭建 AIaaS 事业部，实现 MRR 10x 增长",
-      "在 BUZZNI 发布 Long→Short-form AI 视频编辑器和购物助手聊天机器人两款产品",
-      "在 Dasan E&E 将 AI 整合到 Assessment Center 测评任务开发工作流中，提升业务效率并支持经营恢复",
-    ],
-  },
-};
-
-const expectedEra3Items: Record<Locale, readonly string[]> = {
-  ko: [
-    "Cinamon AI PO Leadership → Web CineV 공식 출시, 실험 기능 3건 제품 통합",
-    "Cinamon AI Technology & Org Enablement → AI Literacy와 비저닝 세션 13회, 웹팀 주도 Product Discovery",
-    "Chroma Awards → Sponsor Award Top 11 Finalist",
-  ],
-  en: [
-    "Cinamon AI PO Leadership → Official Web CineV launch and 3 experimental features integrated into the product",
-    "Cinamon AI Technology & Org Enablement → 13 AI Literacy and visioning sessions, plus web-team-led Product Discovery",
-    "Chroma Awards → Sponsor Award Top 11 Finalist",
-  ],
-  zh: [
-    "Cinamon AI PO Leadership → Web CineV 正式上线，将 3 项实验功能集成到产品中",
-    "Cinamon AI Technology & Org Enablement → 开展 13 场 AI Literacy 与愿景研讨，由 Web 团队主导 Product Discovery",
-    "Chroma Awards → Sponsor Award Top 11 Finalist",
-  ],
-};
-
-const expectedSpotlights = [
-  {
-    slug: "chroma-awards",
-    provider: "youtube",
-    videoId: "8NQiyv5bbBg",
-    title: {
-      ko: "LG AI 영상 공모전 MV 부문",
-      en: "LG AI Video Contest\nMusic Video Category",
-      zh: "LG AI 视频大赛\n音乐视频组",
-    },
-    workTitle: {
-      ko: "곡선이 직선이 되고",
-      en: "When Curves Become Straight Lines",
-      zh: "当曲线化作直线",
-    },
-    caption: {
-      ko: "LG AI 영상 공모전 뮤직비디오 부문 출품작",
-      en: "Music video entry in the LG AI Video Contest",
-      zh: "LG AI 视频大赛音乐视频组参赛作品",
-    },
-    poster: "https://i.ytimg.com/vi/8NQiyv5bbBg/maxresdefault.jpg",
-  },
-  {
-    slug: "chroma-awards",
-    provider: "vimeo",
-    videoId: "1137973544",
-    title: {
-      ko: "Chroma Awards Top11 Finalist\nHappyend",
-      en: "Chroma Awards Top 11 Finalist\nHappyend",
-      zh: "Chroma Awards Top 11 入围作品\nHappyend",
-    },
-    workTitle: { ko: "Happyend", en: "Happyend", zh: "Happyend" },
-    caption: {
-      ko: "Sponsor Award Top 11 Finalist 작품",
-      en: "Sponsor Award Top 11 Finalist entry",
-      zh: "Sponsor Award Top 11 入围作品",
-    },
-    poster: "/assets/images/projects/chroma/chroma-happyend-thumb.webp",
-  },
-  {
-    slug: "chroma-awards",
-    provider: "youtube",
-    videoId: "4ngeQ9EJew4",
-    title: {
-      ko: "WAIFF\nGUHO Advertisement",
-      en: "WAIFF\nGUHO Advertisement",
-      zh: "WAIFF\nGUHO Advertisement",
-    },
-    workTitle: {
-      ko: "GUHO Advertisement",
-      en: "GUHO Advertisement",
-      zh: "GUHO Advertisement",
-    },
-    caption: {
-      ko: "WAIFF 2026 광고부문 출품작",
-      en: "Submission to the WAIFF 2026 ad category",
-      zh: "WAIFF 2026 广告类别投稿作品",
-    },
-    poster: "/assets/images/projects/chroma/waiff-thumb.webp",
-  },
-  {
-    slug: "chroma-awards",
-    provider: "vimeo",
-    videoId: "1137947360",
-    title: {
-      ko: "Chroma Awards\nMystery Invitation",
-      en: "Chroma Awards\nMystery Invitation",
-      zh: "Chroma Awards\nMystery Invitation",
-    },
-    workTitle: {
-      ko: "Mystery Invitation",
-      en: "Mystery Invitation",
-      zh: "Mystery Invitation",
-    },
-    caption: {
-      ko: "Chroma Awards Romance 트랙 본선 진출작",
-      en: "Finalist entry in the Chroma Awards Romance track",
-      zh: "Chroma Awards Romance 赛道决赛入围作品",
-    },
-    poster: "/assets/images/projects/chroma/chroma-mystery-thumb.webp",
-  },
-  {
-    slug: "chroma-awards",
-    provider: "youtube",
-    videoId: "hB03aGbuG04",
-    title: {
-      ko: "APEC AI 영상 공모전\n다시 여기, 경주",
-      en: "APEC AI Video Contest\nBack Here, Gyeongju",
-      zh: "APEC AI 视频大赛\n再次来到庆州",
-    },
-    workTitle: {
-      ko: "다시 여기, 경주",
-      en: "Back Here, Gyeongju",
-      zh: "再次来到庆州",
-    },
-    caption: {
-      ko: "2025APEC AI 영상 공모전 출품작",
-      en: "Submission to the 2025 APEC AI Video Contest",
-      zh: "2025 APEC AI 视频大赛投稿作品",
-    },
-    poster: "/assets/images/projects/chroma/chroma-apec-thumb.webp",
-  },
-] as const;
 
 test("projects preserve all frozen facts while owning normalized localized headings", () => {
   assert.equal(projects.length, 15);
@@ -388,83 +206,21 @@ test("Solidware Archive cards use the current company name consistently", () => 
   }
 });
 
-test("every project era resolves through the canonical localized Era data", async () => {
-  const erasPath = dataUrl("eras.json");
-  const erasModulePath = new URL("../src/lib/eras.ts", import.meta.url);
-  assert.equal(existsSync(erasPath), true, "eras.json must exist");
-  assert.equal(existsSync(erasModulePath), true, "eras.ts must exist");
-  assert.deepEqual(readJson(erasPath), expectedEras);
-
-  const { getAllEras, getEraById, getEraLabel } = await import("../src/lib/eras");
-  assert.deepEqual(getAllEras(), expectedEras);
-
-  for (const project of projects) {
-    const eraId = project.era as EraId;
-    const era = getEraById(eraId);
-    assert.ok(era, `${project.slug} must resolve Era ${project.era}`);
-
-    for (const locale of SUPPORTED_LOCALES) {
-      assert.equal(getEraLabel(eraId, locale), `${era.name[locale]} (${era.period})`);
-    }
-  }
+test("company filters contain only companies with projects in career order", async () => {
+  const { getProjectCompanies } = await import("../src/lib/projects");
+  assert.deepEqual(getProjectCompanies(), ["Cinamon", "BUZZNI", "Lunit", "Solidware", "Side Project"]);
+  const first = getProjectCompanies(); first.pop();
+  assert.equal(getProjectCompanies().length, 5);
+  assert.ok(projects.every((project) => !("era" in project)));
+  assert.equal(existsSync(dataUrl("eras.json")), false);
 });
-
-test("Era accessors isolate canonical data from returned-object mutations", async () => {
-  const { getAllEras, getEraById, getEraLabel } = await import("../src/lib/eras");
-  const canonical = expectedEras[0];
-  const fromAll = getAllEras()[0];
-  const fromById = getEraById(1);
-  assert.ok(fromAll);
-  assert.ok(fromById);
-
-  try {
-    fromAll.period = "mutated-period";
-    fromAll.name.en = "Mutated from getAllEras";
-    fromById.name.ko = "Mutated from getEraById";
-    fromById.name.zh = "Mutated from getEraById";
-
-    const freshAll = getAllEras()[0];
-    const freshById = getEraById(1);
-    assert.deepEqual(freshAll, canonical);
-    assert.deepEqual(freshById, canonical);
-    assert.equal(getEraLabel(1, "ko"), "Classical ML (2018-2022)");
-    assert.notEqual(freshAll, fromAll);
-    assert.notEqual(freshAll?.name, fromAll.name);
-    assert.notEqual(freshById, fromById);
-    assert.notEqual(freshById?.name, fromById.name);
-  } finally {
-    for (const era of [fromAll, fromById]) {
-      era.period = canonical.period;
-      era.name.ko = canonical.name.ko;
-      era.name.en = canonical.name.en;
-      era.name.zh = canonical.name.zh;
-    }
-  }
-});
-
-test("UI dictionaries keep only the all-project filter and localized timeline items", () => {
+test("UI dictionaries retain locale labels without old timeline era copy", () => {
   for (const locale of SUPPORTED_LOCALES) {
     const messages = readJson(messagesUrl(locale));
-    assert.ok(isRecord(messages));
-    assert.ok(isRecord(messages.projects));
-    assert.ok(isRecord(messages.projects.filter));
+    assert.ok(isRecord(messages) && isRecord(messages.projects) && isRecord(messages.home));
+    assert.ok(isRecord(messages.projects.filter) && isRecord(messages.home.timeline));
     assert.deepEqual(Object.keys(messages.projects.filter), ["all"]);
-    assert.equal(Object.hasOwn(messages.projects, "eras"), false);
-
-    assert.ok(isRecord(messages.home));
-    assert.ok(isRecord(messages.home.timeline));
-    assert.ok(isRecord(messages.home.timeline.eras));
-
-    for (const eraKey of ["era1", "era2", "era3"] as const) {
-      const timelineEra: unknown = messages.home.timeline.eras[eraKey];
-      assert.ok(isRecord(timelineEra));
-      assert.deepEqual(Object.keys(timelineEra), ["items"]);
-      if (eraKey !== "era3") {
-        assert.deepEqual(timelineEra.items, expectedTimelineItems[locale][eraKey]);
-      } else {
-        assert.deepEqual(timelineEra.items, expectedEra3Items[locale]);
-      }
-    }
+    assert.equal("eras" in messages.home.timeline, false);
   }
 });
 
@@ -483,10 +239,7 @@ test("Korean Projects Archive presents the user-approved description", () => {
   );
 });
 
-test("spotlights move to the canonical filename without changing any record", () => {
-  const currentPath = dataUrl("spotlights.json");
-  const legacyPath = dataUrl("home-spotlights.json");
-  assert.equal(existsSync(currentPath), true, "spotlights.json must exist");
-  assert.deepEqual(readJson(currentPath), expectedSpotlights);
-  assert.equal(existsSync(legacyPath), false, "home-spotlights.json must be deleted");
+test("films strip replaces the obsolete spotlight data", () => {
+  assert.equal(existsSync(dataUrl("spotlights.json")), false);
+  assert.equal(existsSync(dataUrl("home-spotlights.json")), false);
 });

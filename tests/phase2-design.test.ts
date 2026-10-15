@@ -46,11 +46,11 @@ const presentationFiles = [
   "src/components/home/HeroSection.tsx",
   "src/components/home/DemosPreview.tsx",
   "src/components/home/FeaturedProjects.tsx",
-  "src/components/home/VideoSpotlightCarousel.tsx",
+  "src/components/home/FilmsStrip.tsx",
   "src/components/home/CareerTimeline.tsx",
   "src/components/projects/ProjectCard.tsx",
   "src/components/projects/ProjectsExplorer.tsx",
-  "src/components/projects/EraFilter.tsx",
+  "src/components/projects/CompanyFilter.tsx",
   "src/components/projects/CaseStudy.tsx",
   "src/components/demos/DemoCard.tsx",
   "src/components/demos/DemosExplorer.tsx",
@@ -89,7 +89,7 @@ test("signal yellow is fill-only", () => {
   const css = readRepoFile("src/styles/globals.css");
   assert.doesNotMatch(css, /(?:^|[;{])\s*color:\s*var\(--(?:color-signal-yellow|accent)\)/m);
   assert.ok(contrastRatio(readColorToken(css, "color-paper"), readColorToken(css, "color-cobalt-blue")) >= 4.5);
-  for (const selector of [".demo-preview-chapter", ".demo-list-hero", ".demo-block--accent", ".about-demos-bridge", ".mdx-content .award-result"]) {
+  for (const selector of [".demo-list-hero", ".demo-block--accent", ".about-demos-bridge", ".mdx-content .award-result"]) {
     const rule = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].find((match) => match[1].split(",").some((part) => part.trim() === selector) && match[2].includes("background:"));
     assert.ok(rule, selector);
     assert.match(rule[2], /background: var\(--color-cobalt-blue\)/);
@@ -129,10 +129,11 @@ test("wrapping follows display, prose, Korean, and technical-string roles", () =
   assert.match(css, /\.mdx-content\[lang="ko"\]\s*\{[^}]*word-break:\s*keep-all;/);
   assert.deepEqual(
     [...css.matchAll(/overflow-wrap:\s*anywhere/g)].length,
-    1,
+    2,
     "anywhere wrapping must remain a narrow URL/technical-string fallback",
   );
   assert.match(css, /\.resume-contact a\s*\{[^}]*overflow-wrap:\s*anywhere;/);
+  assert.match(css, /\.project-related-links a\s*\{[^}]*overflow-wrap:\s*anywhere;/);
   assert.doesNotMatch(projectAndDemo, /<br\b/i);
 });
 
@@ -141,7 +142,7 @@ test("narrow Project titles and tablet About headings keep a readable measure", 
 
   assert.match(
     css,
-    /@media \(max-width:\s*639px\)[\s\S]*?\.project-detail \.page-display\s*\{[^}]*font-size:\s*clamp\(3rem,\s*15\.5vw,\s*4\.75rem\);/,
+    /\.project-detail \.page-display\s*\{[^}]*font-size:\s*clamp\(2\.2rem,\s*4vw,\s*3\.5rem\);/,
   );
   assert.match(
     css,
@@ -190,40 +191,25 @@ test("Home is an evidence-first sequence with text-only project and Demo indexes
 
   assert.match(home, /id="main-content"/);
   assert.match(home, /className="home-editorial"/);
-  assert.match(hero, /hero-clause--demo/);
-  assert.match(hero, /hero-clause--project/);
-  assert.match(hero, /hero-stat-ledger/);
-  assert.match(demos, /demo-preview-grid/);
+  assert.match(hero, /hero-lead/);
+  assert.match(hero, /<ResultBand/);
+  assert.match(demos, /demo-preview-rows/);
   assert.match(demos, /demo-preview-chapter/);
   assert.doesNotMatch(projects, /next\/image|<Image|project\.thumbnail/);
-  assert.match(
-    css,
-    /\.hero-display\s*\{[^}]*max-width:\s*100%;[^}]*font-size:\s*clamp\(4rem,\s*9vw,\s*9rem\)/,
-    "desktop Hero keeps the claim compact enough to reveal the next chapter",
-  );
-  assert.match(
-    css,
-    /\.hero-support-grid\s*\{[^}]*margin-top:\s*clamp\(1\.5rem,\s*3vw,\s*2\.5rem\)/,
-  );
-  assert.match(projects, /project-card--featured/);
-  assert.match(timeline, /timeline-ledger/);
+  assert.match(css, /\.hero-display\s*\{[^}]*font-size:\s*clamp\(2rem,\s*5\.2vw,\s*4\.4rem\)/);
+  assert.match(projects, /project-card--\$\{variant\}/);
+  assert.match(timeline, /career-bars/);
   assert.doesNotMatch(timeline, /eraColors|rounded-full/);
 });
 
-test("Home Hero delegates navigation without Portfolio or Resume shortcut CTAs", () => {
+test("Home Hero exposes locale-aware PDF and LinkedIn actions", () => {
   const hero = readRepoFile("src/components/home/HeroSection.tsx");
-  const css = readRepoFile("src/styles/globals.css");
-  const localeMessages = ["ko", "en", "zh"].map((locale) =>
-    JSON.parse(readRepoFile(`src/i18n/${locale}.json`)),
-  );
-
-  assert.doesNotMatch(hero, /hero-actions|ctaPortfolio|ctaResume/);
-  assert.doesNotMatch(hero, /from "next\/link"|getLocalizedPath/);
-  assert.doesNotMatch(css, /\.hero-actions/);
-  for (const messages of localeMessages) {
-    assert.equal("ctaPortfolio" in messages.home.hero, false);
-    assert.equal("ctaResume" in messages.home.hero, false);
-  }
+  assert.match(hero, /hero-actions/);
+  assert.match(hero, /locale === "ko"/);
+  assert.match(hero, /고재현_이력서\.pdf/);
+  assert.match(hero, /jayko_resume\.pdf/);
+  assert.match(hero, /href=\{meta.linkedin\}/);
+  assert.doesNotMatch(hero, /ctaPortfolio/);
 });
 
 test("Projects separate white Featured cards from one-line Archive rows and retain detail media", () => {
@@ -258,8 +244,8 @@ test("Project cards label performance as a highlight while ownership stays in de
     Object.values(locales).map((messages) => messages.projects.card.highlightLabel),
     ["하이라이트", "Highlight", "亮点"],
   );
-  assert.match(card, /copy\.card\.highlightLabel/);
-  assert.match(card, /project\.primaryMetric/);
+  assert.match(card, /project\.results\?\.\[project\.featuredResult \?\? 0\]/);
+  assert.match(card, /result\.caption\[locale\]/);
   assert.doesNotMatch(card, /copy\.card\.contributionLabel/);
   assert.doesNotMatch(card, /project\.contribution/);
   assert.match(detail, /copy\.contribution/);
@@ -352,7 +338,7 @@ test("Resume downloads prioritize the Korean PDF and keep the English PDF second
 test("focus rings contrast on cobalt controls without changing white card focus", () => {
   const css = readRepoFile("src/styles/globals.css").replace(/\/\*[\s\S]*?\*\//g, "");
   assert.match(css, /:focus-visible\s*\{[^}]*outline: 3px solid var\(--color-cobalt-blue\)/);
-  for (const selector of [".featured-heading .btn-on-cobalt:focus-visible", ".demo-preview-chapter > .chapter-inner > .btn-primary:focus-visible", ".demo-detail-hero .demo-back-link:focus-visible"]) {
+  for (const selector of [".demo-detail-hero .demo-back-link:focus-visible"]) {
     const rule = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].find((match) => match[1].split(",").some((part) => part.trim() === selector));
     assert.ok(rule, selector);
     assert.match(rule[2], /outline-color: var\(--color-paper\)/);

@@ -30,7 +30,7 @@ export function DemoCard({
         <header className="demo-card__meta">
           <span className="num">{String(demo.order).padStart(2, "0")}</span>
           <span>{copy.kind[demo.kind]}</span>
-          <span>{demo.productized ? copy.status.productized : copy.status.internal}</span>
+          <span>{demo.productStatus === "partial" ? copy.status.partial : demo.productized ? copy.status.productized : copy.status.internal}</span>
         </header>
 
         <div className="demo-card__copy">

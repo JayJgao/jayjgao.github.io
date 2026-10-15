@@ -10,8 +10,7 @@ export const KOREAN_HOME_DESCRIPTION =
 
 type HomeDescriptionCopy = {
   headline: string;
-  subheadline: string;
-  supporting: string;
+  lead: string[];
 };
 
 type LocalizedMetadataOptions = {
@@ -30,7 +29,7 @@ export function createHomeDescription(
   copy: HomeDescriptionCopy,
 ): string {
   if (locale === "ko") return KOREAN_HOME_DESCRIPTION;
-  return `${copy.headline} ${copy.subheadline} ${copy.supporting}`;
+  return `${copy.headline} ${copy.lead.join(" ")}`;
 }
 
 export function createLegacyMetadata(path: string): Metadata {

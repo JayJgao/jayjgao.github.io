@@ -40,7 +40,7 @@ export function DemoDetail({ demo, locale }: { demo: Demo; locale: Locale }) {
           <div className="demo-detail-hero__copy">
             <div className="tag-list">
               <span className="tag">{copy.kind[demo.kind]}</span>
-              <span className="tag">{demo.productized ? copy.status.productized : copy.status.internal}</span>
+              <span className="tag">{demo.productStatus === "partial" ? copy.status.partial : demo.productized ? copy.status.productized : copy.status.internal}</span>
             </div>
             <p className="section-kicker">{copy.page.kicker} <span className="num">{String(demo.order).padStart(2, "0")}</span></p>
             <h1 id="demo-title" className="page-display">{demo.name}</h1>

@@ -117,31 +117,31 @@ git diff --check
 
 ### 2-1. 데이터 (테스트 먼저)
 
-- [ ] `src/types/content.ts`(또는 Project 타입 위치)에 다음을 추가합니다.
+- [x] `src/types/content.ts`(또는 Project 타입 위치)에 다음을 추가합니다.
   - `results?: { value: Localized<string>; caption: Localized<string> }[]`(2~3개)
   - `featuredResult?: number`(기본 0)
   - `links?: { label: Localized<string>; url: string }[]`
-- [ ] `src/data/projects.json`
+- [x] `src/data/projects.json`
   - 대표 프로젝트 6개에 설계 4.2 표의 `results`와 `featuredResult`를 넣습니다. en·zh 값은 정본 9장 표기 기준으로 옮기고 humanizer로 다듬은 뒤 숫자를 국문과 대조합니다.
   - `showcaseOrder`를 설계 4.1대로 바꿉니다(ai-po 1, aiaas-biz 2, enablement 3, chroma 4, shortform 5, solidware 6).
   - 외부 링크를 MDX에서 `links`로 옮깁니다. aiaas-biz는 ZDNet Korea·컴퓨터월드, shortform은 관련 기사(ZDNet Korea), ai-po는 CineV 제품 링크, chroma는 「HappyEnd」·「Mystery Invitation」 Devpost 링크입니다. 옮긴 MDX 링크 목록은 지웁니다.
-- [ ] `src/data/demos.json`: productized 3개에 `productStatus`를 넣습니다(prompt-enhancer `shipped`, voice-adaptor `partial`, reverse-storyboard `shipped`). `src/types/demo.ts`에 타입을 추가하고, i18n `demos.status`에 `partial`(ko `일부 반영`, en `Partly shipped`, zh 대응어)을 추가합니다. `shipped`는 기존 `status.productized` 라벨을 씁니다.
-- [ ] `src/data/resume.{ko,en,zh}.json` `meta.linkedin = "https://www.linkedin.com/in/jayko-ai/"`
-- [ ] `tests/project-data.test.ts`, `tests/fixtures/project-facts.json`: 대표 6개의 `results` 개수(2~3)와 ko value 정확값, `featuredResult` 범위, `showcaseOrder`, `links`에 `aplusai`가 없음을 단언합니다. 기여도 단언(60·90 등)은 그대로 둡니다.
+- [x] `src/data/demos.json`: productized 3개에 `productStatus`를 넣습니다(prompt-enhancer `shipped`, voice-adaptor `partial`, reverse-storyboard `shipped`). `src/types/demo.ts`에 타입을 추가하고, i18n `demos.status`에 `partial`(ko `일부 반영`, en `Partly shipped`, zh 대응어)을 추가합니다. `shipped`는 기존 `status.productized` 라벨을 씁니다.
+- [x] `src/data/resume.{ko,en,zh}.json` `meta.linkedin = "https://www.linkedin.com/in/jayko-ai/"`
+- [x] `tests/project-data.test.ts`, `tests/fixtures/project-facts.json`: 대표 6개의 `results` 개수(2~3)와 ko value 정확값, `featuredResult` 범위, `showcaseOrder`, `links`에 `aplusai`가 없음을 단언합니다. 기여도 단언(60·90 등)은 그대로 둡니다.
 
 ### 2-2. 홈 (테스트 먼저)
 
-- [ ] `tests/home-about.test.ts`
+- [x] `tests/home-about.test.ts`
   - 히어로 copy 기대값(56~66행)을 설계 4.1 표로 바꿉니다. 키는 `headline`, `lead: string[]`, `career`(메타 영문 줄), `stats[]`(value·caption)입니다.
   - 계층 단언(72~87행)을 `headline → lead → stats` 순서로 바꿉니다.
   - 섹션 마커 순서(157행)를 `["hero", "featured", "demos", "timeline", "films"]`로 바꿉니다.
-- [ ] `tests/phase2-design.test.ts`
+- [x] `tests/phase2-design.test.ts`
   - "Home Hero delegates navigation without … CTAs"를 뒤집습니다. 히어로에 이력서 PDF 링크와 LinkedIn 링크가 있어야 합니다.
   - `.hero-display` 크기 단언을 국문 한 문장이 들어가는 값(`clamp(2rem, 5.2vw, 4.4rem)` 부근)으로 바꿉니다.
   - `timeline-ledger`·`eraColors` 단언을 막대 타임라인(`career-bars`) 단언으로 바꿉니다.
-- [ ] `tests/phase3-content.test.ts` 362행 "avoid em-dash and middle-dot": 감사 대상을 `hero.lead[]`와 영상 띠 문구로 바꿉니다. `hero.supporting`·`timeline.eras`·spotlight 문구는 지워지므로 대상에서 뺍니다.
-- [ ] `tests/demo-presentation.test.ts`: `demos.page.title` ko `추상적인 언어보다, 동작하는 데모로`. en·zh는 국문을 옮긴 값으로 고정합니다.
-- [ ] 구현
+- [x] `tests/phase3-content.test.ts` 362행 "avoid em-dash and middle-dot": 감사 대상을 `hero.lead[]`와 영상 띠 문구로 바꿉니다. `hero.supporting`·`timeline.eras`·spotlight 문구는 지워지므로 대상에서 뺍니다.
+- [x] `tests/demo-presentation.test.ts`: `demos.page.title` ko `추상적인 언어보다, 동작하는 데모로`. en·zh는 국문을 옮긴 값으로 고정합니다.
+- [x] 구현
   - `HeroSection.tsx`: 메타 줄, H1, `lead` 문장별 블록, 버튼, 사진(코발트 블록 + 노랑 원)
   - 근거 띠: 공용 `ResultBand` 컴포넌트를 새로 만들어 쓰고, 2-3에서 다시 씁니다.
   - `FeaturedProjects.tsx`: `showcaseOrder` 1~3 사례 카드(설계 4.1 카드 구성)
@@ -150,31 +150,31 @@ git diff --check
   - 새 `FilmsStrip`: 설계 4.1 문구. 링크는 `${FILMS_URL}/?lang=${locale}`
   - `src/app/[locale]/page.tsx`: 순서와 `data-home-section` 마커 갱신
   - `Footer.tsx`: 이메일, LinkedIn, GitHub
-- [ ] `VideoSpotlightCarousel`을 홈에서 빼면 쓰는 곳이 없어집니다. 컴포넌트, `spotlights.json`, i18n `home.spotlight`를 지웁니다. `public/` 아래 포스터 중 다른 곳에서 참조하지 않는 파일은 `asset-manifest.json`과 함께 지웁니다. 지우기 전에 `grep -rn <파일명> src`로 참조가 없는지 확인합니다.
+- [x] `VideoSpotlightCarousel`을 홈에서 빼면 쓰는 곳이 없어집니다. 컴포넌트, `spotlights.json`, i18n `home.spotlight`를 지웁니다. `public/` 아래 포스터 중 다른 곳에서 참조하지 않는 파일은 `asset-manifest.json`과 함께 지웁니다. 지우기 전에 `grep -rn <파일명> src`로 참조가 없는지 확인합니다.
 
 ### 2-3. 프로젝트 상세 (테스트 먼저)
 
-- [ ] `tests/phase2-design.test.ts` "Projects separate … retain detail media": `data-project-section`에 `results`, `lessons`가 생기는지, 썸네일이 머리 안에 있는지 단언합니다. 기여도 단언(289~292행)은 유지합니다.
-- [ ] `CaseStudy.tsx` 재구성: 머리(브레드크럼·회사·재직 기간·H1·썸네일) → 2열(왼쪽 레일 원장·태그·관련 링크 / 본문: `ResultBand` → MDX) → 이전·다음
+- [x] `tests/phase2-design.test.ts` "Projects separate … retain detail media": `data-project-section`에 `results`, `lessons`가 생기는지, 썸네일이 머리 안에 있는지 단언합니다. 기여도 단언(289~292행)은 유지합니다.
+- [x] `CaseStudy.tsx` 재구성: 머리(브레드크럼·회사·재직 기간·H1·썸네일) → 2열(왼쪽 레일 원장·태그·관련 링크 / 본문: `ResultBand` → MDX) → 이전·다음
   - 재직 기간은 설계 4.2의 매칭 규칙을 따릅니다. 시대 라벨 표시는 지웁니다.
   - MDX 맨 앞 `.highlight-callout`이 결과 띠 바로 아래 오도록 MDX 구조를 확인합니다. 대표 6개 MDX에서 callout이 맨 앞이 아니면 맨 앞으로 옮깁니다.
   - `.highlight-callout` CSS를 설계 3.4의 '배운 것' 하이라이트로 다시 그립니다.
-- [ ] 대표 6개 MDX(ko·en·zh)에서 `## 결과`/`## Results`/`## 成果`·`## 结果` 숫자 목록을 지웁니다. 숫자가 아닌 자료(영상 임베드, 이미지)는 `## 부록`/`## Appendix`/`## 附录`로 옮깁니다. chroma의 `<p className="award-result">`는 결과 띠와 겹치므로 지웁니다.
-- [ ] 이전·다음 내비를 설계 4.2대로 고칩니다.
+- [x] 대표 6개 MDX(ko·en·zh)에서 `## 결과`/`## Results`/`## 成果`·`## 结果` 숫자 목록을 지웁니다. 숫자가 아닌 자료(영상 임베드, 이미지)는 `## 부록`/`## Appendix`/`## 附录`로 옮깁니다. chroma의 `<p className="award-result">`는 결과 띠와 겹치므로 지웁니다.
+- [x] 이전·다음 내비를 설계 4.2대로 고칩니다.
 
 ### 2-4. 프로젝트 목록 (테스트 먼저)
 
-- [ ] `tests/project-data.test.ts` 48~120행, 391~420행의 era 테스트를 회사 필터 테스트로 바꿉니다.
-- [ ] `EraFilter.tsx` → `CompanyFilter.tsx`, `ProjectsExplorer.tsx` 갱신, `ProjectCard.tsx` 대표 카드는 사례 카드 컴포넌트를 쓰고 archive 행은 회사·재직 기간을 씁니다.
-- [ ] `eras.json`, `lib/eras.ts`, 프로젝트의 `era` 필드, i18n `home.timeline.eras`, `projects.page.description`의 3-Era 문장을 지웁니다. 새 설명: ko `회사와 기간 순으로 정리했습니다.`
+- [x] `tests/project-data.test.ts` 48~120행, 391~420행의 era 테스트를 회사 필터 테스트로 바꿉니다.
+- [x] `EraFilter.tsx` → `CompanyFilter.tsx`, `ProjectsExplorer.tsx` 갱신, `ProjectCard.tsx` 대표 카드는 사례 카드 컴포넌트를 쓰고 archive 행은 회사·재직 기간을 씁니다.
+- [x] `eras.json`, `lib/eras.ts`, 프로젝트의 `era` 필드, i18n `home.timeline.eras`, `projects.page.description`의 3-Era 문장을 지웁니다. 새 설명: ko `회사와 기간 순으로 정리했습니다.`
 
 ### 2-5. 화면 확인과 커밋
 
-- [ ] 1-8과 같은 목록을 `.local/v2-qa/phase2/`에 캡처하고 레퍼런스 시안 두 장과 나란히 비교합니다.
-- [ ] 대표 6개 상세 페이지를 모두 캡처합니다. 결과 띠 칸 수(3·3·3·2·3·2), 배운 것 위치, 에이플러스AI 링크 없음을 확인합니다.
-- [ ] 390px 가로 넘침이 없어야 하고, 사이트 어디에도 확인 표시가 없어야 합니다(`grep -rn "확인 필요\|TBD" out/` 결과 없음).
-- [ ] `verify:export` 인벤토리가 106 HTML / 84 localized / 45 project / 24 demo / 19 legacy 그대로인지 확인합니다.
-- [ ] 커밋 `feat: restructure home and project detail for v2`. 캡처를 사용자에게 보여줍니다.
+- [x] 1-8과 같은 목록을 `.local/v2-qa/phase2/`에 캡처하고 레퍼런스 시안 두 장과 나란히 비교합니다.
+- [x] 대표 6개 상세 페이지를 모두 캡처합니다. 결과 띠 칸 수(3·3·3·2·3·2), 배운 것 위치, 에이플러스AI 링크 없음을 확인합니다.
+- [x] 390px 가로 넘침이 없어야 하고, 사이트 어디에도 확인 표시가 없어야 합니다(`grep -rn "확인 필요\|TBD" out/` 결과 없음).
+- [x] `verify:export` 인벤토리가 106 HTML / 84 localized / 45 project / 24 demo / 19 legacy 그대로인지 확인합니다.
+- [x] 커밋 `feat: restructure home and project detail for v2`. 캡처를 사용자에게 보여줍니다.
 
 ---
 
@@ -200,4 +200,17 @@ git diff --check
 - export 인벤토리: 106 HTML / 84 localized / 45 Project / 24 Demo / 19 legacy, 내부 링크 1,082개.
 - 화면: 지정한 10개 경로 × 1440px·390px, 총 20개 전체 캡처를 `.local/v2-qa/phase1/`에 저장했습니다. 모든 페이지에서 문서 가로 넘침과 uppercase 변환이 없었습니다. 캐러셀·필터·다이어그램의 내부 스크롤은 기존 동작대로 유지됩니다.
 - 브라우저 조작: 언어 메뉴 열기·Escape·포커스 복귀, 필터 전환, 동일 페이지의 언어 전환, PDF 버튼 hover, reduced-motion, 코발트 면의 포커스 대비를 확인했습니다.
-- 별도 설계 준수 리뷰와 코드 품질 리뷰를 완료했습니다. 2단계는 사용자의 1단계 화면 확인을 기다립니다.
+- 별도 설계 준수 리뷰와 코드 품질 리뷰를 완료했습니다. 사용자가 1단계 화면을 확인하고 2단계 진행을 승인했습니다.
+
+- 2단계 착수: 사용자 제공 저장소 `https://github.com/blader/humanizer`에서 `humanizer` 3.1.0을 `/Users/jayko/.codex/skills/humanizer`에 설치했습니다. 새 영문·중문 문구는 이 지침으로 검토하고 국문 정본과 대조합니다.
+
+- 2단계 완료: 홈을 히어로 → 대표 사례 → 데모 행 → 경력 막대 → 영상 갤러리 띠 순서로 구성했습니다. 대표 6개 상세는 결과 띠·배운 것·15rem 원장 레일을 사용하고, 목록 필터는 회사 기준으로 바꿨습니다.
+- 새 영문·중문은 설치한 humanizer 지침으로 검토했습니다. 승인된 한·영 히어로 문구는 그대로 사용하고, 번역의 금액·날짜·고유명사와 ‘기여’·‘수주 지원’ 등 책임 범위를 국문과 대조했습니다.
+- 상세의 비숫자 결과 문장과 근거 미디어는 부록에 보존했습니다. 참조를 확인한 뒤 사용하지 않는 포스터 3개만 manifest와 함께 삭제했습니다.
+- 경력 축은 빌드 연도 12월까지 두고, 현재 재직 막대는 빌드 월까지 계산합니다. 회사 필터의 빈 상태와 Voice Adaptor의 ‘일부 반영’ 표기도 전체 화면에 일치시켰습니다.
+- 설계 준수 리뷰에서 누락은 없었습니다. 품질 리뷰에서 발견한 640–1023px 목록 열 충돌은 실패 테스트를 먼저 추가한 뒤 수정했습니다.
+- 최종 자동 테스트 169개와 lint / typecheck / build / verify:export / diff 검사를 통과했습니다. export 인벤토리는 106 HTML / 84 localized / 45 Project / 24 Demo / 19 legacy, 내부 링크 1,115개입니다.
+- 2단계 화면 15개 경로 × 1440px·390px, 총 30개 캡처를 `.local/v2-qa/phase2/`에 저장했습니다. 문서 가로 넘침과 uppercase 변환은 없습니다. 회사 필터와 데모 다이어그램의 내부 스크롤은 유지합니다.
+- 브라우저 검증: 3개 언어 × 2개 폭의 홈 6회·대표 상세 36회, 3개 언어 × 5개 폭(390·700·800·1024·1440px)의 회사 필터/목록 15회 통과. 관련 링크와 PDF·LinkedIn·영상 갤러리 locale 링크, 결과 개수, 배운 것 위치를 확인했습니다.
+- Chroma 외부 영상의 지속 네트워크 요청 때문에 QA의 networkidle 대기가 만료되어, 문서와 글꼴 렌더 완료를 기준으로 검증했습니다. 페이지 자체 오류는 없었습니다.
+- 2단계에서 코발트 홈 버튼이 사라져 이전 포커스 예외를 정리했습니다. 현재 흰 포커스 링 예외는 코발트 데모 상세의 뒤로 링크에만 남습니다.

@@ -2,15 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { EraFilter } from "@/components/projects/EraFilter";
+import { CompanyFilter } from "@/components/projects/CompanyFilter";
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import type { EraFilterValue } from "@/lib/eras";
 import { getMessages } from "@/lib/i18n";
 import type { Project } from "@/lib/projects";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const { locale } = useLocale();
-  const [filter, setFilter] = useState<EraFilterValue>("all");
+  const [filter, setFilter] = useState<string>("all");
   const messages = getMessages(locale);
   const pageCopy = messages.projects.page;
   const copy = messages.projects.explorer;
@@ -18,13 +17,13 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const featured = useMemo(() => {
     const base = projects.filter((project) => project.featured);
     if (filter === "all") return base;
-    return base.filter((project) => String(project.era) === filter);
+    return base.filter((project) => project.company === filter);
   }, [projects, filter]);
 
   const archive = useMemo(() => {
     const base = projects.filter((project) => !project.featured);
     if (filter === "all") return base;
-    return base.filter((project) => String(project.era) === filter);
+    return base.filter((project) => project.company === filter);
   }, [projects, filter]);
 
   return (
@@ -38,7 +37,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       </header>
 
       <div className="project-index__body">
-        <EraFilter value={filter} onChange={setFilter} />
+        <CompanyFilter value={filter} onChange={setFilter} />
 
         <section className="project-group" data-project-section="featured" aria-labelledby="featured-projects-title">
           <header className="project-group__heading">

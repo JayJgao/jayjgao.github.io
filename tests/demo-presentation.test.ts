@@ -88,7 +88,7 @@ test("all locale dictionaries expose the same Demos UI contract", () => {
 
   for (const [index, dictionary] of dictionaries.entries()) {
     assert.equal(dictionary.nav.demos, ["데모", "Demos", "演示"][index]);
-    assert.equal(dictionary.demos.page.title, "Tinkering with the latest AI");
+    assert.equal(dictionary.demos.page.title, ["추상적인 언어보다, 동작하는 데모로", "Working demos make the case", "用能运行的演示说话"][index]);
     assert.equal(dictionary.demos.groups.productized.title, ["제품에 반영된 데모", "Built into Products", "已融入产品的演示"][index]);
     assert.equal(dictionary.demos.groups.experiments.title, ["실험과 내부 도구", "Experiments and Internal Tools", "实验与内部工具"][index]);
     assert.deepEqual(Object.keys(dictionary.demos).sort(), [

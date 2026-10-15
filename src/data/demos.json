@@ -269,7 +269,8 @@
           "zh": "根据这些结果，相机、表情、灯光、引用图像角色和各模型提示词规则被纳入产品 API 策略。Organization Skill 至今仍作为内部工具保留，但在公开作品集中，它不作为独立产品展示，而被视为 Prompt Enhancer API 产品化之前的验证阶段。"
         }
       ]
-    }
+    },
+    "productStatus": "shipped"
   },
   {
     "slug": "voice-adaptor",
@@ -526,7 +527,8 @@
         "height": 1102
       }
     ],
-    "diagram": "/assets/diagrams/demos/voice-adaptor.svg"
+    "diagram": "/assets/diagrams/demos/voice-adaptor.svg",
+    "productStatus": "partial"
   },
   {
     "slug": "reverse-storyboard",
@@ -767,7 +769,8 @@
         "height": 1270
       }
     ],
-    "diagram": "/assets/diagrams/demos/reverse-storyboard.svg"
+    "diagram": "/assets/diagrams/demos/reverse-storyboard.svg",
+    "productStatus": "shipped"
   },
   {
     "slug": "reframer",

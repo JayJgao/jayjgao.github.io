@@ -1,7 +1,6 @@
 [
   {
     "slug": "cinev-s2m",
-    "era": 3,
     "featured": false,
     "showcaseOrder": null,
     "company": "Cinamon",
@@ -23,7 +22,6 @@
   },
   {
     "slug": "cinev-moai",
-    "era": 3,
     "featured": false,
     "showcaseOrder": null,
     "company": "Cinamon",
@@ -45,9 +43,8 @@
   },
   {
     "slug": "chroma-awards",
-    "era": 3,
     "featured": true,
-    "showcaseOrder": 3,
+    "showcaseOrder": 4,
     "company": "Side Project",
     "role": "Creator / Director",
     "contribution": 50,
@@ -67,9 +64,8 @@
   },
   {
     "slug": "buzzni-shortform-ai",
-    "era": 2,
     "featured": true,
-    "showcaseOrder": 4,
+    "showcaseOrder": 5,
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 80,
@@ -90,9 +86,8 @@
   },
   {
     "slug": "buzzni-aiaas-biz",
-    "era": 2,
     "featured": true,
-    "showcaseOrder": 5,
+    "showcaseOrder": 2,
     "company": "BUZZNI",
     "role": "AI PM / Team Lead",
     "contribution": 80,
@@ -113,7 +108,6 @@
   },
   {
     "slug": "solidware-mlaas",
-    "era": 1,
     "featured": true,
     "showcaseOrder": 6,
     "company": "Solidware",
@@ -136,7 +130,6 @@
   },
   {
     "slug": "buzzni-chatbot",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "company": "BUZZNI",
@@ -158,7 +151,6 @@
   },
   {
     "slug": "cinev-ai-po-leadership",
-    "era": 3,
     "featured": true,
     "showcaseOrder": 1,
     "company": "Cinamon",
@@ -180,9 +172,8 @@
   },
   {
     "slug": "cinev-ai-enablement",
-    "era": 3,
     "featured": true,
-    "showcaseOrder": 2,
+    "showcaseOrder": 3,
     "company": "Cinamon",
     "role": "AI Tech Product Owner / Facilitator",
     "contribution": 90,
@@ -202,7 +193,6 @@
   },
   {
     "slug": "buzzni-review-aiaas",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "company": "BUZZNI",
@@ -224,7 +214,6 @@
   },
   {
     "slug": "buzzni-search-aiaas",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "company": "BUZZNI",
@@ -246,7 +235,6 @@
   },
   {
     "slug": "buzzni-branding-marketing",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "company": "BUZZNI",
@@ -268,7 +256,6 @@
   },
   {
     "slug": "solidware-automl",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "company": "Solidware",
@@ -289,7 +276,6 @@
   },
   {
     "slug": "solidware-product-marketing",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "company": "Solidware",
@@ -311,7 +297,6 @@
   },
   {
     "slug": "lunit-biomarker",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "company": "Lunit",

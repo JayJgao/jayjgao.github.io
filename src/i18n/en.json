@@ -17,24 +17,28 @@
       "kicker": "AI Product Leader",
       "name": "Jay Ko",
       "alias": "Ko Jaehyun",
-      "headline": "Tinkering with the latest AI and building it into real-world products.",
-      "subheadline": "Building and scaling AI products\nfrom tabular ML to generative video.",
-      "supporting": "7+ years leading AI product planning, launch, and scale across domains",
+      "headline": "I find problems no one has defined yet and turn them into products that deliver business results.",
       "profileAlt": "Profile photo of Jay Ko",
       "stats": [
         {
-          "value": "MRR 10x",
-          "label": "Revenue Growth"
+          "value": "MRR 10X",
+          "caption": "AIaaS business · KRW 5M → 52M in one year"
         },
         {
-          "value": "25+ B2B Clients",
-          "label": "Enterprise Delivery"
+          "value": "Team 0 → 20",
+          "caption": "Built the AIaaS product organization"
         },
         {
-          "value": "3 Patents",
-          "label": "IP Assets"
+          "value": "3 AI patents",
+          "caption": "2 pending · KSC paper · Chroma Awards finalist"
         }
-      ]
+      ],
+      "lead": [
+        "I act as a translator between technology, market, and organization, and I make the case with working demos rather than words.",
+        "I align product teams with the company's vision and OKRs and stay accountable until the goals are met."
+      ],
+      "career": "7+ years · Fintech AutoML → Medical AI → Commerce AIaaS → Generative AI Video",
+      "resumeLabel": "Resume PDF"
     },
     "featured": {
       "sectionLabel": "Featured Showcase",
@@ -43,46 +47,16 @@
       "metricFallbackPrefix": "Contribution"
     },
     "demos": {
-      "viewAll": "View All Demos"
-    },
-    "spotlight": {
-      "kicker": "Creative Spotlight",
-      "title": "Watch First",
-      "subtitle": "AI Filmmaking Showcase.",
-      "prev": "Prev",
-      "next": "Next",
-      "prevAria": "Previous spotlight",
-      "nextAria": "Next spotlight",
-      "relatedProject": "View Related Project",
-      "selectPrefix": "Select",
-      "frameFallback": "Spotlight",
-      "posterAltSuffix": "poster"
+      "viewAll": "View All Demos",
+      "counts": "{productized} demos built into products · {internal} experiments and internal tools"
     },
     "timeline": {
-      "kicker": "3-Era Narrative",
-      "title": "Career Timeline",
-      "eras": {
-        "era1": {
-          "items": [
-            "Solidware (Ailys), secured 13 Japanese enterprise clients and grew annual revenue by 100%",
-            "Lunit, early product planning for vision biomarker analysis software"
-          ]
-        },
-        "era2": {
-          "items": [
-            "BUZZNI, built the AIaaS team from 0→20 and grew MRR 10x",
-            "BUZZNI, launched a Long→Short-form AI video editor and a shopping assistant chatbot",
-            "Dasan E&E, integrated AI into Assessment Center task development workflows to improve operations and support a business turnaround"
-          ]
-        },
-        "era3": {
-          "items": [
-            "Cinamon AI PO Leadership → Official Web CineV launch and 3 experimental features integrated into the product",
-            "Cinamon AI Technology & Org Enablement → 13 AI Literacy and visioning sessions, plus web-team-led Product Discovery",
-            "Chroma Awards → Sponsor Award Top 11 Finalist"
-          ]
-        }
-      }
+      "title": "Career Timeline"
+    },
+    "films": {
+      "title": "6 AI films",
+      "description": "HappyEnd (Chroma Awards 2025 fal Sponsor Award TOP 11 finalist), plus live-action, advertising and music video work",
+      "viewAll": "Film gallery ↗"
     }
   },
   "about": {
@@ -99,22 +73,23 @@
     "page": {
       "kicker": "Portfolio",
       "title": "Projects",
-      "description": "The portfolio follows a 3-Era Narrative.\nEra 1: Classical ML, Era 2: LLM Application, Era 3: Generative AI Native."
+      "description": "Organized by company and period."
     },
     "explorer": {
       "featuredTitle": "Featured",
       "featuredDescription": "Only projects with clear results appear in Featured.",
       "archiveTitle": "Archive",
       "archiveDescription": "A list of projects carried out across various domains.",
-      "emptyFeatured": "No Featured projects in the selected Era.",
-      "emptyArchive": "No Archive projects in the selected Era."
+      "emptyFeatured": "No featured projects for this company.",
+      "emptyArchive": "No projects to show in this company’s full list."
     },
     "filter": {
       "all": "All"
     },
     "card": {
       "highlightLabel": "Highlight",
-      "thumbnailAltSuffix": "thumbnail"
+      "thumbnailAltSuffix": "thumbnail",
+      "viewCase": "View case →"
     },
     "caseStudy": {
       "role": "Role",
@@ -123,13 +98,15 @@
       "firstProject": "First project",
       "lastProject": "Last project",
       "backToList": "Back to project list",
-      "fallbackNotice": "Detailed content for this project is currently available in the original Korean."
+      "fallbackNotice": "Detailed content for this project is currently available in the original Korean.",
+      "period": "Employment period",
+      "relatedLinks": "Related links"
     }
   },
   "demos": {
     "page": {
       "kicker": "Demos",
-      "title": "Tinkering with the latest AI",
+      "title": "Working demos make the case",
       "description": "Hands-on experiments with the latest AI, built into products and internal tools and documented with results and evidence."
     },
     "groups": {
@@ -149,7 +126,8 @@
     },
     "status": {
       "productized": "Productized",
-      "internal": "Internal"
+      "internal": "Internal",
+      "partial": "Partly shipped"
     },
     "card": {
       "outcomeLabel": "Outcome",

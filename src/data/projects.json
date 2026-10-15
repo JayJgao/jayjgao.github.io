@@ -1,7 +1,6 @@
 [
   {
     "slug": "cinev-s2m",
-    "era": 3,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -32,7 +31,6 @@
   },
   {
     "slug": "cinev-moai",
-    "era": 3,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -63,9 +61,8 @@
   },
   {
     "slug": "chroma-awards",
-    "era": 3,
     "featured": true,
-    "showcaseOrder": 3,
+    "showcaseOrder": 4,
     "title": {
       "ko": "Chroma Awards",
       "en": "Chroma Awards",
@@ -91,13 +88,57 @@
       "ko": "Fully AI-Generated Short Film",
       "en": "Fully AI-Generated Short Film",
       "zh": "全 AI 生成短片"
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "TOP 11 파이널리스트",
+          "en": "TOP 11 finalist",
+          "zh": "TOP 11 入围"
+        },
+        "caption": {
+          "ko": "Chroma Awards 2025 · fal Sponsor Award · 「HappyEnd」",
+          "en": "Chroma Awards 2025 · fal Sponsor Award · HappyEnd",
+          "zh": "Chroma Awards 2025 · fal Sponsor Award ·《HappyEnd》"
+        }
+      },
+      {
+        "value": {
+          "ko": "Element 엔진 개발",
+          "en": "Element engine development",
+          "zh": "开发 Element 引擎"
+        },
+        "caption": {
+          "ko": "Chroma Awards 제작 과정에서 얻은 노하우로 전체 제품에서 사용되는 Element 관리 엔진 기획 및 개발",
+          "en": "Planned and developed the product-wide Element management engine using lessons from Chroma Awards production",
+          "zh": "将 Chroma Awards 制作经验用于规划和开发整个产品使用的 Element 管理引擎"
+        }
+      }
+    ],
+    "featuredResult": 0,
+    "links": [
+      {
+        "label": {
+          "ko": "HappyEnd",
+          "en": "HappyEnd",
+          "zh": "HappyEnd"
+        },
+        "url": "https://devpost.com/software/what-we-said-at-the-end"
+      },
+      {
+        "label": {
+          "ko": "Mystery Invitation",
+          "en": "Mystery Invitation",
+          "zh": "Mystery Invitation"
+        },
+        "url": "https://devpost.com/software/mystery-invitation"
+      }
+    ]
   },
   {
     "slug": "buzzni-shortform-ai",
-    "era": 2,
     "featured": true,
-    "showcaseOrder": 4,
+    "showcaseOrder": 5,
     "title": {
       "ko": "Long→Short-form AI 비디오 편집기",
       "en": "Long→Short-form AI Video Editor",
@@ -124,13 +165,49 @@
       "ko": "",
       "en": "",
       "zh": ""
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "0→1 출시",
+          "en": "0→1 launch",
+          "zh": "0→1 上线"
+        },
+        "caption": {
+          "ko": "롱폼을 숏폼으로 바꾸는 AI 편집기",
+          "en": "An AI editor that turns long-form video into short-form clips",
+          "zh": "将长视频转换为短视频的 AI 编辑器"
+        }
+      },
+      {
+        "value": {
+          "ko": "본계약 3곳",
+          "en": "3 commercial contracts",
+          "zh": "3 家正式签约"
+        },
+        "caption": {
+          "ko": "CJ온스타일 · SK스토아 · 신세계라이브쇼핑",
+          "en": "CJ OnStyle · SK Stoa · Shinsegae Live Shopping",
+          "zh": "CJ OnStyle · SK Stoa · Shinsegae Live Shopping"
+        }
+      }
+    ],
+    "featuredResult": 0,
+    "links": [
+      {
+        "label": {
+          "ko": "관련 기사 (ZDNet Korea)",
+          "en": "Related article (ZDNet Korea)",
+          "zh": "相关报道（ZDNet Korea）"
+        },
+        "url": "https://n.news.naver.com/article/092/0002367641?sid=105"
+      }
+    ]
   },
   {
     "slug": "buzzni-aiaas-biz",
-    "era": 2,
     "featured": true,
-    "showcaseOrder": 5,
+    "showcaseOrder": 2,
     "title": {
       "ko": "AIaaS 사업부 빌딩 & 리딩",
       "en": "Building and Leading an AIaaS Business Unit",
@@ -156,11 +233,67 @@
       "ko": "",
       "en": "",
       "zh": ""
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "MRR 10X",
+          "en": "MRR 10X",
+          "zh": "MRR 10X"
+        },
+        "caption": {
+          "ko": "1년 만에 500만 → 5,200만 원",
+          "en": "KRW 5M → 52M in one year",
+          "zh": "一年内从 500 万 → 5,200 万韩元"
+        }
+      },
+      {
+        "value": {
+          "ko": "0 → 20명",
+          "en": "Team 0 → 20",
+          "zh": "团队 0 → 20 人"
+        },
+        "caption": {
+          "ko": "입사 후 AIaaS 제품 조직을 직접 빌딩",
+          "en": "Built the AIaaS product organization after joining",
+          "zh": "入职后亲自组建 AIaaS 产品团队"
+        }
+      },
+      {
+        "value": {
+          "ko": "신규 고객사 12개",
+          "en": "12 new clients",
+          "zh": "12 家新客户"
+        },
+        "caption": {
+          "ko": "초기 미팅부터 PoC·계약까지",
+          "en": "From initial meetings through PoC and contracts",
+          "zh": "从初次会面到 PoC 与合同签订"
+        }
+      }
+    ],
+    "featuredResult": 2,
+    "links": [
+      {
+        "label": {
+          "ko": "ZDNet Korea 기사",
+          "en": "ZDNet Korea article",
+          "zh": "ZDNet Korea 报道"
+        },
+        "url": "https://n.news.naver.com/article/092/0002367641?sid=105"
+      },
+      {
+        "label": {
+          "ko": "컴퓨터월드 기사",
+          "en": "Computerworld article",
+          "zh": "Computerworld 报道"
+        },
+        "url": "https://www.comworld.co.kr/news/articleView.html?idxno=51154"
+      }
+    ]
   },
   {
     "slug": "solidware-mlaas",
-    "era": 1,
     "featured": true,
     "showcaseOrder": 6,
     "title": {
@@ -189,11 +322,49 @@
       "ko": "일본 엔터프라이즈",
       "en": "Japanese Enterprise Market",
       "zh": "日本企业业务"
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "고객 13개사",
+          "en": "13 clients",
+          "zh": "13 家客户"
+        },
+        "caption": {
+          "ko": "Mitsubishi · AEON 등 일본 기업 확보에 기여",
+          "en": "Contributed to winning Japanese clients including Mitsubishi and AEON",
+          "zh": "为拓展 Mitsubishi、AEON 等日本企业客户作出贡献"
+        }
+      },
+      {
+        "value": {
+          "ko": "연매출 2배",
+          "en": "2x annual revenue",
+          "zh": "年营收 2 倍"
+        },
+        "caption": {
+          "ko": "성장에 기여",
+          "en": "Contributed to growth",
+          "zh": "为增长作出贡献"
+        }
+      },
+      {
+        "value": {
+          "ko": "15억 원",
+          "en": "KRW 1.5B",
+          "zh": "15 亿韩元"
+        },
+        "caption": {
+          "ko": "정부지원사업 제안서·사업계획서 총괄, 수주 지원",
+          "en": "Led government funding proposals and business plans, supporting contract wins",
+          "zh": "统筹政府资助项目的提案与商业计划书，支持项目中标"
+        }
+      }
+    ],
+    "featuredResult": 0
   },
   {
     "slug": "buzzni-chatbot",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -224,7 +395,6 @@
   },
   {
     "slug": "cinev-ai-po-leadership",
-    "era": 3,
     "featured": true,
     "showcaseOrder": 1,
     "title": {
@@ -252,13 +422,61 @@
       "ko": "",
       "en": "",
       "zh": ""
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "Web CineV 출시",
+          "en": "Web CineV launched",
+          "zh": "Web CineV 上线"
+        },
+        "caption": {
+          "ko": "2026.02 전환 결정 → 2026.07.10 공식 출시",
+          "en": "Pivot decided in Feb 2026 → officially launched on Jul 10, 2026",
+          "zh": "2026.02 决定转型 → 2026.07.10 正式上线"
+        }
+      },
+      {
+        "value": {
+          "ko": "실험 기능 3건",
+          "en": "3 experimental features",
+          "zh": "3 项实验功能"
+        },
+        "caption": {
+          "ko": "Prompt Enhancer · Voice Adaptor · Reverse Storyboard 제품 통합",
+          "en": "Prompt Enhancer · Voice Adaptor · Reverse Storyboard integrated into the product",
+          "zh": "Prompt Enhancer · Voice Adaptor · Reverse Storyboard 集成至产品"
+        }
+      },
+      {
+        "value": {
+          "ko": "모델 30종+",
+          "en": "30+ models",
+          "zh": "30+ 种模型"
+        },
+        "caption": {
+          "ko": "R2V·I2V·TTS 등 7개+ 영역, 조직 단위 통합",
+          "en": "Integration by the organization across 7+ areas, including R2V, I2V and TTS",
+          "zh": "组织层面完成集成，覆盖 R2V、I2V、TTS 等 7+ 个领域"
+        }
+      }
+    ],
+    "featuredResult": 0,
+    "links": [
+      {
+        "label": {
+          "ko": "CineV",
+          "en": "CineV",
+          "zh": "CineV"
+        },
+        "url": "https://cinev.com/"
+      }
+    ]
   },
   {
     "slug": "cinev-ai-enablement",
-    "era": 3,
     "featured": true,
-    "showcaseOrder": 2,
+    "showcaseOrder": 3,
     "title": {
       "ko": "AI Technology & Org Enablement",
       "en": "AI Technology & Org Enablement",
@@ -283,11 +501,49 @@
       "ko": "",
       "en": "",
       "zh": ""
-    }
+    },
+    "results": [
+      {
+        "value": {
+          "ko": "전환율 2.8배",
+          "en": "2.8x conversion",
+          "zh": "转化率 2.8 倍"
+        },
+        "caption": {
+          "ko": "웹팀 AI Literacy TF · 프로덕션 A/B · 클립 다운로드 기준",
+          "en": "Web team AI Literacy TF · production A/B test · clip downloads",
+          "zh": "Web 团队 AI Literacy TF · 生产环境 A/B 测试 · 以片段下载为准"
+        }
+      },
+      {
+        "value": {
+          "ko": "교육·비저닝 13회",
+          "en": "13 training and vision sessions",
+          "zh": "13 场培训与愿景分享"
+        },
+        "caption": {
+          "ko": "비개발·웹·크리에이티브·경영진 대상",
+          "en": "For non-developers, web and creative teams, and executives",
+          "zh": "面向非开发岗位、Web 团队、创意团队与管理层"
+        }
+      },
+      {
+        "value": {
+          "ko": "R2V 독립 구현",
+          "en": "Independent R2V delivery",
+          "zh": "独立实现 R2V"
+        },
+        "caption": {
+          "ko": "웹팀이 AI LAB에 의존하지 않고 구현",
+          "en": "The web team implemented R2V without relying on AI LAB",
+          "zh": "Web 团队不依赖 AI LAB 独立实现"
+        }
+      }
+    ],
+    "featuredResult": 0
   },
   {
     "slug": "buzzni-review-aiaas",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -318,7 +574,6 @@
   },
   {
     "slug": "buzzni-search-aiaas",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -349,7 +604,6 @@
   },
   {
     "slug": "buzzni-branding-marketing",
-    "era": 2,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -380,7 +634,6 @@
   },
   {
     "slug": "solidware-automl",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -410,7 +663,6 @@
   },
   {
     "slug": "solidware-product-marketing",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "title": {
@@ -441,7 +693,6 @@
   },
   {
     "slug": "lunit-biomarker",
-    "era": 1,
     "featured": false,
     "showcaseOrder": null,
     "title": {
