@@ -12,17 +12,30 @@
 </div>
 
 ## 문제
-탐색-비교-구매 전환 단계가 분절돼 이탈이 반복되었습니다.
+2023년 LLM 상용화 초기에 무엇이든 답하는 챗봇으로 시작했습니다. PoC 초기 지표에서 첫 질문의 허들과 불명확한 CTA가 드러났고, CTR·CVR이 잡히지 않았습니다.
 
 ## 접근
-상품 탐색과 추천을 대화형 인터페이스로 통합했습니다.
+구매의도가 분명한 사용자에게 최단 경로를 주고, 자유 입력 대신 클릭으로 묻게 한다는 두 가설로 제품을 다시 짰습니다.
 
 ## 실행
-- 의도 분류 기반 대화 시나리오 설계
-- 추천/비교/전환 CTA를 대화 컨텍스트에 연결
-- 운영 데이터 기준으로 응답 품질 개선 루프 운영
+- 진입점을 홈 플로팅 버튼에서 상품 상세페이지로 이동
+- 방송 스크립트에서 구매결정 핵심 질문을 뽑아 미리 노출
+- 자사 서비스에서 CVR 개선을 검증한 뒤 고객사에 선제안
 
-![Chatbot shot 01](/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp)
+### 무엇이든 묻는 챗봇에서, 질문을 먼저 건네는 쇼핑어시스턴트로
+
+<figure className="pivot-figure">
+  <div className="pivot-figure__panels">
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-ko.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-ko.webp" alt="01 초기 가설(2023): 홈 플로팅 버튼에서 여는, 무엇이든 답하는 챗봇. PoC 초기 지표에서 접속 후 메시지 전송은 10% 미만이었고 구매 클릭·전환은 측정되지 않았습니다. 첫 질문을 떠올려야 하는 허들과 첫 답변 뒤 불명확한 CTA를 표시했습니다." /></a>
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-ko.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-ko.webp" alt="02 새 가설. 가설 1: 구매의도가 분명한 사용자에게 구매여정 정보를 주는 최단 경로. 가설 2: 무엇이든 입력할 수 있다는 것만큼 사용자에게 어려운 일은 없다." /></a>
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-ko.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-ko.webp" alt="03 바뀐 제품: 상품 상세페이지에서 바로 시작하고, 방송 스크립트에서 미리 뽑은 구매결정 핵심 질문을 탭해서 탐색합니다. 검증과 확산: 자사 서비스 구매 전환 맥락 CVR 2% 이상, 고객사 선제안, 홈쇼핑사 2곳 도입." /></a>
+    <div className="pivot-figure__shot">
+      <a href="/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp" alt="쇼핑 어시스턴트 실제 화면. 방송 요약 답변과 방송 영상, 구간별 영상 목록, 하단의 바로 누르는 질문 버튼이 보입니다." /></a>
+      <span>실제 화면</span>
+    </div>
+  </div>
+  <figcaption>2023년의 첫 가설은 PoC 초기 지표에서 깨졌고, 두 가설로 진입점과 UX를 다시 짰습니다.</figcaption>
+</figure>
 
 ## 결과
 - 쇼핑 어시스턴트 챗봇 신규 출시

@@ -36,7 +36,18 @@
     {
       "slug": "buzzni-chatbot",
       "thumbnail": "/assets/images/projects/buzzni/chatbot-thumb.webp",
-      "shot": "/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp"
+      "shot": "/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp",
+      "figures": [
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-ko.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-ko.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-ko.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-en.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-en.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-en.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-zh.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-zh.webp",
+        "/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-zh.webp"
+      ]
     },
     {
       "slug": "buzzni-review-aiaas",

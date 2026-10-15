@@ -294,8 +294,8 @@
   },
   {
     "slug": "solidware-mlaas",
-    "featured": true,
-    "showcaseOrder": 6,
+    "featured": false,
+    "showcaseOrder": null,
     "title": {
       "ko": "핀테크 MLaaS",
       "en": "Fintech MLaaS",
@@ -365,8 +365,8 @@
   },
   {
     "slug": "buzzni-chatbot",
-    "featured": false,
-    "showcaseOrder": null,
+    "featured": true,
+    "showcaseOrder": 6,
     "title": {
       "ko": "이커머스 쇼핑 어시스턴트 챗봇",
       "en": "E-commerce Shopping Assistant Chatbot",
@@ -391,6 +391,28 @@
       "ko": "",
       "en": "",
       "zh": ""
+    },
+    "featuredCard": {
+      "headline": {
+        "ko": "유저 데이터 기반 제품 개선",
+        "en": "Product improvements informed by user data",
+        "zh": "基于用户数据改进产品"
+      },
+      "caption": {
+        "ko": "상품 구매 여정에서 의사결정을 보좌하는 쇼핑 어시스턴트 챗봇",
+        "en": "A shopping assistant chatbot that supports decisions throughout the purchase journey",
+        "zh": "在商品购买旅程中辅助决策的购物助手聊天机器人"
+      },
+      "title": {
+        "ko": "자사 데이터 기반 쇼핑 챗봇 SaaS",
+        "en": "Shopping chatbot SaaS built on our own data",
+        "zh": "基于自有数据的购物聊天机器人 SaaS"
+      },
+      "description": {
+        "ko": "0→1 제품 출시, 홈쇼핑사 2곳 본계약",
+        "en": "0→1 product launch, commercial contracts with 2 home shopping companies",
+        "zh": "产品从 0→1 上线，与 2 家电视购物公司签订正式合同"
+      }
     }
   },
   {

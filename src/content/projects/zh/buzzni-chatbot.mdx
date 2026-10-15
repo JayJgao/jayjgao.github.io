@@ -12,17 +12,30 @@
 </div>
 
 ## 问题
-商品探索、比较和购买转化彼此割裂，用户因此反复流失。
+2023 年 LLM 商用初期，我们从一个什么都能回答的聊天机器人起步。PoC 初期指标显示，用户想出第一个问题本身就是门槛，回答后的 CTA 也不明确，CTR 和 CVR 都无法衡量。
 
 ## 方法
-将商品探索和推荐整合到对话式界面中。
+我们基于两个假设重建了产品：为购买意图明确的用户提供最短路径；用点击提问取代自由输入。
 
 ## 执行
-- 设计基于意图分类的对话场景
-- 将推荐、比较和转化 CTA 与对话上下文衔接
-- 根据运营数据持续改进响应质量
+- 将入口从首页悬浮按钮移到商品详情页
+- 从节目脚本中提取购买决策核心问题并预先展示
+- 先在自有服务上验证 CVR 提升，再主动向客户提案
 
-![聊天机器人截图 01](/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp)
+### 从什么都能问的聊天机器人，到先把问题递给用户的购物助手
+
+<figure className="pivot-figure">
+  <div className="pivot-figure__panels">
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-zh.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-01-zh.webp" alt="01 初始假设（2023）：从首页悬浮按钮打开、什么都能回答的聊天机器人。PoC 初期指标中，访问后发送消息的比例不到 10%，购买点击与转化无法衡量。图中标出两道门槛：用户得先想出第一个问题，首次回答后没有明确的 CTA。" /></a>
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-zh.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-02-zh.webp" alt="02 新假设。假设 1：为购买意图明确的用户，提供购买旅程相关信息的最短路径。假设 2：对用户来说，没有什么比“什么都可以输入”更难。" /></a>
+    <a href="/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-zh.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-pivot-03-zh.webp" alt="03 改变后的产品：直接从商品详情页开始，用户点一下从节目脚本中预先提取的购买决策核心问题即可探索。验证与推广：自有服务购买转化场景 CVR 2% 以上，主动向客户提案，2 家电视购物公司导入。" /></a>
+    <div className="pivot-figure__shot">
+      <a href="/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp"><img src="/assets/images/projects/buzzni/buzzni-chatbot-shot-01.webp" alt="购物助手实际界面：节目摘要回答、节目视频、分段视频列表，以及底部可直接点击的提问按钮。" /></a>
+      <span>实际界面</span>
+    </div>
+  </div>
+  <figcaption>2023 年的第一个假设在 PoC 初期指标面前被推翻，我们用两个新假设重新设计了入口和 UX。</figcaption>
+</figure>
 
 ## 成果
 - 推出新的购物助手聊天机器人
