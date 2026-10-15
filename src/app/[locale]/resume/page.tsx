@@ -39,10 +39,10 @@ export default async function ResumePage({
         <h1 className="page-display">{copy.title}</h1>
         <p className="chapter-description">{copy.description}</p>
         <div className="resume-downloads">
-          <a href="/assets/resume/resume_ko.pdf" className="btn-secondary">
+          <a href="/assets/resume/고재현_이력서.pdf" className="btn-secondary">
             {copy.downloadKo}
           </a>
-          <a href="/assets/resume/resume_en.pdf" className="btn-secondary">
+          <a href="/assets/resume/jayko_resume.pdf" className="btn-secondary">
             {copy.downloadEn}
           </a>
         </div>

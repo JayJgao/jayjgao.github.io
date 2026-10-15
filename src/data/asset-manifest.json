@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10",
+  "updatedAt": "2026-10-15",
   "policy": {
     "naming": "lowercase-kebab-case",
     "thumbnail": "default 1200x675 webp; approved Phase 3 entries preserve canonical SVG or source-derived dimensions",
@@ -77,5 +77,9 @@
       "slug": "lunit-biomarker",
       "thumbnail": "/assets/images/projects/lunit/biomarker-thumb.webp"
     }
-  ]
+  ],
+  "resume": {
+    "ko": "/assets/resume/고재현_이력서.pdf",
+    "en": "/assets/resume/jayko_resume.pdf"
+  }
 }

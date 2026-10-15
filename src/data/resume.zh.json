@@ -9,9 +9,8 @@
     "github": "https://github.com/JayJgao"
   },
   "summary": [
-    "我是一名 AI Product Leader，能快速梳理行业和产品结构，把尚未被清晰定义的问题转化为技术语言，并落实为产品和业务成果。",
-    "我的职业经历涵盖金融科技 AutoML、医疗 Computer Vision、电商 LLM Application 和生成式 AI 视频产品，成果包括团队建设、企业客户签约、MRR 增长 10 倍和 Web 产品正式上线。",
-    "进入新领域时，我会先梳理产品的基础设施、系统和市场，再亲自使用本公司及竞品，找出尚未被定义的缺口。与核心系统紧密相关的问题，我会将其转化为组织共同讨论的议题；可以独立验证的用户摩擦，则直接制作原型。我会和团队把工作推进到实际成果，包括签约、付费转化，以及让用户不偏离 Golden Path 就能达到 FSO (First Satisfactory Output)。"
+    "发现尚未被定义的问题，将其转化为创造业务成果的产品。",
+    "七年来，我在金融科技 AutoML、医疗 AI、电商 AIaaS 和生成式 AI 视频领域带领 AI 产品与团队。我在技术、市场与组织之间充当翻译者，用可运行的演示说服他人。我让产品团队与公司的愿景和 OKR 保持一致，并负责到底，直至目标实现。"
   ],
   "experience": [
     {
@@ -19,10 +18,11 @@
       "role": "AI Tech Product Owner",
       "period": "2025.04 - 至今",
       "highlights": [
-        "方向转变始于 Film Agent E2E 集成，就清理 3 年遗留内容达成共识，Web CineV 于 2026 年 7 月正式上线",
-        "推进 Conditioning 与上下文管理，研究叙事和视觉一致性，完成 120+ 次同场景验证，并将 Asset 管理系统集成到产品中",
-        "完成 3 项实验功能的产品集成，通过内部 Eval 平台完成 2 项模型集成并开展 6 次用户研究，开展 13 场 AI Literacy 与愿景规划会议，设计并运营由 Web 团队主导的 Product Discovery 计划",
-        "通过外部模型路由，将 7+ 个领域和 30+ 个模型集成到产品中"
+        "为应对技术与市场趋势变化，制定 Product Pivot 策略，主导将 3D 产品转型为生成式 AI Web 平台，并于 2026 年 7 月正式上线。",
+        "实现基于 LangChain 的 Film Agent 的 LLM-to-Unreal E2E 集成，并在 Web 产品上线后负责作品级上下文管理的规划与开发。",
+        "为解决使用生成式 AI 时在 Post Production 环节出现的问题，亲自制作并验证多种技术演示原型，再移交开发团队，集成到产品中。",
+        "通过自主搭建的动作评估平台，在五个月内支持了六次用户研究和两项新增模型集成。",
+        "组建 Web 团队的 AI Literacy TF，重新设计核心用户流程；Web 团队用两周完成实现后，线上 A/B 测试确认片段下载转化率达到原来的 2.8 倍。"
       ]
     },
     {
@@ -30,9 +30,10 @@
       "role": "AI PM / Team Lead",
       "period": "2023.04 - 2025.03",
       "highlights": [
-        "从零搭建 AIaaS 业务部门，并带领团队扩至 20 人",
-        "MRR 从 500 万韩元增至 5,200 万韩元，增长 10 倍，并获得 12 家新客户",
-        "从 0 到 1 上线 Long→Short-form AI 视频编辑器和购物聊天机器人两项服务"
+        "从 0 到 1 规划并上线 Long→Short-form AI 编辑器和购物助手聊天机器人。",
+        "建立 AIaaS 产品、定价、合同与运营体系，带领业务整体 MRR 在一年内从 500 万韩元增至 5,200 万韩元。",
+        "在初次会面后主导技术沟通、PoC 和合同谈判，获得 12 家新客户。",
+        "从 0 到 20 人搭建并带领 AIaaS 团队，负责整体 OKR，以及四名 PM 的招聘、人事管理与绩效评估。"
       ]
     },
     {
@@ -40,8 +41,7 @@
       "role": "Business Operations Manager",
       "period": "2022.06 - 2023.03",
       "highlights": [
-        "协助家族企业（HR 咨询）提升业务运营并恢复正常经营",
-        "重整运营流程并建立业务战略执行体系"
+        "将 LLM 应用于 HR 能力评估任务的开发，实现手工作业自动化，并完善运营体系，支持家族企业恢复正常经营。"
       ]
     },
     {
@@ -49,17 +49,17 @@
       "role": "AI Product Manager",
       "period": "2022.01 - 2022.04",
       "highlights": [
-        "根据监管文件定义视觉生物标志物分析 SW 的早期 PRD 和需求"
+        "编写 HER2、ER/PR 生物标志物分析产品的初期规划与 PRD，并支持现有产品的 FDA、CE 文件准备。"
       ]
     },
     {
       "company": "Solidware (Ailys)",
-      "role": "AI PM / New Business Team Lead",
+      "role": "AI Product Manager, New Business Planning",
       "period": "2018.12 - 2021.12",
       "highlights": [
-        "获得 13 家日本企业客户（Mitsubishi、AEON 等）",
-        "年营收增长 100%，销售触点扩大 256%",
-        "承接总额 15 亿韩元的政府项目"
+        "规划金融科技 AutoML、MLaaS 产品及数据准备解决方案 SSDP，为获得 13 家日本企业客户和年营收翻倍作出贡献。",
+        "制定并执行产品营销策略，使销售触点增加 256%。",
+        "统筹政府资助项目提案与商业计划的编写，支持取得总额 15 亿韩元的项目。"
       ]
     }
   ],
@@ -92,15 +92,16 @@
     "清华大学，新闻学学士（媒体统计），GPA 3.78/4.0"
   ],
   "achievements": [
-    "3 项 ML 专利",
-    "在 KSC 2023 发表论文",
-    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist"
+    "3 项已授权 AI 专利 · 2 项申请中",
+    "KSC 2023 口头报告",
+    "Meta AI APAC Accelerator 2024 · 首尔地区预选赛第三名",
+    "Chroma Awards 2025 · fal Sponsor Award Top 11 Finalist"
   ],
   "languages": [
     "韩语（母语）",
-    "中文（商务流利，HSK 6）",
-    "英语（商务流利）",
-    "日语（基础）",
+    "中文（母语水平）",
+    "英语（商务专业）",
+    "日语（商务基础）",
     "俄语（初级）"
   ]
 }

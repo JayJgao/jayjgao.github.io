@@ -172,54 +172,56 @@ const expectedResumeSkills = {
 } as const;
 
 const expectedCinamonHighlights = [
-  "Film Agent E2E 통합에서 시작한 방향 전환, 3년 레거시 정리 합의, 2026년 7월 웹 CineV 공식 출시",
-  "Conditioning과 컨텍스트 관리, 서사와 비주얼 일관성 연구, 120+ 동일 장면 검증, Asset 관리 시스템 제품 통합",
-  "실험 기능 3건 제품 통합, 내부 Eval 플랫폼을 통한 모델 2건 통합과 유저스터디 6회 운영, AI Literacy와 비저닝 세션 13회 진행, 웹팀 주도 Product Discovery 프로그램 설계와 운영",
-  "외부 모델 라우팅을 통한 7개 이상 영역과 모델 30종 이상 제품 통합",
+  "기술·시장 트렌드 변화에 대응하는 Product Pivot 전략을 수립하고, 3D 제품의 생성형 AI 웹 플랫폼 전환을 주도해 2026년 7월 공식 출시했습니다.",
+  "LangChain 기반 Film Agent의 LLM-to-Unreal E2E 통합을 구현하고, 웹 제품 출시 이후 작품 단위 컨텍스트 관리의 기획·개발을 담당했습니다.",
+  "생성형 AI 활용 시 Post Production에서 발생하는 문제를 해결하기 위해 다양한 기술 데모를 직접 프로토타이핑·검증하고, 개발 조직에 이관해 제품에 통합했습니다.",
+  "자체 구축한 모션 평가 플랫폼에서 5개월간 사용자 스터디 6회와 모델 2건의 추가 통합을 지원했습니다.",
+  "웹팀 AI Literacy TF를 구성하고 핵심 사용자 흐름을 재설계했으며, 웹팀의 2주 구현 후 프로덕션 A/B에서 클립 다운로드 전환율 2.8배를 확인했습니다."
 ] as const;
 
 const expectedResumeSummaryParagraphs = [
-  "산업과 제품의 구조를 빠르게 파악하고, 아직 언어로서 규명되지 않은 문제를 기술의 언어로 번역해 제품과 사업 성과로 연결하는 AI Product Leader입니다.",
-  "핀테크 AutoML, 의료 Computer Vision, 이커머스 LLM Application, 생성형 AI 영상 제품을 거치며 팀 빌딩, 엔터프라이즈 계약, MRR 10배 성장, 웹 제품 공식 출시까지 일관된 성과를 만들어왔습니다.",
-  "새로운 도메인에서는 제품의 인프라와 시스템, 시장을 먼저 구조화한 뒤 직접 자사와 경쟁사 제품을 사용하며 정의되지 않은 빈틈을 찾습니다. 코어 시스템과 강하게 맞물린 문제는 조직의 화두로 만들고, 독립적으로 검증할 수 있는 사용자 마찰은 직접 프로토타이핑합니다. 구현에 머물지 않고 계약과 결제 전환, Golden Path를 이탈하지 않은 채 FSO (First Satisfactory Output)에 도달하는 것처럼 실제 성과가 나올 때까지 팀과 함께 실행합니다.",
+  "정의되지 않은 문제를 찾아 사업 성과를 내는 제품으로 만듭니다.",
+  "7년간 핀테크 AutoML, 의료 AI, 커머스 AIaaS, 생성형 AI 영상 분야에서 AI 제품과 조직을 이끌어 왔습니다. 기술과 시장, 조직 사이의 번역가를 자처하며 말보다 작동하는 데모로 설득합니다. 제품 팀이 회사의 비전과 OKR을 향해 움직이도록 방향을 맞추고 목표를 달성할 때까지 책임집니다."
 ] as const;
 
-const expectedUnchangedResumeExperience = [
+const expectedApprovedResumeExperience = [
   {
-    company: "BUZZNI",
-    role: "AI PM / Team Lead",
-    period: "2023.04 - 2025.03",
-    highlights: [
-      "AIaaS 사업부를 제로에서 20명 규모로 빌딩 및 리딩",
-      "MRR 500만 원에서 5,200만 원으로 10배 성장, 신규 고객사 12개 확보",
-      "Long→Short-form AI 비디오 편집기와 쇼핑 챗봇 2개 서비스 0→1 출시",
-    ],
+    "company": "BUZZNI",
+    "role": "AI PM / Team Lead",
+    "period": "2023.04 - 2025.03",
+    "highlights": [
+      "Long→Short-form AI 편집기와 쇼핑어시스턴트 챗봇을 0→1 기획·출시했습니다.",
+      "AIaaS 제품·가격·계약·운영 체계를 세우고, 사업 전체 MRR의 1년간 500만→5,200만 원 성장을 이끌었습니다.",
+      "초기 미팅 이후 기술 협의·PoC·계약 협의를 주도해 신규 고객사 12개를 확보했습니다.",
+      "AIaaS 조직을 0→20명으로 빌딩·리딩하고, 전체 OKR과 PM 4명의 채용·인사·평가를 책임졌습니다."
+    ]
   },
   {
-    company: "Dasan E&E",
-    role: "Business Operations Manager",
-    period: "2022.06 - 2023.03",
-    highlights: [
-      "가업(HR 컨설팅) 사업운영 고도화 및 경영정상화 지원",
-      "운영 프로세스 재정비와 사업 전략 실행 체계 수립",
-    ],
+    "company": "Dasan E&E",
+    "role": "Business Operations Manager",
+    "period": "2022.06 - 2023.03",
+    "highlights": [
+      "HR 역량평가 과제 개발에 LLM을 적용해 수작업을 자동화하고, 운영 체계를 정비해 가업의 경영 정상화를 지원했습니다."
+    ]
   },
   {
-    company: "Lunit",
-    role: "AI Product Manager",
-    period: "2022.01 - 2022.04",
-    highlights: ["비전 바이오마커 분석 SW 초기 PRD 및 규제 문서 기반 요구사항 정의"],
+    "company": "Lunit",
+    "role": "AI Product Manager",
+    "period": "2022.01 - 2022.04",
+    "highlights": [
+      "HER2·ER/PR 바이오마커 분석 제품의 초기 기획·PRD를 작성하고, 기존 제품의 FDA·CE 문서 준비를 지원했습니다."
+    ]
   },
   {
-    company: "Solidware (Ailys)",
-    role: "AI PM / New Business Team Lead",
-    period: "2018.12 - 2021.12",
-    highlights: [
-      "일본 엔터프라이즈 13개 고객 확보 (Mitsubishi, AEON 등)",
-      "연매출 100% 성장 및 영업 접점 256% 확대",
-      "정부과제 총 15억 원 규모 수주",
-    ],
-  },
+    "company": "Solidware (Ailys)",
+    "role": "AI Product Manager, New Business Planning",
+    "period": "2018.12 - 2021.12",
+    "highlights": [
+      "핀테크 AutoML·MLaaS와 데이터 준비 솔루션 SSDP를 기획하고, 일본 기업 고객 13개사 확보와 연매출 2배 성장에 기여했습니다.",
+      "제품 마케팅 전략을 수립·실행해 영업 접점을 256% 확대했습니다.",
+      "정부지원사업 제안서·사업계획서 작성을 총괄해 총 15억 원 규모의 사업 수주를 지원했습니다."
+    ]
+  }
 ] as const;
 
 test("Phase 3 fixes the exact 15-project composition and Featured order", () => {
@@ -284,23 +286,23 @@ test("Korean Era 3, About, and Resume copy exactly match the approved canon", ()
   const summaryText = Array.isArray(resumeKo.summary)
     ? resumeKo.summary.join(" ")
     : resumeKo.summary;
-  assert.match(summaryText, /FSO \(First Satisfactory Output\)/);
-  assert.doesNotMatch(summaryText, /FSO\(First Satisfactory Output\)/);
+  assert.match(summaryText, /정의되지 않은 문제/);
   assert.deepEqual(
     resumeKo.experience.find(({ company }) => company === "Cinamon (CineV)")?.highlights,
     expectedCinamonHighlights,
   );
   assert.deepEqual(
     resumeKo.experience.filter(({ company }) => company !== "Cinamon (CineV)"),
-    expectedUnchangedResumeExperience,
+    expectedApprovedResumeExperience,
   );
   assert.deepEqual(resumeKo.skills, expectedResumeSkills);
   assert.equal(Object.keys(resumeKo.skills).length, 4);
   assert.deepEqual(resumeKo.achievements, [
-    "ML 특허 3건",
-    "KSC 2023 논문 발표",
-    "ElevenLabs Chroma Awards 2025 Sponsor Award Top 11 Finalist",
-  ]);
+  "AI 특허 등록 3건 · 출원 중 2건",
+  "KSC 2023 구두 발표",
+  "Meta AI APAC Accelerator 2024 · 서울 지역 예선 3위",
+  "Chroma Awards 2025 · fal Sponsor Award Top 11 Finalist"
+]);
   assert.doesNotMatch(JSON.stringify(resumeKo), /출원 진행중|컨소시엄/);
 });
 
@@ -334,7 +336,7 @@ test("Resume renderer accepts locale-specific skill and summary shapes", () => {
 });
 
 test("Resume renders each approved localized summary paragraph semantically", () => {
-  const expectedCounts = { ko: 3, en: 3, zh: 3 } as const;
+  const expectedCounts = { ko: 2, en: 2, zh: 2 } as const;
 
   for (const locale of ["ko", "en", "zh"] as const) {
     const html = renderToStaticMarkup(
@@ -450,12 +452,12 @@ test("the obsolete public S2M object diagram and six-year claim are absent", () 
 
 test("approved resume downloads are byte-identical to the final PDFs", () => {
   assert.equal(
-    sha256(readRepoBytes("public/assets/resume/resume_ko.pdf")),
-    "7f53f9cff8d4f4ce8cb4e668548f47b1304cb5ddbc3afd29c54940131fe09ecb",
+    sha256(readRepoBytes("public/assets/resume/고재현_이력서.pdf")),
+    "20693a7b6f018b02167327319e7630ef7410341bc2d67b839dd0c5b0a7bb537b",
   );
   assert.equal(
-    sha256(readRepoBytes("public/assets/resume/resume_en.pdf")),
-    "c2e96a5dcd4cbfb0d85482173cce0048892714c82113409669c5ae8ac96af097",
+    sha256(readRepoBytes("public/assets/resume/jayko_resume.pdf")),
+    "731688bb6ece7dbcc8a07c5c404921afd9ef792f09d61970537eab97ee2f8073",
   );
 });
 
