@@ -2051,7 +2051,7 @@ html[lang="zh"] .hero-display {
 .image-preview-dialog::backdrop { background: rgb(0 0 0 / 65%); }
 .image-preview-toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; padding: 0.75rem; border-bottom: 1px solid var(--color-ink); }
 .image-preview-toolbar h2 { font-size: 1rem; margin: 0; }
-.image-preview-toolbar > div { display: flex; align-items: center; gap: 0.5rem; }
+.image-preview-toolbar > div { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .image-preview-toolbar button { min-width: 44px; min-height: 44px; padding: 0.4rem 0.6rem; border: 1px solid var(--color-ink); cursor: pointer; }
 .image-preview-toolbar button:disabled { opacity: 0.4; cursor: default; }
 .image-preview-toolbar output { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
