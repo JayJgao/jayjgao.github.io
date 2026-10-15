@@ -899,7 +899,13 @@ html[lang="zh"] .hero-display {
 }
 
 .mdx-content .pivot-figure {
-  margin: 1.5rem 0 0;
+  margin: 2.5rem 0 0;
+  max-width: 32rem;
+}
+
+.mdx-content .pivot-figure__title {
+  margin: 0 0 1.5rem;
+  text-align: left;
 }
 
 .mdx-content .pivot-figure__panels {
@@ -955,6 +961,7 @@ html[lang="zh"] .hero-display {
 
 @media (min-width: 68rem) {
   .mdx-content .pivot-figure {
+    max-width: none;
     width: min(64rem, calc(100vw - 2 * var(--page-gutter)));
     /* Offset half of the 15rem metadata rail plus its 3rem gap. */
     margin-left: calc(50% - 9rem);

@@ -12,6 +12,7 @@ for (const [locale, execution, result, entry] of [
   const source = read(`src/content/projects/${locale}/buzzni-chatbot.mdx`);
   const figure = source.match(/<figure className="pivot-figure">([\s\S]*?)<\/figure>/);
   assert.ok(figure);
+  assert.match(figure[1], /^\s*<h3 className="pivot-figure__title">[^<]+<\/h3>/);
   const images = [...figure[1].matchAll(/<img src="([^"]+)"/g)].map(match => match[1]);
   assert.deepEqual(images, [1,2,3].map(n => `${root}buzzni-chatbot-pivot-0${n}-${locale}.webp`).concat(`${root}buzzni-chatbot-shot-01.webp`));
   const start = source.indexOf(figure[0]);
